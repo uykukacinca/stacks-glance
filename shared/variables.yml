@@ -64,7 +64,7 @@ themes:
 
 variables:
 
-  video-url-template: &youtube ${YOUTUBE_URL}/watch?v={VIDEO-ID
+  video-url-template: &youtube ${YOUTUBE_URL}/watch?v={VIDEO-ID}
   comments-url-template: &reddit ${REDDIT_URL}/{POST-PATH}
   request-url-template: &gluetun http://gluetun:8888/{REQUEST-URL}
   chart-link-template: &yahoo-chart https://finance.yahoo.com/quote/{SYMBOL}/chart
