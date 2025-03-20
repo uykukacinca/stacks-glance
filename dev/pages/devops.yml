@@ -4,11 +4,13 @@
   columns:
     - size: small
       widgets:
+        - type: search
+          search-engine: ${REDDIT_URL}/r/devops/search?q={QUERY}&restrict_sr=on
+          new-tab: true
+          placeholder: Search in r/devops
+
         - type: bookmarks
           groups:
-            - links:
-                - title: Awesome Sysadmin
-                  url: https://github.com/awesome-foss/awesome-sysadmin?tab=readme-ov-file#awesome-sysadmin
             - links:
                 - title: Dynamic DevOps Roadmap
                   url: https://roadmap.devopshive.net
@@ -21,6 +23,9 @@
                 - title: 90 Days of DevOps
                   url: https://github.com/MichaelCade/90DaysOfDevOps
             - links:
+                - title: Awesome Sysadmin
+                  url: https://github.com/awesome-foss/awesome-sysadmin?tab=readme-ov-file#awesome-sysadmin
+            - links:
                 - title: Awesome Docker
                   url: https://github.com/veggiemonk/awesome-docker?tab=readme-ov-file#awesome-docker--
                 - title: DevOps with Docker
@@ -29,27 +34,68 @@
                   url: https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html
 
         - <<: *github-releases
-          title: Terminal
           repositories:
-            - nicolargo/glances
+            - semaphoreui/semaphore
+            - opentofu/opentofu
             - ansible/ansible
 
-    - size: full
-      widgets:
-        - <<: *reddit-simple-top-week
-          collapse-after: *widget-half-collapse-after
-          subreddit: devops
-
-        - <<: *reddit-simple-top-week
-          collapse-after: *widget-half-collapse-after
-          subreddit: sysadmin
+        - <<: *github-releases
+          repositories:
+            - openbao/openbao
+            - hashicorp/vault
+            - Infisical/infisical
 
     - size: full
       widgets:
-        - <<: *reddit-simple-top-week
-          collapse-after: *widget-half-collapse-after
-          subreddit: docker
+        - type: group
+          widgets:
+            - <<: *reddit-simple-top-week
+              collapse-after: *widget-half-collapse-after
+              subreddit: devops
 
-        - <<: *reddit-simple-top-week
-          collapse-after: *widget-half-collapse-after
-          subreddit: podman
+            - <<: *reddit-simple-top-week
+              collapse-after: *widget-half-collapse-after
+              subreddit: ansible
+
+        - type: group
+          widgets:
+            - <<: *reddit-simple-top-week
+              collapse-after: *widget-half-collapse-after
+              subreddit: sysadmin
+
+            - <<: *reddit-simple-top-week
+              collapse-after: *widget-half-collapse-after
+              subreddit: linuxadmin
+ 
+    - size: full
+      widgets:
+        - type: group
+          widgets:
+            - type: rss
+              title: Podcasts
+              style: vertical-list
+              collapse-after: *widget-half-collapse-after
+              cache: *deep-cache
+              feeds:
+                - url: https://www.spreaker.com/show/6102036/episodes/feed
+                  title: Adventures in DevOps
+                - url: https://feeds.transistor.fm/screaming-in-the-cloud
+                  title: Screaming in the Cloud
+
+            - <<: *reddit-simple-top-week
+              collapse-after: *widget-half-collapse-after
+              subreddit: docker
+
+            - <<: *reddit-simple-top-week
+              collapse-after: *widget-half-collapse-after
+              subreddit: podman
+
+        - type: group
+          widgets:
+            - <<: *reddit-simple-top-week
+              collapse-after: *widget-half-collapse-after
+              subreddit: netsec
+
+            - <<: *reddit-simple-top-week
+              collapse-after: *widget-half-collapse-after
+              subreddit: networking
