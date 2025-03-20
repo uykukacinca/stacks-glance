@@ -1,0 +1,20 @@
+- name: "*test"
+  slug: test
+  width: wide
+  columns:
+    - size: small
+      widgets:
+
+    - size: full
+      widgets:
+        - <<: *monitor-core
+        - <<: *monitor-apps
+        - <<: *monitor-media
+
+    - size: full
+      widgets:
+        - type: split-column
+          max-columns: 2
+          widgets:
+            - <<: *bluesky-author
+            - <<: *bluesky-my-timeline

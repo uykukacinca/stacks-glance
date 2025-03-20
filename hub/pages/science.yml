@@ -1,0 +1,29 @@
+- name: "🔬 Science"
+  slug: science
+  width: wide
+  columns:
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 3
+          widgets:
+
+            - type: group
+              widgets:
+                - <<: *reddit-cover
+                  subreddit: science
+
+                - <<: *reddit-cover
+                  subreddit: askscience
+
+            - <<: *reddit-cover
+              subreddit: EverythingScience
+
+            - <<: *videos-grid
+              channels:
+                - UC1yNl2E66ZzKApQdRuTQ4tw #SabineHossenfelder
+                - UCciQ8wFcVoIIMi-lfu8-cjQ #Anton Petrov
+                - UCGHZpIpAWJQ-Jy_CeCdXhMA #CoolWorldsLab
+                - UCFbtcTaMFnOAP0pFO1L8hVw #Kyle Hill

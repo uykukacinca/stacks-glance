@@ -1,0 +1,35 @@
+radarr-recently-added: &radarr-recently-added
+  type: custom-api
+  title: Latest Added Movies
+  cache: *default-cache
+  url: ${RADARR_URL}/api/v3/history?eventType=3&includeMovie=true
+  headers:
+    Accept: application/json
+    X-Api-Key: ${RADARR_API_KEY}
+  template: |
+    <ul class="list list-gap-14 collapsible-container" data-collapse-after="3">
+      {{ range .JSON.Array "records" }}
+      <li>
+          <div class="flex gap-10 row-reverse-on-mobile thumbnail-parent">
+              <div class="shrink-0" data-popover-type="html">
+                <div data-popover-html="">
+                    <img src="{{ .String "movie.images.0.remoteUrl" }}" loading="lazy" alt="">
+                </div>
+                <img class="twitch-category-thumbnail thumbnail" src="{{ .String "movie.images.0.remoteUrl" }}" alt="{{ .String "movie.title" }}" loading="lazy">
+              </div>
+              <div class="grow min-width-0">
+                  <a href="${RADARR_URL}/movie/{{ .String "movie.titleSlug" }}" class="color-highlight size-title-dynamic block text-truncate" target="_blank" rel="noreferrer">{{ .String "movie.title" }}</a>
+                  <ul class="list-horizontal-text flex-nowrap text-compact">
+                      <li class="shrink-0">{{ .String "movie.year" }}</li>
+                      <li class="shrink-0">{{ .String "movie.ratings.imdb.value" }}</li>
+                  </ul>
+                  <ul class="list-horizontal-text flex-nowrap text-truncate">
+                    {{ range .Array "movie.genres" }}
+                      <li>{{ .String "" }}</li>
+                    {{ end }}
+                  </ul>
+              </div>
+          </div>
+      </li>
+      {{ end }}
+    </ul>

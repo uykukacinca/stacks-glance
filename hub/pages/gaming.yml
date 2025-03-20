@@ -1,0 +1,88 @@
+- name: "🎲 Gaming"
+  slug: gaming
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: bookmarks
+          groups:
+            - hide-arrow: true
+              links:
+              #   - title: Steam Store
+              #     icon: si:steam
+              #     url: https://store.steampowered.com
+                - title: Steam Database
+                  url: https://steamdb.info
+                  icon: si:steamdb
+                - title: Epic Games
+                  icon: si:epicgames
+                  url: https://store.epicgames.com/en-US/free-games
+                - title: Ubisoft Store
+                  icon: si:ubisoft
+                  url: https://store.ubisoft.com/tr/home
+                - title: Prime Gaming
+                  icon: si:prime
+                  url: https://gaming.amazon.com/home
+                - title: Nexus Mods
+                  icon: si:nexusmods
+                  url: https://www.nexusmods.com
+            - color: 265 89 78
+              links:
+                - title: Gamepad Tester
+                  url: https://hardwaretester.com/gamepad
+            # - title: Cloud Gaming
+            #   color: 10 70 50
+            #   links:
+            #     - title: Xbox Cloud
+            #       url: https://www.xbox.com/en-US/play
+            #     - title: r/xCloud
+            #       url: https://reddit.com/r/xcloud
+            #     - title: GeForce Now
+            #       url: https://play.geforcenow.com/#/layout/games
+            #     - title: r/GeForceNOW
+            #       url: https://reddit.com/r/GeForceNOW
+            #     - title: Cloudbase
+            #       url: https://cloudbase.gg
+
+        - type: twitch-top-games
+          cache: *long-cache
+          collapse-after: 3
+          exclude:
+            - just-chatting
+            - pools-hot-tubs-and-beaches
+            - music
+            - art
+            - asmr
+
+        - <<: *steam-specials
+
+        - type: group
+          widgets:
+            - <<: *gamepass-pc-recently-added
+
+            - <<: *gamepass-pc-coming-soon
+
+    - size: full
+      widgets:
+        - <<: *reddit-cover
+          subreddit: pcgaming
+          collapse-after: *widget-half-collapse-after
+
+        - <<: *reddit-cover
+          subreddit: gaming
+          collapse-after: *widget-half-collapse-after
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple
+          collapse-after: 5
+          subreddit: GamingLeaksAndRumours
+          title: Leaks & Rumours
+          css-class:
+        - <<: *videos-grid
+          collapse-after-rows: 5
+          channels:
+            - UCNvzD7Z-g64bPXxGzaQaa4g #gameranx
+            - UCZ7AeeVbyslLM_8-nVy2B8Q #Skill Up
+            - UC9PBzalIcEQCsiIkq36PyUA #Digital Foundry
+            - UCsvn_Po0SmunchJYOWpOxMg #videogamedunkey

@@ -1,0 +1,11 @@
+- name: "🚘 Racing"
+  slug: racing
+  width: wide
+  columns:
+    - size: full
+      widgets:
+        - <<: *videos-grid
+          channels:
+            - UCeePGrzBN3B2GurSkd_bwPQ #BlackPanthaa
+            - UC7eUpRaHFzksP1XEsTbrh4Q #MilitiaGamingCommunity
+            - UCUUiwdeFUVRPqfVuLtfMXKA #SidWaj

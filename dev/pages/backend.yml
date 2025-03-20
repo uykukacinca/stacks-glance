@@ -1,0 +1,62 @@
+- name: "#backend"
+  slug: backend
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: search
+          search-engine: ${REDDIT_URL}/r/backend/search?q={QUERY}&restrict_sr=on
+          new-tab: true
+          placeholder: Search in r/backend
+
+        - <<: *github-releases
+          title: Headless CMS
+          repositories:
+            - pocketbase/pocketbase
+            - directus/directus
+            - trailbaseio/trailbase
+            # - strapi/strapi
+            # - payloadcms/payload
+
+        - <<: *github-releases
+          title: Backend
+          repositories:
+            - nitrojs/nitro
+            - unjs/h3
+            - unjs/db0
+
+        - <<: *github-releases
+          repositories:
+            - denoland/deno
+            - nodejs/node
+
+        - <<: *github-releases
+          title: Software
+          repositories:
+            - usebruno/bruno
+            - mountain-loop/yaak
+
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Public APIs
+                  url: https://github.com/public-apis/public-apis#readme
+            - links:
+                - title: Awesome Node.js
+                  url: https://github.com/sindresorhus/awesome-nodejs#readme
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple-top-week
+          subreddit: Backend
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: deno
+
+
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: node

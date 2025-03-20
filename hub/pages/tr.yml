@@ -1,0 +1,41 @@
+- name: "#tr" #❇️
+  slug: tr
+  width: wide
+  columns:
+    - size: full
+      widgets:
+        - <<: *videos-simple-three
+          title: Can Sungur ve Yakın Evren
+          channels:
+            - UC6q0eGHt5euC8aYLDjhaHpA #Can Sungur ve Yakın Evren
+        - <<: *videos-simple-three
+          title: Doğukan Manço
+          channels:
+            - UCLcGMsSd1nxozpI9J9_ICHA #@dogukan_manco
+        - <<: *videos-simple-three
+          title: Amerikali Aynasiz
+          channels:
+            - UCAa4yNsAyP-O5j-qNSpVQ_g #@AmerikaliAynasiz
+        - <<: *videos-simple-three
+          title: Diamond Tema
+          channels:
+            - UCkEp_OUCCx-UU3A9-y62NiA #@DiamondTema
+
+    - size: full
+      widgets:
+        - <<: *videos-simple-three
+          title: Murat Soner
+          channels:
+            - UCTpnOrDAyEUsCCfC0AE6zDw #Murat Soner
+        - <<: *videos-simple-three
+          title: Evrim Ağacı
+          channels:
+            - UCatnasFAiXUvWwH8NlSdd3A #@evrimagaci
+        - <<: *videos-simple-three
+          title: Murat Muratoğlu
+          channels:
+            - UCJEzfyorQwES0hyNpqhym_Q #@MuratMuratoğlu
+        - <<: *videos-simple-three
+          title: 140journos
+          channels:
+            - UCO-_F5ZEUhy0oKrSa69DLMw #@140journos

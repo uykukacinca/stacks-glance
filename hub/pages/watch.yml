@@ -1,0 +1,56 @@
+- name: "🍿 Watch"
+  slug: watch
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: bookmarks
+          css-class: page-movies
+          groups:
+            - links:
+                - title: Metacritic Movies
+                  url: https://www.metacritic.com/movie
+                - title: Letterboxd Reviews
+                  url: https://letterboxd.com/reviews/popular/this/week
+            - title: Imdb
+              color: 47 92 53
+              links:
+                - title: Top Box Office (US)
+                  url: https://www.imdb.com/chart/boxoffice
+                - title: Most Popular TV Shows
+                  url: https://www.imdb.com/chart/tvmeter
+            - title: Subtitles
+              color: 47 92 53
+              links:
+                - title: Türkçe Altyazı
+                  url: https://turkcealtyazi.org
+                - title: Open Subtitles
+                  url: https://www.opensubtitles.org/tr
+
+        - <<: *radarr-recently-added
+
+        - <<: *sonarr-recently-added
+
+        - <<: *tmdb-popular-movies
+
+    - size: full
+      widgets:
+        - <<: *reddit-cover
+          subreddit: movies
+          collapse-after: *widget-half-collapse-after
+
+        - <<: *reddit-cover
+          subreddit: television
+          collapse-after: *widget-half-collapse-after
+
+    - size: full
+      widgets:
+        - <<: *videos-grid
+          title: Reviews & Podcasts
+          channels:
+            - UC7v3-2K1N84V67IF-WTRG-Q #Jeremy Jahns
+            - UCCqEeDAUf4Mg0GgEN658tkA #The Chris Stuckmans
+            - UCbiOAho0h23IMInURiESx1w #Dan Murrell
+            - UCrTNhL_yO3tPTdQ5XgmmWjA #RedLetterMedia
+            - UCUyvQV2JsICeLZP4c_h40kA #Thomas Flight
+            - UCSJPFQdZwrOutnmSFYtbstA #TheCriticalDrinker

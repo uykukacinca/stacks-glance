@@ -1,0 +1,56 @@
+- name: "🆘 Homelab"
+  slug: homelab
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: search
+          search-engine: ${REDDIT_URL}/r/homelab/search?q={QUERY}&restrict_sr=on
+          new-tab: true
+          placeholder: Search in r/homelab
+          bangs:
+            - title: Reddit
+              shortcut: "!r"
+              url: ${REDDIT_URL}/r/homelab/search?q={QUERY}&restrict_sr=on
+            - title: YouTube
+              shortcut: "!y"
+              url: https://www.youtube.com/results?search_query=homelab+{QUERY}
+
+        - <<: *github-releases
+          collapse-after: 10
+          show-source-icon: true
+          repositories:
+            - community-scripts/ProxmoxVE
+
+        - <<: *bookmarks-homelab
+
+    - size: full
+      widgets:
+        - type: group
+          widgets:
+            - <<: *reddit-simple-top-week
+              subreddit: homelab
+              search: self:true
+              collapse-after: *widget-half-collapse-after
+
+            - <<: *reddit-simple-top-week
+              subreddit: HomeServer
+              collapse-after: *widget-half-collapse-after
+
+        - <<: *reddit-simple-top-week
+          subreddit: Proxmox
+          collapse-after: *widget-half-collapse-after
+
+    - size: full
+      widgets:
+        - <<: *videos-grid
+          title: Hardware
+          channels:
+            - UCgdTVe88YVSrOZ9qKumhULQ #Hardware Haven
+            - UC9evhW4JB_UdXSLeZGy8lGw #Raid Owl
+            - UCHkYOD-3fZbuGhwsADBd9ZQ #Lawrence Systems
+            - UCR-DXc1voovS8nhAvccRZhg #Jeff Geerling
+            - UCbiGcwDWZjz05njNPrJU7jA #ExplainingComputers
+            - UCsnGwSIHyoYN0kiINAGUKxg #Wolfgang's Channel
+            - UCBUGoNsdqLA7gyAB2zSa0rQ #Robtech
+            - UC1733iBvNpXIscZk4QnfYBw #WunderTechTutorials

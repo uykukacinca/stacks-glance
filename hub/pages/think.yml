@@ -1,0 +1,16 @@
+- name: "🚀 Think"
+  slug: think
+  width: wide
+  columns:
+    - size: full
+      widgets:
+        - <<: *videos-grid
+          channels:
+            - UCsXVk37bltHxD1rDPwtNM8Q #Kurzgesagt
+            - UCvG04Y09q0HExnIjdgaqcDQ #@becausescience
+            - UCHnyfMqiRRG1u-2MsSQLbXA #veritasium
+            - UCY1kMZp36IQSyNx_9h4mpCg #@MarkRober
+            - UCR1IuLEqb6UEA_zQ81kwXfg #@RealEngineering
+            - UC415bOPUcGSamy543abLmRA #@CleoAbram
+            - UC4QZ_LsYcvcq7qOsOhpAX4A #@ColdFusion
+            - UCUQo7nzH1sXVpzL92VesANw #@DIYPerks

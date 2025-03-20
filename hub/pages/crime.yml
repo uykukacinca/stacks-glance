@@ -1,0 +1,24 @@
+- name: "#crime" #💀 Crime
+  slug: crime
+  width: wide
+  columns:
+    - size: full
+      widgets:
+        - type: split-column
+          max-columns: 3
+          widgets:
+            - <<: *reddit-cover
+              subreddit: Crime
+
+            - <<: *reddit-cover
+              subreddit: acab
+
+            - <<: *videos-grid
+              channels:
+                - UCJWKjrrUh2KL1d3zXQW79cQ #ExploreWithUs
+                - UCfDO_4-o9H0hLHW00zWTVYQ #Ex Cop
+                - UCYwVxWpjeKFWwu8TML-Te9A #JCS - Criminal Psychology
+                - UCFXad0mx4WxY1fXdbvtg0CQ #Fascinating Horror
+                - UCCKwTsUwBvMDNlhxf0evJag #deathdoor4687
+                - UCFkFUrV28yy4kpg9b6LNhuQ #@TrueCrimeCentral
+                - UC0JJtK3m8pwy6rVgnBz47Rw #@rottenmangopod

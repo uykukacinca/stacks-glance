@@ -1,0 +1,60 @@
+- name: "🪙 Finance"
+  slug: finance
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - <<: *markets-base
+          markets:
+            - symbol: TRY=X
+            - symbol: EURTRY=X
+
+        - <<: *markets-base
+          title: Stocks
+          markets:
+            - symbol: TSLA
+            - symbol: NVDA
+            - symbol: AAPL
+            - symbol: AMZN
+            - symbol: INTC
+            - symbol: AMD
+
+        - <<: *markets-base
+          title: Crypto
+          markets:
+            - symbol: BTC-USD
+              name: Bitcoin
+            - symbol: ETH-USD
+              name: Ethereum
+            - symbol: LTC-USD
+              name: Litecoin
+            - symbol: DOGE-USD
+              name: Dogecoin
+            - symbol: XLM-USD
+              name: Stellar
+            #- symbol: XRP-USD
+            #  name: XRP
+            - symbol: SOL-USD
+              name: Solana
+            #- symbol: TRX-USD
+            #  name: TRON
+
+    - size: full
+      widgets:
+        - <<: *reddit-cover
+          subreddit: CryptoCurrency
+          collapse-after: *widget-half-collapse-after
+
+        - <<: *reddit-cover
+          subreddit: Bitcoin
+          collapse-after: *widget-half-collapse-after
+
+    - size: full
+      widgets:
+        - <<: *reddit-thumb
+          subreddit: economics
+          collapse-after: *widget-half-collapse-after
+
+        - <<: *reddit-cover
+          subreddit: wallstreetbets
+          collapse-after: *widget-half-collapse-after

@@ -1,0 +1,31 @@
+sonarr-recently-added: &sonarr-recently-added
+  type: custom-api
+  title: Latest Added Episodes
+  cache: *default-cache
+  url: ${SONARR_URL}/api/v3/history?eventType=3&includeSeries=true&includeEpisode=true
+  headers:
+    Accept: application/json
+    X-Api-Key: ${SONARR_API_KEY}
+  template: |
+    <ul class="list list-gap-14 collapsible-container" data-collapse-after="3">
+      {{ range .JSON.Array "records" }}
+      <li>
+          <div class="flex gap-10 row-reverse-on-mobile thumbnail-parent">
+              <div class="shrink-0" data-popover-type="html">
+                <div data-popover-html="">
+                    <img src="{{ .String "series.images.1.remoteUrl" }}" loading="lazy" alt="">
+                </div>
+                <img class="twitch-category-thumbnail thumbnail" src="{{ .String "series.images.1.remoteUrl" }}" alt="{{ .String "episode.title" }}" loading="lazy">
+              </div>
+              <div class="grow min-width-0">
+                <a href="${SONARR_URL}/series/{{ .String "series.titleSlug" }}" class="color-highlight size-title-dynamic block text-truncate" target="_blank" rel="noreferrer">{{ .String "episode.title" }}</a>
+                <div>{{ .String "series.title" }}</div>
+                <ul class="list-horizontal-text">
+                  <li>S{{ .String "episode.seasonNumber" }}</li>
+                  <li>E{{ .String "episode.episodeNumber" }}</li>
+                </ul>
+              </div>
+          </div>
+      </li>
+      {{ end }}
+    </ul>

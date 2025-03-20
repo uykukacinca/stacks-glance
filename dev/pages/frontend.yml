@@ -1,0 +1,45 @@
+- name: "#frontend"
+  slug: frontend
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: search
+          search-engine: ${REDDIT_URL}/r/webdev/search?q={QUERY}&restrict_sr=on
+          new-tab: true
+          placeholder: Search in r/webdev
+
+        - <<: *bookmarks-frontend
+
+        - <<: *github-releases
+          title: CSS
+          repositories:
+            - tailwindlabs/tailwindcss
+            - saadeghi/daisyui
+            - shadcn/ui
+            - unovue/reka-ui
+
+        - <<: *github-releases
+          title: Frameworks
+          repositories:
+            - nuxt/nuxt
+            - vercel/next.js
+            - sveltejs/svelte
+            - alpinejs/alpine
+            - withastro/astro
+            - vitejs/vite
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple-top-week
+          subreddit: webdev
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: Frontend
+
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: css

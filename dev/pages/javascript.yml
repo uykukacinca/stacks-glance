@@ -1,0 +1,28 @@
+- name: "🟡 Javascript"
+  slug: javascript
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: bookmarks
+          groups:
+            - <<: *links-javascript
+
+        - <<: *github-releases
+          repositories:
+            - colinhacks/zod
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: javascript
+
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: learnjavascript
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple-top-week
+          subreddit: typescript

@@ -1,0 +1,26 @@
+- name: "⚙️ Dashboard"
+  slug: dashboard
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - <<: *bookmarks-dashboard
+
+        - <<: *bookmarks-developer
+
+    - size: full
+      widgets:
+        - type: docker-containers
+          hide-by-default: false
+
+        - <<: *monitor-core
+
+        - <<: *monitor-apps
+
+        - <<: *monitor-media
+
+    - size: full
+      widgets:
+        - <<: *my-workers-table
+
+        - <<: *my-domains-table

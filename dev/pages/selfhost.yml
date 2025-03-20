@@ -1,0 +1,123 @@
+- name: "☢️ Selfhost"
+  slug: selfhost
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: search
+          search-engine: ${REDDIT_URL}/r/selfhosted/search?q={QUERY}&restrict_sr=on
+          new-tab: true
+          placeholder: Search in r/selfhosted
+          bangs:
+            - title: Reddit
+              shortcut: "!r"
+              url: ${REDDIT_URL}/r/selfhosted/search?q={QUERY}&restrict_sr=on
+            - title: YouTube
+              shortcut: "!y"
+              url: https://www.youtube.com/results?search_query=selfhosted+{QUERY}
+
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Selfh.st
+                  url: https://selfh.st/apps
+                - title: OpenAlternative
+                  url: https://openalternative.co/self-hosted
+            - color: 31 100 71
+              links:
+                - title: Awesome Selfhosted
+                  url: https://github.com/awesome-selfhosted/awesome-selfhosted?tab=readme-ov-file#awesome-selfhosted
+                - title: Awesome Compose
+                  url: https://github.com/docker/awesome-compose
+            - color: 265 89 78
+              links:
+                - title: LinuxServer Images
+                  url: https://docs.linuxserver.io/images/docker-adguardhome-sync
+                - title: LinuxServer Fleet
+                  url: https://fleet.linuxserver.io
+                - title: Compose Examples
+                  url: https://github.com/Haxxnet/Compose-Examples/tree/main/examples
+                - title: Trash Guides
+                  url: https://trash-guides.info
+
+        - <<: *github-releases
+          title: Core
+          repositories:
+            - go-gitea/gitea
+            - traefik/traefik
+            - AdguardTeam/AdGuardHome
+            - mbecker20/komodo
+            - authelia/authelia
+            # - pocket-id/pocket-id
+
+        - <<: *github-releases
+          collapse-after: 10
+          show-source-icon: true
+          repositories:
+            - qdm12/gluetun
+            - fosrl/pangolin
+            # - portainer/portainer
+            - immich-app/immich
+            - caddyserver/caddy
+            - jellyfin/jellyfin
+            - Sonarr/Sonarr
+            - radarr/radarr
+            - prowlarr/prowlarr
+            # - Readarr/Readarr
+            # - Lidarr/Lidarr
+            # - flaresolverr/flaresolverr
+            - glanceapp/glance
+            - umami-software/umami
+            # - iv-org/invidious
+            - docmost/docmost
+            - home-assistant/core
+            - amir20/dozzle
+            - CorentinTh/it-tools
+            - Athou/commafeed
+            - henrygd/beszel
+            - kieraneglin/pinchflat
+            # - codeberg:forgejo/forgejo
+
+        #  - type: rss
+        #    cache: *long-cache
+        #    title: Podcasts
+        #    feeds:
+        #      - url: https://media.rss.com/theselfhostcast/feed.xml
+        #        title: Self-Host Cast
+
+        # - <<: *github-releases
+        #   title: Docker Hub
+        #   collapse-after: 5
+        #   show-source-icon: true
+        #   repositories:
+        #     - dockerhub:traefik
+        #     - dockerhub:gitea/gitea
+        #     - dockerhub:linuxserver/socket-proxy
+        #     - dockerhub:linuxserver/jellyfin
+        #     - dockerhub:linuxserver/sonarr
+        #     - dockerhub:linuxserver/radarr
+        #     - dockerhub:linuxserver/bazarr
+        #     - dockerhub:linuxserver/prowlarr
+        #     - dockerhub:flaresolverr/flaresolverr
+        #     - dockerhub:linuxserver/qbittorrent
+
+    - size: full
+      widgets:
+        - type: group
+          widgets:
+            - <<: *reddit-simple
+              subreddit: selfhosted
+
+            - <<: *reddit-simple-top-week
+              title: Top This Week
+              subreddit: selfhosted
+
+    - size: full
+      widgets:
+        - <<: *videos-grid
+          channels:
+            - UC9x0AN7BWHpCDHSm9NiJFJQ #NetworkChuck
+            - UCOk-gHyjcWZNj3Br4oxwh0A #Techno Tim
+            - UCZNhwA1B5YqiY1nLzmM0ZRg #Christian Lempa
+            - UCVy16RS5eEDh8anP8j94G2A #DB Tech
+            - UCUUTdohVElFLSP4NBnlPEwA #Jim's Garage

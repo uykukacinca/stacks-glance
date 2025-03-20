@@ -1,0 +1,35 @@
+- name: "#vl"
+  slug: vlogs
+  width: wide
+  columns:
+    - size: full
+      widgets:
+        - <<: *podcasts-grid
+          title: Casey Neistat
+          channels:
+            - UCtinbF-Q-fVthA0qrFQTgXQ
+
+        - <<: *podcasts-grid
+          title: Emre Durmuş
+          channels:
+            - UClCBG771sRO6Ap9s84Je7Eg
+
+        - <<: *podcasts-grid
+          title: Mert Ozturk
+          channels:
+            - UCxxsGtsGhZE9KPgUFj-WtIA
+
+        - <<: *podcasts-grid
+          title: Testo Taylan
+          channels:
+            - UC1PluvjVa3GI5HJhul5lszg
+
+        - <<: *podcasts-grid
+          title: Zeliha Akpınar
+          channels:
+            - UChME7blpRpX1ViN-oPBpNmw
+
+        - <<: *podcasts-grid
+          title: Literat
+          channels:
+            - UClADLFnTtNyOJEOLB-p5jwQ

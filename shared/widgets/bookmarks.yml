@@ -1,0 +1,231 @@
+links-local: &links-local
+  title: Local Network
+  color: 31 100 71
+  links:
+    - title: Archer VR300
+      url: http://192.168.1.1
+    - title: Archer C50
+      url: http://192.168.0.1
+
+links-privacy: &links-privacy
+  links:
+    - title: Browser Leaks
+      url: https://browserleaks.com/ip
+    - title: 1.1.1.1 Debug
+      url: https://one.one.one.one/help
+
+links-other: &links-other
+  links:
+    - title: Speed Test
+      url: https://speed.cloudflare.com
+    - title: Windscribe Wireguard
+      url: https://windscribe.com/getconfig/wireguard
+    - title: Configuration
+      url: https://github.com/glanceapp/glance/blob/main/docs/configuration.md#configuration
+
+links-dev: &links-dev
+  links:
+    - title: MDN Web Docs
+      url: https://developer.mozilla.org/en-US/docs/Web
+    - title: Dev.to
+      url: https://dev.to
+    - title: Product Hunt
+      url: https://www.producthunt.com
+
+links-domains: &links-domains
+  links:
+    - title: ICANN Lookup
+      url: https://lookup.icann.org/en/lookup
+    - title: TLD-List
+      url: https://tld-list.com
+    - title: TLDes
+      url: https://tldes.com/cheapest-domains
+
+links-fun: &links-fun
+  links:
+    - title: Neal.fun
+      url: https://neal.fun
+    - title: Bop Spotter
+      url: https://walzr.com/bop-spotter
+
+links-tailwind: &links-tailwind
+  links:
+    - title: Tailwind CSS
+      icon: si:tailwindcss
+      url: https://tailwindcss.com
+    - title: Tailwind UI
+      icon: si:tailwindcss
+      url: https://tailwindcss.com/plus/ui-blocks
+
+links-ui: &links-ui
+  links:
+    - title: Origin UI
+      url: https://originui.com
+    - title: Tremor
+      url: https://tremor.so
+    - title: shadcn/ui
+      url: https://ui.shadcn.com
+
+links-icons: &links-icons
+  links:
+    - title: Simple Icons
+      url: https://simpleicons.org
+    - title: Hero Icons
+      url: https://heroicons.com
+
+links-hosting: &links-hosting
+  hide-arrow: true
+  links:
+    - title: Netlify
+      icon: si:netlify
+      url: https://www.netlify.com
+    - title: Railway
+      icon: si:railway
+      url: https://railway.app
+    - title: Digital Ocean
+      icon: si:digitalocean
+      url: https://www.digitalocean.com
+    - title: Amazon Web Services
+      icon: si:amazon
+      url: https://aws.amazon.com
+    - title: Vercel
+      icon: si:vercel
+      url: https://vercel.com
+
+links-registrar: &links-registrar
+  hide-arrow: true
+  links:
+    - title: Cloudflare
+      icon: si:cloudflare
+      url: https://dash.cloudflare.com
+    - title: Spaceship
+      icon: si:spaceship
+      url: https://www.spaceship.com/domain-search/?query=&tab=domains
+    - title: Namecheap
+      icon: si:namecheap
+      url: https://ap.www.namecheap.com/Domains/DomainList
+    - title: Porkbun
+      icon: si:porkbun
+      url: https://porkbun.com/event/holidaysales
+
+links-cloudflare: &links-cloudflare
+  links:
+    - title: Workers & Pages
+      url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/workers-and-pages
+    - title: D1 SQL Database
+      url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/workers/d1
+
+links-developer: &links-developer
+  links:
+    - title: Github Trending
+      url: https://github.com/trending
+    - title: Free for Developers
+      url: https://free-for.dev
+    - title: DEV.to
+      url: https://dev.to
+
+links-javascript: &links-javascript
+  links:
+    - title: Javascript Algorithms
+      url: https://github.com/trekhleb/javascript-algorithms
+    - title: You Don't Know JS
+      url: https://github.com/getify/You-Dont-Know-JS
+    - title: JavaScript Snippets
+      url: https://www.30secondsofcode.org/js/p/1
+    - title: 33 JS Concepts
+      url: https://github.com/leonardomso/33-js-concepts
+    - title: Modern JS Cheatsheet
+      url: https://github.com/mbeaudru/modern-js-cheatsheet
+    - title: Learn Regex
+      url: https://github.com/ziishaned/learn-regex
+
+links-proxmox: &links-proxmox
+  color: 31 100 71
+  links:
+    - title: Proxmox Scripts
+      url: https://community-scripts.github.io/ProxmoxVE/scripts
+    - title: Download Proxmox VE
+      url: https://www.proxmox.com/en/downloads
+
+links-homelab: &links-homelab
+  links:
+    - title: OPNsense
+      url: https://opnsense.org/download
+
+links-awesome: &links-awesome
+  links:
+    - title: Privacy
+      url: https://github.com/Lissy93/awesome-privacy
+    - title: Podcasts
+      url: https://github.com/rShetty/awesome-podcasts
+    - title: Sysadmin
+      url: https://github.com/awesome-foss/awesome-sysadmin
+    - title: Scalability
+      url: https://github.com/binhnguyennus/awesome-scalability
+    - title: Docker
+      url: https://github.com/veggiemonk/awesome-docker
+    - title: Linux Software
+      url: https://github.com/luong-komorebi/Awesome-Linux-Software
+    - title: Selfhosted
+      url: https://github.com/awesome-selfhosted/awesome-selfhosted
+
+bookmarks-awesome: &bookmarks-awesome
+  type: bookmarks
+  title: Awesome Lists
+  groups:
+    - <<: *links-awesome
+
+bookmarks-homelab: &bookmarks-homelab
+  type: bookmarks
+  groups:
+    - <<: *links-proxmox
+    - <<: *links-homelab
+
+bookmarks-home: &bookmarks-home
+  type: bookmarks
+  groups:
+    - title: Local Network
+      color: 31 100 71
+      <<: *links-local
+    - title: Privacy
+      color: 10 70 50
+      <<: *links-privacy
+    - <<: *links-other
+
+bookmarks-registrar: &bookmarks-registrar
+  type: bookmarks
+  groups:
+    - <<: *links-registrar
+
+bookmarks-developer: &bookmarks-developer
+  type: bookmarks
+  groups:
+    - <<: *links-developer
+
+bookmarks-dashboard: &bookmarks-dashboard
+  type: bookmarks
+  groups:
+    - <<: *links-registrar
+    - <<: *links-domains
+    - title: Cloudflare
+      color: 28 92 65
+      <<: *links-cloudflare
+    - title: Hosting
+      <<: *links-hosting
+    - title: Local Network
+      color: 129 68 58
+      <<: *links-local
+
+bookmarks-frontend: &bookmarks-frontend
+  type: bookmarks
+  groups:
+    - links:
+        - title: Webdev Resources
+          url: https://github.com/RitikPatni/Front-End-Web-Development-Resources
+    - <<: *links-tailwind
+    - title: UI
+      color: 129 68 58
+      <<: *links-ui
+    - title: Icons
+      color: 188 70 50
+      <<: *links-icons

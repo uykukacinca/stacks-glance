@@ -1,0 +1,32 @@
+- name: "#database"
+  slug: database
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - <<: *github-releases
+          title: Database
+          repositories:
+            - clockworklabs/SpacetimeDB
+            - ClickHouse/ClickHouse
+            - DiceDB/dice
+            - pubkey/rxdb
+
+        - <<: *github-releases
+          title: DB/ORM
+          repositories:
+            - supabase/supabase
+            - prisma/prisma
+            - drizzle-team/drizzle-orm
+
+        - <<: *github-releases
+          title: Software
+          repositories:
+            - sqlitebrowser/sqlitebrowser
+            - dbeaver/dbeaver
+
+    - size: full
+      widgets:
+
+    - size: full
+      widgets:

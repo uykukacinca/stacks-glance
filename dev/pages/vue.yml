@@ -1,0 +1,75 @@
+- name: "🟢 Vue"
+  slug: vue
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: search
+          search-engine: https://github.com/nuxt/nuxt/issues?q={QUERY}
+          new-tab: true
+          bangs:
+            - title: YouTube
+              shortcut: "!y"
+              url: https://www.youtube.com/results?search_query=nuxt+{QUERY}
+            - title: Reddit
+              shortcut: "!r"
+              url: ${REDDIT_URL}/r/Nuxt/search?q={QUERY}&restrict_sr=on
+            - title: Github
+              shortcut: "!g"
+              url: https://github.com/nuxt/nuxt/issues?q={QUERY}
+
+        - type: bookmarks
+          groups:
+            - hide-arrow: true
+              links:
+                - title: Modules
+                  icon: si:nuxt
+                  url: https://nuxt.com/modules
+            - links:
+                - title: Getting Started
+                  url: https://nuxt.com/docs/getting-started/introduction
+                - title: Guide
+                  url: https://nuxt.com/docs/guide
+                - title: API
+                  url: https://nuxt.com/docs/api
+            - links:
+                - title: Awesome Vue
+                  url: https://github.com/vuejs/awesome-vue#readme
+
+        - type: repository
+          repository: nuxt/nuxt
+          pull-requests-limit: 2
+          issues-limit: 2
+          commits-limit: 2
+
+        - <<: *github-releases
+          repositories:
+            - nuxt/nuxt
+            - nuxt/devtools
+            - nuxt/scripts
+            - nuxt/ui
+            - nitrojs/nitro
+            - vuejs/pinia
+            - vuejs/core
+            - vueuse/vueuse
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: nuxt
+
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: vuejs
+
+    - size: full
+      widgets:
+        - <<: *videos-grid
+          channels:
+            - UCgmcPHueYRarnCkihtNIRlw #LearnVue
+            - UCVJ5qp8Vw8gXQ9RkuNdYWMw #TheAlexLichter
+            - UCa1zuotKU4Weuw_fLRnPv0A #vuemastery
+            - UCshZ3rdoCLjDYuTR_RBubzw #programwitherik
+            - UCJ9jj5YMzo-HsyM6WG9Q_Lg #NuxtLabs
+            - UCr0D7PVNOHqB3Td7lVl_LKw #JohnKomarnicki

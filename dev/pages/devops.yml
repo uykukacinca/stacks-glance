@@ -1,0 +1,55 @@
+- name: "🛠️ DevOps"
+  slug: devops
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Awesome Sysadmin
+                  url: https://github.com/awesome-foss/awesome-sysadmin?tab=readme-ov-file#awesome-sysadmin
+            - links:
+                - title: Dynamic DevOps Roadmap
+                  url: https://roadmap.devopshive.net
+                - title: The Book of Secret Knowledge
+                  url: https://github.com/trimstray/the-book-of-secret-knowledge
+                - title: DevOps Exercises
+                  url: https://github.com/bregman-arie/devops-exercises
+                - title: Awesome Scalability
+                  url: https://github.com/binhnguyennus/awesome-scalability
+                - title: 90 Days of DevOps
+                  url: https://github.com/MichaelCade/90DaysOfDevOps
+            - links:
+                - title: Awesome Docker
+                  url: https://github.com/veggiemonk/awesome-docker?tab=readme-ov-file#awesome-docker--
+                - title: DevOps with Docker
+                  url: https://devopswithdocker.com
+                - title: Docker Security
+                  url: https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html
+
+        - <<: *github-releases
+          title: Terminal
+          repositories:
+            - nicolargo/glances
+            - ansible/ansible
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: devops
+
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: sysadmin
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: docker
+
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: podman

@@ -1,0 +1,38 @@
+- name: "🎙️ Podcasts"
+  slug: podcasts
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Awesome Podcasts
+                  url: https://github.com/rShetty/awesome-podcasts
+
+    - size: full
+      widgets:
+        - <<: *podcasts-grid
+          title: WVFRM Podcast
+          playlists:
+            - PL70yIS6vx_Y2xaKD3w2qb6Eu06jNBdNJb
+
+        - <<: *podcasts-grid
+          title: Syntax - Tasty Web Development Treats
+          playlists:
+            - PLLnpHn493BHHNUfHN5lDf11UD8jQ5Bpzl
+
+        - <<: *podcasts-grid
+          title: The WAN Show
+          playlists:
+            - PL8mG-RkN2uTw7PhlnAr4pZZz2QubIbujH
+
+        - <<: *podcasts-grid
+          title: Beyond Coding Podcast
+          playlists:
+            - PLX6ivsCcfHDOzMIUioOofyF-h-niZL6Qj
+
+        - <<: *podcasts-grid
+          title: Syntax - Self Host 101
+          playlists:
+            - PLLnpHn493BHHAxTeLNUZEDLYc8uUwqGXa

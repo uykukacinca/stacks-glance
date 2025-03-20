@@ -1,0 +1,17 @@
+- name: "💿 Software"
+  slug: software
+  width: wide
+  columns:
+    - size: small
+      widgets:
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple-top-week
+          subreddit: software
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: opensource

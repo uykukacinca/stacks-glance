@@ -1,0 +1,192 @@
+themes:
+
+  theme-dev: &theme-dev
+    background-color: 221 39 10
+    contrast-multiplier: 1.2
+    text-saturation-multiplier: 1.5
+    primary-color: 30 97% 72
+    positive-color: 142 69 58
+    negative-color: 0 84 60
+
+  theme-dark: &theme-dark
+    background-color: 231 15 17
+    contrast-multiplier: 1.2
+    text-saturation-multiplier: 1.5
+    primary-color: 60 50 75
+    positive-color: 142 69 58
+    negative-color: 0 84 60
+
+  theme-light: &theme-light
+    light: true
+    background-color: 220 23 95
+    contrast-multiplier: 1.0
+    primary-color: 220 91 54
+    positive-color: 109 58 40
+    negative-color: 347 87 44
+
+  theme-teal: &theme-teal
+    background-color: 225 14 15
+    primary-color: 157 47 65
+    contrast-multiplier: 1.1
+
+  theme-frappe: &theme-frappe
+    background-color: 229 19 23
+    contrast-multiplier: 1.2
+    primary-color: 222 74 74
+    positive-color: 96 44 68
+    negative-color: 359 68 71
+
+  theme-macchiato: &theme-macchiato
+    background-color: 232 23 18
+    contrast-multiplier: 1.2
+    primary-color: 220 83 75
+    positive-color: 105 48 72
+    negative-color: 351 74 73
+
+  theme-mocha: &theme-mocha
+    background-color: 240 21 15
+    contrast-multiplier: 1.2
+    primary-color: 217 92 83
+    positive-color: 115 54 76
+    negative-color: 347 70 65
+
+  theme-kanagawa: &theme-kanagawa
+    background-color: 240 13 14
+    primary-color: 51 33 68
+    negative-color: 358 100 68
+    contrast-multiplier: 1.2
+
+  theme-zebra: &theme-zebra
+    light: true
+    background-color: 0 0 95
+    primary-color: 0 0 10
+    negative-color: 0 90 50
+
+variables:
+
+  video-url-template: &youtube ${YOUTUBE_URL}/watch?v={VIDEO-ID
+  comments-url-template: &reddit ${REDDIT_URL}/{POST-PATH}
+  request-url-template: &gluetun http://gluetun:8888/{REQUEST-URL}
+  chart-link-template: &yahoo-chart https://finance.yahoo.com/quote/{SYMBOL}/chart
+  symbol-link-template: &yahoo-news https://finance.yahoo.com/quote/{SYMBOL}/news
+  default-cache: &default-cache 2m
+  short-cache: &short-cache 20s
+  long-cache: &long-cache 5m
+  deep-cache: &deep-cache 30m
+
+  widget-half-collapse-after: &widget-half-collapse-after 7
+
+definitions:
+
+  reddit-top-week: &reddit-top-week
+    cache: *deep-cache
+    sort-by: top
+    top-period: week
+
+  markets-base: &markets-base
+    type: markets
+    cache: *short-cache
+    chart-link-template: *yahoo-chart
+    symbol-link-template: *yahoo-news
+
+  reddit-base: &reddit-base
+    type: reddit
+    cache: *default-cache
+    css-class: widget-list-bordered
+    comments-url-template: *reddit
+
+  reddit-small: &reddit-small
+    <<: *reddit-base
+    limit: 10
+
+  reddit-vertical: &reddit-vertical
+    <<: *reddit-small
+    style: vertical-cards
+
+  reddit-simple: &reddit-simple
+    <<: *reddit-base
+    limit: 24
+    collapse-after: 15
+
+  reddit-simple-top-week: &reddit-simple-top-week
+    <<: [*reddit-simple, *reddit-top-week]
+
+  reddit-thumb: &reddit-thumb
+    <<: *reddit-simple
+    show-thumbnails: true
+
+  reddit-thumb-top-week: &reddit-thumb-top-week
+    <<: [*reddit-thumb, *reddit-top-week]
+
+  reddit-cover: &reddit-cover
+    <<: *reddit-thumb
+    css-class: widget-list-bordered widget-reddit-larger
+
+  reddit-cover-top-week: &reddit-cover-top-week
+    <<: [*reddit-cover, *reddit-top-week]
+
+  videos-base: &videos-base
+    type: videos
+    cache: *long-cache
+    video-url-template: *youtube
+
+  videos-grid: &videos-grid
+    <<: *videos-base
+    style: grid-cards
+    limit: 30
+    collapse-after-rows: 6
+
+  videos-grid-half: &videos-grid-half
+    <<: *videos-grid
+    css-class: widget-half
+    limit: 51
+
+  videos-simple: &videos-simple
+    <<: *videos-grid
+    limit: 5
+    collapse-after-rows: 1
+
+  videos-simple-three: &videos-simple-three
+    <<: *videos-simple
+    css-class: widget-half
+    limit: 3
+
+  videos-simple-six: &videos-simple-six
+    <<: *videos-simple
+    limit: 6
+
+  videos-horizontal: &videos-horizontal
+    <<: *videos-base
+    style: horizontal-cards
+    limit: 10
+
+  videos-vertical: &videos-vertical
+    <<: *videos-base
+    style: vertical-list
+    limit: 10
+
+  podcasts-grid: &podcasts-grid
+    <<: *videos-base
+    style: grid-cards
+    limit: 6
+    collapse-after-rows: 1
+
+  github-releases: &github-releases
+    type: releases
+    cache: *default-cache
+    token: ${GITHUB_TOKEN}
+    limit: 20
+    collapse-after: 10
+
+  twitch-channels: &twitch-channels
+    type: twitch-channels
+    cache: *short-cache
+    title: Twitch
+
+  monitor-base: &monitor-base
+    type: monitor
+    cache: *short-cache
+
+  monitor-boxed: &monitor-boxed
+    <<: *monitor-base
+    css-class: widget-monitor-custom

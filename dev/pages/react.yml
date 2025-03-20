@@ -1,0 +1,69 @@
+- name: "🔵 React"
+  slug: react
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: search
+          search-engine: google
+          new-tab: true
+          bangs:
+            - title: YouTube
+              shortcut: "!y"
+              url: https://www.youtube.com/results?search_query=nextjs+{QUERY}
+            - title: Reddit
+              shortcut: "!r"
+              url: ${REDDIT_URL}/r/nextjs/search?q={QUERY}&restrict_sr=on
+            - title: Github
+              shortcut: "!g"
+              url: https://github.com/vercel/next.js/issues?q={QUERY}
+
+        - type: bookmarks
+          groups:
+            - hide-arrow: true
+              links:
+                - title: Blog
+                  icon: si:nextdotjs
+                  url: https://nextjs.org/blog
+            - links:
+                - title: Getting Started
+                  url: https://nextjs.org/docs/app/getting-started/installation
+                - title: Examples
+                  url: https://nextjs.org/docs/app/examples
+                - title: Api Reference
+                  url: https://nextjs.org/docs/app/api-reference
+            - links:
+                - title: Awesome React
+                  url: https://github.com/enaqx/awesome-react#readme
+                - title: Awesome React Components
+                  url: https://github.com/brillout/awesome-react-components#readme
+
+        - type: repository
+          repository: vercel/next.js
+          pull-requests-limit: 2
+          issues-limit: 2
+          commits-limit: 2
+
+        - <<: *github-releases
+          title: React
+          repositories:
+            - vercel/next.js
+            - facebook/react
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: nextjs
+
+        - <<: *reddit-simple-top-week
+          collapse-after: *widget-half-collapse-after
+          subreddit: reactjs
+
+    - size: full
+      widgets:
+        - <<: *videos-grid
+          channels:
+            - UCf6AGqO98eGk11nfazociVQ #ByteGrad
+            - UCZMli3czZnd1uoc1ShTouQw #leerob
+            - UCsrVDPJBYeXItETFHG0qzyw #WebDevCody

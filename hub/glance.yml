@@ -1,0 +1,56 @@
+server:
+  assets-path: /app/assets
+
+branding:
+  logo-text: ⋈
+  favicon-url: /assets/favicon-hub.ico
+
+document:
+  head: |
+    <script defer src="${UMAMI_URL}/script.js" data-website-id="${UMAMI_HUB_ID}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+    <script src="/assets/script.js"></script>
+
+!include: variables.yml
+
+theme:
+  custom-css-file: /assets/style.css
+  <<: *theme-dark
+
+widgets:
+  !include: widgets/bookmarks.yml
+  !include: widgets/my-domains.yml
+  !include: widgets/my-workers.yml
+  !include: widgets/my-ip.yml
+  !include: widgets/my-monitor.yml
+  !include: widgets/steam-specials.yml
+  !include: widgets/gamepass-pc-coming-soon.yml
+  !include: widgets/gamepass-pc-recently-added.yml
+  !include: widgets/radarr-recently-added.yml
+  !include: widgets/sonarr-recently-added.yml
+  !include: widgets/tmdb-popular-movies.yml
+  !include: widgets/bluesky-author.yml
+  !include: widgets/bluesky-my-timeline.yml
+  !include: widgets/gluetun-stats.yml
+  !include: widgets/widget-adguard.yml
+
+pages:
+  !include: pages/home.yml
+  !include: pages/news.yml
+  !include: pages/finance.yml
+  !include: pages/space.yml
+  !include: pages/science.yml
+  !include: pages/health.yml
+  !include: pages/think.yml
+  !include: pages/tech.yml
+  !include: pages/gaming.yml
+  !include: pages/watch.yml
+  !include: pages/live.yml
+  !include: pages/documentaries.yml
+  !include: pages/crime.yml
+  !include: pages/vlogs.yml
+  !include: pages/tr.yml
+  !include: pages/lol.yml
+  !include: pages/racing.yml
+  !include: pages/camping.yml

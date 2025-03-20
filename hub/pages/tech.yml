@@ -1,0 +1,25 @@
+- name: "🤖 Tech"
+  slug: tech
+  width: wide
+  columns:
+    - size: full
+      widgets:
+        - <<: *reddit-cover
+          collapse-after: *widget-half-collapse-after
+          subreddit: Hardware
+         
+        - <<: *reddit-cover
+          collapse-after: *widget-half-collapse-after
+          subreddit: technology
+
+    - size: full
+      widgets:
+        - <<: *videos-grid-half
+          channels:
+            - UCXuqSBlHAE6Xw-yeJA0Tunw #LinusTechTips
+            - UCBJycsmduvYEL83R_U4JriQ #mkbhd
+            - UCMiJRAwDNSNzuYeN2uWa0pA #Mrwhosetheboss
+            - UChIs72whgZI9w6d6FhwGGHA #GamersNexus
+            - UCRYOj4DmyxhBVrdvbsUwmAA #optimumtech
+            - UCEcrRXW3oEYfUctetZTAWLw #WVFRM Podcast
+            - UCvcRA2Hva1lULVf4GCouH8w #DawidDoesTechStuff

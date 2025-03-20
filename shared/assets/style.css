@@ -1,0 +1,216 @@
+:root {
+  --color-widget-content-border: hsl(
+    231,
+    15%,
+    calc(var(--scheme) (var(--scheme) 18% + 8%))
+  );
+}
+
+.cards-grid {
+  gap: var(--widget-content-horizontal-padding);
+}
+
+@container widget (min-width: 11010px) {
+  .cards-grid {
+    --cards-per-row: 5;
+  }
+}
+
+.expand-toggle-button {
+  text-align: center;
+}
+
+@container widget (max-width: 1100px) {
+  .widget-half .cards-grid {
+    --cards-per-row: 3;
+  }
+}
+
+/*****************************************************************************/
+
+.widget-monitor-custom .widget-content {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.widget-monitor-custom .monitor-site {
+  background: var(--color-widget-background);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-widget-content-border);
+  box-shadow: 0px 3px 0px 0px
+    hsl(var(--bghs), calc(var(--scheme) (var(--scheme) var(--bgl)) - 0.5%));
+  padding: var(--widget-content-padding);
+}
+
+.widget-monitor-custom .monitor-site-status-icon {
+  place-self: flex-start;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.widget-monitor-custom .monitor-site {
+  cursor: pointer;
+}
+
+.widget-monitor-custom .monitor-site * {
+  pointer-events: none;
+}
+
+.widget-monitor-custom ul.list-horizontal-text * {
+  color: var(--color-text-base);
+}
+
+/*****************************************************************************/
+
+.widget-list-bordered .widget-content {
+  margin: 0;
+  padding: 0;
+}
+
+.widget-list-bordered .list > li {
+  margin: 0;
+  padding: 0 var(--widget-content-horizontal-padding);
+}
+
+.widget-list-bordered .list > li > div {
+  padding: var(--widget-content-horizontal-padding) 0;
+}
+
+.widget-list-bordered .list > *:not(:first-child) > div {
+  border-top: 1px solid var(--color-separator);
+}
+
+.widget-monitor-custom .monitor-site:hover,
+.widget-list-bordered .list > li:hover {
+  background-color: hsl(var(--bghs), calc(var(--bgl) + 3%));
+}
+
+/*****************************************************************************/
+
+.widget-reddit-larger .forum-post-list-thumbnail {
+  width: 12rem;
+  height: 7.1rem;
+}
+
+.hide-header .widget-header {
+  display: none;
+}
+
+.widget .glance-icon {
+  opacity: 0.7;
+  width: 20px;
+  height: 1.6rem;
+}
+
+.widget .glance-icon:hover {
+  opacity: 1;
+}
+
+/*****************************************************************************/
+
+.widget-movies .video-thumbnail {
+  aspect-ratio: 2/3;
+}
+
+.widget-movies .video-title {
+  padding: 1rem;
+}
+
+/*****************************************************************************/
+
+.widget-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.widget-table table tr {
+  border-bottom: 1px solid var(--color-separator);
+}
+
+.widget-table table thead tr {
+  text-align: left;
+  border-width: 3px;
+}
+
+.widget-table table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.widget-table table tbody tr:hover {
+  background-color: hsl(var(--bghs), calc(var(--bgl) + 3%));
+}
+
+.widget-table table td,
+.widget-table table th {
+  padding: 0.6rem;
+}
+
+.widget-table.widget-custom table td,
+.widget-table.widget-custom table th {
+  width: 20%;
+}
+
+.widget-table.widget-custom table td:first-child,
+.widget-table.widget-custom table th:first-child {
+  width: 40%;
+}
+
+/*****************************************************************************/
+
+.widget-domains {
+  position: relative;
+}
+
+.widget-domains.hide .domain {
+  text-shadow: 4px 0px 6px var(--color-text-base);
+  color: transparent;
+  overflow: visible;
+}
+
+.widget-domains.hide .domain:hover {
+  text-shadow: none;
+  color: initial;
+}
+
+.widget-domains .tools {
+  position: absolute;
+  top: -46px;
+  right: 0;
+  user-select: none;
+}
+
+.widget-domains .toggle {
+  cursor: pointer;
+}
+
+.widget-domains .glance-icon {
+  display: none;
+}
+
+.widget-domains .icon-bolt {
+  display: block;
+}
+
+.widget-domains.hide .icon-hide {
+  display: block;
+}
+
+.widget-domains:not(.hide) .icon-show {
+  display: block;
+}
+
+/*****************************************************************************/
+
+.widget-workers {
+  position: relative;
+}
+
+.widget-workers .tools {
+  position: absolute;
+  top: -46px;
+  right: 0;
+  user-select: none;
+}

@@ -1,0 +1,8 @@
+widget-adguard: &widget-adguard
+  type: dns-stats
+  service: adguard
+  hide-graph: true
+  hide-top-domains: true
+  url: ${ADGUARD_URL}
+  username: ${ADGUARD_USERNAME}
+  password: ${ADGUARD_PASSWORD}

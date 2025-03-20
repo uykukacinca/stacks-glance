@@ -1,0 +1,54 @@
+- name: "🐧 Linux"
+  slug: linux
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: search
+          search-engine: ${REDDIT_URL}/r/linux/search?q={QUERY}&restrict_sr=on
+          new-tab: true
+          placeholder: Search in r/linux
+
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Awesome Linux Software
+                  url: https://github.com/luong-komorebi/Awesome-Linux-Software#applications
+
+        - <<: *github-releases
+          title: Software
+          repositories:
+            - YaLTeR/niri
+            - lutris/lutris
+
+    - size: full
+      widgets:
+        - type: split-column
+          max-columns: 3
+          widgets:
+            - type: group
+              widgets:
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: linux
+
+                - <<: *reddit-simple
+                  title: Hot Today
+                  subreddit: linux
+
+            - type: split-column
+              max-columns: 1
+              widgets:
+                - <<: *reddit-simple-top-week
+                  collapse-after: *widget-half-collapse-after
+                  subreddit: fedora
+
+                - <<: *reddit-simple-top-week
+                  collapse-after: *widget-half-collapse-after
+                  subreddit: ubuntu
+
+            - <<: *videos-grid
+              channels:
+                - UC5UAwBUum7CPN5buc-_N1Fw #TheLinuxEXP
+                - UCxQKHvKbmSzGMvUrVtJYnUA #LearnLinuxTV
+                - UCg6gPGh8HU2U01vaFCAsvmQ #Chris Titus Tech

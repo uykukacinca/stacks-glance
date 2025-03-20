@@ -1,0 +1,20 @@
+- name: "🦠 Health" #Health🧫
+  slug: health
+  width: wide
+  columns:
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 3
+          widgets:
+
+          - <<: *reddit-cover
+            subreddit: Health
+
+          - <<: *reddit-simple
+            subreddit: psychology
+
+          - <<: *reddit-cover
+            subreddit: Coronavirus

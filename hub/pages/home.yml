@@ -1,0 +1,69 @@
+- name: "🗂️ Home"
+  slug: home
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: clock
+          hour-format: 24h
+          timezones:
+            - timezone: America/New_York
+              label: New York
+
+        # - type: calendar
+        #   first-day-of-week: monday
+
+        - type: weather
+          units: metric
+          hour-format: 12h
+          location: Istanbul, Turkey
+
+        - <<: *markets-base
+          markets:
+            - symbol: TRY=X
+            - symbol: EURTRY=X
+            - symbol: BTC-USD
+
+    - size: full
+      widgets:
+        - type: search
+          search-engine: google
+          new-tab: true
+          autofocus: true
+          bangs:
+            - title: YouTube
+              shortcut: "!y"
+              url: ${YOUTUBE_URL}/search?q={QUERY}
+            - title: Reddit
+              shortcut: "!r"
+              url: ${REDDIT_URL}/search?q={QUERY}&restrict_sr=on
+            - title: Steam
+              shortcut: "!s"
+              url: https://store.steampowered.com/search/?term={QUERY}
+            - title: Amazon
+              shortcut: "!a"
+              url: https://www.amazon.com.tr/s?k={QUERY}
+            - title: Github
+              shortcut: "!g"
+              url: https://github.com/search?q={QUERY}&type=repositories
+            - title: Docker
+              shortcut: "!d"
+              url: https://hub.docker.com/search?q={QUERY}
+
+        - type: docker-containers
+          hide-by-default: false
+        # - <<: *my-docker-table
+
+
+    - size: small
+      widgets:
+        - type: server-stats
+          servers:
+            - type: local
+              name: Services
+
+        - <<: *widget-adguard
+
+        - <<: *gluetun-stats
+
+        - <<: *bookmarks-home
