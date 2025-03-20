@@ -35,6 +35,7 @@ widgets:
   !include: widgets/bluesky-my-timeline.yml
   !include: widgets/gluetun-stats.yml
   !include: widgets/widget-adguard.yml
+  !include: widgets/proxmox-nodes.yml
 
 pages:
   !include: pages/dashboard.yml

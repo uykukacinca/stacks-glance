@@ -24,3 +24,5 @@
         - <<: *my-workers-table
 
         - <<: *my-domains-table
+
+        - <<: *proxmox-nodes
