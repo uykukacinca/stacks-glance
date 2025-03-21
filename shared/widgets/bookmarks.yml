@@ -85,9 +85,9 @@ links-hosting: &links-hosting
     - title: Digital Ocean
       icon: si:digitalocean
       url: https://www.digitalocean.com
-    - title: Amazon Web Services
-      icon: si:amazon
-      url: https://aws.amazon.com
+    # - title: Amazon Web Services
+    #   icon: si:amazon
+    #   url: https://aws.amazon.com
     - title: Vercel
       icon: si:vercel
       url: https://vercel.com
@@ -114,6 +114,20 @@ links-cloudflare: &links-cloudflare
       url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/workers-and-pages
     - title: D1 SQL Database
       url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/workers/d1
+
+links-cheatsheets: &links-cheatsheets
+  links:
+    - title: Git Commands
+      url: https://github.com/LeCoupa/awesome-cheatsheets/blob/master/tools/git.sh
+    - title: Gitea Config
+      url: https://docs.gitea.com/administration/config-cheat-sheet
+    - title: Docker Commands
+      url: https://github.com/LeCoupa/awesome-cheatsheets/blob/master/tools/docker.sh
+    - title: MongoDb CLI
+      url: https://github.com/LeCoupa/awesome-cheatsheets/blob/master/databases/mongodb.sh
+    - title: Glance
+      url: https://github.com/glanceapp/glance/blob/main/docs/configuration.md#configuration
+
 
 links-developer: &links-developer
   links:
@@ -201,6 +215,8 @@ bookmarks-developer: &bookmarks-developer
   type: bookmarks
   groups:
     - <<: *links-developer
+    - title: Cheatsheets
+      <<: *links-cheatsheets
 
 bookmarks-dashboard: &bookmarks-dashboard
   type: bookmarks

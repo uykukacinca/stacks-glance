@@ -100,13 +100,19 @@
 }
 
 .widget .glance-icon {
-  opacity: 0.7;
   width: 20px;
   height: 1.6rem;
 }
 
-.widget .glance-icon:hover {
-  opacity: 1;
+.widget-with-tools .widget-content {
+  position: relative;
+}
+
+.widget-with-tools .tools {
+  position: absolute;
+  top: -34px;
+  right: 0;
+  user-select: none;
 }
 
 /*****************************************************************************/
@@ -121,6 +127,16 @@
 
 /*****************************************************************************/
 
+:root {
+  --widget-table-spacing: 0.7rem;
+  --widget-table-spacing-3x: calc(var(--widget-table-spacing) * 3);
+}
+
+
+.widget-table .widget-content {
+  padding: var(--widget-table-spacing) 0;
+}
+
 .widget-table table {
   width: 100%;
   border-collapse: collapse;
@@ -128,6 +144,7 @@
 
 .widget-table table tr {
   border-bottom: 1px solid var(--color-separator);
+  line-height: 4rem;
 }
 
 .widget-table table thead tr {
@@ -145,11 +162,28 @@
 
 .widget-table table td,
 .widget-table table th {
-  padding: 0.7rem;
+  padding: 0 var(--widget-table-spacing);
+}
+
+.widget-table table td:first-child,
+.widget-table table th:first-child {
+  padding-left: var(--widget-table-spacing-3x);
+}
+
+.widget-table table td:last-child,
+.widget-table table th:last-child {
+  padding-right: var(--widget-table-spacing-3x);
 }
 
 /*****************************************************************************/
 
+.widget-proxmox-lxc .divider {
+  padding-left: var(--widget-table-spacing-3x);
+}
+
+.widget-proxmox-lxc td.divider {
+  border-left: 0px solid var(--color-separator);
+}
 
 .proxmox-lxc {
   color: var(--color-text-subdue);
@@ -192,20 +226,12 @@
 
 /*****************************************************************************/
 
-
-
-.widget-table.widget-custom table td,
-.widget-table.widget-custom table th {
+.widget-table.widget-domains table td {
   width: 20%;
 }
 
-.widget-table.widget-custom table td:first-child,
-.widget-table.widget-custom table th:first-child {
+.widget-table.widget-domains table td:first-child {
   width: 40%;
-}
-
-.widget-domains {
-  position: relative;
 }
 
 .widget-domains.hide .domain {
@@ -219,19 +245,18 @@
   color: initial;
 }
 
-.widget-domains .tools {
-  position: absolute;
-  top: -46px;
-  right: 0;
-  user-select: none;
-}
-
 .widget-domains .toggle {
   cursor: pointer;
 }
 
 .widget-domains .glance-icon {
+  opacity: 0.75;
   display: none;
+}
+
+
+.widget-domains .glance-icon:hover {
+  opacity: 1;
 }
 
 .widget-domains .icon-bolt {
@@ -247,14 +272,3 @@
 }
 
 /*****************************************************************************/
-
-.widget-workers {
-  position: relative;
-}
-
-.widget-workers .tools {
-  position: absolute;
-  top: -46px;
-  right: 0;
-  user-select: none;
-}

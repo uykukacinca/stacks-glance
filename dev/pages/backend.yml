@@ -10,6 +10,10 @@
           placeholder: Search in r/backend
 
         - <<: *github-releases
+          repositories:
+            - sst/sst
+
+        - <<: *github-releases
           title: Headless CMS
           repositories:
             - pocketbase/pocketbase
@@ -35,6 +39,7 @@
           repositories:
             - usebruno/bruno
             - mountain-loop/yaak
+            - httpie/desktop
 
         - type: bookmarks
           groups:

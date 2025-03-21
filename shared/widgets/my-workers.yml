@@ -2,79 +2,74 @@ my-workers-base: &my-workers-base
   type: custom-api
   title: My Workers
   cache: *deep-cache
+  css-class: widget-domains widget-with-tools
   url: ${SECRET_API_URL}/api/workers
 
 my-workers: &my-workers
   <<: *my-workers-base
   template: |
-    <div class="widget-workers">
+    <div class="flex gap-10 tools">
 
-      <div class="flex gap-10 tools">
-
-        <div data-popover-type="html">
-          <div data-popover-html="">
-            <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
-            <div>Cache: <span class="color-highlight">{{ .JSON.String "datetime" }}</span></div>
-          </div>
-          <svg class="glance-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-          </svg>
+      <div data-popover-type="html">
+        <div data-popover-html="">
+          <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
+          <div>Cache: <span class="color-highlight">{{ .JSON.String "datetime" }}</span></div>
         </div>
-
+        <svg class="glance-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+        </svg>
       </div>
 
-      <ul class="list list-gap-10 collapsible-container" data-collapse-after="10">
-      {{ range .JSON.Array "workers" }}
-        <li>
-          <a class="size-h4 color-highlight domain" href="{{ .String "url" }}">{{ .String "id" }}</a>
-          <ul class="list-horizontal-text">
-            <li data-popover-type="html"><span data-popover-html="">Last edit: <br/>{{ .String "modifiedDate" }}</span><span data-dynamic-relative-time="{{ .String "modifiedOn" }}"></span></li>
-            {{ range .Array "links" }}
-            <li><a class="visited-indicator" href="{{ .String "url" }}">{{ .String "name" }}</a></li>
-            {{ end }}
-          </ul>
-        </li>
-      {{ end }}
-      </ul>
     </div>
+
+    <ul class="list list-gap-10 collapsible-container" data-collapse-after="10">
+    {{ range .JSON.Array "workers" }}
+      <li>
+        <a class="size-h4 color-highlight domain" href="{{ .String "url" }}">{{ .String "id" }}</a>
+        <ul class="list-horizontal-text">
+          <li data-popover-type="html"><span data-popover-html="">Last edit: <br/>{{ .String "modifiedDate" }}</span><span data-dynamic-relative-time="{{ .String "modifiedOn" }}"></span></li>
+          {{ range .Array "links" }}
+          <li><a class="visited-indicator" href="{{ .String "url" }}">{{ .String "name" }}</a></li>
+          {{ end }}
+        </ul>
+      </li>
+    {{ end }}
+    </ul>
 
 my-workers-table: &my-workers-table
   <<: *my-workers-base
-  css-class: widget-table widget-custom
+  css-class: widget-table widget-domains widget-with-tools
   template: |
-    <div class="widget-workers">
+    <div class="flex gap-10 tools">
 
-      <div class="flex gap-10 tools">
-
-        <div data-popover-type="html">
-          <div data-popover-html="">
-            <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
-            <div>Cache: <span class="color-highlight">{{ .JSON.String "datetime" }}</span></div>
-          </div>
-          <svg class="glance-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-          </svg>
+      <div data-popover-type="html">
+        <div data-popover-html="">
+          <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
+          <div>Cache: <span class="color-highlight">{{ .JSON.String "datetime" }}</span></div>
         </div>
-
+        <svg class="glance-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+        </svg>
       </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Worker</th>
-            <th>Deployed</th>
-            <th>Manage</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-        {{ range .JSON.Array "workers" }}
-          <tr>
-            <td><a class="size-h4 color-highlight domain" href="{{ .String "url" }}">{{ .String "id" }}</a></td>
-            <td><span data-popover-type="html"><span data-popover-html="">Deployed at: <br/>{{ .String "modifiedDate" }}</span><span data-dynamic-relative-time="{{ .String "modifiedOn" }}"></span> ago</span></td>
-            {{ range .Array "links" }}<td><a class="visited-indicator" href="{{ .String "url" }}">{{ .String "name" }}</a></td>  {{ end }}
-          </tr>
-        {{ end }}
-        </tbody>
-      </table>
     </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Worker</th>
+          <th>Deployed</th>
+          <th>Manage</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      {{ range .JSON.Array "workers" }}
+        <tr>
+          <td><a class="size-h4 color-highlight domain" href="{{ .String "url" }}">{{ .String "id" }}</a></td>
+          <td><span data-popover-type="html"><span data-popover-html="">Deployed at: <br/>{{ .String "modifiedDate" }}</span><span data-dynamic-relative-time="{{ .String "modifiedOn" }}"></span> ago</span></td>
+          {{ range .Array "links" }}<td><a class="visited-indicator" href="{{ .String "url" }}">{{ .String "name" }}</a></td>  {{ end }}
+        </tr>
+      {{ end }}
+      </tbody>
+    </table>
