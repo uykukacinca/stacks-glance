@@ -8,17 +8,18 @@ services:
       default:
     healthcheck:
       test: [ "CMD", "wget", "--spider", "-q", "http://127.0.0.1:8080/api/healthz" ]
-      interval: 15s
+      interval: 60s
       retries: 5
-      timeout: 5s
-      start_period: 30s
+      timeout: 10s
+      start_period: 10s
     env_file:
       - .env
     ports:
       - 8081:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./hub:/app/config
+      - ./hub/pages:/app/config/pages
+      - ./hub/glance.yml:/app/config/glance.yml
       - ./shared/assets:/app/assets
       - ./shared/widgets:/app/config/widgets
       - ./shared/variables.yml:/app/config/variables.yml
@@ -38,17 +39,18 @@ services:
       default:
     healthcheck:
       test: [ "CMD", "wget", "--spider", "-q", "http://127.0.0.1:8080/api/healthz" ]
-      interval: 15s
+      interval: 60s
       retries: 5
-      timeout: 5s
-      start_period: 30s
+      timeout: 10s
+      start_period: 10s
     env_file:
       - .env
     ports:
       - 8082:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./dev:/app/config
+      - ./dev/pages:/app/config/pages
+      - ./dev/glance.yml:/app/config/glance.yml
       - ./shared/assets:/app/assets
       - ./shared/widgets:/app/config/widgets
       - ./shared/variables.yml:/app/config/variables.yml
