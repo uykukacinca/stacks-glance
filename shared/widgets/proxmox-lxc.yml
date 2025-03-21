@@ -12,7 +12,7 @@ proxmox-lxc: &proxmox-lxc
 
         <thead>
           <tr>
-            <th colspan="2">ID</th>
+            <th>ID</th>
             <th>Container</th>
             <th>CPU Usage</th>
             <th colspan="2">Memory Usage</th>
@@ -27,9 +27,10 @@ proxmox-lxc: &proxmox-lxc
 
               <td class="lxc-vmid size-h4">{{ .String "vmid" }}</td>
 
-              <td><span class="lxc-status"></span></td>
-
-              <td><a class="lxc-name size-h4" target="_blank" href="${PROXMOXVE_URL}/#v1:0:=lxc/{{ .Int "vmid" }}">{{ .String "name" }}</a></td>
+              <td class="flex items-center gap-7">
+                <span class="lxc-status"></span>
+                <a class="lxc-name size-h4" target="_blank" href="${PROXMOXVE_URL}/#v1:0:=lxc/{{ .Int "vmid" }}">{{ .String "name" }}</a>
+              </td>
 
               <td>
                 <span class="lxc-value perc" data-value="{{ mul (.Float "cpu") 100 | toInt | formatNumber }}"></span><span class="affix">%</span>

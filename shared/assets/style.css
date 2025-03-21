@@ -145,7 +145,7 @@
 
 .widget-table table td,
 .widget-table table th {
-  padding: 0.75rem;
+  padding: 0.7rem;
 }
 
 /*****************************************************************************/
@@ -157,8 +157,8 @@
 
 .lxc-status {
   display: flex;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background: var(--color-text-base);
   border-radius: 100%;
 }
