@@ -3,7 +3,7 @@ proxmox-lxc: &proxmox-lxc
   title: Proxmox LXC Containers
   cache: *short-cache
   css-class: widget-table
-  url: ${PROXMOXVE_URL}/api2/json/nodes/${PROXMOXVE_NODE}/lxc
+  url: ${PROXMOXVE_URL}/api2/json/cluster/resources?type=vm
   headers:
     Accept: application/json
     Authorization: PVEAPIToken=${PROXMOXVE_KEY}
