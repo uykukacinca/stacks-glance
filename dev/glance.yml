@@ -36,6 +36,7 @@ widgets:
   !include: widgets/gluetun-stats.yml
   !include: widgets/widget-adguard.yml
   !include: widgets/proxmox-nodes.yml
+  !include: widgets/proxmox-lxc.yml
 
 pages:
   !include: pages/dashboard.yml

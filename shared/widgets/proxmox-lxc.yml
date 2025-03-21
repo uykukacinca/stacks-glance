@@ -1,0 +1,44 @@
+proxmox-lxc: &proxmox-lxc
+  type: custom-api
+  title: Proxmox LXC Containers
+  cache: *short-cache
+  css-class: widget-table
+  url: ${PROXMOXVE_URL}/api2/json/nodes/${PROXMOXVE_NODE}/lxc
+  headers:
+    Accept: application/json
+    Authorization: PVEAPIToken=${PROXMOXVE_KEY}
+  template: |
+    <div class="widget-proxmox-lxc">
+
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">ID</th>
+            <th>Container</th>
+            <th>CPU Usage</th>
+            <th colspan="2">Memory Usage</th>
+            <th colspan="2">Disk Usage</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{ range .JSON.Array "data" }}
+          {{ if ne (.String "type") "lxc" }}{{ continue }}{{ end }}
+            <tr>
+              <td>{{ .String "vmid" }}</td>
+              <td><span style="width: 10px;height: 10px;background: var(--color-{{ if eq (.String "status") "running" }}positive{{else}}text-base{{end}});display: flex;border-radius: 100%"></span></td>
+              <td class="size-h4 container {{ if eq (.String "status") "running" }} color-highlight{{end}}" >{{ .String "name" }}</td>
+
+              <td><span class="{{ if gt (mul (.Float "cpu") 100 | toInt) 0 }} color-highlight{{end}}">{{ mul (.Float "cpu") 100 | toInt | formatNumber }}</span>% of <span class="color-highlight">{{ .Int "cpus" }}</span> CPUs</td>
+              
+              <td><span class="{{ if gt (mul (.Float "mem") 100 | toInt) 0 }} color-highlight{{end}}">{{ mul (div (.Int "mem" | toFloat) (.Int "maxmem" | toFloat)) 100 | toInt }}</span>%</td>
+              <td>{{ div (.Int "mem" | toFloat) 1073741824 | printf "%.2f" | formatNumber }}<span class="color-subdue">GB ↔</span> {{ div (.Int "maxmem" | toFloat) 1073741824 | printf "%.0f" | formatNumber }}<span class="color-subdue">GB</span></td>
+
+              <td><span class="color-highlight">{{ mul (div (.Int "disk" | toFloat) (.Int "maxdisk" | toFloat)) 100 | toInt }}</span>%</td>
+              <td>{{ div (.Int "disk" | toFloat) 1073741824 | printf "%.2f" | formatNumber }}<span class="color-subdue">GB ↔</span> {{ div (.Int "maxdisk" | toFloat) 1073741824 | printf "%.f" | formatNumber }}<span class="color-subdue">GB</span></td>
+            </tr>
+          {{ end }}
+        </tbody>
+
+      </table>
+    </div>

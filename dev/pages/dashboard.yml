@@ -13,11 +13,7 @@
         - type: docker-containers
           hide-by-default: false
 
-        - <<: *monitor-core
-
-        - <<: *monitor-apps
-
-        - <<: *monitor-media
+        - <<: *proxmox-lxc
 
     - size: full
       widgets:
