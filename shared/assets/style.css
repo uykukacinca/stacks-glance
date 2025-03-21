@@ -217,6 +217,7 @@
 }
 
 .proxmox-lxc.stopped .lxc-name,
+.proxmox-lxc.running .lxc-uptime,
 .proxmox-lxc.running .lxc-vmid,
 .proxmox-lxc.running .lxc-value,
 .proxmox-lxc.running .lxc-value + .affix,

@@ -1,20 +1,3 @@
-dayjs.extend(window.dayjs_plugin_relativeTime);
-setInterval(render, 1000);
-
-function render() {
-  var elemets = document.querySelectorAll(".dayjs-time");
-  if (elemets) {
-    for (let i = 0; i < elemets.length; i++) {
-      const element = elemets[i];
-      const timestamp = element.getAttribute("date");
-      element.querySelector(".date").textContent =
-        "Ends " + dayjs(timestamp).fromNow();
-      element.querySelector(".popover").textContent =
-        dayjs(timestamp).toString();
-    }
-  }
-}
-
 document.addEventListener(
   "click",
   function (event) {

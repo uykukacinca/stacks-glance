@@ -11,7 +11,31 @@ document:
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
     <script src="/assets/script.js"></script>
+    <script>
+      function render() {
+        console.log("Rendering time elements");
+        var els = document.querySelectorAll("[data-dayjs-time]");
+        if (els) {
+          for (let i = 0; i < els.length; i++) {
+            const el = els[i];
+            const type = el.getAttribute("data-type");
+            const time = el.getAttribute("data-dayjs-time");
+            const text =
+              type === "uptime"
+                ? time === "0"
+                  ? "Stopped"
+                  : "" + dayjs(Date.now() - time * 1000).fromNow(true)
+                : dayjs(time).fromNow();
 
+            el.textContent = text;
+          }
+        }
+      }
+
+      dayjs.extend(window.dayjs_plugin_relativeTime);
+      setInterval(render, 500);
+    </script>
+    
 !include: variables.yml
 
 theme:

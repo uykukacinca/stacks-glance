@@ -20,6 +20,7 @@ proxmox-lxc: &proxmox-lxc
             </svg>
           </th>
           <th>Container</th>
+          <th>Uptime</th>
           <th class="divider">CPU Usage</th>
           <th colspan="2" class="divider">Memory Usage</th>
           <th colspan="2" class="divider">Disk Usage</th>
@@ -38,8 +39,12 @@ proxmox-lxc: &proxmox-lxc
             <td>
               <div class="flex items-center gap-7">
                 <span class="lxc-status"></span>
-                <a class="lxc-name size-h4" target="_blank" href="${PROXMOXVE_URL}/#v1:0:=lxc/{{ .Int "vmid" }}">{{ .String "name" }}</a>
+                <a class="lxc-name size-h4" target="_blank" href="${PROXMOXVE_URL}/#v1:0:={{ .String "id" }}">{{ .String "name" }}</a>
               <div>
+            </td>
+
+            <td>
+              <span class="lxc-uptime" data-type="uptime" data-dayjs-time="{{ .Int "uptime" }}">-</span>
             </td>
 
             <td class="divider">
@@ -52,16 +57,14 @@ proxmox-lxc: &proxmox-lxc
               <span class="lxc-value perc" data-value="{{ mul (div (.Int "mem" | toFloat) (.Int "maxmem" | toFloat)) 100 | toInt }}"></span><span class="affix">%</span>
             </td>
             <td>
-              <span class="lxc-value" data-value="{{ div (.Int "mem" | toFloat) 1048576 | printf "%.f" | formatNumber }}"></span>mb ↔ 
-              <span class="lxc-value" data-value="{{ div (.Int "maxmem" | toFloat) 1073741824 | printf "%.0f" | formatNumber }}"></span>gb
+              <span class="lxc-value" data-value="{{ div (.Int "mem" | toFloat) 1048576 | printf "%.f" | formatNumber }}"></span>mb
             </td>
             
             <td class="divider">
               <span class="lxc-value perc" data-value="{{ mul (div (.Int "disk" | toFloat) (.Int "maxdisk" | toFloat)) 100 | toInt }}"></span><span class="affix">%</span>
             </td>
             <td>
-              <span class="lxc-value" data-value="{{ div (.Int "disk" | toFloat) 1073741824 | printf "%.2f" | formatNumber }}"></span>gb ↔ 
-              <span class="lxc-value" data-value="{{ div (.Int "maxdisk" | toFloat) 1073741824 | printf "%.f" | formatNumber }}"></span>gb
+              <span class="lxc-value" data-value="{{ div (.Int "disk" | toFloat) 1073741824 | printf "%.2f" | formatNumber }}"></span>gb
             </td>
 
           </tr>
