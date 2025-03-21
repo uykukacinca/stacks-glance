@@ -145,8 +145,54 @@
 
 .widget-table table td,
 .widget-table table th {
-  padding: 0.6rem;
+  padding: 0.75rem;
 }
+
+/*****************************************************************************/
+
+
+.proxmox-lxc {
+  color: var(--color-text-subdue);
+}
+
+.lxc-status {
+  display: flex;
+  width: 10px;
+  height: 10px;
+  background: var(--color-text-base);
+  border-radius: 100%;
+}
+
+.proxmox-lxc.running .lxc-status {
+  background: var(--color-positive);
+}
+.proxmox-lxc.stopped .lxc-status {
+  background: var(--color-negative);
+}
+
+.proxmox-lxc.running .lxc-name {
+  color: var(--color-text-highlight);
+}
+
+.lxc-value::after {
+  content: attr(data-value, 0);
+}
+
+.proxmox-lxc.running .lxc-value.perc {
+  color: var(--color-text-highlight);
+}
+
+.proxmox-lxc.stopped .lxc-name,
+.proxmox-lxc.running .lxc-vmid,
+.proxmox-lxc.running .lxc-value,
+.proxmox-lxc.running .lxc-value + .affix,
+.proxmox-lxc.running .lxc-value.perc[data-value="0"] {
+  color: var(--color-text-base);
+}
+
+/*****************************************************************************/
+
+
 
 .widget-table.widget-custom table td,
 .widget-table.widget-custom table th {
@@ -157,8 +203,6 @@
 .widget-table.widget-custom table th:first-child {
   width: 40%;
 }
-
-/*****************************************************************************/
 
 .widget-domains {
   position: relative;
