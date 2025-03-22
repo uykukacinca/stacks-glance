@@ -3,7 +3,7 @@ proxmox-lxc: &proxmox-lxc
   title: Proxmox Containers
   cache: *short-cache
   css-class: widget-table widget-proxmox-lxc
-  url: ${PROXMOXVE_URL}/api2/json/cluster/resources?type=vm
+  url: ${PROXMOXVE_URL}/api2/json/cluster/resources
   headers:
     Accept: application/json
     Authorization: PVEAPIToken=${PROXMOXVE_KEY}
@@ -28,8 +28,8 @@ proxmox-lxc: &proxmox-lxc
       </thead>
 
       <tbody>
-        {{ range .JSON.Array "data" }}
-        {{ if ne (.String "type") "lxc" }}{{ continue }}{{ end }}
+        {{ $data := .JSON.Array "data.#(type=\"lxc\")#" }}
+        {{ range $data }}
           <tr class="proxmox-lxc {{ .String "status" }}">
 
             <td>
@@ -59,7 +59,7 @@ proxmox-lxc: &proxmox-lxc
             <td>
               <span class="lxc-value" data-value="{{ div (.Int "mem" | toFloat) 1048576 | printf "%.f" | formatNumber }}"></span>mb
             </td>
-            
+
             <td class="divider">
               <span class="lxc-value perc" data-value="{{ mul (div (.Int "disk" | toFloat) (.Int "maxdisk" | toFloat)) 100 | toInt }}"></span><span class="affix">%</span>
             </td>

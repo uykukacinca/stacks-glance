@@ -128,13 +128,12 @@
 /*****************************************************************************/
 
 :root {
-  --widget-table-spacing: 0.7rem;
-  --widget-table-spacing-3x: calc(var(--widget-table-spacing) * 3);
+  --widget-table-spacing: var(--widget-content-horizontal-padding);
+  --widget-table-spacing-half: calc(var(--widget-table-spacing) / 2);
 }
 
-
 .widget-table .widget-content {
-  padding: var(--widget-table-spacing) 0;
+  padding: var(--widget-table-spacing-half) 0;
 }
 
 .widget-table table {
@@ -162,23 +161,23 @@
 
 .widget-table table td,
 .widget-table table th {
-  padding: 0 var(--widget-table-spacing);
+  padding: 0 var(--widget-table-spacing-half);
 }
 
 .widget-table table td:first-child,
 .widget-table table th:first-child {
-  padding-left: var(--widget-table-spacing-3x);
+  padding-left: var(--widget-table-spacing);
 }
 
 .widget-table table td:last-child,
 .widget-table table th:last-child {
-  padding-right: var(--widget-table-spacing-3x);
+  padding-right: var(--widget-table-spacing);
 }
 
 /*****************************************************************************/
 
 .widget-proxmox-lxc .divider {
-  padding-left: var(--widget-table-spacing-3x);
+  padding-left: var(--widget-table-spacing);
 }
 
 .widget-proxmox-lxc td.divider {
@@ -254,7 +253,6 @@
   opacity: 0.75;
   display: none;
 }
-
 
 .widget-domains .glance-icon:hover {
   opacity: 1;
