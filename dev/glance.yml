@@ -15,7 +15,7 @@ document:
 
 theme:
   custom-css-file: /assets/style.css
-  <<: *theme-dracula
+  <<: *theme-teal
 
 widgets:
   !include: widgets/html.yml

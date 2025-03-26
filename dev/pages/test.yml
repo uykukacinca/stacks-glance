@@ -20,18 +20,18 @@
     - size: full
       widgets:
         - type: extension
-          url: ${GLIMPSE_URL}/v1/proxmox/nodes/html
+          url: ${GLIMPSE_URL}/v1/proxmox/resources/html
           allow-potentially-dangerous-html: true
           cache: 2s
           parameters:
-            hide-stopped: true
+            resources: nodes
 
     - size: full
       widgets:
-
-        - <<: *proxmox-lxc
-
         - type: extension
-          url: ${GLIMPSE_URL}/v1/proxmox/pools/html
+          url: ${GLIMPSE_URL}/v1/proxmox/resources/html
           allow-potentially-dangerous-html: true
           cache: 2s
+          parameters:
+            resources: pools
+            showStopped: false

@@ -11,9 +11,11 @@
     - size: full
       widgets:
         - type: extension
-          url: ${GLIMPSE_URL}/v1/proxmox/nodes/html
+          url: ${GLIMPSE_URL}/v1/proxmox/resources/html
           allow-potentially-dangerous-html: true
-          cache: 1s
+          cache: 2s
+          parameters:
+            resources: nodes
 
     - size: full
       widgets:
