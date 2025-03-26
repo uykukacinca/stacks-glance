@@ -10,7 +10,7 @@
           bangs:
             - title: YouTube
               shortcut: "!y"
-              url: https://www.youtube.com/results?search_query=nuxt+{QUERY}
+              url: ${YOUTUBE_URL}/results?search_query=nuxt+{QUERY}
             - title: Reddit
               shortcut: "!r"
               url: ${REDDIT_URL}/r/Nuxt/search?q={QUERY}&restrict_sr=on

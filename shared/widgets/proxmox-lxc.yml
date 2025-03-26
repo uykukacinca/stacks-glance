@@ -1,6 +1,6 @@
 proxmox-lxc: &proxmox-lxc
   type: custom-api
-  title: Proxmox Containers
+  title: Custom API - Proxmox Containers
   cache: *short-cache
   css-class: widget-table widget-proxmox-lxc
   url: ${PROXMOXVE_URL}/api2/json/cluster/resources
@@ -30,7 +30,7 @@ proxmox-lxc: &proxmox-lxc
       <tbody>
         {{ $data := .JSON.Array "data.#(type=\"lxc\")#" }}
         {{ range $data }}
-          <tr class="proxmox-lxc {{ .String "status" }}">
+          <tr class="lxc {{ .String "status" }}">
 
             <td>
               <span class="lxc-vmid size-h4">{{ .String "vmid" }}</span>
@@ -44,7 +44,7 @@ proxmox-lxc: &proxmox-lxc
             </td>
 
             <td>
-              <span class="lxc-uptime" data-type="uptime" data-dayjs-time="{{ .Int "uptime" }}">-</span>
+              <span class="lxc-uptime" data-type="uptime"  data-dynamic-relative-time="{{ .Int "uptime" }}" data-units="1"></span>
             </td>
 
             <td class="divider">

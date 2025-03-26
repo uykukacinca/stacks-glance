@@ -28,12 +28,12 @@
           widgets:
             - type: group
               widgets:
-                - <<: *reddit-simple-top-week
-                  title: Top This Week
-                  subreddit: linux
-
                 - <<: *reddit-simple
                   title: Hot Today
+                  subreddit: linux
+
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
                   subreddit: linux
 
             - type: split-column

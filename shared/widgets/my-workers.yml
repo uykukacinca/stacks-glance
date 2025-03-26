@@ -27,7 +27,7 @@ my-workers: &my-workers
       <li>
         <a class="size-h4 color-highlight domain" href="{{ .String "url" }}">{{ .String "id" }}</a>
         <ul class="list-horizontal-text">
-          <li data-popover-type="html"><span data-popover-html="">Last edit: <br/>{{ .String "modifiedDate" }}</span><span data-dynamic-relative-time="{{ .String "modifiedOn" }}"></span></li>
+          <li data-popover-type="html"><span data-popover-html="">Last edit: <br/>{{ .String "modifiedDate" }}</span><span data-dynamic-relative-time="{{ .String "modifiedOn" }}" data-units="2" data-show-relative="true"></span></li>
           {{ range .Array "links" }}
           <li><a class="visited-indicator" href="{{ .String "url" }}">{{ .String "name" }}</a></li>
           {{ end }}
@@ -67,7 +67,7 @@ my-workers-table: &my-workers-table
       {{ range .JSON.Array "workers" }}
         <tr>
           <td><a class="size-h4 color-highlight domain" href="{{ .String "url" }}">{{ .String "id" }}</a></td>
-          <td><span data-popover-type="html"><span data-popover-html="">Deployed at: <br/>{{ .String "modifiedDate" }}</span><span data-dynamic-relative-time="{{ .String "modifiedOn" }}"></span> ago</span></td>
+          <td><span data-popover-type="html"><span data-popover-html="">Deployed at: <br/>{{ .String "modifiedDate" }}</span><span data-dynamic-relative-time="{{ .String "modifiedOn" }}" data-units="2" data-show-relative="true"></span></span></td>
           {{ range .Array "links" }}<td><a class="visited-indicator" href="{{ .String "url" }}">{{ .String "name" }}</a></td>  {{ end }}
         </tr>
       {{ end }}

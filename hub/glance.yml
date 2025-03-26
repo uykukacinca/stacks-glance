@@ -8,8 +8,6 @@ branding:
 document:
   head: |
     <script defer src="${UMAMI_URL}/script.js" data-website-id="${UMAMI_HUB_ID}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
     <script src="/assets/script.js"></script>
 
 !include: variables.yml

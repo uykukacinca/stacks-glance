@@ -62,6 +62,13 @@ themes:
     primary-color: 0 0 10
     negative-color: 0 90 50
 
+  theme-dracula: &theme-dracula
+    background-color: 231 15 21
+    primary-color: 265 89 79
+    contrast-multiplier: 1.2
+    positive-color: 135 94 66
+    negative-color: 0 100 67
+
 variables:
 
   video-url-template: &youtube ${YOUTUBE_URL}/watch?v={VIDEO-ID}

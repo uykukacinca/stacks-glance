@@ -14,7 +14,7 @@
               url: ${REDDIT_URL}/r/selfhosted/search?q={QUERY}&restrict_sr=on
             - title: YouTube
               shortcut: "!y"
-              url: https://www.youtube.com/results?search_query=selfhosted+{QUERY}
+              url: ${YOUTUBE_URL}/results?search_query=selfhosted+{QUERY}
 
         - type: bookmarks
           groups:
@@ -46,7 +46,7 @@
             - go-gitea/gitea
             - traefik/traefik
             - AdguardTeam/AdGuardHome
-            - mbecker20/komodo
+            - moghtech/komodo
             - authelia/authelia
             # - pocket-id/pocket-id
 

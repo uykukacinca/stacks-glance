@@ -10,7 +10,7 @@
           bangs:
             - title: YouTube
               shortcut: "!y"
-              url: https://www.youtube.com/results?search_query=nextjs+{QUERY}
+              url: ${YOUTUBE_URL}/results?search_query=nextjs+{QUERY}
             - title: Reddit
               shortcut: "!r"
               url: ${REDDIT_URL}/r/nextjs/search?q={QUERY}&restrict_sr=on

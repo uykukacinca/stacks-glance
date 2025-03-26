@@ -68,12 +68,12 @@
 
             - type: group
               widgets:
-                - <<: *reddit-simple-top-week
-                  title: Top This Week
-                  subreddit: Windows11
-
                 - <<: *reddit-simple
                   title: Hot Today
+                  subreddit: Windows11
+
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
                   subreddit: Windows11
 
             - type: rss

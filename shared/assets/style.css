@@ -133,7 +133,7 @@
 }
 
 .widget-table .widget-content {
-  padding: var(--widget-table-spacing-half) 0;
+  padding: 0;
 }
 
 .widget-table table {
@@ -143,7 +143,6 @@
 
 .widget-table table tr {
   border-bottom: 1px solid var(--color-separator);
-  line-height: 4rem;
 }
 
 .widget-table table thead tr {
@@ -161,7 +160,7 @@
 
 .widget-table table td,
 .widget-table table th {
-  padding: 0 var(--widget-table-spacing-half);
+  padding: var(--widget-table-spacing-half);
 }
 
 .widget-table table td:first-child,
@@ -184,11 +183,11 @@
   border-left: 0px solid var(--color-separator);
 }
 
-.proxmox-lxc {
+.widget-proxmox-lxc .lxc {
   color: var(--color-text-subdue);
 }
 
-.lxc-status {
+.widget-proxmox-lxc .lxc-status {
   display: flex;
   width: 8px;
   height: 8px;
@@ -196,31 +195,31 @@
   border-radius: 100%;
 }
 
-.proxmox-lxc.running .lxc-status {
+.widget-proxmox-lxc .lxc.running .lxc-status {
   background: var(--color-positive);
 }
-.proxmox-lxc.stopped .lxc-status {
+.widget-proxmox-lxc .lxc.stopped .lxc-status {
   background: var(--color-negative);
 }
 
-.proxmox-lxc.running .lxc-name {
+.widget-proxmox-lxc .lxc.running .lxc-name {
   color: var(--color-text-highlight);
 }
 
-.lxc-value::after {
+.widget-proxmox-lxc .lxc-value::after {
   content: attr(data-value, 0);
 }
 
-.proxmox-lxc.running .lxc-value.perc {
+.widget-proxmox-lxc .lxc.running .lxc-value.perc {
   color: var(--color-text-highlight);
 }
 
-.proxmox-lxc.stopped .lxc-name,
-.proxmox-lxc.running .lxc-uptime,
-.proxmox-lxc.running .lxc-vmid,
-.proxmox-lxc.running .lxc-value,
-.proxmox-lxc.running .lxc-value + .affix,
-.proxmox-lxc.running .lxc-value.perc[data-value="0"] {
+.widget-proxmox-lxc .lxc.stopped .lxc-name,
+.widget-proxmox-lxc .lxc.running .lxc-uptime,
+.widget-proxmox-lxc .lxc.running .lxc-vmid,
+.widget-proxmox-lxc .lxc.running .lxc-value,
+.widget-proxmox-lxc .lxc.running .lxc-value + .affix,
+.widget-proxmox-lxc .lxc.running .lxc-value.perc[data-value="0"] {
   color: var(--color-text-base);
 }
 

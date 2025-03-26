@@ -5,16 +5,33 @@
     - size: small
       widgets:
 
-    - size: full
-      widgets:
-        - <<: *monitor-core
-        - <<: *monitor-apps
-        - <<: *monitor-media
+        - type: html
+          source: |
+            <div data-dynamic-relative-time="1764472280"></div>
+            <div data-dynamic-relative-time="1764472280" data-show-relative="true"></div>
+            <div data-dynamic-relative-time="1764472280" data-units="2" data-show-relative="true"></div>
+            <div data-dynamic-relative-time="1805893973" data-units="6" data-show-relative="true"></div>
+
+            <div data-dynamic-relative-time="1719273224"></div>
+            <div data-dynamic-relative-time="1719273224" data-show-relative="true"></div>
+            <div data-dynamic-relative-time="1719273224" data-units="2" data-show-relative="true"></div>
+            <div data-dynamic-relative-time="1679663573" data-units="6" data-show-relative="true"></div>
 
     - size: full
       widgets:
-        - type: split-column
-          max-columns: 2
-          widgets:
-            - <<: *bluesky-author
-            - <<: *bluesky-my-timeline
+        - type: extension
+          url: ${GLIMPSE_URL}/v1/proxmox/nodes/html
+          allow-potentially-dangerous-html: true
+          cache: 2s
+          parameters:
+            hide-stopped: true
+
+    - size: full
+      widgets:
+
+        - <<: *proxmox-lxc
+
+        - type: extension
+          url: ${GLIMPSE_URL}/v1/proxmox/pools/html
+          allow-potentially-dangerous-html: true
+          cache: 2s

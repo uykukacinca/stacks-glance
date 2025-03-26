@@ -37,7 +37,7 @@ my-domains-list: &my-domains-list
       <li>
         <a class="size-h4 color-highlight domain" href="https://{{ .String "name" }}">{{ .String "name" }}</a>
         <ul class="list-horizontal-text">
-          <li data-popover-type="html"><span data-popover-html="">Expires at: <br/>{{ .String "expireDate" }}</span><span data-dynamic-relative-time="{{ .String "expiresAt" }}">Ends in 0 days</span></li>
+          <li data-popover-type="html"><span data-popover-html="">Expires at: <br/>{{ .String "expireDate" }}</span><span data-dynamic-relative-time="{{ .String "expiresAt" }}" data-units="2" data-show-relative="true">Ends in 0 days</span></li>
           {{ if .Exists "manage" }}
           <li><a class="visited-indicator" href="{{ .String "manage" }}">{{ .String "registrar" }}</a></li>
           {{ else }}
@@ -92,7 +92,7 @@ my-domains-table: &my-domains-table
       {{ range .JSON.Array "domains" }}
         <tr>
           <td><a class="size-h4 color-highlight domain" href="https://{{ .String "name" }}">{{ .String "name" }}</a></td>
-          <td><span data-popover-type="html"><span data-popover-html="">Expires at: <br/>{{ .String "expireDate" }}</span><span data-dynamic-relative-time="{{ .String "expiresAt" }}">Ends in 0 days</span></span></td>
+          <td><span data-popover-type="html"><span data-popover-html="">Expires at: <br/>{{ .String "expireDate" }}</span><span data-dynamic-relative-time="{{ .String "expiresAt" }}" data-units="2" data-show-relative="true">Ends in 0 days</span></span></td>
           <td>{{ if .Exists "manage" }}<a class="visited-indicator" href="{{ .String "manage" }}">{{ .String "registrar" }}</a>{{ else }}{{ .String "registrar" }}{{ end }}</td>
           <td>{{ if .Exists "dns" }}<a class="visited-indicator" href="{{ .String "dns" }}">Cloudflare</a>{{ end }}</td>
         </tr>

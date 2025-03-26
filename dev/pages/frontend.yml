@@ -31,7 +31,7 @@
 
     - size: full
       widgets:
-        - <<: *reddit-simple-top-week
+        - <<: *reddit-simple
           subreddit: webdev
 
     - size: full

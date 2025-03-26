@@ -10,13 +10,16 @@
 
     - size: full
       widgets:
-        - type: docker-containers
-          hide-by-default: false
-
-        - <<: *proxmox-lxc
+        - type: extension
+          url: ${GLIMPSE_URL}/v1/proxmox/nodes/html
+          allow-potentially-dangerous-html: true
+          cache: 1s
 
     - size: full
       widgets:
+        - type: docker-containers
+          hide-by-default: false
+
         - <<: *my-workers-table
 
         - <<: *my-domains-table

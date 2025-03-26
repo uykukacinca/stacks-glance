@@ -14,11 +14,10 @@
               url: ${REDDIT_URL}/r/homelab/search?q={QUERY}&restrict_sr=on
             - title: YouTube
               shortcut: "!y"
-              url: https://www.youtube.com/results?search_query=homelab+{QUERY}
+              url: ${YOUTUBE_URL}/results?search_query=homelab+{QUERY}
 
         - <<: *github-releases
-          collapse-after: 10
-          show-source-icon: true
+          collapse-after: 5
           repositories:
             - community-scripts/ProxmoxVE
 

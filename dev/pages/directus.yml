@@ -23,7 +23,7 @@
                 - title: Documentation
                   url: https://docs.directus.io
                 - title: Youtube
-                  url: https://www.youtube.com/c/DirectusVideos
+                  url: ${YOUTUBE_URL}/c/DirectusVideos
 
     - size: full
       widgets:
