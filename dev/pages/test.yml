@@ -24,7 +24,7 @@
           allow-potentially-dangerous-html: true
           cache: 2s
           parameters:
-            resources: nodes
+            resources: node
 
     - size: full
       widgets:
@@ -33,5 +33,5 @@
           allow-potentially-dangerous-html: true
           cache: 2s
           parameters:
-            resources: pools
+            resources: pool
             showStopped: false

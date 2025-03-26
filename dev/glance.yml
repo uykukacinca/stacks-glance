@@ -15,7 +15,7 @@ document:
 
 theme:
   custom-css-file: /assets/style.css
-  <<: *theme-teal
+  <<: *theme-${GLANCE_THEME}
 
 widgets:
   !include: widgets/html.yml

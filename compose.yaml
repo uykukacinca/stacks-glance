@@ -1,7 +1,7 @@
 services:
 
   glance-hub:
-    image: glanceapp/glance:${GLANCE_VERSION:-latest}
+    image: ${GLANCE_IMAGE:-glanceapp/glance}:${GLANCE_VERSION:-latest}
     container_name: glance-hub
     restart: always
     networks:
@@ -32,7 +32,7 @@ services:
       glance.url: ${GLANCE_HUB_URL}
 
   glance-dev:
-    image: glanceapp/glance:${GLANCE_VERSION:-latest}
+    image: ${GLANCE_IMAGE:-glanceapp/glance}:${GLANCE_VERSION:-latest}
     container_name: glance-dev
     restart: always
     networks:
