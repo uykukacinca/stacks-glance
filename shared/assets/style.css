@@ -6,7 +6,8 @@
   );
 }
 
-.content-bounds-wide {
+.content-bounds-wide,
+.page-width-wide .content-bounds {
   max-width: 2144px;
 }
 
