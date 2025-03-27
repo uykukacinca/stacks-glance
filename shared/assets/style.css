@@ -6,6 +6,10 @@
   );
 }
 
+.content-bounds-wide {
+  max-width: 2144px;
+}
+
 .cards-grid {
   gap: var(--widget-content-horizontal-padding);
 }

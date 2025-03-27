@@ -47,6 +47,7 @@ pages:
   !include: pages/live.yml
   !include: pages/documentaries.yml
   !include: pages/crime.yml
+  !include: pages/chess.yml
   !include: pages/vlogs.yml
   !include: pages/tr.yml
   !include: pages/lol.yml
