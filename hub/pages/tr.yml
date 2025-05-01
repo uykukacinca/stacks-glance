@@ -2,8 +2,10 @@
   slug: tr
   width: wide
   columns:
+
     - size: full
       widgets:
+
         - <<: *videos-simple-three
           title: Can Sungur ve Yakın Evren
           channels:
@@ -23,6 +25,7 @@
 
     - size: full
       widgets:
+
         - <<: *videos-simple-three
           title: Murat Soner
           channels:

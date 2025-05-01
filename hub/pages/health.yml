@@ -10,11 +10,11 @@
           max-columns: 3
           widgets:
 
-          - <<: *reddit-cover
-            subreddit: Health
+            - <<: *reddit-cover
+              subreddit: Health
 
-          - <<: *reddit-simple
-            subreddit: psychology
+            - <<: *reddit-simple
+              subreddit: psychology
 
-          - <<: *reddit-cover
-            subreddit: Coronavirus
+            - <<: *reddit-cover
+              subreddit: Coronavirus

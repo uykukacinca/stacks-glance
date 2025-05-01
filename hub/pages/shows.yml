@@ -1,0 +1,47 @@
+- name: "📺 Shows"
+  slug: shows
+  width: wide
+  columns:
+
+    - size: small
+      widgets:
+
+        - type: search
+          search-engine: https://www.imdb.com/find/?s=tt&q={QUERY}
+          new-tab: true
+          placeholder: Search on Imdb
+          bangs:
+            - title: Reddit
+              shortcut: "!r"
+              url: ${REDDIT_URL}/r/television/search?q={QUERY}&restrict_sr=on
+            - title: YouTube
+              shortcut: "!y"
+              url: ${YOUTUBE_URL}/results?search_query={QUERY}
+
+        - type: bookmarks
+          css-class: page-movies
+          groups:
+            - links:
+                - title: Metacritic Tv
+                  url: https://www.metacritic.com/tv/
+            - title: Imdb
+              color: 47 92 53
+              links:
+                - title: Most Popular TV Shows
+                  url: https://www.imdb.com/chart/tvmeter
+                - title: Top 250 TV Shows
+                  url: https://www.imdb.com/chart/toptv
+            - title: Subtitles
+              color: 47 92 53
+              <<: *links-subtitles
+
+        - <<: *sonarr-recently-added
+
+    - size: full
+      widgets:
+
+        - <<: *reddit-cover
+          subreddit: television
+
+    - size: full
+      widgets:

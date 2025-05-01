@@ -47,55 +47,24 @@
 
     - size: full
       widgets:
-        - type: group
-          widgets:
-            - <<: *reddit-simple-top-week
-              collapse-after: *widget-half-collapse-after
-              subreddit: devops
+        - <<: *reddit-simple
+          collapse-after: *widget-half-collapse-after
+          subreddit: devops+ansible
+          title: DevOps & Ansible
 
-            - <<: *reddit-simple-top-week
-              collapse-after: *widget-half-collapse-after
-              subreddit: ansible
-
-        - type: group
-          widgets:
-            - <<: *reddit-simple-top-week
-              collapse-after: *widget-half-collapse-after
-              subreddit: sysadmin
-
-            - <<: *reddit-simple-top-week
-              collapse-after: *widget-half-collapse-after
-              subreddit: linuxadmin
+        - <<: *reddit-simple
+          collapse-after: *widget-half-collapse-after
+          subreddit: sysadmin+linuxadmin
+          title: sysadmin
  
     - size: full
       widgets:
-        - type: group
-          widgets:
-            - type: rss
-              title: Podcasts
-              style: vertical-list
-              collapse-after: *widget-half-collapse-after
-              cache: *deep-cache
-              feeds:
-                - url: https://www.spreaker.com/show/6102036/episodes/feed
-                  title: Adventures in DevOps
-                - url: https://feeds.transistor.fm/screaming-in-the-cloud
-                  title: Screaming in the Cloud
+        - <<: *reddit-simple
+          collapse-after: *widget-half-collapse-after
+          subreddit: docker+podman
+          title: Docker & Podman
 
-            - <<: *reddit-simple-top-week
-              collapse-after: *widget-half-collapse-after
-              subreddit: docker
-
-            - <<: *reddit-simple-top-week
-              collapse-after: *widget-half-collapse-after
-              subreddit: podman
-
-        - type: group
-          widgets:
-            - <<: *reddit-simple-top-week
-              collapse-after: *widget-half-collapse-after
-              subreddit: netsec
-
-            - <<: *reddit-simple-top-week
-              collapse-after: *widget-half-collapse-after
-              subreddit: networking
+        - <<: *reddit-simple
+          collapse-after: *widget-half-collapse-after
+          subreddit: netsec+networking
+          title: Networking

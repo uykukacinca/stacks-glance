@@ -183,6 +183,13 @@ links-awesome: &links-awesome
     - title: Selfhosted
       url: https://github.com/awesome-selfhosted/awesome-selfhosted
 
+links-subtitles: &links-subtitles
+  links:
+    - title: Türkçe Altyazı
+      url: https://turkcealtyazi.org
+    - title: Open Subtitles
+      url: https://www.opensubtitles.org/tr
+
 bookmarks-awesome: &bookmarks-awesome
   type: bookmarks
   title: Awesome Lists

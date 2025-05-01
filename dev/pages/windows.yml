@@ -22,6 +22,7 @@
             - winsiderss/systeminformer
             - ChrisTitusTech/winutil
             - chocolatey/choco
+            - HotCakeX/Harden-Windows-Security
 
         - <<: *html-windows-copy
 

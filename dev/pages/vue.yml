@@ -55,13 +55,10 @@
 
     - size: full
       widgets:
-        - <<: *reddit-simple-top-week
-          collapse-after: *widget-half-collapse-after
-          subreddit: nuxt
-
-        - <<: *reddit-simple-top-week
-          collapse-after: *widget-half-collapse-after
-          subreddit: vuejs
+        - <<: *reddit-simple
+          subreddit: nuxt+vuejs
+          title: Nuxt & Vue
+          collapse-after: 18
 
     - size: full
       widgets:

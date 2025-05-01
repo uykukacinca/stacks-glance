@@ -2,8 +2,10 @@
   slug: think
   width: wide
   columns:
+
     - size: full
       widgets:
+
         - <<: *videos-grid
           channels:
             - UCsXVk37bltHxD1rDPwtNM8Q #Kurzgesagt

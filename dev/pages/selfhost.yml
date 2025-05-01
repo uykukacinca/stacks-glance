@@ -70,12 +70,12 @@
             - umami-software/umami
             # - iv-org/invidious
             - docmost/docmost
-            - home-assistant/core
-            - amir20/dozzle
+            # - home-assistant/core
+            # - amir20/dozzle
             - CorentinTh/it-tools
-            - Athou/commafeed
+            # - Athou/commafeed
             - henrygd/beszel
-            - kieraneglin/pinchflat
+            # - kieraneglin/pinchflat
             # - codeberg:forgejo/forgejo
 
         #  - type: rss
@@ -103,8 +103,10 @@
 
     - size: full
       widgets:
+
         - type: group
           widgets:
+
             - <<: *reddit-simple
               subreddit: selfhosted
 

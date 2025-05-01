@@ -2,8 +2,10 @@
   slug: tech
   width: wide
   columns:
+
     - size: full
       widgets:
+
         - <<: *reddit-cover
           collapse-after: *widget-half-collapse-after
           subreddit: Hardware
@@ -14,6 +16,7 @@
 
     - size: full
       widgets:
+
         - <<: *videos-grid-half
           channels:
             - UCXuqSBlHAE6Xw-yeJA0Tunw #LinusTechTips

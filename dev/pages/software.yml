@@ -7,11 +7,11 @@
 
     - size: full
       widgets:
-        - <<: *reddit-simple-top-week
+        - <<: *reddit-simple
           subreddit: software
 
     - size: full
       widgets:
-        - <<: *reddit-simple-top-week
+        - <<: *reddit-simple
           collapse-after: *widget-half-collapse-after
           subreddit: opensource

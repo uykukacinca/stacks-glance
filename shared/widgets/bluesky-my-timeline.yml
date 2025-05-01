@@ -2,11 +2,14 @@ bluesky-my-timeline: &bluesky-my-timeline
   type: custom-api
   title: /api/bluesky/timeline
   cache: *short-cache
-  url: ${SECRET_API_URL}/api/bluesky/timeline #${SECRET_API_URL}/api/feed
+  url: ${SECRET_API_URL}/api/bluesky/timeline
+  headers:
+    X-Custom-Auth: ${SECRET_API_TOKEN}
+
   template: |
     <div class="widget-list-bordered">
       <ul class="list list-gap-14 collapsible-container" data-collapse-after="5">
-        {{ range .JSON.Array "feed" }}
+        {{ range .JSON.Array "data" }}
           <li>
             <div class="flex gap-10 row-reverse-on-mobile thumbnail-parent">
               <img

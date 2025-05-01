@@ -99,7 +99,7 @@ definitions:
   reddit-base: &reddit-base
     type: reddit
     cache: *default-cache
-    css-class: widget-list-bordered
+    css-class: glimpse-list-bordered glimpse-cover
     comments-url-template: *reddit
 
   reddit-small: &reddit-small
@@ -127,7 +127,7 @@ definitions:
 
   reddit-cover: &reddit-cover
     <<: *reddit-thumb
-    css-class: widget-list-bordered widget-reddit-larger
+    css-class: glimpse-list-bordered glimpse-cover glimpse-cover-large
 
   reddit-cover-top-week: &reddit-cover-top-week
     <<: [*reddit-cover, *reddit-top-week]
@@ -197,3 +197,7 @@ definitions:
   monitor-boxed: &monitor-boxed
     <<: *monitor-base
     css-class: widget-monitor-custom
+
+  iframe-base: &iframe-base
+    type: iframe
+    css-class: glimpse-rounded glimpse-iframe

@@ -2,8 +2,10 @@
   slug: lol
   width: wide
   columns:
+
     - size: small
       widgets:
+
         - <<: *twitch-channels
           collapse-after: 5
           channels:
@@ -60,8 +62,10 @@
 
     - size: full
       widgets:
+
         - type: group
           widgets:
+
             - <<: *reddit-cover
               subreddit: leagueoflegends
               title: r/lol
@@ -74,12 +78,14 @@
 
     - size: full
       widgets:
+
         - <<: *videos-grid
           title: Riot
           collapse-after-rows: 1
           channels:
             - UC2t5bjwHdUX4vM2g8TRDq5g #@leagueoflegends
             - UCd0ZomI5mPkrV735wul5kiw #@wildrift
+
         - <<: *videos-grid
           title: Videos
           collapse-after-rows: 4

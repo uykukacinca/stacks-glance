@@ -2,10 +2,12 @@
   slug: documentaries
   width: wide
   columns:
+
     - size: full
       widgets:
+
         - type: split-column
-          max-columns: 3
+          max-columns: 2
           widgets:
             - <<: *reddit-cover-top-week
               subreddit: documentaries
@@ -13,15 +15,18 @@
             - <<: *reddit-cover-top-week
               subreddit: 911archive
 
-            - <<: *videos-grid
-              channels:
-                - UCbWcXB0PoqOsAvAdfzWMf0w #FredrikKnudsen
-                - UCyNtlmLB73-7gtlBz00XOQQ #FoldingIdeas
-                - UCO5QSoES5yn2Dw7YixDYT5Q #ApertureThinking
-                - UCRcgy6GzDeccI7dkbbBna3Q #LEMMiNO
-                - UCN5xN8gIljvWYnsj06V8WbQ #Pyrocynical
-                - UC3cpN6gcJQqcCM6mxRUo_dA #Wendigoon
-                - UCwpHKudUkP5tNgmMdexB3ow #MentourPilot
-                - UCFQMnBA3CS502aghlcr0_aw #Coffeezilla
-                - UCODHrzPMGbNv67e84WDZhQQ #fern
-                - UCn8zNIfYAQNdrFRrr8oibKw #@VICE
+    - size: full
+      widgets:
+
+        - <<: *videos-grid-half
+          channels:
+            - UCbWcXB0PoqOsAvAdfzWMf0w #FredrikKnudsen
+            - UCyNtlmLB73-7gtlBz00XOQQ #FoldingIdeas
+            - UCO5QSoES5yn2Dw7YixDYT5Q #ApertureThinking
+            - UCRcgy6GzDeccI7dkbbBna3Q #LEMMiNO
+            - UCN5xN8gIljvWYnsj06V8WbQ #Pyrocynical
+            - UC3cpN6gcJQqcCM6mxRUo_dA #Wendigoon
+            - UCwpHKudUkP5tNgmMdexB3ow #MentourPilot
+            - UCFQMnBA3CS502aghlcr0_aw #Coffeezilla
+            - UCODHrzPMGbNv67e84WDZhQQ #fern
+            - UCn8zNIfYAQNdrFRrr8oibKw #@VICE

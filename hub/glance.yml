@@ -13,7 +13,7 @@ document:
 !include: variables.yml
 
 theme:
-  custom-css-file: /assets/style.css
+  custom-css-file: /assets/custom.css
   <<: *theme-dark
 
 widgets:
@@ -32,10 +32,12 @@ widgets:
   !include: widgets/bluesky-my-timeline.yml
   !include: widgets/gluetun-stats.yml
   !include: widgets/widget-adguard.yml
+  !include: widgets/eksisozluk.yml
 
 pages:
   !include: pages/home.yml
   !include: pages/news.yml
+  !include: pages/gundem.yml
   !include: pages/finance.yml
   !include: pages/space.yml
   !include: pages/science.yml
@@ -43,7 +45,8 @@ pages:
   !include: pages/think.yml
   !include: pages/tech.yml
   !include: pages/gaming.yml
-  !include: pages/watch.yml
+  !include: pages/movies.yml
+  !include: pages/shows.yml
   !include: pages/live.yml
   !include: pages/documentaries.yml
   !include: pages/crime.yml

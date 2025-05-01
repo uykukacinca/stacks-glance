@@ -2,11 +2,13 @@
   slug: chess
   width: wide
   columns:
+
     - size: full
       widgets:
 
     - size: full
       widgets:
+
         - <<: *videos-grid
           channels:
             - UCE1u2aEeOZn22nsochlieFQ #@DinaBelenkaya

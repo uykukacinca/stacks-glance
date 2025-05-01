@@ -7,7 +7,7 @@
       widgets:
 
         - type: split-column
-          max-columns: 3
+          max-columns: 2
           widgets:
 
             - type: group
@@ -21,9 +21,12 @@
             - <<: *reddit-cover
               subreddit: EverythingScience
 
-            - <<: *videos-grid
-              channels:
-                - UC1yNl2E66ZzKApQdRuTQ4tw #SabineHossenfelder
-                - UCciQ8wFcVoIIMi-lfu8-cjQ #Anton Petrov
-                - UCGHZpIpAWJQ-Jy_CeCdXhMA #CoolWorldsLab
-                - UCFbtcTaMFnOAP0pFO1L8hVw #Kyle Hill
+    - size: full
+      widgets:
+
+        - <<: *videos-grid-half
+          channels:
+            - UC1yNl2E66ZzKApQdRuTQ4tw #SabineHossenfelder
+            - UCciQ8wFcVoIIMi-lfu8-cjQ #Anton Petrov
+            - UCGHZpIpAWJQ-Jy_CeCdXhMA #CoolWorldsLab
+            - UCFbtcTaMFnOAP0pFO1L8hVw #Kyle Hill

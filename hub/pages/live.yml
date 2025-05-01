@@ -2,8 +2,10 @@
   slug: live
   width: wide
   columns:
+
     - size: small
       widgets:
+
         - <<: *twitch-channels
           collapse-after: 15
           channels:
@@ -25,12 +27,15 @@
             - caedrel
             - thebausffs
             - ariathome
+            - sweet_anita
 
     - size: full
       widgets:
+
         - type: split-column
           max-columns: 3
           widgets:
+
             - <<: *reddit-cover
               subreddit: LivestreamFail
               title: Livestream Fail
@@ -44,3 +49,5 @@
                 - UCQeRaTukNYft1_6AZPACnog #AsmonTV
                 - UCkAsdQZolgJdKmZ3T3zn-dA #steakandeggspod
                 - UClFSU9_bUb4Rc6OYfTt5SPw #PhilipDeFranco
+                - UC_iUeUzozCHEReJ-shKcCYA #InternetAnarchist
+                - UCuF49lP5gkkw5L8HK3H6GJg #SunnyV2

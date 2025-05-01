@@ -2,8 +2,10 @@ my-workers-base: &my-workers-base
   type: custom-api
   title: My Workers
   cache: *deep-cache
-  css-class: widget-domains widget-with-tools
+  css-class: widget-domains glimpse-header-tools
   url: ${SECRET_API_URL}/api/workers
+  headers:
+    X-Custom-Auth: ${SECRET_API_TOKEN}
 
 my-workers: &my-workers
   <<: *my-workers-base
@@ -15,7 +17,7 @@ my-workers: &my-workers
           <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
           <div>Cache: <span class="color-highlight">{{ .JSON.String "datetime" }}</span></div>
         </div>
-        <svg class="glance-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <svg class="glimpse-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
         </svg>
       </div>
@@ -23,7 +25,7 @@ my-workers: &my-workers
     </div>
 
     <ul class="list list-gap-10 collapsible-container" data-collapse-after="10">
-    {{ range .JSON.Array "workers" }}
+    {{ range .JSON.Array "data" }}
       <li>
         <a class="size-h4 color-highlight domain" href="{{ .String "url" }}">{{ .String "id" }}</a>
         <ul class="list-horizontal-text">
@@ -38,7 +40,7 @@ my-workers: &my-workers
 
 my-workers-table: &my-workers-table
   <<: *my-workers-base
-  css-class: widget-table widget-domains widget-with-tools
+  css-class: widget-table widget-domains glimpse-header-tools
   template: |
     <div class="flex gap-10 tools">
 
@@ -47,7 +49,7 @@ my-workers-table: &my-workers-table
           <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
           <div>Cache: <span class="color-highlight">{{ .JSON.String "datetime" }}</span></div>
         </div>
-        <svg class="glance-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <svg class="glimpse-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
         </svg>
       </div>
@@ -64,7 +66,7 @@ my-workers-table: &my-workers-table
         </tr>
       </thead>
       <tbody>
-      {{ range .JSON.Array "workers" }}
+      {{ range .JSON.Array "data" }}
         <tr>
           <td><a class="size-h4 color-highlight domain" href="{{ .String "url" }}">{{ .String "id" }}</a></td>
           <td><span data-popover-type="html"><span data-popover-html="">Deployed at: <br/>{{ .String "modifiedDate" }}</span><span data-dynamic-relative-time="{{ .String "modifiedOn" }}" data-units="2" data-show-relative="true"></span></span></td>

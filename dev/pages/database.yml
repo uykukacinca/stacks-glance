@@ -24,6 +24,7 @@
           repositories:
             - sqlitebrowser/sqlitebrowser
             - dbeaver/dbeaver
+            - chartdb/chartdb
 
     - size: full
       widgets:

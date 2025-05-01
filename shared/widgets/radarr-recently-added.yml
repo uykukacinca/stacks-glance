@@ -2,12 +2,12 @@ radarr-recently-added: &radarr-recently-added
   type: custom-api
   title: Latest Added Movies
   cache: *default-cache
-  url: ${RADARR_URL}/api/v3/history?eventType=3&includeMovie=true
+  url: ${RADARR_URL}/api/v3/history?eventType=3&includeMovie=true&pageSize=15
   headers:
     Accept: application/json
     X-Api-Key: ${RADARR_API_KEY}
   template: |
-    <ul class="list list-gap-14 collapsible-container" data-collapse-after="3">
+    <ul class="list list-gap-14 collapsible-container" data-collapse-after="10">
       {{ range .JSON.Array "records" }}
       <li>
           <div class="flex gap-10 row-reverse-on-mobile thumbnail-parent">

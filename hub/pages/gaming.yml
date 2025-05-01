@@ -2,15 +2,17 @@
   slug: gaming
   width: wide
   columns:
+
     - size: small
       widgets:
+
         - type: bookmarks
           groups:
             - hide-arrow: true
               links:
-              #   - title: Steam Store
-              #     icon: si:steam
-              #     url: https://store.steampowered.com
+                - title: Steam Store
+                  icon: si:steam
+                  url: https://store.steampowered.com
                 - title: Steam Database
                   url: https://steamdb.info
                   icon: si:steamdb
@@ -23,6 +25,9 @@
                 - title: Prime Gaming
                   icon: si:prime
                   url: https://gaming.amazon.com/home
+                - title: GOG
+                  icon: si:gogdotcom
+                  url: https://www.gog.com/en/account
                 - title: Nexus Mods
                   icon: si:nexusmods
                   url: https://www.nexusmods.com
@@ -54,31 +59,30 @@
             - art
             - asmr
 
-        - <<: *steam-specials
-
         - type: group
           widgets:
             - <<: *gamepass-pc-recently-added
 
             - <<: *gamepass-pc-coming-soon
 
-    - size: full
-      widgets:
-        - <<: *reddit-cover
-          subreddit: pcgaming
-          collapse-after: *widget-half-collapse-after
-
-        - <<: *reddit-cover
-          subreddit: gaming
-          collapse-after: *widget-half-collapse-after
+        - <<: *steam-specials
 
     - size: full
       widgets:
+
+        - <<: *reddit-cover
+          title: Gaming
+          subreddit: pcgaming+gaming
+
+    - size: full
+      widgets:
+
         - <<: *reddit-simple
           collapse-after: 5
           subreddit: GamingLeaksAndRumours
           title: Leaks & Rumours
           css-class:
+
         - <<: *videos-grid
           collapse-after-rows: 5
           channels:

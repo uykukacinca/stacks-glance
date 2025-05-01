@@ -1,5 +1,6 @@
 - name: "*test"
   slug: test
+  show-in-navigation: false
   width: wide
   columns:
     - size: small
@@ -28,6 +29,11 @@
 
     - size: full
       widgets:
+        - type: extension
+          url: http://192.168.0.100:3000/v1/proxmox/resources/html
+          allow-potentially-dangerous-html: true
+          cache: 2s
+
         - type: extension
           url: ${GLIMPSE_URL}/v1/proxmox/resources/html
           allow-potentially-dangerous-html: true

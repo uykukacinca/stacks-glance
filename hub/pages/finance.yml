@@ -2,8 +2,10 @@
   slug: finance
   width: wide
   columns:
+
     - size: small
       widgets:
+
         - <<: *markets-base
           markets:
             - symbol: TRY=X
@@ -41,19 +43,18 @@
 
     - size: full
       widgets:
-        - <<: *reddit-cover
-          subreddit: CryptoCurrency
-          collapse-after: *widget-half-collapse-after
 
         - <<: *reddit-cover
-          subreddit: Bitcoin
-          collapse-after: *widget-half-collapse-after
+          title: Crypto Currency
+          subreddit: CryptoCurrency+Bitcoin
 
     - size: full
       widgets:
-        - <<: *reddit-thumb
-          subreddit: economics
-          collapse-after: *widget-half-collapse-after
+
+        - <<: *videos-grid
+          collapse-after-rows: 2
+          channels:
+            - UCFQMnBA3CS502aghlcr0_aw #@Coffeezilla
 
         - <<: *reddit-cover
           subreddit: wallstreetbets

@@ -2,8 +2,10 @@
   slug: vlogs
   width: wide
   columns:
+
     - size: full
       widgets:
+
         - <<: *podcasts-grid
           title: Casey Neistat
           channels:

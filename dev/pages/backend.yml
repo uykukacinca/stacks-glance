@@ -49,19 +49,22 @@
             - links:
                 - title: Awesome Node.js
                   url: https://github.com/sindresorhus/awesome-nodejs#readme
+            - links:
+                - title: Download OrbStack
+                  url: https://orbstack.dev/download
 
     - size: full
       widgets:
-        - <<: *reddit-simple-top-week
+        - <<: *reddit-simple
           subreddit: Backend
 
     - size: full
       widgets:
-        - <<: *reddit-simple-top-week
+        - <<: *reddit-simple
           collapse-after: *widget-half-collapse-after
           subreddit: deno
 
 
-        - <<: *reddit-simple-top-week
+        - <<: *reddit-simple
           collapse-after: *widget-half-collapse-after
           subreddit: node

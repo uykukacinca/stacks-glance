@@ -18,11 +18,11 @@ services:
       - 8081:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./hub/pages:/app/config/pages
-      - ./hub/glance.yml:/app/config/glance.yml
-      - ./shared/assets:/app/assets
-      - ./shared/widgets:/app/config/widgets
-      - ./shared/variables.yml:/app/config/variables.yml
+      - ./hub/pages:/app/config/pages:ro
+      - ./hub/glance.yml:/app/config/glance.yml:ro
+      - ./shared/assets:/app/assets:ro
+      - ./shared/widgets:/app/config/widgets:ro
+      - ./shared/variables.yml:/app/config/variables.yml:ro
     labels:
       glance.group: Apps
       glance.id: glance-hub
@@ -49,11 +49,11 @@ services:
       - 8082:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./dev/pages:/app/config/pages
-      - ./dev/glance.yml:/app/config/glance.yml
-      - ./shared/assets:/app/assets
-      - ./shared/widgets:/app/config/widgets
-      - ./shared/variables.yml:/app/config/variables.yml
+      - ./dev/pages:/app/config/pages:ro
+      - ./dev/glance.yml:/app/config/glance.yml:ro
+      - ./shared/assets:/app/assets:ro
+      - ./shared/widgets:/app/config/widgets:ro
+      - ./shared/variables.yml:/app/config/variables.yml:ro
     labels:
       glance.group: Apps
       glance.id: glance-dev

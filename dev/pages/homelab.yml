@@ -27,16 +27,16 @@
       widgets:
         - type: group
           widgets:
-            - <<: *reddit-simple-top-week
+            - <<: *reddit-simple
               subreddit: homelab
               search: self:true
               collapse-after: *widget-half-collapse-after
 
-            - <<: *reddit-simple-top-week
+            - <<: *reddit-simple
               subreddit: HomeServer
               collapse-after: *widget-half-collapse-after
 
-        - <<: *reddit-simple-top-week
+        - <<: *reddit-simple
           subreddit: Proxmox
           collapse-after: *widget-half-collapse-after
 

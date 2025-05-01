@@ -39,11 +39,11 @@
             - type: split-column
               max-columns: 1
               widgets:
-                - <<: *reddit-simple-top-week
+                - <<: *reddit-simple
                   collapse-after: *widget-half-collapse-after
                   subreddit: fedora
 
-                - <<: *reddit-simple-top-week
+                - <<: *reddit-simple
                   collapse-after: *widget-half-collapse-after
                   subreddit: ubuntu
 

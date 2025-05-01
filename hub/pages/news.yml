@@ -2,8 +2,10 @@
   slug: news
   width: wide
   columns:
+
     - size: full
       widgets:
+
         - <<: *reddit-base
           subreddit: popular
           style: horizontal-cards
@@ -11,6 +13,7 @@
         - type: split-column
           max-columns: 3
           widgets:
+
             - <<: *reddit-cover
               subreddit: worldnews
               show-flairs: true
@@ -19,5 +22,4 @@
               subreddit: geopolitics
 
             - <<: *reddit-cover
-              subreddit: Turkey
-              show-flairs: true
+              subreddit: News

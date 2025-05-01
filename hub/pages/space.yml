@@ -2,42 +2,33 @@
   slug: space
   width: wide
   columns:
+
     - size: full
       widgets:
+
         - type: split-column
-          max-columns: 3
+          max-columns: 2
           widgets:
 
-            - type: group
-              widgets:
-                - <<: *reddit-cover
-                  subreddit: space
+            - <<: *reddit-cover
+              title: Space & Astronomy
+              subreddit: space+spaceporn+Astronomy
 
-                - <<: *reddit-cover
-                  subreddit: spaceporn
+            - <<: *reddit-cover
+              title: NASA & SpaceX
+              subreddit: nasa+spacex
 
-                - <<: *reddit-cover
-                  subreddit: Astronomy
+    - size: full
+      widgets:
 
-            - type: split-column
-              max-columns: 1
-              widgets:
-                - <<: *reddit-cover
-                  subreddit: nasa
-                  collapse-after: *widget-half-collapse-after
-
-                - <<: *reddit-cover
-                  subreddit: spacex
-                  collapse-after: *widget-half-collapse-after
-
-            - <<: *videos-grid
-              title: Podcasts & Stuff
-              channels:
-                - UCqoAEDirJPjEUFcF2FklnBA #StarTalk
-                - UCEszlI8-W79IsU8LSAiRbDg #JohnMichaelGodier
-                - UC-9b7aDP6ZN0coj9-xFnrtw #astrumspace
-                - UC7_gcs09iThXybpVgjHZ_7g #pbsspacetime
-                - UCrMePiHCWG4Vwqv3t7W9EFg #scishowspace
-                - UCtRFmSyL4fSLQkn-wMqlmdA #HistoryoftheUniverse
-                - UCIBaDdAbGlFDeS33shmlD0A #European Space Agency, ESA
-                - UCLA_DiR1FfKNvjuUpBHmylQ #NASA
+        - <<: *videos-grid-half
+          title: Podcasts & Stuff
+          channels:
+            - UCqoAEDirJPjEUFcF2FklnBA #StarTalk
+            - UCEszlI8-W79IsU8LSAiRbDg #JohnMichaelGodier
+            - UC-9b7aDP6ZN0coj9-xFnrtw #astrumspace
+            - UC7_gcs09iThXybpVgjHZ_7g #pbsspacetime
+            - UCrMePiHCWG4Vwqv3t7W9EFg #scishowspace
+            - UCtRFmSyL4fSLQkn-wMqlmdA #HistoryoftheUniverse
+            - UCIBaDdAbGlFDeS33shmlD0A #European Space Agency, ESA
+            - UCLA_DiR1FfKNvjuUpBHmylQ #NASA

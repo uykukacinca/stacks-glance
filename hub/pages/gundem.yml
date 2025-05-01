@@ -1,0 +1,97 @@
+- name: "Gündem"
+  slug: gundem
+  width: wide
+  columns:
+
+    - size: small
+      widgets:
+
+        - <<: *markets-base
+          markets:
+            - symbol: TRY=X
+            - symbol: EURTRY=X
+
+
+        - type: group
+          widgets:
+
+            - <<: *eksisozluk-gundem
+
+            - <<: *eksisozluk-tarihte-bugun
+
+        - type: bookmarks
+          groups:
+            - links:
+                - title: X Deprem
+                  url: https://x.com/i/lists/1915151387949973738
+                - title: Son Depremler
+                  url: http://www.koeri.boun.edu.tr/scripts/lst2.asp
+                - title: Deprem Haritası
+                  url: http://udim.koeri.boun.edu.tr/zeqmap/hgmmap.asp
+                - title: RaspberryShake Station
+                  url: https://stationview.raspberryshake.org/#/?lat=40.86170&lon=28.40830&zoom=10.592
+                - title: RaspberryShake RF9F7
+                  url: https://dataview.raspberryshake.org/#/AM/RF9F7/00/EHZ?streaming=on
+
+    - size: full
+      widgets:
+
+        - type: group
+          widgets:
+
+            - <<: *reddit-cover
+              subreddit: Turkey
+              show-flairs: true
+              limit: 30
+              collapse-after: 20
+
+            - <<: *reddit-cover-top-week
+              title: Top This Week
+              subreddit: Turkey
+              limit: 30
+              collapse-after: 20
+
+            - <<: *reddit-cover-top-week
+              subreddit: Turkey
+              title: Month
+              cache: 1d
+              top-period: month
+              limit: 30
+              collapse-after: 20
+
+            - <<: *reddit-cover-top-week
+              subreddit: Turkey
+              title: Year
+              cache: 1d
+              top-period: year
+              limit: 30
+              collapse-after: 20
+
+            - <<: *reddit-cover-top-week
+              subreddit: Turkey
+              title: All
+              cache: 1d
+              top-period: all
+              limit: 30
+              collapse-after: 20
+
+    - size: full
+      widgets:
+
+        - <<: *iframe-base
+          title: Sözcü TV
+          source: https://www.youtube.com/embed/ztmY_cCtUl0?si=-9A8OM7vLep1ipse&amp;controls=0&autoplay=1
+
+        - type: split-column
+          max-columns: 2
+          widgets:
+
+            - <<: *reddit-simple
+              title: Istanbul - Izmir - Antalya - Ankara
+              subreddit: Istanbul+Izmir+Antalya+Ankara
+              cache: *deep-cache
+
+            - <<: *reddit-simple
+              title: AskTurkey - Hukuk - Yatirim
+              subreddit: AskTurkey+Hukuk+Yatirim
+              cache: *deep-cache

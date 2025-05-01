@@ -14,15 +14,15 @@
 
     - size: full
       widgets:
-        - <<: *reddit-simple-top-week
+        - <<: *reddit-simple
           collapse-after: *widget-half-collapse-after
           subreddit: javascript
 
-        - <<: *reddit-simple-top-week
+        - <<: *reddit-simple
           collapse-after: *widget-half-collapse-after
           subreddit: learnjavascript
 
     - size: full
       widgets:
-        - <<: *reddit-simple-top-week
+        - <<: *reddit-simple
           subreddit: typescript

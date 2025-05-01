@@ -52,13 +52,10 @@
 
     - size: full
       widgets:
-        - <<: *reddit-simple-top-week
-          collapse-after: *widget-half-collapse-after
-          subreddit: nextjs
-
-        - <<: *reddit-simple-top-week
-          collapse-after: *widget-half-collapse-after
-          subreddit: reactjs
+        - <<: *reddit-simple
+          subreddit: nextjs+reactjs
+          title: Next & React
+          collapse-after: 18
 
     - size: full
       widgets:

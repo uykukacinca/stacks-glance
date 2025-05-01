@@ -2,8 +2,10 @@
   slug: camping
   width: wide
   columns:
+
     - size: full
       widgets:
+
         - <<: *videos-grid
           limit: 100
           channels:

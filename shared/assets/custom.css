@@ -8,7 +8,7 @@
 
 .content-bounds-wide,
 .page-width-wide .content-bounds {
-  max-width: 2144px;
+  max-width: 2054px;
 }
 
 .cards-grid {
@@ -21,14 +21,97 @@
   }
 }
 
-.expand-toggle-button {
-  text-align: center;
-}
-
 @container widget (max-width: 1100px) {
   .widget-half .cards-grid {
     --cards-per-row: 3;
   }
+}
+
+/*****************************************************************************/
+
+.glimpse-hide-header .widget-header {
+  display: none;
+}
+
+.glimpse-rounded .widget-content {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* glimpse iframe */
+
+.glimpse-iframe .widget-content > iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+/* glimpse cover */
+
+.glimpse-cover .forum-post-list-thumbnail {
+  width: 6rem;
+  display: block;
+  height: fit-content;
+  aspect-ratio: 16 / 9;
+}
+
+.glimpse-cover-large .forum-post-list-thumbnail {
+  width: 12rem;
+}
+
+/* glimpse list */
+
+.glimpse-list-bordered .widget-content {
+  margin: 0;
+  padding: 0;
+}
+
+.glimpse-list-bordered .list > li {
+  margin: 0;
+  padding: 0 var(--widget-content-horizontal-padding);
+}
+
+.glimpse-list-bordered .list > li > div {
+  padding: var(--widget-content-vertical-padding) 0;
+}
+
+.glimpse-list-bordered .list > *:not(:first-child) > div {
+  border-top: 1px solid var(--color-separator);
+}
+
+.glimpse-list-bordered .list > li:hover,
+.glimpse-list-bordered .expand-toggle-button:hover {
+  background-color: hsl(var(--bghs), calc(var(--bgl) + 3%));
+}
+
+.glimpse-list-small .list,
+.glimpse-list-small .list > li > div {
+  padding: calc(var(--widget-content-horizontal-padding) / 2) 0;
+}
+
+.glimpse-list-bordered .expand-toggle-button {
+  padding: calc(var(--widget-content-horizontal-padding) / 2)
+    var(--widget-content-horizontal-padding);
+  border-top: 1px solid var(--color-separator);
+}
+
+/* glimpse tools */
+
+.glimpse-icon {
+  width: auto;
+  height: 1.6rem;
+}
+
+.glimpse-header-tools .widget-content {
+  position: relative;
+}
+
+.glimpse-header-tools .tools {
+  position: absolute;
+  top: -30px;
+  right: calc(var(--widget-content-horizontal-padding) + 1px);
+  user-select: none;
 }
 
 /*****************************************************************************/
@@ -68,59 +151,11 @@
   color: var(--color-text-base);
 }
 
-/*****************************************************************************/
-
-.widget-list-bordered .widget-content {
-  margin: 0;
-  padding: 0;
-}
-
-.widget-list-bordered .list > li {
-  margin: 0;
-  padding: 0 var(--widget-content-horizontal-padding);
-}
-
-.widget-list-bordered .list > li > div {
-  padding: var(--widget-content-horizontal-padding) 0;
-}
-
-.widget-list-bordered .list > *:not(:first-child) > div {
-  border-top: 1px solid var(--color-separator);
-}
-
-.widget-monitor-custom .monitor-site:hover,
-.widget-list-bordered .list > li:hover {
+.widget-monitor-custom .monitor-site:hover {
   background-color: hsl(var(--bghs), calc(var(--bgl) + 3%));
 }
 
-/*****************************************************************************/
-
-.widget-reddit-larger .forum-post-list-thumbnail {
-  width: 12rem;
-  height: 7.1rem;
-}
-
-.hide-header .widget-header {
-  display: none;
-}
-
-.widget .glance-icon {
-  width: 20px;
-  height: 1.6rem;
-}
-
-.widget-with-tools .widget-content {
-  position: relative;
-}
-
-.widget-with-tools .tools {
-  position: absolute;
-  top: -34px;
-  right: 0;
-  user-select: none;
-}
-
-/*****************************************************************************/
+/* --- */
 
 .widget-movies .video-thumbnail {
   aspect-ratio: 2/3;
@@ -130,7 +165,7 @@
   padding: 1rem;
 }
 
-/*****************************************************************************/
+/* --- */
 
 :root {
   --widget-table-spacing: var(--widget-content-horizontal-padding);
@@ -178,7 +213,7 @@
   padding-right: var(--widget-table-spacing);
 }
 
-/*****************************************************************************/
+/* --- */
 
 .widget-proxmox-lxc .divider {
   padding-left: var(--widget-table-spacing);
@@ -228,7 +263,7 @@
   color: var(--color-text-base);
 }
 
-/*****************************************************************************/
+/* --- */
 
 .widget-table.widget-domains table td {
   width: 20%;
@@ -253,12 +288,12 @@
   cursor: pointer;
 }
 
-.widget-domains .glance-icon {
+.widget-domains .glimpse-icon {
   opacity: 0.75;
   display: none;
 }
 
-.widget-domains .glance-icon:hover {
+.widget-domains .glimpse-icon:hover {
   opacity: 1;
 }
 
@@ -273,5 +308,3 @@
 .widget-domains:not(.hide) .icon-show {
   display: block;
 }
-
-/*****************************************************************************/

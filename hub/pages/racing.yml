@@ -2,8 +2,10 @@
   slug: racing
   width: wide
   columns:
+
     - size: full
       widgets:
+
         - <<: *videos-grid
           channels:
             - UCeePGrzBN3B2GurSkd_bwPQ #BlackPanthaa

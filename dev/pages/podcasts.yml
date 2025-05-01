@@ -2,13 +2,13 @@
   slug: podcasts
   width: wide
   columns:
-    - size: small
-      widgets:
-        - type: bookmarks
-          groups:
-            - links:
-                - title: Awesome Podcasts
-                  url: https://github.com/rShetty/awesome-podcasts
+    # - size: small
+    #   widgets:
+    #     - type: bookmarks
+    #       groups:
+    #         - links:
+    #             - title: Awesome Podcasts
+    #               url: https://github.com/rShetty/awesome-podcasts
 
     - size: full
       widgets:
@@ -27,6 +27,11 @@
           playlists:
             - PL8mG-RkN2uTw7PhlnAr4pZZz2QubIbujH
 
+        - <<: *podcasts-grid
+          title: Socially Inept
+          channels:
+            - UCFe2Kq8Hg15UomoVYdmRg_Q
+            
         - <<: *podcasts-grid
           title: Beyond Coding Podcast
           playlists:

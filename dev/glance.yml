@@ -10,11 +10,11 @@ document:
     <script defer src="${UMAMI_URL}/script.js" data-website-id="${UMAMI_DEV_ID}"></script>
     <link rel="stylesheet" href="${GLIMPSE_URL}/static/style/main.css">
     <script src="/assets/script.js"></script>
-    
+
 !include: variables.yml
 
 theme:
-  custom-css-file: /assets/style.css
+  custom-css-file: /assets/custom.css
   <<: *theme-${GLANCE_THEME}
 
 widgets:

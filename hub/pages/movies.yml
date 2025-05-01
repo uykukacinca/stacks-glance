@@ -1,9 +1,23 @@
-- name: "🍿 Watch"
-  slug: watch
+- name: "🍿 Movies"
+  slug: movies
   width: wide
   columns:
+
     - size: small
       widgets:
+
+        - type: search
+          search-engine: https://www.imdb.com/find/?s=tt&q={QUERY}
+          new-tab: true
+          placeholder: Search on Imdb
+          bangs:
+            - title: Reddit
+              shortcut: "!r"
+              url: ${REDDIT_URL}/r/movies/search?q={QUERY}&restrict_sr=on
+            - title: YouTube
+              shortcut: "!y"
+              url: ${YOUTUBE_URL}/results?search_query={QUERY}
+
         - type: bookmarks
           css-class: page-movies
           groups:
@@ -12,39 +26,35 @@
                   url: https://www.metacritic.com/movie
                 - title: Letterboxd Reviews
                   url: https://letterboxd.com/reviews/popular/this/week
-            - title: Imdb
+            - title: IMDb
               color: 47 92 53
               links:
                 - title: Top Box Office (US)
                   url: https://www.imdb.com/chart/boxoffice
-                - title: Most Popular TV Shows
-                  url: https://www.imdb.com/chart/tvmeter
+                - title: Top 250 Movies
+                  url: https://www.imdb.com/chart/top
+            - title: The Movie Database (TMDB)
+              color: 193 99 45
+              links:
+                - title: Popular Movies
+                  url: https://www.themoviedb.org/movie
+                - title: Upcoming Movies
+                  url: https://www.themoviedb.org/movie/upcoming
             - title: Subtitles
               color: 47 92 53
-              links:
-                - title: Türkçe Altyazı
-                  url: https://turkcealtyazi.org
-                - title: Open Subtitles
-                  url: https://www.opensubtitles.org/tr
+              <<: *links-subtitles
 
         - <<: *radarr-recently-added
 
-        - <<: *sonarr-recently-added
-
-        - <<: *tmdb-popular-movies
-
     - size: full
       widgets:
+
         - <<: *reddit-cover
           subreddit: movies
-          collapse-after: *widget-half-collapse-after
-
-        - <<: *reddit-cover
-          subreddit: television
-          collapse-after: *widget-half-collapse-after
 
     - size: full
       widgets:
+
         - <<: *videos-grid
           title: Reviews & Podcasts
           channels:

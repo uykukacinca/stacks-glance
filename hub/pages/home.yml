@@ -2,8 +2,10 @@
   slug: home
   width: wide
   columns:
+
     - size: small
       widgets:
+
         - type: clock
           hour-format: 24h
           timezones:
@@ -24,8 +26,16 @@
             - symbol: EURTRY=X
             - symbol: BTC-USD
 
+        - type: custom-api
+          title: Random Fact
+          cache: 3h
+          url: https://uselessfacts.jsph.pl/api/v2/facts/random
+          template: |
+            <p class="size-h4 color-paragraph">{{ .JSON.String "text" }}</p>
+
     - size: full
       widgets:
+
         - type: search
           search-engine: google
           new-tab: true
@@ -57,6 +67,7 @@
 
     - size: small
       widgets:
+
         - type: server-stats
           servers:
             - type: local
