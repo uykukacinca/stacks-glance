@@ -1,8 +1,13 @@
 :root {
   --color-widget-content-border: hsl(
-    231,
-    15%,
-    calc(var(--scheme) (var(--scheme) 18% + 8%))
+    var(--bghs),
+    calc(var(--scheme) (var(--scheme) var(--bgl) + 10%))
+  );
+  --widget-content-vertical-padding-reverse: calc(
+    var(--widget-content-vertical-padding) * -1
+  );
+  --widget-content-horizontal-padding-reverse: calc(
+    var(--widget-content-horizontal-padding) * -1
   );
 }
 
@@ -12,7 +17,7 @@
 }
 
 .cards-grid {
-  gap: var(--widget-content-horizontal-padding);
+  -gap: var(--widget-content-horizontal-padding);
 }
 
 @container widget (min-width: 11010px) {
@@ -27,11 +32,24 @@
   }
 }
 
-/*****************************************************************************/
+.cards-horizontal {
+  --cards-per-row: 7.5;
+}
 
-.glimpse-hide-header .widget-header {
+.cards-horizontal .text-truncate-2-lines {
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+}
+
+.widget-content > iframe {
+  display: block;
+}
+
+.hide-details .list-horizontal-text {
   display: none;
 }
+
+/*****************************************************************************/
 
 .glimpse-rounded .widget-content {
   border-radius: var(--border-radius);
@@ -41,7 +59,6 @@
 /* glimpse iframe */
 
 .glimpse-iframe .widget-content > iframe {
-  display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 16 / 9;
@@ -63,8 +80,12 @@
 /* glimpse list */
 
 .glimpse-list-bordered .widget-content {
-  margin: 0;
-  padding: 0;
+  overflow: hidden;
+}
+
+.glimpse-list-bordered .widget-content > ul {
+  margin: var(--widget-content-vertical-padding-reverse)
+    var(--widget-content-horizontal-padding-reverse) 0;
 }
 
 .glimpse-list-bordered .list > li {
@@ -91,12 +112,23 @@
 }
 
 .glimpse-list-bordered .expand-toggle-button {
+  width: -moz-available;
+  margin: 0 var(--widget-content-horizontal-padding-reverse);
   padding: calc(var(--widget-content-horizontal-padding) / 2)
     var(--widget-content-horizontal-padding);
   border-top: 1px solid var(--color-separator);
 }
 
 /* glimpse tools */
+
+.glimpse-copy {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.glimpse-copy .glimpse-icon {
+  pointer-events: none;
+}
 
 .glimpse-icon {
   width: auto;
@@ -307,4 +339,24 @@
 
 .widget-domains:not(.hide) .icon-show {
   display: block;
+}
+
+/*****************************************************************************/
+
+.glimpse-RF9F7 .traceview[_ngcontent-eyo-c45] > [_ngcontent-eyo-c45]:last-child,
+.glimpse-RF9F7 .fixed.header {
+  display: none;
+}
+.glimpse-RF9F7 body,
+.glimpse-RF9F7 .body[_ngcontent-eyo-c50] wa-traceplot[_ngcontent-eyo-c50] {
+  background: transparent;
+}
+
+.glimpse-RF9F7 .widget-content {
+  background: var(--color-widget-background);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-widget-content-border);
+  box-shadow: 0px 3px 0px 0px
+    hsl(var(--bghs), calc(var(--scheme) (var(--scheme) var(--bgl)) - 0.5%));
+  padding: 0;
 }

@@ -6,18 +6,6 @@
     - size: small
       widgets:
 
-        - type: html
-          source: |
-            <div data-dynamic-relative-time="1764472280"></div>
-            <div data-dynamic-relative-time="1764472280" data-show-relative="true"></div>
-            <div data-dynamic-relative-time="1764472280" data-units="2" data-show-relative="true"></div>
-            <div data-dynamic-relative-time="1805893973" data-units="6" data-show-relative="true"></div>
-
-            <div data-dynamic-relative-time="1719273224"></div>
-            <div data-dynamic-relative-time="1719273224" data-show-relative="true"></div>
-            <div data-dynamic-relative-time="1719273224" data-units="2" data-show-relative="true"></div>
-            <div data-dynamic-relative-time="1679663573" data-units="6" data-show-relative="true"></div>
-
     - size: full
       widgets:
         - type: extension
@@ -33,11 +21,10 @@
           url: http://192.168.0.100:3000/v1/proxmox/resources/html
           allow-potentially-dangerous-html: true
           cache: 2s
+          parameters:
+            resources: node
 
         - type: extension
-          url: ${GLIMPSE_URL}/v1/proxmox/resources/html
+          url: http://host.docker.internal:8787/api/eksisozluk/app
           allow-potentially-dangerous-html: true
-          cache: 2s
-          parameters:
-            resources: pool
-            showStopped: false
+          cache: 1s

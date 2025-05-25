@@ -184,11 +184,28 @@ links-awesome: &links-awesome
       url: https://github.com/awesome-selfhosted/awesome-selfhosted
 
 links-subtitles: &links-subtitles
+  title: Subtitles
+  color: 47 92 53
   links:
     - title: Türkçe Altyazı
       url: https://turkcealtyazi.org
     - title: Open Subtitles
       url: https://www.opensubtitles.org/tr
+
+links-earthquakes: &links-earthquakes
+  links:
+    - title: X Deprem
+      url: https://x.com/i/lists/1915151387949973738
+    - title: USGS Magnitude 2.5+ 24h
+      url: https://earthquake.usgs.gov/earthquakes/map/?extent=40.0954,26.86393&extent=41.41234,29.63249&listOnlyShown=true
+    - title: Shake Station 3.0+ 48h
+      url: https://stationview.raspberryshake.org/#/?lat=40.86170&lon=28.40830&zoom=10.592
+    - title: RaspberryShake RF9F7
+      url: https://dataview.raspberryshake.org/#/AM/RF9F7/00/EHZ?streaming=on
+    - title: KOERİ Son Depremler
+      url: http://www.koeri.boun.edu.tr/scripts/lst2.asp
+    - title: KOERİ Deprem Haritası
+      url: http://udim.koeri.boun.edu.tr/zeqmap/hgmmap.asp
 
 bookmarks-awesome: &bookmarks-awesome
   type: bookmarks

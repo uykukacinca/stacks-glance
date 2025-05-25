@@ -75,8 +75,8 @@
             - CorentinTh/it-tools
             # - Athou/commafeed
             - henrygd/beszel
-            # - kieraneglin/pinchflat
-            # - codeberg:forgejo/forgejo
+            - kieraneglin/pinchflat
+            - codeberg:forgejo/forgejo
 
         #  - type: rss
         #    cache: *long-cache

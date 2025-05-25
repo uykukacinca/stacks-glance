@@ -17,19 +17,15 @@ services:
     ports:
       - 8081:8080
     volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./hub/pages:/app/config/pages:ro
       - ./hub/glance.yml:/app/config/glance.yml:ro
       - ./shared/assets:/app/assets:ro
       - ./shared/widgets:/app/config/widgets:ro
       - ./shared/variables.yml:/app/config/variables.yml:ro
-    labels:
-      glance.group: Apps
-      glance.id: glance-hub
-      glance.name: Glance Hub
-      glance.description: Homepage
-      glance.icon: si:gitee
-      glance.url: ${GLANCE_HUB_URL}
+      - ./shared/theme.yml:/app/config/theme.yml:ro
 
   glance-dev:
     image: ${GLANCE_IMAGE:-glanceapp/glance}:${GLANCE_VERSION:-latest}
@@ -48,19 +44,15 @@ services:
     ports:
       - 8082:8080
     volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./dev/pages:/app/config/pages:ro
       - ./dev/glance.yml:/app/config/glance.yml:ro
       - ./shared/assets:/app/assets:ro
       - ./shared/widgets:/app/config/widgets:ro
       - ./shared/variables.yml:/app/config/variables.yml:ro
-    labels:
-      glance.group: Apps
-      glance.id: glance-dev
-      glance.name: Glance Dev
-      glance.description: Dashboard
-      glance.icon: si:gitee
-      glance.url: ${GLANCE_DEV_URL}
+      - ./shared/theme.yml:/app/config/theme.yml:ro
 
 networks:
   default:

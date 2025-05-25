@@ -12,6 +12,11 @@
             - UCtinbF-Q-fVthA0qrFQTgXQ
 
         - <<: *podcasts-grid
+          title: Mike Okay
+          channels:
+            - UCpp3cHR9TWVyXqL1AVw4XkA
+
+        - <<: *podcasts-grid
           title: Emre Durmuş
           channels:
             - UClCBG771sRO6Ap9s84Je7Eg

@@ -1,6 +1,15 @@
 - name: "#frontend"
   slug: frontend
   width: wide
+
+  head-widgets:
+
+    - type: videos
+      hide-header: true
+      style: horizontal-cards
+      channels:
+        - UCFbNIlppjAuEX4znoulh0Cw #@WebDevSimplified
+
   columns:
     - size: small
       widgets:
@@ -8,6 +17,16 @@
           search-engine: ${REDDIT_URL}/r/webdev/search?q={QUERY}&restrict_sr=on
           new-tab: true
           placeholder: Search in r/webdev
+          bangs:
+            - title: YouTube
+              shortcut: "!y"
+              url: ${YOUTUBE_URL}/results?search_query=nextjs+{QUERY}
+            - title: Reddit
+              shortcut: "!r"
+              url: ${REDDIT_URL}/search/?q={QUERY}
+            - title: Github
+              shortcut: "!g"
+              url: https://github.com/search?q={QUERY}&type=repositories
 
         - <<: *bookmarks-frontend
 
@@ -22,12 +41,8 @@
         - <<: *github-releases
           title: Frameworks
           repositories:
-            - nuxt/nuxt
-            - vercel/next.js
-            - sveltejs/svelte
             - alpinejs/alpine
             - withastro/astro
-            - vitejs/vite
 
     - size: full
       widgets:

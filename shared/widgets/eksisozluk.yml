@@ -17,11 +17,11 @@ eksisozluk-base: &eksisozluk-base
       </div>
 
     </div>
-    <ul class="list list-gap-10 collapsible-container" data-collapse-after="20">
-    {{ range .JSON.Array "data" }}
+    <ul class="list list-gap-10 collapsible-container" data-collapse-after="12">
+    {{ range .JSON.Array "data.items" }}
       <li class="flex gap-10">
         <div class="grow min-width-0">
-          <a class="size-title-dynamic color-primary-if-not-visited" href="https://eksisozluk.com{{ .String "url" }}">{{ .String "title" }}</a>
+          <a class="size-title-dynamic color-primary-if-not-visited" href="{{ .String "url" }}">{{ .String "title" }}</a>
           {{ if .Exists "comments" }}
           <div class="inline-block forum-post-tags-container">
             <ul class="attachments">
@@ -36,29 +36,49 @@ eksisozluk-base: &eksisozluk-base
 
 eksisozluk-gundem: &eksisozluk-gundem
   <<: *eksisozluk-base
-  title: Ekşi Gündem
-  url: ${SECRET_API_URL}/api/eksisozluk/gundem
+  title: Gündem
+  url: ${SECRET_API_URL}/api/eksisozluk/threads/gundem
+  parameters:
+    filters: "siyaset"
+
+eksisozluk-javascript: &eksisozluk-javascript
+  <<: *eksisozluk-base
+  title: "#javascript"
+  url: ${SECRET_API_URL}/api/eksisozluk/search
+  parameters:
+    query: "javascript"
 
 eksisozluk-tarihte-bugun: &eksisozluk-tarihte-bugun
   <<: *eksisozluk-base
   cache: *deep-cache
   title: Tarihte Bugün
-  url: ${SECRET_API_URL}/api/eksisozluk/tarihte-bugun
+  url: ${SECRET_API_URL}/api/eksisozluk/threads/tarihte-bugun
+
+eksisozluk-bugun: &eksisozluk-bugun
+  <<: *eksisozluk-base
+  title: Bugün
+  url: ${SECRET_API_URL}/api/eksisozluk/threads/bugun
 
 eksisozluk-debe: &eksisozluk-debe
   <<: *eksisozluk-base
-  cache: *deep-cache
+  cache: 12h
   title: "DEBE"
-  url: ${SECRET_API_URL}/api/eksisozluk/debe
+  url: ${SECRET_API_URL}/api/eksisozluk/threads/debe
+
+eksisozluk-ghebe: &eksisozluk-ghebe
+  <<: *eksisozluk-base
+  cache: 12h
+  title: "GHEBE"
+  url: ${SECRET_API_URL}/api/eksisozluk/threads/ghebe
 
 eksisozluk-siyaset: &eksisozluk-siyaset
   <<: *eksisozluk-base
   title: "#siyaset"
-  url: ${SECRET_API_URL}/api/eksisozluk/siyaset
+  url: ${SECRET_API_URL}/api/eksisozluk/threads/siyaset
 
 eksisozluk-haber: &eksisozluk-haber
   <<: *eksisozluk-base
   title: "#haber"
-  url: ${SECRET_API_URL}/api/eksisozluk/haber
+  url: ${SECRET_API_URL}/api/eksisozluk/threads/haber
 
   

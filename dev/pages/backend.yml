@@ -2,16 +2,14 @@
   slug: backend
   width: wide
   columns:
+
     - size: small
       widgets:
+
         - type: search
           search-engine: ${REDDIT_URL}/r/backend/search?q={QUERY}&restrict_sr=on
           new-tab: true
           placeholder: Search in r/backend
-
-        - <<: *github-releases
-          repositories:
-            - sst/sst
 
         - <<: *github-releases
           title: Headless CMS
@@ -34,6 +32,8 @@
             - denoland/deno
             - nodejs/node
 
+        - <<: *html-node
+
         - <<: *github-releases
           title: Software
           repositories:
@@ -46,20 +46,20 @@
             - links:
                 - title: Public APIs
                   url: https://github.com/public-apis/public-apis#readme
-            - links:
                 - title: Awesome Node.js
                   url: https://github.com/sindresorhus/awesome-nodejs#readme
-            - links:
                 - title: Download OrbStack
                   url: https://orbstack.dev/download
 
     - size: full
       widgets:
+
         - <<: *reddit-simple
           subreddit: Backend
 
     - size: full
       widgets:
+
         - <<: *reddit-simple
           collapse-after: *widget-half-collapse-after
           subreddit: deno

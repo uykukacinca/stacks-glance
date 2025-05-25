@@ -9,7 +9,7 @@
         - type: search
           search-engine: https://www.imdb.com/find/?s=tt&q={QUERY}
           new-tab: true
-          placeholder: Search on Imdb
+          placeholder: Search on IMDb
           bangs:
             - title: Reddit
               shortcut: "!r"
@@ -40,9 +40,7 @@
                   url: https://www.themoviedb.org/movie
                 - title: Upcoming Movies
                   url: https://www.themoviedb.org/movie/upcoming
-            - title: Subtitles
-              color: 47 92 53
-              <<: *links-subtitles
+            - <<: *links-subtitles
 
         - <<: *radarr-recently-added
 

@@ -1,6 +1,16 @@
 - name: "🔴 Live"
   slug: live
   width: wide
+
+  head-widgets:
+
+    - type: videos
+      hide-header: true
+      style: horizontal-cards
+      css-class: hide-details
+      channels:
+        - UCMwJJL5FJFuTRT55ksbQ4GQ #@AsmongoldClips
+
   columns:
 
     - size: small
@@ -48,6 +58,3 @@
               channels:
                 - UCQeRaTukNYft1_6AZPACnog #AsmonTV
                 - UCkAsdQZolgJdKmZ3T3zn-dA #steakandeggspod
-                - UClFSU9_bUb4Rc6OYfTt5SPw #PhilipDeFranco
-                - UC_iUeUzozCHEReJ-shKcCYA #InternetAnarchist
-                - UCuF49lP5gkkw5L8HK3H6GJg #SunnyV2

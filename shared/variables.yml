@@ -72,11 +72,12 @@ themes:
 variables:
 
   video-url-template: &youtube ${YOUTUBE_URL}/watch?v={VIDEO-ID}
-  comments-url-template: &reddit ${REDDIT_URL}/{POST-PATH}
+  comments-url-template: &reddit ${REDDIT_URL}/comments/{POST-ID}
+  #comments-url-template: &reddit ${REDDIT_URL}/{POST-PATH}
   request-url-template: &gluetun http://gluetun:8888/{REQUEST-URL}
   chart-link-template: &yahoo-chart https://finance.yahoo.com/quote/{SYMBOL}/chart
   symbol-link-template: &yahoo-news https://finance.yahoo.com/quote/{SYMBOL}/news
-  default-cache: &default-cache 2m
+  default-cache: &default-cache 1m
   short-cache: &short-cache 20s
   long-cache: &long-cache 5m
   deep-cache: &deep-cache 30m
@@ -134,7 +135,7 @@ definitions:
 
   videos-base: &videos-base
     type: videos
-    cache: *long-cache
+    cache: *default-cache
     video-url-template: *youtube
 
   videos-grid: &videos-grid

@@ -1,0 +1,60 @@
+- name: "🟠 Svelte"
+  slug: svelte
+  width: wide
+  columns:
+    - size: small
+      widgets:
+        - type: search
+          search-engine: https://github.com/sveltejs/svelte/issues?q={QUERY}
+          new-tab: true
+          bangs:
+            - title: YouTube
+              shortcut: "!y"
+              url: ${YOUTUBE_URL}/results?search_query=svelte+{QUERY}
+            - title: Reddit
+              shortcut: "!r"
+              url: ${REDDIT_URL}/r/sveltejs/search?q={QUERY}&restrict_sr=on
+            - title: Github
+              shortcut: "!g"
+              url: https://github.com/sveltejs/svelte/issues?q={QUERY}
+
+        - type: bookmarks
+          groups:
+            - hide-arrow: true
+              links:
+                - title: Blog
+                  icon: si:svelte
+                  url: https://svelte.dev/blog
+            - links:
+                - title: Getting Started
+                  url: https://svelte.dev/docs/svelte/overview
+                - title: SvelteKit
+                  url: https://svelte.dev/docs/kit/introduction
+                - title: Tutorial
+                  url: https://svelte.dev/tutorial
+            - links:
+                - title: Awesome Svelte
+                  url: https://github.com/TheComputerM/awesome-svelte#readme
+
+        - type: repository
+          repository: sveltejs/svelte
+          pull-requests-limit: 2
+          issues-limit: 2
+          commits-limit: 2
+
+        - <<: *github-releases
+          repositories:
+            - sveltejs/svelte
+
+    - size: full
+      widgets:
+        - <<: *reddit-simple
+          subreddit: sveltejs
+          title: Svelte
+          collapse-after: 18
+
+    - size: full
+      widgets:
+        - <<: *videos-grid
+          channels:
+            - UCFvPgPdb_emE_bpMZq6hmJQ #@bmdavis419

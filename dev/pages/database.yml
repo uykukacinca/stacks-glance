@@ -1,9 +1,25 @@
 - name: "#database"
   slug: database
   width: wide
+
   columns:
     - size: small
       widgets:
+
+        - type: bookmarks
+          groups:
+            - hide-arrow: true
+              links:
+                - title: PostgreSQL
+                  icon: si:postgresql
+                  url: https://www.postgresql.org/download/
+                - title: MongoDB
+                  icon: si:mongodb
+                  url: https://www.mongodb.com/try/download/community
+                - title: SQLite
+                  icon: si:sqlite
+                  url: https://www.sqlite.org/download.html
+
         - <<: *github-releases
           title: Database
           repositories:
@@ -18,6 +34,7 @@
             - supabase/supabase
             - prisma/prisma
             - drizzle-team/drizzle-orm
+            - meilisearch/meilisearch
 
         - <<: *github-releases
           title: Software
@@ -29,5 +46,19 @@
     - size: full
       widgets:
 
+        - <<: *reddit-simple
+          subreddit: SQL+Database+dataengineering
+          title: SQL & Database & Data Engineering
+          collapse-after: 18
+
     - size: full
       widgets:
+
+        - <<: *reddit-simple
+          collapse-after: *widget-half-collapse-after
+          subreddit: PostgreSQL
+
+
+        - <<: *reddit-simple
+          collapse-after: *widget-half-collapse-after
+          subreddit: mongodb

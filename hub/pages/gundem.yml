@@ -1,6 +1,16 @@
-- name: "Gündem"
+- name: "🇹🇷 Gündem"
   slug: gundem
   width: wide
+
+  head-widgets:
+    - type: iframe
+      hide-header: true
+      title: RF9F7
+      css-class: glimpse-RF9F7
+      height: 70
+      title-url: https://dataview.raspberryshake.org/#/AM/RF9F7/00/EHZ?streaming=on
+      source: https://dataview.raspberryshake.org/#/embed/AM/RF9F7/00/EHZ
+
   columns:
 
     - size: small
@@ -11,27 +21,14 @@
             - symbol: TRY=X
             - symbol: EURTRY=X
 
+        - <<: *eksisozluk-gundem
 
-        - type: group
-          widgets:
-
-            - <<: *eksisozluk-gundem
-
-            - <<: *eksisozluk-tarihte-bugun
+        - <<: *seismic-portal
 
         - type: bookmarks
+          title: Deprem
           groups:
-            - links:
-                - title: X Deprem
-                  url: https://x.com/i/lists/1915151387949973738
-                - title: Son Depremler
-                  url: http://www.koeri.boun.edu.tr/scripts/lst2.asp
-                - title: Deprem Haritası
-                  url: http://udim.koeri.boun.edu.tr/zeqmap/hgmmap.asp
-                - title: RaspberryShake Station
-                  url: https://stationview.raspberryshake.org/#/?lat=40.86170&lon=28.40830&zoom=10.592
-                - title: RaspberryShake RF9F7
-                  url: https://dataview.raspberryshake.org/#/AM/RF9F7/00/EHZ?streaming=on
+            - <<: *links-earthquakes
 
     - size: full
       widgets:

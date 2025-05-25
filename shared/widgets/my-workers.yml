@@ -1,7 +1,7 @@
 my-workers-base: &my-workers-base
   type: custom-api
   title: My Workers
-  cache: *deep-cache
+  cache: *default-cache
   css-class: widget-domains glimpse-header-tools
   url: ${SECRET_API_URL}/api/workers
   headers:

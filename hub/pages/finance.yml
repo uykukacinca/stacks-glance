@@ -1,6 +1,15 @@
 - name: "🪙 Finance"
   slug: finance
   width: wide
+
+  head-widgets:
+
+    - type: videos
+      hide-header: true
+      style: horizontal-cards
+      channels:
+        - UCFQMnBA3CS502aghlcr0_aw #@Coffeezilla
+
   columns:
 
     - size: small
@@ -51,11 +60,5 @@
     - size: full
       widgets:
 
-        - <<: *videos-grid
-          collapse-after-rows: 2
-          channels:
-            - UCFQMnBA3CS502aghlcr0_aw #@Coffeezilla
-
         - <<: *reddit-cover
           subreddit: wallstreetbets
-          collapse-after: *widget-half-collapse-after

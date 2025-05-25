@@ -1,6 +1,15 @@
 - name: "🟡 Javascript"
   slug: javascript
   width: wide
+
+  head-widgets:
+
+    - type: videos
+      hide-header: true
+      style: horizontal-cards
+      channels:
+        - UCswG6FSbgZjbWtdf_hMLaow #@mattpocockuk
+
   columns:
     - size: small
       widgets:

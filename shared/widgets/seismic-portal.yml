@@ -1,0 +1,38 @@
+seismic-portal: &seismic-portal
+  type: custom-api
+  title: Seismic Portal 3+
+  cache: *short-cache
+  url: https://www.seismicportal.eu/fdsnws/event/1/query
+  parameters:
+    limit: 20
+    lat: 41
+    lon: 29
+    minradius: 0
+    maxradius: 1.5
+    format: json
+    minmag: 3
+  template: |
+    <ul class="list list-gap-10 collapsible-container" data-collapse-after="5">
+    {{ range .JSON.Array "features" }}
+      <li class="flex">
+        <div data-popover-type="html">
+          <div data-popover-html="">
+            <div><span>{{ .String "properties.time" | parseLocalTime "rfc3339" }}</span></div>
+            <div>Last Update: <span {{ .String "properties.lastupdate" | parseTime "rfc3339" | toRelativeTime }}></span></div>
+            <div>Magnitude: <span class="color-highlight">{{ .String "properties.mag" }}</span></div>
+            <div>Latitude: <span class="color-highlight">{{ .String "properties.lat" }}</span></div>
+            <div>Longitude: <span class="color-highlight">{{ .String "properties.lon" }}</span></div>
+            <div>Depth: <span class="color-highlight">{{ .String "properties.depth" }}</span></div>
+            <div>Region: <span class="color-highlight">{{ .String "properties.flynn_region" }}</span></div>
+            <div>Source: <span>{{ .String "properties.source_catalog" }}</span></div>
+          </div>
+          <ul class="list-horizontal-text">
+            <li><span {{ .String "properties.time" | parseTime "rfc3339" | toRelativeTime }}></span></li>
+            <li><a href="https://emsc.eu/Earthquake_information/earthquake.php?id={{ .String "properties.source_id" }}" target="_blank" class="color-highlight color-primary-if-not-visited">{{ .String "properties.mag" }}</a></li>
+            <li>{{ .String "properties.auth" }}</li>
+            <li class=" text-truncate"><span class="color-subdue">{{ .String "properties.flynn_region" }}</span></li>
+          </ul>
+        </div>
+      </li>
+    {{ end }}
+    </ul>

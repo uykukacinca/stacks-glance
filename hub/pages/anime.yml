@@ -1,0 +1,79 @@
+- name: "💥 Anime"
+  slug: anime
+  width: wide
+
+  head-widgets:
+
+    - type: videos
+      hide-header: true
+      style: horizontal-cards
+      channels:
+        - UCt_oFAUph4_8P3N_Xs-FGHg #@ScamboliReviews
+        - UCtGoikgbxP4F3rgI9PldI9g #@supereyepatchwolf0
+        - UCUCn-bkupQ9SMI6005R684A #@Stevem
+        - UC7dF9qfBMXrSlaaFFDvV_Yg #@gigguk
+
+  columns:
+
+    - size: small
+      widgets:
+
+        - type: search
+          search-engine: https://myanimelist.net/anime.php?q={QUERY}&cat=anime
+          new-tab: true
+          placeholder: Search on MAL
+          bangs:
+            - title: IMDb
+              shortcut: "!i"
+              url: https://www.imdb.com/find/?s=tt&q={QUERY}
+            - title: Reddit
+              shortcut: "!r"
+              url: ${REDDIT_URL}/r/anime/search?q={QUERY}&restrict_sr=on
+            - title: YouTube
+              shortcut: "!y"
+              url: ${YOUTUBE_URL}/results?search_query={QUERY}
+
+        - type: bookmarks
+          css-class: page-anime
+          groups:
+            - hide-arrow: true
+              links:
+                - title: Crunchyroll
+                  icon: si:crunchyroll
+                  url: http://www.crunchyroll.com
+                - title: AniList
+                  icon: si:anilist
+                  url: https://anilist.co/search/anime/trending
+                - title: MyAnimeList
+                  icon: si:myanimelist
+                  url: https://myanimelist.net/topanime.php
+                - title: Kitsu
+                  icon: si:kitsu
+                  url: https://kitsu.app/explore/anime
+            - links:
+                - title: Anime Karma List
+                  url: https://animekarmalist.com
+                - title: Anime Schedule
+                  url: https://animeschedule.net
+                - title: Anime Scene Search
+                  url: https://trace.moe
+            - <<: *links-subtitles
+
+    - size: full
+      widgets:
+
+        - type: group
+          widgets:
+
+            - <<: *reddit-cover
+              subreddit: anime
+
+            - <<: *reddit-cover
+              subreddit: Animesuggest
+
+    - size: full
+      widgets:
+
+        - <<: *anime-karma-list-7days
+
+        - <<: *anime-karma-list

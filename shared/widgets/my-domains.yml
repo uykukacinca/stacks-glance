@@ -1,7 +1,7 @@
 my-domains-base: &my-domains-base
   type: custom-api
   title: My Domains
-  cache: *deep-cache
+  cache: *default-cache
   css-class: widget-domains glimpse-header-tools
   url: ${SECRET_API_URL}/api/domains
   headers:

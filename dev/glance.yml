@@ -9,49 +9,51 @@ document:
   head: |
     <script defer src="${UMAMI_URL}/script.js" data-website-id="${UMAMI_DEV_ID}"></script>
     <link rel="stylesheet" href="${GLIMPSE_URL}/static/style/main.css">
-    <script src="/assets/script.js"></script>
+    <script src="/assets/custom.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-!include: variables.yml
+$include: variables.yml
 
 theme:
   custom-css-file: /assets/custom.css
-  <<: *theme-${GLANCE_THEME}
+  $include: theme.yml
 
 widgets:
-  !include: widgets/html.yml
-  !include: widgets/bookmarks.yml
-  !include: widgets/my-domains.yml
-  !include: widgets/my-workers.yml
-  !include: widgets/my-ip.yml
-  !include: widgets/my-monitor.yml
-  !include: widgets/steam-specials.yml
-  !include: widgets/gamepass-pc-coming-soon.yml
-  !include: widgets/gamepass-pc-recently-added.yml
-  !include: widgets/radarr-recently-added.yml
-  !include: widgets/sonarr-recently-added.yml
-  !include: widgets/tmdb-popular-movies.yml
-  !include: widgets/bluesky-author.yml
-  !include: widgets/bluesky-my-timeline.yml
-  !include: widgets/gluetun-stats.yml
-  !include: widgets/widget-adguard.yml
-  !include: widgets/proxmox-nodes.yml
-  !include: widgets/proxmox-lxc.yml
+  - $include: widgets/html.yml
+  - $include: widgets/bookmarks.yml
+  - $include: widgets/my-domains.yml
+  - $include: widgets/my-workers.yml
+  - $include: widgets/my-ip.yml
+  - $include: widgets/my-monitor.yml
+  - $include: widgets/steam-specials.yml
+  - $include: widgets/gamepass-pc-coming-soon.yml
+  - $include: widgets/gamepass-pc-recently-added.yml
+  - $include: widgets/radarr-recently-added.yml
+  - $include: widgets/sonarr-recently-added.yml
+  - $include: widgets/tmdb-popular-movies.yml
+  - $include: widgets/bluesky-author.yml
+  - $include: widgets/bluesky-my-timeline.yml
+  - $include: widgets/gluetun-stats.yml
+  - $include: widgets/widget-adguard.yml
+  - $include: widgets/proxmox-nodes.yml
+  - $include: widgets/proxmox-lxc.yml
 
 pages:
-  !include: pages/dashboard.yml
-  !include: pages/news.yml
-  !include: pages/podcasts.yml
-  !include: pages/selfhost.yml
-  !include: pages/homelab.yml
-  !include: pages/devops.yml
-  !include: pages/linux.yml
-  !include: pages/windows.yml
-  !include: pages/javascript.yml
-  !include: pages/vue.yml
-  !include: pages/react.yml
-  !include: pages/frontend.yml
-  !include: pages/backend.yml
-  !include: pages/database.yml
-  #!include: pages/directus.yml
-  #!include: pages/hardware.yml
-  !include: pages/test.yml
+  - $include: pages/dashboard.yml
+  - $include: pages/news.yml
+  - $include: pages/podcasts.yml
+  - $include: pages/selfhost.yml
+  - $include: pages/homelab.yml
+  - $include: pages/devops.yml
+  - $include: pages/linux.yml
+  - $include: pages/windows.yml
+  - $include: pages/javascript.yml
+  - $include: pages/vue.yml
+  - $include: pages/react.yml
+  - $include: pages/svelte.yml
+  - $include: pages/frontend.yml
+  - $include: pages/backend.yml
+  - $include: pages/database.yml
+  #- $include: pages/directus.yml
+  #- $include: pages/hardware.yml
+  - $include: pages/test.yml
