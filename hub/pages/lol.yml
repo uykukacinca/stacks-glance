@@ -1,12 +1,18 @@
 - name: "#lol"
   slug: lol
   width: wide
+  
+  head-widgets:
+
+    - <<: *widget-twitch-lol
+
   columns:
 
     - size: small
       widgets:
 
         - <<: *twitch-channels
+          title: Streamers
           collapse-after: 5
           channels:
             - riotgames

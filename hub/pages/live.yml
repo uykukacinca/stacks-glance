@@ -4,12 +4,15 @@
 
   head-widgets:
 
-    - type: videos
+    - <<: *widget-twitch-just-chatting
       hide-header: true
-      style: horizontal-cards
-      css-class: hide-details
-      channels:
-        - UCMwJJL5FJFuTRT55ksbQ4GQ #@AsmongoldClips
+
+    # - type: videos
+    #   hide-header: true
+    #   style: horizontal-cards
+    #   css-class: hide-details truncate-1
+    #   channels:
+    #     - UCMwJJL5FJFuTRT55ksbQ4GQ #@AsmongoldClips
 
   columns:
 
@@ -17,25 +20,19 @@
       widgets:
 
         - <<: *twitch-channels
-          collapse-after: 15
+          collapse-after: 10
           channels:
             - asmongold
             - zackrawrr
             - robcdee
             - EsfandTV
-            - nmplol
             - emiru
             - bonnie
             - jakenbakelive
             - kitboga
-            - extraemily
-            - misterarther
             - ej_sa
-            - itskatchii
             - CriticalRole
             - lirik
-            - caedrel
-            - thebausffs
             - ariathome
             - sweet_anita
 

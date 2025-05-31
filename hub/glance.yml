@@ -35,6 +35,7 @@ widgets:
   - $include: widgets/eksisozluk.yml
   - $include: widgets/seismic-portal.yml
   - $include: widgets/anime-karma-list.yml
+  - $include: widgets/twitch.yml
 
 pages:
   - $include: pages/home.yml
@@ -57,5 +58,6 @@ pages:
   - $include: pages/vlogs.yml
   - $include: pages/tr.yml
   - $include: pages/lol.yml
+  - $include: pages/gta.yml
   - $include: pages/racing.yml
   - $include: pages/outdoor.yml

@@ -1,0 +1,236 @@
+widget-twitch-base: &widget-twitch-base
+  type: custom-api
+  title: Twitch
+  cache: *short-cache
+  frameless: true
+  url: https://gql.twitch.tv/gql
+  method: POST
+  headers:
+    Client-Id: kimne78kx3ncx6brgo4mv6wki5h1ko
+  body-type: json
+
+widget-twitch-carousel: &widget-twitch-carousel
+  <<: *widget-twitch-base
+  template: |
+    <div class="carousel-container show-right-cutoff">
+      <div class="cards-horizontal carousel-items-container">
+      {{ range .JSON.Array "data.game.streams.edges" }}
+        <div class="card widget-content-frame thumbnail-parent">
+            <img
+                class="video-thumbnail thumbnail"
+                loading="lazy"
+                src="https://static-cdn.jtvnw.net/previews-ttv/live_user_{{ .String "node.broadcaster.login" }}-440x248.jpg"
+                alt=""
+            >
+            <div class="margin-top-10 margin-bottom-widget flex flex-column grow padding-inline-widget">
+                <a
+                    class="text-truncate-2-lines margin-bottom-auto color-highlight"
+                    href="https://twitch.tv/{{ .String "node.broadcaster.login" }}"
+                    target="_blank"
+                    rel="noreferrer"
+                    title="{{ .String "node.broadcaster.broadcastSettings.title" }}"
+                >{{ .String "node.broadcaster.broadcastSettings.title" }}</a>
+                <ul class="list-horizontal-text flex-nowrap margin-top-7">
+                    <li class="shrink-0">{{ .Int "node.viewersCount" | formatApproxNumber }}</li>
+                    <li class="min-width-0">
+                        <a
+                            class="block text-truncate"
+                            href="https://twitch.tv/{{ .String "node.broadcaster.login" }}"
+                            target="_blank"
+                            rel="noreferrer"
+                            title="{{ .String "node.broadcaster.displayName" }}"
+                        >{{ .String "node.broadcaster.displayName" }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      {{ end }}
+      </div>
+    </div>
+
+widget-twitch-cards: &widget-twitch-cards
+  <<: *widget-twitch-base
+  template: |
+    <div class="cards-grid collapsible-container" data-collapse-after-rows="2">
+      {{ range .JSON.Array "data.game.streams.edges" }}
+        <div class="card widget-content-frame thumbnail-parent">
+            <img
+                class="video-thumbnail thumbnail"
+                loading="lazy"
+                src="https://static-cdn.jtvnw.net/previews-ttv/live_user_{{ .String "node.broadcaster.login" }}-440x248.jpg"
+                alt=""
+            >
+            <div class="margin-top-10 margin-bottom-widget flex flex-column grow padding-inline-widget">
+                <a
+                    class="text-truncate-2-lines margin-bottom-auto color-highlight"
+                    href="https://twitch.tv/{{ .String "node.broadcaster.login" }}"
+                    target="_blank"
+                    rel="noreferrer"
+                    title="{{ .String "node.broadcaster.broadcastSettings.title" }}"
+                >{{ .String "node.broadcaster.broadcastSettings.title" }}</a>
+                <ul class="list-horizontal-text flex-nowrap margin-top-7">
+                    <li class="shrink-0">{{ .Int "node.viewersCount" | formatApproxNumber }}</li>
+                    <li class="min-width-0">
+                        <a
+                            class="block text-truncate"
+                            href="https://twitch.tv/{{ .String "node.broadcaster.login" }}"
+                            target="_blank"
+                            rel="noreferrer"
+                            title="{{ .String "node.broadcaster.displayName" }}"
+                        >{{ .String "node.broadcaster.displayName" }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      {{ end }}
+    </div>
+
+widget-twitch-gta: &widget-twitch-gta
+  <<: *widget-twitch-carousel
+  title: Grand Theft Auto V Live Streams
+  body:
+    query: |
+      query {
+        game(name: "Grand Theft Auto V") {
+          id
+          name
+          streams(first: 10, options: { languages: ["EN", "TR"] }) {
+            edges {
+              node {
+                id
+                viewersCount
+                broadcaster {
+                  id
+                  login
+                  displayName
+                  profileImageURL(width: 50)
+                  primaryColorHex
+                  broadcastSettings {
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+widget-twitch-dev: &widget-twitch-dev
+  <<: *widget-twitch-carousel
+  title: Software and Game Development"
+  body:
+    query: |
+      query {
+        game(name: "Software and Game Development") {
+          id
+          name
+          streams(first: 14, options: { languages: ["EN", "TR"] }) {
+            edges {
+              node {
+                id
+                viewersCount
+                broadcaster {
+                  id
+                  login
+                  displayName
+                  profileImageURL(width: 50)
+                  primaryColorHex
+                  broadcastSettings {
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+widget-twitch-lol: &widget-twitch-lol
+  <<: *widget-twitch-carousel
+  title: League of Legends Live Streams
+  body:
+    query: |
+      query {
+        game(name: "League of Legends") {
+          id
+          name
+          streams(first: 14, options: { languages: ["EN", "TR"] }) {
+            edges {
+              node {
+                id
+                viewersCount
+                broadcaster {
+                  id
+                  login
+                  displayName
+                  profileImageURL(width: 50)
+                  primaryColorHex
+                  broadcastSettings {
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+widget-twitch-irl: &widget-twitch-irl
+  <<: *widget-twitch-cards
+  body:
+    query: |
+      query {
+        game(name: "IRL") {
+          id
+          name
+          streams(first: 30, options: { languages: ["EN", "TR"] }) {
+            edges {
+              node {
+                id
+                viewersCount
+                broadcaster {
+                  id
+                  login
+                  displayName
+                  profileImageURL(width: 50)
+                  primaryColorHex
+                  broadcastSettings {
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+widget-twitch-just-chatting: &widget-twitch-just-chatting
+  <<: *widget-twitch-carousel
+  body:
+    query: |
+      query {
+        game(name: "Just Chatting") {
+          id
+          name
+          streams(first: 14, options: { languages: ["EN", "TR"] }) {
+            edges {
+              node {
+                id
+                viewersCount
+                broadcaster {
+                  id
+                  login
+                  displayName
+                  profileImageURL(width: 50)
+                  primaryColorHex
+                  broadcastSettings {
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+      }

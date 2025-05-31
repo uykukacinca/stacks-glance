@@ -36,7 +36,7 @@
   --cards-per-row: 7.5;
 }
 
-.cards-horizontal .text-truncate-2-lines {
+.truncate-1 .text-truncate-2-lines {
   line-clamp: 1;
   -webkit-line-clamp: 1;
 }

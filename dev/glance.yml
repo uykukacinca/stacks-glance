@@ -37,6 +37,7 @@ widgets:
   - $include: widgets/widget-adguard.yml
   - $include: widgets/proxmox-nodes.yml
   - $include: widgets/proxmox-lxc.yml
+  - $include: widgets/twitch.yml
 
 pages:
   - $include: pages/dashboard.yml

@@ -1,0 +1,28 @@
+- name: "#gta"
+  slug: gta
+  width: wide
+  
+  head-widgets:
+
+    - <<: *widget-twitch-gta
+
+  columns:
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 3
+          widgets:
+
+            - <<: *reddit-cover
+              subreddit: gta+gtaonline
+              title: Grand Theft Auto & Online
+
+            - <<: *reddit-cover
+              subreddit: gta6
+              title: GTA 6
+
+            - <<: *reddit-cover
+              subreddit: gtaiv+gtav
+              title: GTA IV & V

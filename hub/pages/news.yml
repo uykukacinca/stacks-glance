@@ -1,14 +1,17 @@
 - name: "🌏 News"
   slug: news
   width: wide
+
+  head-widgets:
+
+    - <<: *reddit-base
+      subreddit: popular
+      style: horizontal-cards
+
   columns:
 
     - size: full
       widgets:
-
-        - <<: *reddit-base
-          subreddit: popular
-          style: horizontal-cards
 
         - type: split-column
           max-columns: 3

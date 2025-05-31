@@ -1,6 +1,12 @@
 - name: "📢 News"
   slug: news
   width: wide
+
+  head-widgets:
+
+    - <<: *widget-twitch-dev
+      hide-header: true
+
   columns:
     - size: full
       widgets:
@@ -14,14 +20,14 @@
                   css-class: widget-list-bordered
                   cache: *default-cache
                   limit: 20
-                  collapse-after: *widget-half-collapse-after
+                  collapse-after: 10
 
                 - type: lobsters
                   css-class: widget-list-bordered
                   cache: *default-cache
                   sort-by: hot
                   limit: 20
-                  collapse-after: *widget-half-collapse-after
+                  collapse-after: 10
 
             - type: split-column
               max-columns: 1
@@ -33,7 +39,7 @@
 
                 - <<: *reddit-simple
                   subreddit: programming
-                  collapse-after: 12
+                  collapse-after: 16
 
     - size: full
       widgets:

@@ -13,7 +13,7 @@
           bangs:
             - title: Reddit
               shortcut: "!r"
-              url: ${REDDIT_URL}/r/movies/search?q={QUERY}&restrict_sr=on
+              url: ${REDDIT_URL}/post-search?q={QUERY}+subreddit%3Amovies&sort=hot&view=compact
             - title: YouTube
               shortcut: "!y"
               url: ${YOUTUBE_URL}/results?search_query={QUERY}

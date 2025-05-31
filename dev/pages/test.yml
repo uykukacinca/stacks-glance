@@ -2,29 +2,11 @@
   slug: test
   show-in-navigation: false
   width: wide
+
   columns:
     - size: small
       widgets:
 
     - size: full
       widgets:
-        - type: extension
-          url: ${GLIMPSE_URL}/v1/proxmox/resources/html
-          allow-potentially-dangerous-html: true
-          cache: 2s
-          parameters:
-            resources: node
-
-    - size: full
-      widgets:
-        - type: extension
-          url: http://192.168.0.100:3000/v1/proxmox/resources/html
-          allow-potentially-dangerous-html: true
-          cache: 2s
-          parameters:
-            resources: node
-
-        - type: extension
-          url: http://host.docker.internal:8787/api/eksisozluk/app
-          allow-potentially-dangerous-html: true
-          cache: 1s
+        - <<: *widget-twitch-irl
