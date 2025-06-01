@@ -4,9 +4,10 @@
   width: wide
 
   columns:
-    - size: small
-      widgets:
 
     - size: full
       widgets:
-        - <<: *widget-twitch-irl
+        - <<: *widget-twitch-just-chatting
+        - <<: *widget-twitch-top-streams
+        - <<: *widget-twitch-en-clips
+        - <<: *widget-twitch-tr-streams

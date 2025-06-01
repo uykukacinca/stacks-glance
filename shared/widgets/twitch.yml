@@ -1,4 +1,4 @@
-widget-twitch-base: &widget-twitch-base
+widget: &widget-twitch-base
   type: custom-api
   title: Twitch
   cache: *short-cache
@@ -9,17 +9,25 @@ widget-twitch-base: &widget-twitch-base
     Client-Id: kimne78kx3ncx6brgo4mv6wki5h1ko
   body-type: json
 
-widget-twitch-carousel: &widget-twitch-carousel
+widget: &widget-twitch-carousel
   <<: *widget-twitch-base
   template: |
     <div class="carousel-container show-right-cutoff">
       <div class="cards-horizontal carousel-items-container">
-      {{ range .JSON.Array "data.game.streams.edges" }}
+      {{ $streams := or (.JSON.Array "data.game.streams.edges") (.JSON.Array "data.streams.edges") }}
+
+      {{ if $streams | len | eq 0 }}
+        <div class="widget-content ">
+          <p>No streams found</p>
+        </div>
+      {{ else }}
+
+        {{ range $streams }}
         <div class="card widget-content-frame thumbnail-parent">
             <img
                 class="video-thumbnail thumbnail"
                 loading="lazy"
-                src="https://static-cdn.jtvnw.net/previews-ttv/live_user_{{ .String "node.broadcaster.login" }}-440x248.jpg"
+                src="{{ .String "node.previewImageURL" }}"
                 alt=""
             >
             <div class="margin-top-10 margin-bottom-widget flex flex-column grow padding-inline-widget">
@@ -31,6 +39,7 @@ widget-twitch-carousel: &widget-twitch-carousel
                     title="{{ .String "node.broadcaster.broadcastSettings.title" }}"
                 >{{ .String "node.broadcaster.broadcastSettings.title" }}</a>
                 <ul class="list-horizontal-text flex-nowrap margin-top-7">
+                    <li><span {{ .String "node.createdAt" | parseTime "rfc3339" | toRelativeTime }}></span></li>
                     <li class="shrink-0">{{ .Int "node.viewersCount" | formatApproxNumber }}</li>
                     <li class="min-width-0">
                         <a
@@ -45,40 +54,102 @@ widget-twitch-carousel: &widget-twitch-carousel
                 </ul>
             </div>
         </div>
+        {{ end }}
+
       {{ end }}
       </div>
     </div>
 
-widget-twitch-cards: &widget-twitch-cards
+widget: &widget-twitch-streams
   <<: *widget-twitch-base
   template: |
     <div class="cards-grid collapsible-container" data-collapse-after-rows="2">
-      {{ range .JSON.Array "data.game.streams.edges" }}
+      {{ $streams := or (.JSON.Array "data.game.streams.edges") (.JSON.Array "data.streams.edges") }}
+
+      {{ if $streams | len | eq 0 }}
+        <div class="widget-content ">
+          <p>No streams found</p>
+        </div>
+      {{ else }}
+
+        {{ range $streams }}
+          <div class="card widget-content-frame thumbnail-parent">
+              <img
+                  class="video-thumbnail thumbnail"
+                  loading="lazy"
+                  src="{{ .String "node.previewImageURL" }}"
+                  alt=""
+              >
+              <div class="margin-top-10 margin-bottom-widget flex flex-column grow padding-inline-widget">
+                  {{ if .Exists "node.game" }}
+                  <div class="margin-bottom-3 text-truncate">{{ .String "node.game.displayName" }}</div>
+                  {{ end }}
+                  <a
+                      class="text-truncate margin-bottom-auto color-highlight"
+                      href="https://twitch.tv/{{ .String "node.broadcaster.login" }}"
+                      target="_blank"
+                      rel="noreferrer"
+                      title="{{ .String "node.broadcaster.broadcastSettings.title" }}"
+                  >{{ .String "node.broadcaster.broadcastSettings.title" }}</a>
+                  <ul class="list-horizontal-text flex-nowrap margin-top-7">
+                      <li><span {{ .String "node.createdAt" | parseTime "rfc3339" | toRelativeTime }}></span></li>
+                      <li class="shrink-0">{{ .Int "node.viewersCount" | formatApproxNumber }}</li>
+                      <li class="min-width-0">
+                          <a
+                              class="block text-truncate"
+                              href="https://twitch.tv/{{ .String "node.broadcaster.login" }}"
+                              target="_blank"
+                              rel="noreferrer"
+                              title="{{ .String "node.broadcaster.displayName" }}"
+                          >{{ .String "node.broadcaster.displayName" }}
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+        {{ end }}
+
+      {{ end }}
+    </div>
+
+widget: &widget-twitch-clips
+  <<: *widget-twitch-base
+  template: |
+    <div class="cards-grid collapsible-container" data-collapse-after-rows="1">
+      {{ range .JSON.Array "data.game.clips.edges" }}
         <div class="card widget-content-frame thumbnail-parent">
             <img
                 class="video-thumbnail thumbnail"
                 loading="lazy"
-                src="https://static-cdn.jtvnw.net/previews-ttv/live_user_{{ .String "node.broadcaster.login" }}-440x248.jpg"
+                src="{{ .String "node.thumbnailURL" }}"
                 alt=""
             >
             <div class="margin-top-10 margin-bottom-widget flex flex-column grow padding-inline-widget">
-                <a
-                    class="text-truncate-2-lines margin-bottom-auto color-highlight"
-                    href="https://twitch.tv/{{ .String "node.broadcaster.login" }}"
-                    target="_blank"
-                    rel="noreferrer"
-                    title="{{ .String "node.broadcaster.broadcastSettings.title" }}"
-                >{{ .String "node.broadcaster.broadcastSettings.title" }}</a>
-                <ul class="list-horizontal-text flex-nowrap margin-top-7">
-                    <li class="shrink-0">{{ .Int "node.viewersCount" | formatApproxNumber }}</li>
-                    <li class="min-width-0">
-                        <a
-                            class="block text-truncate"
+                <div class="margin-bottom-3">@<a
+                            class="text-truncate"
                             href="https://twitch.tv/{{ .String "node.broadcaster.login" }}"
                             target="_blank"
                             rel="noreferrer"
                             title="{{ .String "node.broadcaster.displayName" }}"
                         >{{ .String "node.broadcaster.displayName" }}
+                        </a></div>
+                <a
+                    class="text-truncate margin-bottom-auto color-highlight"
+                    href="{{ .String "node.url" }}"
+                    target="_blank"
+                    rel="noreferrer"
+                    title="{{ .String "node.title" }}"
+                >{{ .String "node.title" }}</a>
+                <ul class="list-horizontal-text flex-nowrap margin-top-7">
+                    <li><span {{ .String "node.createdAt" | parseTime "rfc3339" | toRelativeTime }}></span></li>
+                    <li class="shrink-0">{{ .Int "node.viewCount" | formatApproxNumber }}</li>
+                    <li class="min-width-0">by <a
+                            class="text-truncate"
+                            href="https://twitch.tv/{{ .String "node.curator.login" }}"
+                            target="_blank"
+                            rel="noreferrer"
+                            title="{{ .String "node.curator.displayName" }}"
+                        >{{ .String "node.curator.displayName" }}
                         </a>
                     </li>
                 </ul>
@@ -87,26 +158,25 @@ widget-twitch-cards: &widget-twitch-cards
       {{ end }}
     </div>
 
-widget-twitch-gta: &widget-twitch-gta
+widget: &widget-twitch-gta
   <<: *widget-twitch-carousel
   title: Grand Theft Auto V Live Streams
   body:
     query: |
       query {
-        game(name: "Grand Theft Auto V") {
-          id
-          name
-          streams(first: 10, options: { languages: ["EN", "TR"] }) {
+        game(id: "32982") {
+          streams(first: 14, options: { languages: ["EN", "TR"] }) {
             edges {
               node {
                 id
+                createdAt
+                previewImageURL(width: 440, height: 248)
+                type
                 viewersCount
                 broadcaster {
-                  id
                   login
                   displayName
-                  profileImageURL(width: 50)
-                  primaryColorHex
+                  profileImageURL(width: 300)
                   broadcastSettings {
                     title
                   }
@@ -117,26 +187,25 @@ widget-twitch-gta: &widget-twitch-gta
         }
       }
 
-widget-twitch-dev: &widget-twitch-dev
+widget: &widget-twitch-dev
   <<: *widget-twitch-carousel
   title: Software and Game Development"
   body:
     query: |
       query {
-        game(name: "Software and Game Development") {
-          id
-          name
+        game(id: "1469308723") {
           streams(first: 14, options: { languages: ["EN", "TR"] }) {
             edges {
               node {
                 id
+                createdAt
+                previewImageURL(width: 440, height: 248)
+                type
                 viewersCount
                 broadcaster {
-                  id
                   login
                   displayName
-                  profileImageURL(width: 50)
-                  primaryColorHex
+                  profileImageURL(width: 300)
                   broadcastSettings {
                     title
                   }
@@ -147,26 +216,25 @@ widget-twitch-dev: &widget-twitch-dev
         }
       }
 
-widget-twitch-lol: &widget-twitch-lol
+widget: &widget-twitch-lol
   <<: *widget-twitch-carousel
   title: League of Legends Live Streams
   body:
     query: |
       query {
-        game(name: "League of Legends") {
-          id
-          name
+        game(id: "21779") {
           streams(first: 14, options: { languages: ["EN", "TR"] }) {
             edges {
               node {
                 id
+                createdAt
+                previewImageURL(width: 440, height: 248)
+                type
                 viewersCount
                 broadcaster {
-                  id
                   login
                   displayName
-                  profileImageURL(width: 50)
-                  primaryColorHex
+                  profileImageURL(width: 300)
                   broadcastSettings {
                     title
                   }
@@ -177,25 +245,24 @@ widget-twitch-lol: &widget-twitch-lol
         }
       }
 
-widget-twitch-irl: &widget-twitch-irl
-  <<: *widget-twitch-cards
+widget: &widget-twitch-irl
+  <<: *widget-twitch-streams
   body:
     query: |
       query {
-        game(name: "IRL") {
-          id
-          name
+        game(id: "509672") {
           streams(first: 30, options: { languages: ["EN", "TR"] }) {
             edges {
               node {
                 id
+                createdAt
+                previewImageURL(width: 440, height: 248)
+                type
                 viewersCount
                 broadcaster {
-                  id
                   login
                   displayName
-                  profileImageURL(width: 50)
-                  primaryColorHex
+                  profileImageURL(width: 300)
                   broadcastSettings {
                     title
                   }
@@ -206,28 +273,157 @@ widget-twitch-irl: &widget-twitch-irl
         }
       }
 
-widget-twitch-just-chatting: &widget-twitch-just-chatting
+widget: &widget-twitch-just-chatting
   <<: *widget-twitch-carousel
+  title: Just Chatting [EN, TR]
   body:
     query: |
       query {
-        game(name: "Just Chatting") {
-          id
-          name
+        game(id: "509658") {
           streams(first: 14, options: { languages: ["EN", "TR"] }) {
             edges {
               node {
                 id
+                createdAt
+                previewImageURL(width: 440, height: 248)
+                type
                 viewersCount
                 broadcaster {
-                  id
                   login
                   displayName
-                  profileImageURL(width: 50)
-                  primaryColorHex
+                  profileImageURL(width: 300)
                   broadcastSettings {
                     title
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+
+widget: &widget-twitch-top-streams
+  <<: *widget-twitch-streams
+  title: Top Streams [EN, TR]
+  body:
+    query: |
+      query {
+        streams(first: 30, options: { languages: [EN, TR] }) {
+          edges {
+            node {
+                id
+                createdAt
+                previewImageURL(width: 440, height: 248)
+                type
+                viewersCount
+                broadcaster {
+                  login
+                  displayName
+                  profileImageURL(width: 300)
+                  broadcastSettings {
+                    title
+                  }
+                }
+                game {
+                  displayName
+                }
+            }
+          }
+        }
+      }
+
+widget: &widget-twitch-tr-streams
+  <<: *widget-twitch-streams
+  title: Top Streams [TR]
+  body:
+    query: |
+      query {
+        game(name: "Just Chatting") {
+          streams(first: 30, options: { languages: ["TR"] }) {
+            edges {
+              node {
+                id
+                createdAt
+                previewImageURL(width: 440, height: 248)
+                type
+                viewersCount
+                broadcaster {
+                  login
+                  displayName
+                  profileImageURL(width: 300)
+                  broadcastSettings {
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+widget: &widget-twitch-tr-clips
+  <<: *widget-twitch-clips
+  title: Popular Clips - Last Week [TR]
+  body:
+    query: |
+      query {
+        game(name: "Just Chatting") {
+          clips(first: 24, criteria: { languages: [TR], period: LAST_WEEK }) {
+            edges {
+              node {
+                url
+                title
+                durationSeconds
+                createdAt
+                thumbnailURL(width: 440, height: 248)
+                viewCount
+                game {
+                  displayName
+                }
+                curator {
+                  login
+                  displayName
+                  profileImageURL(width: 50)
+                }
+                broadcaster {
+                  login
+                  displayName
+                  profileImageURL(width: 50)
+                }
+              }
+            }
+          }
+        }
+      }
+
+widget: &widget-twitch-en-clips
+  <<: *widget-twitch-clips
+  title: Popular Clips - Last Week [EN]
+  body:
+    query: |
+      query {
+        game(name: "Just Chatting") {
+          clips(first: 24, criteria: { languages: [EN], period: LAST_WEEK }) {
+            edges {
+              node {
+                url
+                title
+                durationSeconds
+                createdAt
+                thumbnailURL(width: 440, height: 248)
+                viewCount
+                game {
+                  displayName
+                }
+                curator {
+                  login
+                  displayName
+                  profileImageURL(width: 50)
+                }
+                broadcaster {
+                  login
+                  displayName
+                  profileImageURL(width: 50)
                 }
               }
             }
