@@ -5,7 +5,7 @@
   head-widgets:
 
     - <<: *widget-twitch-just-chatting
-      hide-header: true
+    #   hide-header: true
 
     # - type: videos
     #   hide-header: true

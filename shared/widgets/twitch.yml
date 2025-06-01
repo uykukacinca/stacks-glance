@@ -9,6 +9,10 @@ widget: &widget-twitch-base
     Client-Id: kimne78kx3ncx6brgo4mv6wki5h1ko
   body-type: json
 
+widget: &widget-twitch-users
+  <<: *widget-twitch-base
+  template: |
+
 widget: &widget-twitch-carousel
   <<: *widget-twitch-base
   template: |
@@ -426,6 +430,27 @@ widget: &widget-twitch-en-clips
                   profileImageURL(width: 50)
                 }
               }
+            }
+          }
+        }
+      }
+
+widget: &widget-twitch-followed
+  <<: *widget-twitch-users
+  body:
+    query: |
+      query {
+        users(logins:  ["invalidOrBanned", "lck"]) {
+          login
+          displayName
+          profileImageURL(width: 70)
+          stream {
+            title
+            viewersCount
+            createdAt
+            previewImageURL(width: 440, height: 248)
+            game {
+              name
             }
           }
         }
