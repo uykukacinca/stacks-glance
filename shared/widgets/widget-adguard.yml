@@ -1,4 +1,4 @@
-widget-adguard: &widget-adguard
+widget: &widget-adguard
   type: dns-stats
   service: adguard
   hide-graph: true

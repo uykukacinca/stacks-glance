@@ -105,7 +105,7 @@ definitions:
 
   reddit-small: &reddit-small
     <<: *reddit-base
-    limit: 10
+    limit: 15
 
   reddit-vertical: &reddit-vertical
     <<: *reddit-small
@@ -113,7 +113,7 @@ definitions:
 
   reddit-simple: &reddit-simple
     <<: *reddit-base
-    limit: 24
+    limit: 30
     collapse-after: 15
 
   reddit-simple-top-week: &reddit-simple-top-week
@@ -142,7 +142,7 @@ definitions:
     <<: *videos-base
     style: grid-cards
     limit: 30
-    collapse-after-rows: 6
+    collapse-after-rows: 8
 
   videos-grid-half: &videos-grid-half
     <<: *videos-grid
@@ -166,7 +166,7 @@ definitions:
   videos-horizontal: &videos-horizontal
     <<: *videos-base
     style: horizontal-cards
-    limit: 10
+    limit: 14
 
   videos-vertical: &videos-vertical
     <<: *videos-base

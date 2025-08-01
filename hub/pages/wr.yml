@@ -1,0 +1,64 @@
+- name: "#wr"
+  slug: wr
+  width: wide
+  
+  head-widgets:
+
+    - type: split-column
+      max-columns: 2
+      widgets:
+
+        - <<: *widget-twitch-wr
+
+        - <<: *videos-horizontal
+          title: Official Videos
+          channels:
+            - UCd0ZomI5mPkrV735wul5kiw #@wildrift
+
+  columns:
+
+    - size: small
+      widgets:
+
+        - <<: *widget-twitch-followed-wr
+          title: Streamers
+
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Account Management
+                  icon: si:riotgames
+                  url: https://account.riotgames.com/account
+            - title: Wild Rift
+              color: 196 86 62
+              links:
+                - title: Updates
+                  url: https://wildrift.leagueoflegends.com/en-us/news/game-updates
+                - title: Events
+                  url: https://support-wildrift.riotgames.com/hc/en-us/sections/360010851213-Current-Events
+                - title: WR Fire
+                  url: https://www.wildriftfire.com
+                - title: WR Meta
+                  url: https://wr-meta.com
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 3
+          widgets:
+
+            - <<: *reddit-cover
+              subreddit: wildrift
+
+            - <<: *videos-grid
+              title: Videos
+              channels:
+                - UC3ofqT9q3pDxTd2UlNgSN0Q #@KanbaruWR
+                - UChcxXq9PudkG6K6gpFl1M-Q #@BrokenSupport
+                - UCowkr3QJ-TvX5siY3piQ2Xw #@RoyalWildRift
+                - UCVl23bJtVvs5LZjrzamIbpQ #@HellsDevilwildrift
+                - UC-QXKllezN9OxLh6S-F8B9g #@OUTSIDERYT
+                - UCvASVZzW0X3ma8aYsFhVDJw #@RiftGuidesWildRift
+
+            - <<: *riot-wildrift

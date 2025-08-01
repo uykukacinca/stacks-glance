@@ -1,11 +1,13 @@
-eksisozluk-base: &eksisozluk-base
+widget: &eksisozluk-base
   type: custom-api
   title: Ekşi Sözlük
   cache: *short-cache
   css-class: glimpse-header-tools
+  options:
+    collapse-after: 12
   template: |
+    {{ $collapseAfter := .Options.IntOr "collapse-after" 10 }}
     <div class="flex gap-10 tools">
-
       <div data-popover-type="html">
         <div data-popover-html="">
           <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
@@ -15,13 +17,13 @@ eksisozluk-base: &eksisozluk-base
           <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
         </svg>
       </div>
-
     </div>
-    <ul class="list list-gap-10 collapsible-container" data-collapse-after="12">
-    {{ range .JSON.Array "data.items" }}
+
+    <ul class="list list-gap-10 collapsible-container" data-collapse-after="{{ $collapseAfter }}">
+    {{ range .JSON.Array "data.threads" }}
       <li class="flex gap-10">
         <div class="grow min-width-0">
-          <a class="size-title-dynamic color-primary-if-not-visited" href="{{ .String "url" }}">{{ .String "title" }}</a>
+          <a class="size-title-dynamic color-primary-if-not-visited" href="{{ .String "url.full" }}">{{ .String "title" }}</a>
           {{ if .Exists "comments" }}
           <div class="inline-block forum-post-tags-container">
             <ul class="attachments">
@@ -34,51 +36,51 @@ eksisozluk-base: &eksisozluk-base
     {{ end }}
     </ul>
 
-eksisozluk-gundem: &eksisozluk-gundem
+widget: &eksisozluk-gundem
   <<: *eksisozluk-base
   title: Gündem
-  url: ${SECRET_API_URL}/api/eksisozluk/threads/gundem
+  url: ${SECRET_API_URL}/api/eksisozluk/channel/gundem
   parameters:
     filters: "siyaset"
 
-eksisozluk-javascript: &eksisozluk-javascript
+widget: &eksisozluk-javascript
   <<: *eksisozluk-base
   title: "#javascript"
   url: ${SECRET_API_URL}/api/eksisozluk/search
   parameters:
     query: "javascript"
 
-eksisozluk-tarihte-bugun: &eksisozluk-tarihte-bugun
+widget: &eksisozluk-tarihte-bugun
   <<: *eksisozluk-base
   cache: *deep-cache
   title: Tarihte Bugün
-  url: ${SECRET_API_URL}/api/eksisozluk/threads/tarihte-bugun
+  url: ${SECRET_API_URL}/api/eksisozluk/channel/tarihte-bugun
 
-eksisozluk-bugun: &eksisozluk-bugun
+widget: &eksisozluk-bugun
   <<: *eksisozluk-base
   title: Bugün
-  url: ${SECRET_API_URL}/api/eksisozluk/threads/bugun
+  url: ${SECRET_API_URL}/api/eksisozluk/channel/bugun
 
-eksisozluk-debe: &eksisozluk-debe
+widget: &eksisozluk-debe
   <<: *eksisozluk-base
   cache: 12h
   title: "DEBE"
-  url: ${SECRET_API_URL}/api/eksisozluk/threads/debe
+  url: ${SECRET_API_URL}/api/eksisozluk/channel/debe
 
-eksisozluk-ghebe: &eksisozluk-ghebe
+widget: &eksisozluk-ghebe
   <<: *eksisozluk-base
   cache: 12h
   title: "GHEBE"
-  url: ${SECRET_API_URL}/api/eksisozluk/threads/ghebe
+  url: ${SECRET_API_URL}/api/eksisozluk/channel/ghebe
 
-eksisozluk-siyaset: &eksisozluk-siyaset
+widget: &eksisozluk-siyaset
   <<: *eksisozluk-base
   title: "#siyaset"
-  url: ${SECRET_API_URL}/api/eksisozluk/threads/siyaset
+  url: ${SECRET_API_URL}/api/eksisozluk/channel/siyaset
 
-eksisozluk-haber: &eksisozluk-haber
+widget: &eksisozluk-haber
   <<: *eksisozluk-base
   title: "#haber"
-  url: ${SECRET_API_URL}/api/eksisozluk/threads/haber
+  url: ${SECRET_API_URL}/api/eksisozluk/channel/haber
 
   

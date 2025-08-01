@@ -3,11 +3,48 @@
   width: wide
   columns:
 
+    - size: small
+      widgets:
+
+        - type: bookmarks
+          groups:
+            - title: The Crew Motorfest
+              links:
+                - title: Steam Charts
+                  icon: si:steamdb
+                  url: https://steamdb.info/app/2698940/charts/
+                - title: Steam Community
+                  icon: si:steam
+                  url: https://steamcommunity.com/app/2698940/discussions/
+                - title: "@TheCrewGame"
+                  icon: si:x
+                  url: https://x.com/thecrewgame?lang=en
+                - title: "r/The_Crew"
+                  icon: si:reddit
+                  url: ${REDDIT_URL}/r/The_Crew/
+
+        - <<: *crew-motorfest
+
+    - size: full
+      widgets:
+
+        - <<: *videos-grid
+          title: Gaming
+          channels:
+            - UCeePGrzBN3B2GurSkd_bwPQ #BlackPanthaa
+            - UC7eUpRaHFzksP1XEsTbrh4Q #MilitiaGamingCommunity
+            - UCUUiwdeFUVRPqfVuLtfMXKA #SidWaj
+
     - size: full
       widgets:
 
         - <<: *videos-grid
           channels:
-            - UCeePGrzBN3B2GurSkd_bwPQ #BlackPanthaa
-            - UC7eUpRaHFzksP1XEsTbrh4Q #MilitiaGamingCommunity
-            - UCUUiwdeFUVRPqfVuLtfMXKA #SidWaj
+            - UCxpbaAGBv4zrRJx_AjGdVLA #bigtimebigtimebigtime
+            - UCIB5XXHNAWWzTOw6guIMYCg #harrysgarage
+            - UCPFrbCgmpkvdkjTxJq6amlQ #ShopCheckpoint
+            - UCZGkMJEmCR1IqUduqt1uFUw #noriyaro
+            - UCT-2OPZT6P8j4nEKW3DXpOA #LegitStreetCars
+            - UCyXiDU5qjfOPxgOPeFWGwKw #ThrottleHouse
+            - UCIRgR4iANHI2taJdz8hjwLw #Shmee150
+            

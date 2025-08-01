@@ -1,4 +1,4 @@
-my-workers-base: &my-workers-base
+widget: &my-workers-base
   type: custom-api
   title: My Workers
   cache: *default-cache
@@ -7,7 +7,7 @@ my-workers-base: &my-workers-base
   headers:
     X-Custom-Auth: ${SECRET_API_TOKEN}
 
-my-workers: &my-workers
+widget: &my-workers
   <<: *my-workers-base
   template: |
     <div class="flex gap-10 tools">
@@ -38,7 +38,7 @@ my-workers: &my-workers
     {{ end }}
     </ul>
 
-my-workers-table: &my-workers-table
+widget: &my-workers-table
   <<: *my-workers-base
   css-class: widget-table widget-domains glimpse-header-tools
   template: |

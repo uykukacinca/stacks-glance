@@ -12,32 +12,33 @@
 
     - size: full
       widgets:
-        - <<: *podcasts-grid
+
+        - <<: *videos-horizontal
           title: WVFRM Podcast
           playlists:
             - PL70yIS6vx_Y2xaKD3w2qb6Eu06jNBdNJb
 
-        - <<: *podcasts-grid
+        - <<: *videos-horizontal
           title: Syntax - Tasty Web Development Treats
           playlists:
             - PLLnpHn493BHHNUfHN5lDf11UD8jQ5Bpzl
 
-        - <<: *podcasts-grid
+        - <<: *videos-horizontal
           title: The WAN Show
           playlists:
             - PL8mG-RkN2uTw7PhlnAr4pZZz2QubIbujH
 
-        - <<: *podcasts-grid
+        - <<: *videos-horizontal
           title: Socially Inept
           channels:
             - UCFe2Kq8Hg15UomoVYdmRg_Q
-            
-        - <<: *podcasts-grid
+ 
+        - <<: *videos-horizontal
           title: Beyond Coding Podcast
           playlists:
             - PLX6ivsCcfHDOzMIUioOofyF-h-niZL6Qj
 
-        - <<: *podcasts-grid
+        - <<: *videos-horizontal
           title: Syntax - Self Host 101
           playlists:
             - PLLnpHn493BHHAxTeLNUZEDLYc8uUwqGXa

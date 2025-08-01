@@ -1,9 +1,12 @@
-gamepass-pc-recently-added: &gamepass-pc-recently-added
+widget: &gamepass-pc-recently-added
   type: custom-api
   title: Recently Added
   title-url: https://www.xbox.com/en-US/xbox-game-pass/games
   cache: *deep-cache
-  url: ${CUSTOM_API_URL}/gamepass/pc-recently-added?language=tr-tr&market=TR
+  url: ${CUSTOM_API_URL}/gamepass/pc-recently-added
+  parameters:
+    language: tr-tr
+    market: TR
   template: |
     <ul class="list list-gap-14 collapsible-container" data-collapse-after="3">
       {{ range .JSON.Array "games" }}

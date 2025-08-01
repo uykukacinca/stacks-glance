@@ -1,4 +1,4 @@
-links-local: &links-local
+widget: &links-local
   title: Local Network
   color: 31 100 71
   links:
@@ -7,14 +7,14 @@ links-local: &links-local
     - title: Archer C50
       url: http://192.168.0.1
 
-links-privacy: &links-privacy
+widget: &links-privacy
   links:
     - title: Browser Leaks
       url: https://browserleaks.com/ip
     - title: 1.1.1.1 Debug
       url: https://one.one.one.one/help
 
-links-other: &links-other
+widget: &links-other
   links:
     - title: Speed Test
       url: https://speed.cloudflare.com
@@ -23,7 +23,7 @@ links-other: &links-other
     - title: Configuration
       url: https://github.com/glanceapp/glance/blob/main/docs/configuration.md#configuration
 
-links-dev: &links-dev
+widget: &links-dev
   links:
     - title: MDN Web Docs
       url: https://developer.mozilla.org/en-US/docs/Web
@@ -32,7 +32,7 @@ links-dev: &links-dev
     - title: Product Hunt
       url: https://www.producthunt.com
 
-links-domains: &links-domains
+widget: &links-domains
   links:
     - title: ICANN Lookup
       url: https://lookup.icann.org/en/lookup
@@ -41,14 +41,14 @@ links-domains: &links-domains
     - title: TLDes
       url: https://tldes.com/cheapest-domains
 
-links-fun: &links-fun
+widget: &links-fun
   links:
     - title: Neal.fun
       url: https://neal.fun
     - title: Bop Spotter
       url: https://walzr.com/bop-spotter
 
-links-tailwind: &links-tailwind
+widget: &links-tailwind
   links:
     - title: Tailwind CSS
       icon: si:tailwindcss
@@ -57,7 +57,7 @@ links-tailwind: &links-tailwind
       icon: si:tailwindcss
       url: https://tailwindcss.com/plus/ui-blocks
 
-links-ui: &links-ui
+widget: &links-ui
   links:
     - title: Origin UI
       url: https://originui.com
@@ -66,14 +66,14 @@ links-ui: &links-ui
     - title: shadcn/ui
       url: https://ui.shadcn.com
 
-links-icons: &links-icons
+widget: &links-icons
   links:
     - title: Simple Icons
       url: https://simpleicons.org
     - title: Hero Icons
       url: https://heroicons.com
 
-links-hosting: &links-hosting
+widget: &links-hosting
   hide-arrow: true
   links:
     - title: Netlify
@@ -92,7 +92,7 @@ links-hosting: &links-hosting
       icon: si:vercel
       url: https://vercel.com
 
-links-registrar: &links-registrar
+widget: &links-registrar
   hide-arrow: true
   links:
     - title: Cloudflare
@@ -108,14 +108,14 @@ links-registrar: &links-registrar
       icon: si:porkbun
       url: https://porkbun.com/event/holidaysales
 
-links-cloudflare: &links-cloudflare
+widget: &links-cloudflare
   links:
     - title: Workers & Pages
       url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/workers-and-pages
     - title: D1 SQL Database
       url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/workers/d1
 
-links-cheatsheets: &links-cheatsheets
+widget: &links-cheatsheets
   links:
     - title: Git Commands
       url: https://github.com/LeCoupa/awesome-cheatsheets/blob/master/tools/git.sh
@@ -129,7 +129,7 @@ links-cheatsheets: &links-cheatsheets
       url: https://github.com/glanceapp/glance/blob/main/docs/configuration.md#configuration
 
 
-links-developer: &links-developer
+widget: &links-developer
   links:
     - title: Github Trending
       url: https://github.com/trending
@@ -138,7 +138,7 @@ links-developer: &links-developer
     - title: DEV.to
       url: https://dev.to
 
-links-javascript: &links-javascript
+widget: &links-javascript
   links:
     - title: Javascript Algorithms
       url: https://github.com/trekhleb/javascript-algorithms
@@ -153,7 +153,7 @@ links-javascript: &links-javascript
     - title: Learn Regex
       url: https://github.com/ziishaned/learn-regex
 
-links-proxmox: &links-proxmox
+widget: &links-proxmox
   color: 31 100 71
   links:
     - title: Proxmox Scripts
@@ -161,12 +161,12 @@ links-proxmox: &links-proxmox
     - title: Download Proxmox VE
       url: https://www.proxmox.com/en/downloads
 
-links-homelab: &links-homelab
+widget: &links-homelab
   links:
     - title: OPNsense
       url: https://opnsense.org/download
 
-links-awesome: &links-awesome
+widget: &links-awesome
   links:
     - title: Privacy
       url: https://github.com/Lissy93/awesome-privacy
@@ -183,7 +183,7 @@ links-awesome: &links-awesome
     - title: Selfhosted
       url: https://github.com/awesome-selfhosted/awesome-selfhosted
 
-links-subtitles: &links-subtitles
+widget: &links-subtitles
   title: Subtitles
   color: 47 92 53
   links:
@@ -192,7 +192,7 @@ links-subtitles: &links-subtitles
     - title: Open Subtitles
       url: https://www.opensubtitles.org/tr
 
-links-earthquakes: &links-earthquakes
+widget: &links-earthquakes
   links:
     - title: X Deprem
       url: https://x.com/i/lists/1915151387949973738
@@ -207,19 +207,19 @@ links-earthquakes: &links-earthquakes
     - title: KOERİ Deprem Haritası
       url: http://udim.koeri.boun.edu.tr/zeqmap/hgmmap.asp
 
-bookmarks-awesome: &bookmarks-awesome
+widget: &bookmarks-awesome
   type: bookmarks
   title: Awesome Lists
   groups:
     - <<: *links-awesome
 
-bookmarks-homelab: &bookmarks-homelab
+widget: &bookmarks-homelab
   type: bookmarks
   groups:
     - <<: *links-proxmox
     - <<: *links-homelab
 
-bookmarks-home: &bookmarks-home
+widget: &bookmarks-home
   type: bookmarks
   groups:
     - title: Local Network
@@ -230,19 +230,19 @@ bookmarks-home: &bookmarks-home
       <<: *links-privacy
     - <<: *links-other
 
-bookmarks-registrar: &bookmarks-registrar
+widget: &bookmarks-registrar
   type: bookmarks
   groups:
     - <<: *links-registrar
 
-bookmarks-developer: &bookmarks-developer
+widget: &bookmarks-developer
   type: bookmarks
   groups:
     - <<: *links-developer
     - title: Cheatsheets
       <<: *links-cheatsheets
 
-bookmarks-dashboard: &bookmarks-dashboard
+widget: &bookmarks-dashboard
   type: bookmarks
   groups:
     - <<: *links-registrar
@@ -256,7 +256,7 @@ bookmarks-dashboard: &bookmarks-dashboard
       color: 129 68 58
       <<: *links-local
 
-bookmarks-frontend: &bookmarks-frontend
+widget: &bookmarks-frontend
   type: bookmarks
   groups:
     - links:

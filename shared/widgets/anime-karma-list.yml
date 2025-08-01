@@ -1,10 +1,10 @@
-anime-karma-base: &anime-karma-base
+widget: &anime-karma-base
   type: custom-api
   title: Anime Karma List
   cache: *default-cache
   css-class: widget widget-type-reddit glimpse-list-bordered glimpse-cover glimpse-cover-large
 
-anime-karma-list: &anime-karma-list
+widget: &anime-karma-list
   <<: *anime-karma-base
   title: Anime Karma List - Top
   url: https://animekarmalist.com/api/episodes
@@ -61,7 +61,7 @@ anime-karma-list: &anime-karma-list
     {{ end }}
     </ul>
 
-anime-karma-list-7days: &anime-karma-list-7days
+widget: &anime-karma-list-7days
   <<: *anime-karma-base
   title: Anime Karma List - Last 7 Days
   template: |

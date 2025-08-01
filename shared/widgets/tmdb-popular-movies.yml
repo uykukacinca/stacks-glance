@@ -1,4 +1,4 @@
-tmdb-popular-movies: &tmdb-popular-movies
+widget: &tmdb-popular-movies
   type: custom-api
   title: Popular Movies
   cache: *deep-cache

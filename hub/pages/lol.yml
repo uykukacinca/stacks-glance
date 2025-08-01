@@ -4,25 +4,21 @@
   
   head-widgets:
 
-    - <<: *widget-twitch-lol
+    - type: split-column
+      max-columns: 2
+      widgets:
+
+        - <<: *widget-twitch-lol
+
+        - <<: *widget-kick-lol
 
   columns:
 
     - size: small
       widgets:
 
-        - <<: *twitch-channels
+        - <<: *widget-twitch-followed-lol
           title: Streamers
-          collapse-after: 5
-          channels:
-            - riotgames
-            - lec
-            - lck
-            - lpl
-            - riotgamesturkish
-            - caedrel
-            - thebausffs
-            - lol_nemesis
 
         - type: bookmarks
           groups:
@@ -30,75 +26,55 @@
                 - title: Account Management
                   icon: si:riotgames
                   url: https://account.riotgames.com/account
-            - title: League of Legends
-              color: 40 63 48
-              links:
-                - title: News
-                  url: https://www.leagueoflegends.com/en-us/news
-                - title: Patch Notes
-                  url: https://www.leagueoflegends.com/en-us/news/tags/patch-notes
-                - title: E-sports
-                  url: https://lolesports.com/tr-TR
+            - links:
                 - title: Mobalytics
                   url: https://mobalytics.gg/lol/champions
-                - title: U.GG
-                  url: https://u.gg/lol/champions
                 - title: League of Graphs
                   url: https://www.leagueofgraphs.com
                 - title: Liquipedia
                   url: https://liquipedia.net/leagueoflegends/Main_Page
                 - title: Event VODs
                   url: https://eventvods.com/featured/lol
-            - title: Wildrift
-              color: 196 86 62
-              links:
-                - title: Updates
-                  url: https://wildrift.leagueoflegends.com/en-us/news/game-updates
-                - title: Events
-                  url: https://support-wildrift.riotgames.com/hc/en-us/sections/360010851213-Current-Events
-                - title: WR Fire
-                  url: https://www.wildriftfire.com
-                - title: WR Meta
-                  url: https://wr-meta.com
-            - title: Team Fight Tactics
-              color: 42 100 52
-              links:
-                - title: News
-                  url: https://teamfighttactics.leagueoflegends.com/tr-tr/news
+
+        - <<: *riot-lol-patch-notes
 
     - size: full
       widgets:
 
-        - type: group
+        - type: split-column
+          max-columns: 3
           widgets:
 
-            - <<: *reddit-cover
-              subreddit: leagueoflegends
-              title: r/lol
-            - <<: *reddit-cover
-              subreddit: wildrift
-            - <<: *reddit-cover
-              subreddit: SummonerSchool
-            - <<: *reddit-cover
-              subreddit: arcane
+            - type: group
+              widgets:
 
-    - size: full
-      widgets:
+                - <<: *reddit-cover
+                  subreddit: leagueoflegends
 
-        - <<: *videos-grid
-          title: Riot
-          collapse-after-rows: 1
-          channels:
-            - UC2t5bjwHdUX4vM2g8TRDq5g #@leagueoflegends
-            - UCd0ZomI5mPkrV735wul5kiw #@wildrift
+                - <<: *reddit-cover
+                  subreddit: SummonerSchool
 
-        - <<: *videos-grid
-          title: Videos
-          collapse-after-rows: 4
-          channels:
-            - UCu7ODDeIZ4x1rJwM1LCVL8w #@Thebausffs
-            - UCiUHGAbtjCrLO3ZPrTfle3Q #@Necrit
-            - UCOFiUtKui6-x4T-J7_DgCag #@Caedrel
-            - UCP9q8DRbsTDPhU4E0R3-1rA #@PekinWoof
-            # - UC3ofqT9q3pDxTd2UlNgSN0Q #@KanbaruWR
-            # - UChcxXq9PudkG6K6gpFl1M-Q #@BrokenSupport
+                - <<: *reddit-cover
+                  subreddit: arcane
+
+
+            - type: split-column
+              max-columns: 1
+              widgets:
+
+                - <<: *riot-lolesports
+
+                - type: group
+                  widgets:
+
+                    - <<: *riot-leagueoflegends
+
+            - <<: *videos-grid
+              title: Videos
+              channels:
+                - UC0aFOAetT4Hur0qmOnmmbBA #@Polypuff
+                - UChwh1KpZf0Y5KsmaCCMSt6A #@AloisNL
+                - UCu7ODDeIZ4x1rJwM1LCVL8w #@Thebausffs
+                - UCiUHGAbtjCrLO3ZPrTfle3Q #@Necrit
+                - UCOFiUtKui6-x4T-J7_DgCag #@Caedrel
+                - UCP9q8DRbsTDPhU4E0R3-1rA #@PekinWoof

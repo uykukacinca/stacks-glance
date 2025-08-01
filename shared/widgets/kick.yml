@@ -1,0 +1,227 @@
+widget: &widget-kick-base
+  type: custom-api
+  title: Kick
+  cache: *short-cache
+  url: https://api.kick.com/public/v1/channels
+  css-class: glimpse-header-tools
+  method: GET
+  headers:
+    Authorization: Bearer ${KICK_TOKEN}
+
+widget: &widget-kick-custom
+  type: custom-api
+  title: Kick
+  cache: *short-cache
+  css-class: glimpse-header-tools
+
+widget: &widget-kick-users
+  <<: *widget-kick-custom
+  template: |
+    {{ $collapseAfter := .Options.IntOr "collapse-after" 5 }}
+    <div class="flex gap-10 tools">
+      <div data-popover-type="html">
+        <div data-popover-html="">
+          <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
+          <div>Cache: <span class="color-highlight">{{ .JSON.String "datetime" }}</span></div>
+        </div>
+        <svg class="glimpse-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+        </svg>
+      </div>
+    </div>
+
+    {{ $streams := .JSON.Array "data" | sortByInt "stream.viewer_count" "desc" }}
+    {{ if $streams | len | eq 0 }}
+      <div class="widget-content ">
+        <p>No streamers found</p>
+      </div>
+    {{ else }}
+      <ul class="list list-gap-14 collapsible-container" data-collapse-after="{{ $collapseAfter }}">
+      {{ range $streams }}
+        <li>
+          <div class=" {{ if .Bool "stream.is_live" }}twitch-channel-live {{ end }}flex gap-10 items-start thumbnail-parent">
+            <div class="twitch-channel-avatar-container" data-popover-type="html" data-popover-position="above" data-popover-margin="0.15rem" data-popover-offset="0.2">
+              {{ if .Bool "stream.is_live" }}
+              <div data-popover-html="">
+                  <img class="twitch-stream-preview" src="{{ .String "stream.thumbnail" }}" loading="lazy" alt="">
+                  <p class="margin-top-10 color-highlight text-truncate-3-lines" title="{{ .String "stream_title" }}">{{ .String "stream_title" }}d</p>
+              </div>
+              {{ end }}
+              <a href="https://kick.com/{{ .String "slug" }}" target="_blank" rel="noreferrer">
+                  <img class="twitch-channel-avatar thumbnail" src="{{ .String "broadcaster.profile_picture" }}" alt="" loading="lazy">
+              </a>
+            </div>
+            <div class="min-width-0">
+              <a href="https://kick.com/{{ .String "slug" }}" class="size-h3 color-highlight block text-truncate" target="_blank" rel="noreferrer" title="{{ .String "slug" }}">{{ .String "broadcaster.name" }}</a>              
+              {{ if .Bool "stream.is_live" }}
+              <div class="text-truncate">{{ .String "category.name" }}</div>
+              <ul class="list-horizontal-text">
+                  <li><span {{ .String "stream.start_time" | parseTime "rfc3339" | toRelativeTime }}></span></li>
+                  <li>{{ .Int "stream.viewer_count" | formatApproxNumber }}</li>
+              </ul>
+              {{ else }}
+              <div>Offline</div>
+              {{ end }}
+            </div>
+          </div>
+        </li>
+      {{ end }}
+      </ul>
+    {{ end }}
+
+widget: &widget-kick-carousel
+  <<: *widget-kick-custom
+  frameless: true
+  template: |
+    <div class="flex gap-10 tools">
+
+      <div data-popover-type="html">
+        <div data-popover-html="">
+          <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
+          <div>Cache: <span class="color-highlight">{{ .JSON.String "datetime" }}</span></div>
+        </div>
+        <svg class="glimpse-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+        </svg>
+      </div>
+
+    </div>
+    {{ $streams := .JSON.Array "data" }}
+    {{ if $streams | len | eq 0 }}
+      <div class="widget-content ">
+        <p>No streams found</p>
+      </div>
+    {{ else }}
+      <div class="carousel-container show-right-cutoff">
+        <div class="cards-horizontal carousel-items-container">
+          {{ range $streams }}
+          <div class="card widget-content-frame thumbnail-parent">
+            <img
+                class="video-thumbnail thumbnail"
+                loading="lazy"
+                src="{{ .String "thumbnail" }}"
+                alt=""
+            >
+            <div class="margin-top-10 margin-bottom-widget flex flex-column grow padding-inline-widget">
+              {{ if not (eq "category.name" "") }}
+              <div class="margin-bottom-3 text-truncate">{{ .String "category.name" }}</div>
+              {{ end }}
+              <a
+                  class="text-truncate-2-lines margin-bottom-auto color-highlight"
+                  href="https://kick.com/{{ .String "slug" }}"
+                  target="_blank"
+                  rel="noreferrer"
+                  title="{{ .String "stream_title" }}"
+              >{{ .String "stream_title" }}</a>
+              <ul class="list-horizontal-text flex-nowrap margin-top-7">
+                <li><span {{ .String "started_at" | parseTime "rfc3339" | toRelativeTime }}></span></li>
+                <li class="shrink-0">{{ .Int "viewer_count" | formatApproxNumber }}</li>
+                <li class="min-width-0">
+                  <a
+                      class="block text-truncate"
+                      href="https://kick.com/{{ .String "slug" }}"
+                      target="_blank"
+                      rel="noreferrer"
+                      title="{{ .String "slug" }}"
+                  >@{{ .String "slug" }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+
+widget: &widget-kick-category
+  <<: *widget-kick-custom
+  frameless: true
+  template: |
+    <div class="flex gap-10 tools">
+
+      <div data-popover-type="html">
+        <div data-popover-html="">
+          <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
+          <div>Cache: <span class="color-highlight">{{ .JSON.String "datetime" }}</span></div>
+        </div>
+        <svg class="glimpse-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+        </svg>
+      </div>
+
+    </div>
+    {{ $streams := .JSON.Array "data" }}
+    {{ if $streams | len | eq 0 }}
+      <div class="widget-content ">
+        <p>No streams found</p>
+      </div>
+    {{ else }}
+      <div class="carousel-container show-right-cutoff">
+        <div class="cards-horizontal carousel-items-container">
+          {{ range $streams }}
+          <div class="card widget-content-frame thumbnail-parent">
+            <img
+                class="video-thumbnail thumbnail"
+                loading="lazy"
+                src="{{ .String "thumbnail" }}"
+                alt=""
+            >
+            <div class="margin-top-10 margin-bottom-widget flex flex-column grow padding-inline-widget">
+              <a
+                  class="text-truncate-2-lines margin-bottom-auto color-highlight"
+                  href="https://kick.com/{{ .String "slug" }}"
+                  target="_blank"
+                  rel="noreferrer"
+                  title="{{ .String "stream_title" }}"
+              >{{ .String "stream_title" }}</a>
+              <ul class="list-horizontal-text flex-nowrap margin-top-7">
+                <li><span {{ .String "started_at" | parseTime "rfc3339" | toRelativeTime }}></span></li>
+                <li class="shrink-0">{{ .Int "viewer_count" | formatApproxNumber }}</li>
+                <li class="min-width-0">
+                  <a
+                      class="block text-truncate"
+                      href="https://kick.com/{{ .String "slug" }}"
+                      target="_blank"
+                      rel="noreferrer"
+                      title="{{ .String "slug" }}"
+                  >@{{ .String "slug" }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+
+widget: &widget-kick-followed
+  <<: *widget-kick-users
+  url: ${SECRET_API_URL}/api/kick/streams
+  parameters:
+   id:
+    - 13928 #asmongold
+    - 676 #xqc
+    - 904404 #adinross
+
+widget: &widget-kick-tr-streams
+  <<: *widget-kick-carousel
+  url: ${SECRET_API_URL}/api/kick/livestreams
+  title: Kick Top Streams [TR]
+  parameters:
+   language: tr
+
+widget: &widget-kick-lol
+  <<: *widget-kick-category
+  url: ${SECRET_API_URL}/api/kick/livestreams
+  title: Kick Streams
+  parameters:
+   category: 5
+
+widget: &widget-kick-gta
+  <<: *widget-kick-category
+  url: ${SECRET_API_URL}/api/kick/livestreams
+  title: Kick Streams
+  parameters:
+   category: 8

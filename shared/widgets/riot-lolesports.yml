@@ -1,0 +1,212 @@
+widget: &lolesports-base
+  type: custom-api
+  title: LoL Esports Schedule
+  title-url: https://lolesports.com
+  cache: *short-cache
+  url: ${SECRET_API_URL}/api/lolesports
+  css-class: widget widget-type-reddit glimpse-lolesports glimpse-header-tools
+  template: |
+    {{ $style := .Options.StringOr "style" "compact" }}
+    {{ $collapseAfter := .Options.IntOr "collapse-after" 3 }}
+    <div class="flex gap-10 tools">
+      <div data-popover-type="html">
+        <div data-popover-html="">
+          <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
+          <div>Cache: <span class="color-highlight">{{ .JSON.String "datetime" }}</span></div>
+        </div>
+        <svg class="glimpse-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+        </svg>
+      </div>
+    </div>
+
+    {{ $data := .JSON.Array "data" }}
+    {{ $limit := .Options.IntOr "limit" 40 }}
+    {{ $eventCount := 0 }}
+    
+    <ul class="list list-gap-14 collapsible-container" data-collapse-after="{{ $collapseAfter }}">
+    {{ range $data }}
+      {{ $dateDay := .String "day" }}
+      {{ $dateText := .String "text" }}
+      <li class="">
+        <div class="margin-bottom-7{{ if eq $dateDay "today" }} color-highlight{{ end }}">{{ $dateText }}</div>
+        <ul class="list list-gap-8">
+        {{ range $eventIndex, $event := .Array "events" }}
+          {{ $eventCount = add $eventCount 1 }}
+
+          {{ $id := $event.String "id" }}
+          {{ $state := $event.String "state" }}
+          {{ $hasVod := $event.Bool "hasVod" }}
+
+          {{ $featured := or (eq $style "detailed") (eq $state "inProgress") (and (eq $dateDay "today") (eq $state "unstarted")) (and (eq $dateDay "tomorrow") (eq $eventIndex 0)) }}
+
+          <li>
+          {{ if $featured }}
+          <div class="rounded event {{ $state }}">
+            <div class="grid-center items-center justify-center">
+
+              <div class="flex">
+                {{ if eq $state "inProgress" }}
+                  <div class="badge">LIVE</div>
+                {{ else if eq $state "completed" }}
+                  <div  class="badge">ENDED</div>
+                {{ else }}
+                  {{ $event.String "time" }}
+                {{ end }}
+              </div>
+
+              <div class="grid-center size-h4 gap-10" data-popover-type="html">
+                <div data-popover-html="">
+                {{ range $teams := .Array "teams" }}
+                  <div><span class="color-highlight">{{ $teams.String "code" }}</span> {{ $teams.String "name" }}</div>
+                {{ end }}
+                </div>
+              {{ range $i, $teams := .Array "teams" }}
+                <div class="flex gap-10 item-{{ $i }} team {{ $teams.String "outcome" }}">
+                    <img src="{{ or ($teams.String "lightImage") ($teams.String "image") }}" height="22" width="22" loading="lazy">
+                    <span class="color-highlight code">{{ $teams.String "code" }}</span>
+                  {{ if or (eq $state "completed") (eq ($teams.String "inProgress") "win") }}
+                    <div>{{ $teams.String "wins" }}</div>
+                  {{ end }}
+                </div>
+                {{ if eq $i 0 }}
+                  {{ if eq $state "unstarted" }}
+                    <div>vs</div>
+                  {{ else }}
+                    <div class="color-subdue">/</div>
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+              </div>
+
+              {{ if and (eq $state "inProgress") (gt ($event.Int "currentMatch") 0) }}
+              <div class="color-highlight text-right">Game {{ $event.String "currentMatch" }}</div>
+              {{ end }}
+
+            </div>
+            <div class="grid-center items-center justify-center margin-top-3">
+
+              <div class="flex">
+                {{ if eq $state "inProgress" }}
+                  {{ if .Array "streams" }}
+                  <div data-popover-type="html">
+                    <div data-popover-html="">
+                    <div class="flex gap-10 flex-column">
+                    {{ range $locales := .Array "streams" }}
+                      <div class="flex gap-10 flex-column">
+                        <div>{{ .String "translatedName" }}</div>
+                        {{ range $locales.Array "streams" }}
+                          {{ $provider := .String "provider" }}
+                          <div class="flex gap-5 items-center">
+                            <img class="flat-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/{{ $provider }}.svg" alt="" height="20" width="20" loading="lazy">
+                            <a class="color-highlight bookmarks-link" href="{{ .String "link" }}" target="_blank" rel="noreferrer">{{ if eq $provider "youtube" }}Youtube{{else}}@{{ .String "parameter" }}{{ end }}</a>
+                          </div>
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                    </div>
+                    </div>
+                    <div class="bookmarks-link">Streams</div>
+                  </div>
+                  {{ end }}
+                {{ else if eq $state "completed" }}
+                  {{ if $hasVod }}
+                  <a class="bookmarks-link" href="https://lolesports.com/vod/{{ $id }}/1" target="_blank" rel="noreferrer">VODs</a>
+                  {{ end }}
+                {{ else }}
+                  <div><span {{ .String "startTime" | parseTime "rfc3339" | toRelativeTime }}></span></div>
+                {{ end }}
+              </div>
+
+              <ul class="list-horizontal-text flex-nowrap text-compact">
+                <li>{{ .String "league.name" }}</li>
+                <li>{{ .String "blockName" }}</li>
+              </ul>
+
+              <div class="text-right">{{ .String "strategy" }}</div>
+            </div>
+          </div>
+          {{ else }}
+          <div class="rounded event">
+            <div class="grid-center items-center justify-center">
+              <div class="flex">
+              {{ if eq $state "completed" }}
+                {{ if $hasVod }}
+                  <a class="bookmarks-link" href="https://lolesports.com/vod/{{ $id }}/1" target="_blank" rel="noreferrer">VODs</a>
+                {{ else }}
+                  <div  class="badge">ENDED</div>
+                {{ end }}
+              {{ else }}
+                {{ $event.String "time" }}
+              {{ end }}
+              </div>
+
+              <div class="grid-center size-h4 gap-10" data-popover-type="html">
+                <div data-popover-html="">
+                {{ range $teams := .Array "teams" }}
+                  <div><span class="color-highlight">{{ $teams.String "code" }}</span> {{ $teams.String "name" }}</div>
+                {{ end }}
+                </div>
+              {{ range $i, $teams := .Array "teams" }}
+                <div class="flex gap-10 item-{{ $i }} team {{ $teams.String "outcome" }}">
+                  <span class="color-highlight code">{{ $teams.String "code" }}</span>
+                  {{ if eq $state "completed" }}
+                  <div>{{ $teams.String "wins" }}</div>
+                  {{ end }}
+                </div>
+                {{ if eq $i 0 }}
+                  {{ if eq $state "completed" }}
+                    <div class="color-subdue">/</div>
+                  {{ else }}
+                    <div>vs</div>
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+              </div>
+
+              <div class="flex justify-end">
+                <ul class="list-horizontal-text flex-nowrap text-compact text-right">
+                  <li>{{ $event.String "league.name" }}</li>
+                  <li>{{ $event.String "blockName" }}</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+          {{ end }}
+          </li>
+
+        {{ end }}
+        </ul>
+      </li>
+    {{ end }}
+    {{ if or ($data | len | eq 0) (lt $eventCount $limit) }}
+      <li>
+        <p>No More Upcoming Matches Available</p>
+        <p>Check back soon to find more matches</p>
+      </li>
+    {{ end }}
+    </ul>
+
+widget: &riot-lolesports
+  <<: *lolesports-base
+  title: Upcoming Matches
+  parameters:
+    timeZone: "+03"
+    limit: 40
+    language: en-us # ar-ae, de-de, en-gb, en-sg, en-us, es-es, es-mx, fr-fr, id-id, it-it, ja-jp, ko-kr, ms-my, pl-pl, pt-br, ru-ru, th-th, tr-tr, vi-vn, zh-tw
+    league: # msi, lta_n, lta_c, lta_s, lec, lck, lpl, lcp, nacl, emea, fs, worlds, ljl, tcl, nlc, llf, rol, lp, lit, rl, sl, pl, hm, ebl, hll, al, lck_c, cd, pcs, lrn, lrs, tft
+      - worlds
+      - msi
+      - lck
+      - lec
+      - lcp
+      - lta_n
+      # - lta_s
+      - emea
+      # - tcl
+      # - nlc
+  options:
+    limit: 40
+    collapse-after: 3
+    #style: detailed #compact

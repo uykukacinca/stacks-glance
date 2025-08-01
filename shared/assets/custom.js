@@ -49,3 +49,61 @@ function toggleIconClass(icon, className) {
     icon.classList.remove(className);
   }, 1500);
 }
+
+document.addEventListener("mouseenter", (event) => {
+  const target = event.target;
+
+  if (target.classList.contains("carousel-items-container")) {
+    if (target.classList.contains("hover")) {
+      return;
+    }
+    target.classList.add("hover");
+    target.addEventListener("wheel", handleScroll, { passive: false });
+    target.addEventListener("mouseleave", () => {
+      target.classList.remove("hover");
+      target.removeEventListener("wheel", handleScroll);
+    }, { once: true });
+  }
+}, true);
+
+function handleScroll(event) {
+  event.preventDefault();
+
+  // Enhanced scroll speed factors with smoother transitions
+  const deltaFactor = {
+    0: 0.8,    // Pixel mode - slightly reduced for more control
+    1: 12,     // Line mode - adjusted for better feel
+    2: 80,     // Page mode - reduced for smoother scrolling
+  };
+
+  // Improved delta calculation with acceleration curve
+  let delta = event.deltaY * (deltaFactor[event.deltaMode] || 0.8);
+  const acceleration = Math.min(Math.abs(delta) / 100, 1.5);
+  delta = Math.sign(delta) * Math.min(Math.abs(delta) * acceleration, 120);
+
+  const container = event.target.closest(".carousel-items-container");
+  if (!container) return;
+
+  /*
+  // Enhanced boundary detection with buffer zone
+  const bufferZone = 2; // pixels
+  const isAtEnd = container.scrollWidth - container.scrollLeft - container.clientWidth <= bufferZone;
+  const isAtStart = container.scrollLeft <= bufferZone;
+
+  const isScrollingForward = delta > 0;
+  const isScrollingBackward = delta < 0;
+
+  // Improved boundary handling with gradual slowdown
+  if (isAtEnd && isScrollingForward || isAtStart && isScrollingBackward) {
+    container.classList.remove("hover");
+    container.removeEventListener("wheel", handleScroll);
+    return;
+  }
+  */
+
+  // Smoother scroll with dynamic behavior
+  container.scrollBy({
+    left: delta,
+    behavior: container.scrollWidth > container.clientWidth * 3 ? "auto" : "smooth"
+  });
+}

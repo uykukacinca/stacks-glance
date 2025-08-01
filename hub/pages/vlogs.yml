@@ -6,37 +6,32 @@
     - size: full
       widgets:
 
-        - <<: *podcasts-grid
+        - <<: *videos-horizontal
           title: Casey Neistat
           channels:
             - UCtinbF-Q-fVthA0qrFQTgXQ
 
-        - <<: *podcasts-grid
+        - <<: *videos-horizontal
           title: Mike Okay
           channels:
             - UCpp3cHR9TWVyXqL1AVw4XkA
 
-        - <<: *podcasts-grid
+        - <<: *videos-horizontal
           title: Emre Durmuş
           channels:
             - UClCBG771sRO6Ap9s84Je7Eg
 
-        - <<: *podcasts-grid
-          title: Mert Ozturk
-          channels:
-            - UCxxsGtsGhZE9KPgUFj-WtIA
-
-        - <<: *podcasts-grid
+        - <<: *videos-horizontal
           title: Testo Taylan
           channels:
             - UC1PluvjVa3GI5HJhul5lszg
 
-        - <<: *podcasts-grid
+        - <<: *videos-horizontal
+          title: Mert Ozturk
+          channels:
+            - UCxxsGtsGhZE9KPgUFj-WtIA
+
+        - <<: *videos-horizontal
           title: Zeliha Akpınar
           channels:
             - UChME7blpRpX1ViN-oPBpNmw
-
-        - <<: *podcasts-grid
-          title: Literat
-          channels:
-            - UClADLFnTtNyOJEOLB-p5jwQ

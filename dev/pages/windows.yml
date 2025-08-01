@@ -23,6 +23,7 @@
             - ChrisTitusTech/winutil
             - chocolatey/choco
             - HotCakeX/Harden-Windows-Security
+            - windirstat/windirstat
 
         - <<: *html-windows-copy
 

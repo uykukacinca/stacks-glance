@@ -1,8 +1,13 @@
-sonarr-recently-added: &sonarr-recently-added
+widget: &sonarr-recently-added
   type: custom-api
   title: Latest Added Episodes
   cache: *default-cache
-  url: ${SONARR_URL}/api/v3/history?eventType=3&includeSeries=true&includeEpisode=true&pageSize=15
+  url: ${SONARR_URL}/api/v3/history
+  parameters:
+    eventType: 3
+    includeSeries: true
+    includeEpisode: true
+    pageSize: 15
   headers:
     Accept: application/json
     X-Api-Key: ${SONARR_API_KEY}

@@ -48,13 +48,14 @@
             - UC6biysICWOJ-C3P4Tyeggzg #Low Level Learning
             - UCsBjURrPoezykLs9EqgamOA #Fireship
             - UCbRP3c757lWg9M-U7TyEkXA #Theo
-            - UCUyeluBRhGPCW4rPe_UvBZQ #ThePrimeTime
-            - UCsUalyRg43M8D60mtHe6YcA #Honeypot
+            #- UCUyeluBRhGPCW4rPe_UvBZQ #ThePrimeTime
+            #- UCsUalyRg43M8D60mtHe6YcA #CultRepo (formerly Honeypot)
             - UCyU5wkjgQYGRB0hIHMwm2Sg #@syntaxfm
             - UC4MZ7zUHb5eAxU75Dc_nqdQ #@TiffInTech
-            - UCl2mFZoRqjw_ELax4Yisf6w #rossmanngroup
+            #- UCl2mFZoRqjw_ELax4Yisf6w #rossmanngroup
             - UCJXa3_WNNmIpewOtCHf3B0g #lauriewired
             - UCVeW9qkBjo3zosnqUbG7CFw #_JohnHammond
+            - UCXzw-OdotBUcNA9yhuYQBwA #@awesome-coding
 
             #- <<: *videos-grid
             #  title: Tutorials

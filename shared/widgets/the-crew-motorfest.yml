@@ -1,0 +1,38 @@
+widget: &crew-motorfest
+  type: custom-api
+  title: The Crew® Motorfest
+  cache: *long-cache
+  url: https://nimbus.ubisoft.com/api/v1/items
+  parameters:
+    # locale: en-gb
+    # fallbackLocale: en-gb
+    # categoriesFilter: all
+    limit: 10
+    # mediaFilter: all
+    # skip: 0
+    # startIndex: 0
+    tags: "BR-the-crew GA-the-crew-motorfest"
+    # environment: master
+  headers:
+    Authorization: vBD74x38DZbzhwTWaTdhV63Zsec9yuFj
+  template: |
+    {{ $items := .JSON.Array "items" }}
+    <ul class="list list-gap-10 collapsible-container" data-collapse-after="5">
+    {{ range $items }}
+      {{ $type := .String "type" }}
+      {{ $thumbnail := .String "thumbnail.url" }}
+      {{ $title := .String "title" }}
+      {{ $url := concat "https://www.ubisoft.com/en-gb/game/the-crew/motorfest/news-updates" (.String "button.buttonUrl") }}
+      {{ if eq $type "videos" }}
+        {{ $url = concat "https://www.youtube.com/watch?v=" (.String "id") }}
+      {{ end }}
+      <li class="flex">
+        <div data-popover-type="html">
+          <div data-popover-html="">
+            <img src="{{ $thumbnail }}" loading="lazy" alt="{{ $title }}">
+          </div>
+          <a class="size-title-dynamic color-primary-if-not-visited" href="{{ $url }}">{{ $title }}</a>
+        </div>
+      </li>
+    {{ end }}
+    </ul>

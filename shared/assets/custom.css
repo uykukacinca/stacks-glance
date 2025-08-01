@@ -11,6 +11,12 @@
   );
 }
 
+.bookmarks-link:not(.bookmarks-link-no-arrow)::after,
+.visited-indicator:not(.text-truncate)::after,
+.visited-indicator.text-truncate::before {
+  top: 0.07em;
+}
+
 .content-bounds-wide,
 .page-width-wide .content-bounds {
   max-width: 2054px;
@@ -26,14 +32,16 @@
   }
 }
 
+@container widget (min-width: 1301px) and (max-width: 2024px) {
+  .cards-horizontal {
+    --cards-per-row: 7.5;
+  }
+}
+
 @container widget (max-width: 1100px) {
   .widget-half .cards-grid {
     --cards-per-row: 3;
   }
-}
-
-.cards-horizontal {
-  --cards-per-row: 7.5;
 }
 
 .truncate-1 .text-truncate-2-lines {
@@ -77,12 +85,12 @@
   width: 12rem;
 }
 
-/* glimpse list */
+/* glimpse list
 
 .glimpse-list-bordered .widget-content {
   overflow: hidden;
 }
-
+ */
 .glimpse-list-bordered .widget-content > ul {
   margin: var(--widget-content-vertical-padding-reverse)
     var(--widget-content-horizontal-padding-reverse) 0;
@@ -144,6 +152,52 @@
   top: -30px;
   right: calc(var(--widget-content-horizontal-padding) + 1px);
   user-select: none;
+}
+
+/*****************************************************************************/
+
+.glimpse-lolesports .event {
+  background-color: hsl(var(--bghs), calc(var(--bgl) + 3%));
+  padding: 1rem;
+  border: 1px solid var(--color-widget-content-border);
+}
+
+.glimpse-lolesports .event.inProgress {
+  border-color: var(--color-positive);
+}
+
+.glimpse-lolesports .event .badge {
+  background: var(--color-primary);
+  color: var(--color-widget-background);
+  font-size: var(--font-size-h6);
+  border-radius: var(--border-radius);
+  padding-inline: 0.3rem;
+}
+
+.glimpse-lolesports .event.inProgress .badge {
+  background: var(--color-positive);
+}
+
+.glimpse-lolesports .team.win .code {
+  color: var(--color-positive);
+}
+
+.glimpse-lolesports .team.lose .code {
+  color: var(--color-negative);
+}
+
+.grid-center {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.grid-center .item-0 {
+  place-content: end;
+}
+
+.grid-center .item-1 {
+  flex-direction: row-reverse;
+  place-content: start;
 }
 
 /*****************************************************************************/

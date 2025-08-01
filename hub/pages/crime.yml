@@ -9,11 +9,12 @@
         - type: split-column
           max-columns: 2
           widgets:
+
             - <<: *reddit-cover
               subreddit: Crime
 
             - <<: *reddit-cover
-              subreddit: acab
+              subreddit: WithoutATrace
 
     - size: full
       widgets:
@@ -21,7 +22,6 @@
         - <<: *videos-grid-half
           channels:
             - UCJWKjrrUh2KL1d3zXQW79cQ #ExploreWithUs
-            - UCfDO_4-o9H0hLHW00zWTVYQ #Ex Cop
             - UCYwVxWpjeKFWwu8TML-Te9A #JCS - Criminal Psychology
             - UCFXad0mx4WxY1fXdbvtg0CQ #Fascinating Horror
             - UCCKwTsUwBvMDNlhxf0evJag #deathdoor4687

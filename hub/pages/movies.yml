@@ -41,24 +41,38 @@
                 - title: Upcoming Movies
                   url: https://www.themoviedb.org/movie/upcoming
             - <<: *links-subtitles
+            - links:
+                - title: Megathread
+                  url: ${REDDIT_URL}/r/Piracy/wiki/megathread/movies_and_tv#wiki_.1F4D1_.279C_streaming
+                - title: Bingeflix
+                  url: https://bingeflix.tv/movies
 
         - <<: *radarr-recently-added
 
     - size: full
       widgets:
 
-        - <<: *reddit-cover
-          subreddit: movies
 
-    - size: full
-      widgets:
+        - type: split-column
+          max-columns: 3
+          widgets:
 
-        - <<: *videos-grid
-          title: Reviews & Podcasts
-          channels:
-            - UC7v3-2K1N84V67IF-WTRG-Q #Jeremy Jahns
-            - UCCqEeDAUf4Mg0GgEN658tkA #The Chris Stuckmans
-            - UCbiOAho0h23IMInURiESx1w #Dan Murrell
-            - UCrTNhL_yO3tPTdQ5XgmmWjA #RedLetterMedia
-            - UCUyvQV2JsICeLZP4c_h40kA #Thomas Flight
-            - UCSJPFQdZwrOutnmSFYtbstA #TheCriticalDrinker
+            - <<: *reddit-cover
+              subreddit: movies
+              show-flairs: true
+
+            - <<: *reddit-cover
+              subreddit: movies
+              title: Trailers
+              search: flair:trailer
+              sort-by: new
+
+            - <<: *videos-grid
+              title: Reviews & Podcasts
+              channels:
+                - UC7v3-2K1N84V67IF-WTRG-Q #Jeremy Jahns
+                - UCCqEeDAUf4Mg0GgEN658tkA #The Chris Stuckmans
+                - UCbiOAho0h23IMInURiESx1w #Dan Murrell
+                - UCrTNhL_yO3tPTdQ5XgmmWjA #RedLetterMedia
+                - UCUyvQV2JsICeLZP4c_h40kA #Thomas Flight
+                - UCSJPFQdZwrOutnmSFYtbstA #TheCriticalDrinker

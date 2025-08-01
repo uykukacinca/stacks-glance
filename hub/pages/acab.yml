@@ -1,0 +1,27 @@
+- name: "#acab"
+  slug: acab
+  width: wide
+  columns:
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 2
+          widgets:
+
+            - <<: *reddit-cover
+              subreddit: acab
+
+            - <<: *reddit-cover
+              subreddit: Bad_Cop_No_Donut
+
+    - size: full
+      widgets:
+
+        - <<: *videos-grid-half
+          channels:
+            - UCcth5uVYORmu5Cu15ZjpzuQ #@thecivilrightslawyer
+            - UCfDO_4-o9H0hLHW00zWTVYQ #@X-Cop
+            - UCc-0YpRpqgA5lPTpSQ5uo-Q #@AuditTheAudit
+            - UCXMYxKMh3prxnM_4kYZuB3g #@PoliceActivity

@@ -1,4 +1,4 @@
-bluesky-author: &bluesky-author
+widget: &bluesky-author
   type: custom-api
   title: /api/bluesky/bsky.app
   cache: *short-cache

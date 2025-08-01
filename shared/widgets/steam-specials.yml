@@ -1,4 +1,4 @@
-steam-specials: &steam-specials
+widget: &steam-specials
   type: custom-api
   title: Steam Specials
   cache: *deep-cache

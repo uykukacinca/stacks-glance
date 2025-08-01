@@ -19,22 +19,29 @@
     - size: small
       widgets:
 
-        - <<: *twitch-channels
-          collapse-after: 10
-          channels:
-            - asmongold
-            - zackrawrr
-            - robcdee
-            - EsfandTV
-            - emiru
-            - bonnie
-            - jakenbakelive
-            - kitboga
-            - ej_sa
-            - CriticalRole
-            - lirik
-            - ariathome
-            - sweet_anita
+        - <<: *widget-kick-followed
+
+        - <<: *widget-twitch-followed
+
+
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Rumble
+                  icon: si:rumble
+                  url: https://rumble.com
+                - title: Social Blade
+                  icon: si:socialblade
+                  url: https://socialblade.com/
+            - links:
+                - title: Streams Charts
+                  url: https://streamscharts.com/overview
+                - title: Stream Bans
+                  url: https://streamerbans.com
+                - title: Twitch Tracker
+                  url: https://twitchtracker.com
+                - title: Naver's CHZZK
+                  url: https://chzzk.naver.com
 
     - size: full
       widgets:
@@ -55,3 +62,4 @@
               channels:
                 - UCQeRaTukNYft1_6AZPACnog #AsmonTV
                 - UCkAsdQZolgJdKmZ3T3zn-dA #steakandeggspod
+                - UCtiec4EBNN3iiNgXHgykm9A #LegalMindset

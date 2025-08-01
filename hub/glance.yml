@@ -36,6 +36,11 @@ widgets:
   - $include: widgets/seismic-portal.yml
   - $include: widgets/anime-karma-list.yml
   - $include: widgets/twitch.yml
+  - $include: widgets/kick.yml
+  - $include: widgets/the-crew-motorfest.yml
+  - $include: widgets/riot-news.yml
+  - $include: widgets/riot-lolesports.yml
+  - $include: widgets/rockstargames.yml
 
 pages:
   - $include: pages/home.yml
@@ -52,12 +57,14 @@ pages:
   - $include: pages/shows.yml
   - $include: pages/anime.yml
   - $include: pages/live.yml
-  - $include: pages/crime.yml
   - $include: pages/documentaries.yml
-  # - $include: pages/chess.yml
+  - $include: pages/crime.yml
+  - $include: pages/acab.yml
   - $include: pages/vlogs.yml
   - $include: pages/tr.yml
   - $include: pages/lol.yml
+  - $include: pages/tft.yml
+  - $include: pages/wr.yml
   - $include: pages/gta.yml
   - $include: pages/racing.yml
   - $include: pages/outdoor.yml

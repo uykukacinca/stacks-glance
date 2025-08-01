@@ -1,4 +1,4 @@
-gluetun-stats: &gluetun-stats
+widget: &gluetun-stats
   type: custom-api
   title: Gluetun IP
   cache: *short-cache

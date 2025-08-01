@@ -1,44 +1,63 @@
 - name: "#tr" #❇️
   slug: tr
   width: wide
+  
+  head-widgets:
+
+    - <<: *widget-kick-tr-streams
+
   columns:
 
     - size: full
       widgets:
 
-        - <<: *videos-simple-three
+        - <<: *videos-horizontal
           title: Can Sungur ve Yakın Evren
           channels:
             - UC6q0eGHt5euC8aYLDjhaHpA #Can Sungur ve Yakın Evren
-        - <<: *videos-simple-three
-          title: Doğukan Manço
+            - UCSOTLIwx3susvZ_LLHLJAeQ
+
+        - <<: *videos-horizontal
+          title: Murat Soner
           channels:
-            - UCLcGMsSd1nxozpI9J9_ICHA #@dogukan_manco
-        - <<: *videos-simple-three
+            - UCTpnOrDAyEUsCCfC0AE6zDw #Murat Soner
+
+        - <<: *videos-horizontal
+          title: Evrim Ağacı
+          channels:
+            - UCatnasFAiXUvWwH8NlSdd3A #@evrimagaci
+
+        - <<: *videos-horizontal
           title: Amerikali Aynasiz
           channels:
             - UCAa4yNsAyP-O5j-qNSpVQ_g #@AmerikaliAynasiz
-        - <<: *videos-simple-three
+
+        - <<: *videos-horizontal
+          title: Kaptan Baha
+          channels:
+            - UCufSwK8AQPGqBkyqoYa3Ncw #@KaptanBaha
+
+        # - <<: *videos-horizontal
+        #   title: Literat
+        #   channels:
+        #     - UClADLFnTtNyOJEOLB-p5jwQ
+
+        - <<: *videos-horizontal
           title: Diamond Tema
           channels:
             - UCkEp_OUCCx-UU3A9-y62NiA #@DiamondTema
 
-    - size: full
-      widgets:
+        # - <<: *videos-horizontal
+        #   title: Murat Muratoğlu
+        #   channels:
+        #     - UCJEzfyorQwES0hyNpqhym_Q #@MuratMuratoğlu
 
-        - <<: *videos-simple-three
-          title: Murat Soner
-          channels:
-            - UCTpnOrDAyEUsCCfC0AE6zDw #Murat Soner
-        - <<: *videos-simple-three
-          title: Evrim Ağacı
-          channels:
-            - UCatnasFAiXUvWwH8NlSdd3A #@evrimagaci
-        - <<: *videos-simple-three
-          title: Murat Muratoğlu
-          channels:
-            - UCJEzfyorQwES0hyNpqhym_Q #@MuratMuratoğlu
-        - <<: *videos-simple-three
+        - <<: *videos-horizontal
           title: 140journos
           channels:
             - UCO-_F5ZEUhy0oKrSa69DLMw #@140journos
+
+        # - <<: *videos-horizontal
+        #   title: Doğukan Manço
+        #   channels:
+        #     - UCLcGMsSd1nxozpI9J9_ICHA #@dogukan_manco

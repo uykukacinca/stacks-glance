@@ -4,9 +4,20 @@
   
   head-widgets:
 
-    - <<: *widget-twitch-gta
+    - type: split-column
+      max-columns: 2
+      widgets:
+
+        - <<: *widget-twitch-gta
+
+        - <<: *widget-kick-gta
 
   columns:
+
+    - size: small
+      widgets:
+
+        - <<: *widget-newswire-all
 
     - size: full
       widgets:
@@ -16,12 +27,12 @@
           widgets:
 
             - <<: *reddit-cover
-              subreddit: gta+gtaonline
-              title: Grand Theft Auto & Online
+              subreddit: gta6
+              title: GTA VI
 
             - <<: *reddit-cover
-              subreddit: gta6
-              title: GTA 6
+              subreddit: gta+gtaonline
+              title: Grand Theft Auto & Online
 
             - <<: *reddit-cover
               subreddit: gtaiv+gtav

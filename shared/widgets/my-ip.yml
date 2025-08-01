@@ -1,4 +1,4 @@
-my-ip: &my-ip
+widget: &my-ip
   type: custom-api
   title: My IP
   cache: *short-cache

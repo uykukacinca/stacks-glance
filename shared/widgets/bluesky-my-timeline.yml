@@ -1,4 +1,4 @@
-bluesky-my-timeline: &bluesky-my-timeline
+widget: &bluesky-my-timeline
   type: custom-api
   title: /api/bluesky/timeline
   cache: *short-cache

@@ -1,4 +1,4 @@
-proxmox-nodes: &proxmox-nodes
+widget: &proxmox-nodes
   type: custom-api
   title: Proxmox-VE Node Graph
   cache: *short-cache

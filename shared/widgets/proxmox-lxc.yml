@@ -1,4 +1,4 @@
-proxmox-lxc: &proxmox-lxc
+widget: &proxmox-lxc
   type: custom-api
   title: Custom API - Proxmox Containers
   cache: *short-cache

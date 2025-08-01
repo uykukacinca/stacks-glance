@@ -1,4 +1,4 @@
-my-domains-base: &my-domains-base
+widget: &my-domains-base
   type: custom-api
   title: My Domains
   cache: *default-cache
@@ -7,7 +7,7 @@ my-domains-base: &my-domains-base
   headers:
     X-Custom-Auth: ${SECRET_API_TOKEN}
 
-my-domains-list: &my-domains-list
+widget: &my-domains-list
   <<: *my-domains-base
   template: |
     <div class="flex gap-10 tools">
@@ -53,7 +53,7 @@ my-domains-list: &my-domains-list
     {{ end }}
     </ul>
 
-my-domains-table: &my-domains-table
+widget: &my-domains-table
   <<: *my-domains-base
   css-class: widget-table widget-domains glimpse-header-tools
   template: |

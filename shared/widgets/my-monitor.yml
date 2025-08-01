@@ -1,16 +1,16 @@
-monitor-base: &monitor-base
+widget: &monitor-base
   type: monitor
   cache: *short-cache
 
-monitor-boxed: &monitor-boxed
+widget: &monitor-boxed
   <<: *monitor-base
   css-class: widget-monitor-custom
 
-monitor-boxed: &monitor-list
+widget: &monitor-list
   <<: *monitor-base
   css-class: widget-monitor-list
 
-monitor-core: &monitor-core
+widget: &monitor-core
   <<: *monitor-boxed
   title: Core Services
   sites:
@@ -30,7 +30,7 @@ monitor-core: &monitor-core
       url: https://auth.${HOST_NAME}
       icon: si:authelia
 
-monitor-apps: &monitor-apps
+widget: &monitor-apps
   <<: *monitor-boxed
   title: Apps
   sites:
@@ -50,7 +50,7 @@ monitor-apps: &monitor-apps
       url: https://doc.${HOST_NAME}
       icon: si:googledocs
 
-monitor-media: &monitor-media
+widget: &monitor-media
   <<: *monitor-boxed
   title: Media Management
   cache: *default-cache

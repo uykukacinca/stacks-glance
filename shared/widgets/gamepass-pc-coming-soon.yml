@@ -1,9 +1,12 @@
-gamepass-pc-coming-soon: &gamepass-pc-coming-soon
+widget: &gamepass-pc-coming-soon
   type: custom-api
   title: Coming Soon
   title-url: https://www.xbox.com/en-US/xbox-game-pass/games
   cache: *deep-cache
-  url: ${CUSTOM_API_URL}/gamepass/pc-coming-soon?language=tr-tr&market=TR
+  url: ${CUSTOM_API_URL}/gamepass/pc-coming-soon
+  parameters:
+    language: tr-tr
+    market: TR
   template: |
     <ul class="list list-gap-14 collapsible-container" data-collapse-after="3">
       {{ range .JSON.Array "games" }}
