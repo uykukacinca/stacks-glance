@@ -1,0 +1,10 @@
+- &gluetun-stats
+  type: custom-api
+  title: Gluetun IP
+  cache: *short-cache
+  url: ${GLUETUN_URL}/v1/publicip/ip
+  headers:
+    Accept: application/json
+  template: |
+    <div class="color-highlight size-h3">{{ .JSON.String "public_ip" }}</div>
+    <div class="size-h6">{{ .JSON.String "city" }}, {{ .JSON.String "country" }}</div>

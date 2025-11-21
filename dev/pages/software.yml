@@ -1,17 +1,20 @@
-- name: "💿 Software"
+- name: "Software" # 💿
   slug: software
   width: wide
   columns:
+
     - size: small
       widgets:
 
     - size: full
       widgets:
+
         - <<: *reddit-simple
           subreddit: software
 
     - size: full
       widgets:
+
         - <<: *reddit-simple
           collapse-after: *widget-half-collapse-after
           subreddit: opensource

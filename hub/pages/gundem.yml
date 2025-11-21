@@ -1,12 +1,13 @@
-- name: "🇹🇷 Gündem"
+- name: "Gündem"
   slug: gundem
   width: wide
 
   head-widgets:
+
     - type: iframe
       hide-header: true
       title: RF9F7
-      css-class: glimpse-RF9F7
+      css-class: xxx-rounded xxx-RF9F7
       height: 70
       title-url: https://dataview.raspberryshake.org/#/AM/RF9F7/00/EHZ?streaming=on
       source: https://dataview.raspberryshake.org/#/embed/AM/RF9F7/00/EHZ
@@ -20,75 +21,160 @@
           markets:
             - symbol: TRY=X
             - symbol: EURTRY=X
+            - symbol: BTC-USD
+              name: Bitcoin
 
-        - <<: *eksisozluk-gundem
+        - type: extension
+          url: ${GLIMPSE_URL}/eksisozluk/search
+          allow-potentially-dangerous-html: true
+          cache: 1m
+          title: Search
+          headers:
+            x-glimpse-output: glance
+          parameters:
+            collapseAfter: 10
+            query: depremi
 
-        - <<: *seismic-portal
+        - type: extension
+          url: ${GLIMPSE_URL}/usgs/earthquakes
+          title-url: https://earthquake.usgs.gov/earthquakes/search/
+          allow-potentially-dangerous-html: true
+          cache: *short-cache
+          headers:
+            x-glimpse-output: glance
+          parameters:
+            minlatitude: 36
+            minlongitude: 25
+            maxlatitude: 42
+            maxlongitude: 40
+            minmagnitude: 2.5
 
         - type: bookmarks
           title: Deprem
           groups:
-            - <<: *links-earthquakes
+            - links:
+                - title: X Deprem
+                  url: https://x.com/i/lists/1915151387949973738
+                - title: USGS Magnitude 2.5+ 24h
+                  url: https://earthquake.usgs.gov/earthquakes/map/?extent=40.0954,26.86393&extent=41.41234,29.63249&listOnlyShown=true
+                - title: Shake Station 3.0+ 48h
+                  url: https://stationview.raspberryshake.org/#/?lat=40.86170&lon=28.40830&zoom=10.592
+                - title: RaspberryShake RF9F7
+                  url: https://dataview.raspberryshake.org/#/AM/RF9F7/00/EHZ?streaming=on
+                - title: KOERİ Son Depremler
+                  url: http://www.koeri.boun.edu.tr/scripts/lst2.asp
+                - title: KOERİ Deprem Haritası
+                  url: http://udim.koeri.boun.edu.tr/zeqmap/hgmmap.asp
 
     - size: full
       widgets:
-
-        - type: group
-          widgets:
-
-            - <<: *reddit-cover
-              subreddit: Turkey
-              show-flairs: true
-              limit: 30
-              collapse-after: 20
-
-            - <<: *reddit-cover-top-week
-              title: Top This Week
-              subreddit: Turkey
-              limit: 30
-              collapse-after: 20
-
-            - <<: *reddit-cover-top-week
-              subreddit: Turkey
-              title: Month
-              cache: 1d
-              top-period: month
-              limit: 30
-              collapse-after: 20
-
-            - <<: *reddit-cover-top-week
-              subreddit: Turkey
-              title: Year
-              cache: 1d
-              top-period: year
-              limit: 30
-              collapse-after: 20
-
-            - <<: *reddit-cover-top-week
-              subreddit: Turkey
-              title: All
-              cache: 1d
-              top-period: all
-              limit: 30
-              collapse-after: 20
-
-    - size: full
-      widgets:
-
-        - <<: *iframe-base
-          title: Sözcü TV
-          source: https://www.youtube.com/embed/ztmY_cCtUl0?si=-9A8OM7vLep1ipse&amp;controls=0&autoplay=1
 
         - type: split-column
-          max-columns: 2
+          max-columns: 3
           widgets:
 
-            - <<: *reddit-simple
-              title: Istanbul - Izmir - Antalya - Ankara
-              subreddit: Istanbul+Izmir+Antalya+Ankara
-              cache: *deep-cache
+            - type: group
+              widgets:
 
-            - <<: *reddit-simple
-              title: AskTurkey - Hukuk - Yatirim
-              subreddit: AskTurkey+Hukuk+Yatirim
-              cache: *deep-cache
+                - &reddit-turkey
+                  <<: *reddit-cover
+                  subreddit: Turkey
+                  show-flairs: true
+                  limit: 30
+
+                - <<: *reddit-turkey
+                  title: New
+                  sort-by: new
+
+                - <<: *reddit-turkey
+                  title: Rising
+                  sort-by: rising
+
+                - <<: *reddit-turkey
+                  title: Top This Week
+                  sort-by: top
+                  top-period: week
+
+                - <<: *reddit-turkey
+                  title: Month
+                  cache: 8h
+                  sort-by: top
+                  top-period: month
+
+                - <<: *reddit-turkey
+                  title: Year
+                  cache: 1d
+                  sort-by: top
+                  top-period: year
+
+                - <<: *reddit-turkey
+                  title: All
+                  cache: 1d
+                  sort-by: top
+                  top-period: all
+
+            - type: split-column
+              max-columns: 1
+              widgets:
+
+                - type: extension
+                  url: ${GLIMPSE_URL}/eksisozluk/channel/gundem
+                  allow-potentially-dangerous-html: true
+                  cache: *short-cache
+                  title: Popular
+                  headers:
+                    x-glimpse-output: glance
+                  parameters:
+                    limit: 30
+                    filters: siyaset
+                    collapseAfter: 10
+
+                - type: extension
+                  url: ${GLIMPSE_URL}/eksisozluk/thread/ekrem-imamoglu--2577439
+                  allow-potentially-dangerous-html: true
+                  cache: *short-cache
+                  title: Threads
+                  headers:
+                    x-glimpse-output: glance
+                  parameters:
+                    filter: popular
+
+                - type: extension
+                  url: ${GLIMPSE_URL}/eksisozluk/thread/donald-trump--88411
+                  allow-potentially-dangerous-html: true
+                  cache: *short-cache
+                  hide-header: true
+                  headers:
+                    x-glimpse-output: glance
+                  parameters:
+                    filter: popular
+
+                - <<: *reddit-simple
+                  subreddit: veYakinEvren
+                  cache: *long-cache
+                  collapse-after: 5
+
+            - type: split-column
+              max-columns: 1
+              widgets:
+
+                - type: group
+                  css-class: position-sticky-top
+                  widgets:
+
+                    - type: iframe
+                      css-class: xxx-rounded xxx-youtube-iframe
+                      title: Sözcü TV
+                      source: https://www.youtube.com/embed/ztmY_cCtUl0?si=-9A8OM7vLep1ipse&amp;controls=0&autoplay=0
+
+                - <<: *reddit-simple
+                  title: Istanbul - Izmir - Antalya - Ankara
+                  subreddit: Istanbul+Izmir+Antalya+Ankara
+                  cache: *long-cache
+                  collapse-after: 5
+
+                - <<: *reddit-simple
+                  title: AskTurkey - Hukuk - Yatirim
+                  subreddit: AskTurkey+Hukuk+Yatirim
+                  cache: *long-cache
+                  collapse-after: 5

@@ -1,0 +1,14 @@
+- name: "Learn" # 🔷
+  slug: tutorials
+  width: wide
+  columns:
+
+    - size: full
+      widgets:
+
+        - <<: *videos-grid
+          channels:
+            - UC0NErq0RhP51iXx64ZmyVfg # BretFisher
+            - UC5xzsnp1l8mqchmfqR1nFPQ # Engineering with Morris
+            - UCdngmbVKX1Tgre699-XLlUA # TechWorld with Nana
+            - UC8butISFwT-Wl7EV0hUK0BQ # freecodecamp

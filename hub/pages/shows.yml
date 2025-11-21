@@ -1,6 +1,7 @@
-- name: "📺 Shows"
+- name: "Shows" # 📺
   slug: shows
   width: wide
+
   columns:
 
     - size: small
@@ -13,10 +14,19 @@
           bangs:
             - title: Reddit
               shortcut: "!r"
-              url: ${REDDIT_URL}/r/television/search?q={QUERY}&restrict_sr=on
+              url: ${REDDIT_URL}/r/television/search?q={QUERY}&restrict_sr=on&sort=new&t=all
             - title: YouTube
               shortcut: "!y"
               url: ${YOUTUBE_URL}/results?search_query={QUERY}
+            - title: Bingeflix
+              shortcut: "!b"
+              url: https://bingeflix.tv/search?tab=movies-tv&q={QUERY}
+            - title: Türkçe Altyazı
+              shortcut: "!t"
+              url: https://turkcealtyazi.org/find.php?cat=sub&find={QUERY}
+            - title: Open Subtitles
+              shortcut: "!o"
+              url: https://www.opensubtitles.org/en/search2/moviename-{QUERY}/sublanguageid-tur,eng
 
         - type: bookmarks
           css-class: page-shows
@@ -24,30 +34,46 @@
             - links:
                 - title: Metacritic Tv
                   url: https://www.metacritic.com/tv/
-            - title: Imdb
-              color: 47 92 53
-              links:
-                - title: Most Popular TV Shows
+                  icon: auto-invert ${ICONS_URL}/custom/metacritic.svg
+                - title: Most Popular Tv
                   url: https://www.imdb.com/chart/tvmeter
-                - title: Top 250 TV Shows
+                  icon: auto-invert ${ICONS_URL}/imdb-dark
+                - title: Top 250 Tv
                   url: https://www.imdb.com/chart/toptv
+                  icon: auto-invert ${ICONS_URL}/imdb-dark
             - <<: *links-subtitles
             - links:
                 - title: Megathread
                   url: ${REDDIT_URL}/r/Piracy/wiki/megathread/movies_and_tv#wiki_.1F4D1_.279C_streaming
-                - title: Bingeflix
-                  url: https://bingeflix.tv/tv
 
-        - <<: *sonarr-recently-added
+        - $include: /app/config/shared/widgets/sonarr-calendar/calendar.yml
 
-    - size: full
-      widgets:
-
-        - <<: *reddit-cover
-          subreddit: television
+        - <<: *jellyfin-recent-episodes
+          options:
+            collapse-after: 10
 
     - size: full
       widgets:
 
-        - <<: *reddit-cover
-          subreddit: TVDetails
+        - type: split-column
+          max-columns: 3
+          widgets:
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-cover
+                  subreddit: television
+
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: television
+
+            - <<: *reddit-simple
+              subreddit: television
+              title: Episode Discussions
+              search: episode discussion flair:Premiere author:NicholasCajun
+              sort-by: new
+
+            - <<: *reddit-cover
+              subreddit: TVDetails

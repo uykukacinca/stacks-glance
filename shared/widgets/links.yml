@@ -1,0 +1,17 @@
+- &links-local
+  color: 129 68 58
+  links:
+    - title: Archer VR300
+      icon: auto-invert ${ICONS_URL}/tp-link-dark
+      url: http://192.168.1.1
+    - title: Archer C50
+      icon: auto-invert ${ICONS_URL}/tp-link-dark
+      url: http://192.168.0.1
+
+- &links-subtitles #title: Subtitles
+  color: 47 92 53
+  links:
+    - title: Türkçe Altyazı
+      url: https://turkcealtyazi.org
+    - title: Open Subtitles
+      url: https://www.opensubtitles.org/tr

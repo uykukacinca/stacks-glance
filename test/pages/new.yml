@@ -1,0 +1,23 @@
+- name: New
+  slug: new
+  show-in-navigation: false
+  columns:
+    - size: full
+      widgets:
+
+        - type: torrents
+          allow-insecure: true
+          title: Docker qBit
+          url: ${QBIT_URL}
+          username: ${QBIT_USER}
+          password: ${QBIT_PASS}
+
+    - size: full
+      widgets:
+
+        - type: torrents
+          allow-insecure: true
+          title: Win qBit
+          url: https://q.kod.run
+          username: ${QBIT_USER}
+          password: ${QBIT_PASS}

@@ -1,4 +1,4 @@
-- name: "⛺"
+- name: "Outdoor" # ⛺
   slug: outdoor
   width: wide
   columns:
@@ -9,10 +9,10 @@
         - <<: *videos-grid
           limit: 100
           channels:
-            - UCZOcZonhmKbNGeSZGJpa5Aw #AtikAilesi
-            - UCfpCQ89W9wjkHc8J_6eTbBg #OutdoorBoys
-            - UCxByVUuLdxxiqQVmbOnDEzw #ErikGrankvist
-            - UCAkN_idC23FdahFFz89QQcA #Kampkolik
-            - UC4zNtKX3XTplYQWNFPorvXQ #KirinCamp
+            - UCZOcZonhmKbNGeSZGJpa5Aw # AtikAilesi
+            - UCfpCQ89W9wjkHc8J_6eTbBg # OutdoorBoys
+            - UCxByVUuLdxxiqQVmbOnDEzw # ErikGrankvist
+            - UCAkN_idC23FdahFFz89QQcA # Kampkolik
+            - UC4zNtKX3XTplYQWNFPorvXQ # KirinCamp
             - UCcG8hM-J_wUD_hBXqugvmQQ #@Minsi_Outdoors
             - UC1OLx7nzJgIqwpDzFFrTuLA #@MossyEarth

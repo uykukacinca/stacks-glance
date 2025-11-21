@@ -1,0 +1,61 @@
+- &sonarr-recently-added
+  type: custom-api
+  title: Sonarr Latest Episodes
+  cache: *no-cache
+  url: ${SONARR_URL}/api/v3/history
+  parameters:
+    eventType: 3
+    includeSeries: true
+    includeEpisode: true
+    pageSize: 15
+  headers:
+    Accept: application/json
+    X-Api-Key: ${SONARR_API_KEY}
+  template: |
+    {{ $collapseAfter := .Options.IntOr "collapse-after" 5 }}
+    {{ $items := .JSON.Array "records" }}
+    {{ if $items }}
+      <ul class="list list-gap-14 collapsible-container" data-collapse-after="{{ $collapseAfter }}">
+        {{ range $items }}
+        <li>
+            <div class="flex gap-10 row-reverse-on-mobile thumbnail-parent">
+                <div class="shrink-0" data-popover-type="html">
+                  <div data-popover-html="">
+                      <img src="{{ .String "series.images.1.remoteUrl" }}" loading="lazy" alt="">
+                  </div>
+                  <img class="twitch-category-thumbnail thumbnail cover-6-66 aspect-ratio-3-4" src="{{ .String "series.images.1.remoteUrl" }}" alt="{{ .String "episode.title" }}" loading="lazy">
+                </div>
+                <div class="grow min-width-0">
+                  <a href="${SONARR_URL}/series/{{ .String "series.titleSlug" }}" class="color-highlight size-title-dynamic block text-truncate" target="_blank" rel="noreferrer">{{ .String "episode.title" }}</a>
+                  <div>{{ .String "series.title" }} ({{ .String "series.year" }})</div>
+                  <ul class="list-horizontal-text">
+                    <li hidden>{{ .String "episode.airDate" }}</li>
+                    <li>S{{ .String "episode.seasonNumber" }} E{{ .String "episode.episodeNumber" }}</li>
+                    <li class="shrink-0 flex gap-5 items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon-14">
+                        <path fill-rule="evenodd" d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393 3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293 1.41-3.393A.75.75 0 0 1 8 1.75Z" clip-rule="evenodd" />
+                      </svg>
+                      {{ .String "series.ratings.value" }}
+                    </li>
+                    {{ $duration := .Int "episode.runtime" }}
+                    {{ $hours := div $duration 60 }}
+                    {{ $minutes := mod $duration 60 }}
+                    <li class="flex gap-5 items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon-14">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8Zm7.75-4.25a.75.75 0 0 0-1.5 0V8c0 .414.336.75.75.75h3.25a.75.75 0 0 0 0-1.5h-2.5v-3.5Z" clip-rule="evenodd" />
+                      </svg>
+                    {{ if gt $hours 0 }}
+                      {{ printf "%dh %dm" $hours $minutes }}
+                    {{ else }}
+                      {{ printf "%dm" $minutes }}
+                    {{ end }}
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </li>
+        {{ end }}
+      </ul>
+    {{ else }}
+      <p>Failed to fetch data</p>
+    {{ end }}

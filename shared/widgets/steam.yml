@@ -1,0 +1,18 @@
+- &steam-specials
+  type: custom-api
+  title: Steam Specials
+  cache: *deep-cache
+  url: https://store.steampowered.com/api/featuredcategories?cc=tr
+  template: |
+    <ul class="list list-gap-10 collapsible-container" data-collapse-after="10">
+    {{ range .JSON.Array "specials.items" }}
+      <li>
+        <a class="size-h4 color-highlight block text-truncate" href="https://store.steampowered.com/app/{{ .Int "id" }}/">{{ .String "name" }}</a>
+        <ul class="list-horizontal-text">
+          <li>{{ div (.Int "final_price" | toFloat) 100 | printf "$%.2f" }}</li>
+          {{ $discount := .Int "discount_percent" }}
+          <li{{ if ge $discount 40 }} class="color-positive"{{ end }}>{{ $discount }}% off</li>
+        </ul>
+      </li>
+    {{ end }}
+    </ul>

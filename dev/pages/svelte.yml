@@ -1,9 +1,11 @@
-- name: "🟠 Svelte"
+- name: "Svelte" # 🟠
   slug: svelte
   width: wide
   columns:
+
     - size: small
       widgets:
+
         - type: search
           search-engine: https://github.com/sveltejs/svelte/issues?q={QUERY}
           new-tab: true
@@ -13,7 +15,7 @@
               url: ${YOUTUBE_URL}/results?search_query=svelte+{QUERY}
             - title: Reddit
               shortcut: "!r"
-              url: ${REDDIT_URL}/r/sveltejs/search?q={QUERY}&restrict_sr=on
+              url: ${REDDIT_URL}/r/sveltejs/search?q={QUERY}&restrict_sr=on&sort=new&t=all
             - title: Github
               shortcut: "!g"
               url: https://github.com/sveltejs/svelte/issues?q={QUERY}
@@ -23,7 +25,7 @@
             - hide-arrow: true
               links:
                 - title: Blog
-                  icon: si:svelte
+                  icon: auto-invert ${ICONS_URL}/custom/svelte.svg
                   url: https://svelte.dev/blog
             - links:
                 - title: Getting Started
@@ -36,25 +38,37 @@
                 - title: Awesome Svelte
                   url: https://github.com/TheComputerM/awesome-svelte#readme
 
-        - type: repository
+        - <<: *github-repository
           repository: sveltejs/svelte
-          pull-requests-limit: 2
-          issues-limit: 2
-          commits-limit: 2
 
         - <<: *github-releases
           repositories:
             - sveltejs/svelte
+            - svecosystem/runed
+            - huntabyte/shadcn-svelte
+            - ciscoheat/sveltekit-superforms
+            - x0k/svelte-jsonschema-form
 
     - size: full
       widgets:
-        - <<: *reddit-simple
-          subreddit: sveltejs
-          title: Svelte
-          collapse-after: 18
+
+        - type: group
+          widgets:
+
+            - <<: *reddit-simple
+              subreddit: sveltejs
+
+            - <<: *reddit-simple-top-week
+              title: Top This Week
+              subreddit: sveltejs
+
+            - <<: *reddit-simple-top-month
+              title: Month
+              subreddit: sveltejs
 
     - size: full
       widgets:
+
         - <<: *videos-grid
           channels:
             - UCFvPgPdb_emE_bpMZq6hmJQ #@bmdavis419

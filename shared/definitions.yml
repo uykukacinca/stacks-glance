@@ -1,0 +1,140 @@
+definitions:
+  - &reddit-base
+    type: reddit
+    cache: *default-cache
+    css-class: xxx-list-bordered xxx-cover
+    comments-url-template: *reddit
+
+  - &reddit-top-week
+    cache: *deep-cache
+    sort-by: top
+    top-period: week
+
+  - &reddit-top-month
+    cache: 8h
+    sort-by: top
+    top-period: month
+
+  - &reddit-small
+    <<: *reddit-base
+    limit: 15
+
+  - &reddit-vertical
+    <<: *reddit-small
+    style: vertical-cards
+
+  # reddit simple
+
+  - &reddit-simple
+    <<: *reddit-base
+    limit: 30
+    collapse-after: 15
+
+  - &reddit-simple-top-week
+    <<: [*reddit-simple, *reddit-top-week]
+
+  - &reddit-simple-top-month
+    <<: [*reddit-simple, *reddit-top-month]
+
+  # reddit thumb
+
+  - &reddit-thumb
+    <<: *reddit-simple
+    show-thumbnails: true
+
+  - &reddit-thumb-top-week
+    <<: [*reddit-thumb, *reddit-top-week]
+
+  - &reddit-thumb-top-month
+    <<: [*reddit-thumb, *reddit-top-month]
+
+  # reddit cover
+
+  - &reddit-cover
+    <<: *reddit-thumb
+    css-class: xxx-list-bordered xxx-cover xxx-cover-large
+
+  - &reddit-cover-top-week
+    <<: [*reddit-cover, *reddit-top-week]
+
+  - &reddit-cover-top-month
+    <<: [*reddit-cover, *reddit-top-month]
+
+  # other
+
+  - &markets-base
+    type: markets
+    cache: *short-cache
+    chart-link-template: *yahoo-chart
+    symbol-link-template: *yahoo-news
+
+  - &videos-base
+    type: videos
+    cache: *default-cache
+    video-url-template: *youtube
+
+  - &videos-grid
+    <<: *videos-base
+    style: grid-cards
+    limit: 69
+    collapse-after-rows: 8
+
+  - &videos-grid-half
+    <<: *videos-grid
+    css-class: widget-half
+
+  - &videos-horizontal
+    <<: *videos-base
+    style: horizontal-cards
+    limit: 14
+
+  - &videos-vertical
+    <<: *videos-base
+    style: vertical-list
+    limit: 10
+
+  - &podcasts-grid
+    <<: *videos-base
+    style: grid-cards
+    limit: 6
+    collapse-after-rows: 1
+
+  - &github-releases
+    type: releases
+    cache: *long-cache
+    token: ${GITHUB_TOKEN}
+    limit: 20
+    collapse-after: 10
+
+  - &github-repository
+    type: repository
+    cache: *long-cache
+    token: ${GITHUB_TOKEN}
+    repository: glanceapp/glance
+    pull-requests-limit: 3
+    issues-limit: 3
+    commits-limit: 5
+
+  - &monitor-base
+    type: monitor
+    cache: *short-cache
+
+  - &monitor-boxed
+    <<: *monitor-base
+    css-class: widget-monitor-custom
+
+  - &iframe-base
+    type: iframe
+    css-class: xxx-rounded
+
+  - &docker-containers
+    type: docker-containers
+    cache: *no-cache
+    css-class: widget-containers-custom hide-running
+    hide-by-default: false
+
+  - &containers
+    type: docker-containers
+    cache: *no-cache
+    css-class: widget-containers-custom columns-6
+    hide-by-default: false

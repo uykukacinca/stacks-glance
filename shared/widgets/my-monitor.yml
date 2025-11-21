@@ -1,56 +1,56 @@
-widget: &monitor-base
+- &monitor-base
   type: monitor
   cache: *short-cache
 
-widget: &monitor-boxed
+- &monitor-boxed
   <<: *monitor-base
   css-class: widget-monitor-custom
 
-widget: &monitor-list
+- &monitor-list
   <<: *monitor-base
   css-class: widget-monitor-list
 
-widget: &monitor-core
+- &monitor-core
   <<: *monitor-boxed
   title: Core Services
   sites:
     - title: Traefik
       url: https://trf.${HOST_NAME}/dashboard#/
       check-url: https://trf.${HOST_NAME}/ping
-      icon: si:traefikproxy
+      icon: auto-invert ${ICONS_URL}/custom/traefikproxy.svg
     - title: AdGuard
       url: https://dns.${HOST_NAME}
       check-url: https://dns.${HOST_NAME}
-      icon: si:adguard
+      icon: auto-invert ${ICONS_URL}/custom/adguard.svg
     - title: Gitea
       url: https://git.${HOST_NAME}
       check-url: https://git.${HOST_NAME}/api/v1/version
-      icon: si:git
+      icon: auto-invert ${ICONS_URL}/custom/git.svg
     - title: Authelia
       url: https://auth.${HOST_NAME}
-      icon: si:authelia
+      icon: auto-invert ${ICONS_URL}/custom/authelia.svg
 
-widget: &monitor-apps
+- &monitor-apps
   <<: *monitor-boxed
   title: Apps
   sites:
     - title: Jellyfin
       url: https://tv.cesur.site
       check-url: https://tv.cesur.site/health
-      icon: si:jellyfin
+      icon: auto-invert ${ICONS_URL}/custom/jellyfin.svg
     - title: Redlib
       url: https://red.${HOST_NAME}
       check-url: https://red.${HOST_NAME}/info
-      icon: si:reddit
+      icon: auto-invert ${ICONS_URL}/custom/reddit.svg
     - title: Immich
       url: https://photos.${HOST_NAME}
       check-url: https://photos.${HOST_NAME}/api/server/ping
-      icon: si:immich
+      icon: auto-invert ${ICONS_URL}/custom/immich.svg
     - title: Docmost
       url: https://doc.${HOST_NAME}
-      icon: si:googledocs
+      icon: auto-invert ${ICONS_URL}/custom/googledocs.svg
 
-widget: &monitor-media
+- &monitor-media
   <<: *monitor-boxed
   title: Media Management
   cache: *default-cache
@@ -58,16 +58,16 @@ widget: &monitor-media
     - title: Sonarr
       url: https://sonarr.cesur.site
       check-url: https://sonarr.cesur.site/ping
-      icon: si:sonarr
+      icon: auto-invert ${ICONS_URL}/custom/sonarr.svg
     - title: Radarr
       url: https://radarr.cesur.site
       check-url: https://radarr.cesur.site/ping
-      icon: si:radarr
+      icon: auto-invert ${ICONS_URL}/custom/radarr.svg
     - title: Prowlarr
       url: https://prw.${HOST_NAME}
       check-url: https://prw.${HOST_NAME}/ping
-      icon: si:googledataproc
+      icon: auto-invert ${ICONS_URL}/custom/googledataproc.svg
     - title: qBittorrent
       url: https://qbit.cesur.site
       check-url: https://qbit.cesur.site
-      icon: si:qbittorrent
+      icon: auto-invert ${ICONS_URL}/custom/qbittorrent.svg

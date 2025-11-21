@@ -1,4 +1,4 @@
-- name: "💥 Anime"
+- name: "Anime" # 💥
   slug: anime
   width: wide
 
@@ -28,7 +28,7 @@
               url: https://www.imdb.com/find/?s=tt&q={QUERY}
             - title: Reddit
               shortcut: "!r"
-              url: ${REDDIT_URL}/r/anime/search?q={QUERY}&restrict_sr=on
+              url: ${REDDIT_URL}/r/anime/search?q={QUERY}&restrict_sr=on&sort=new&t=all
             - title: YouTube
               shortcut: "!y"
               url: ${YOUTUBE_URL}/results?search_query={QUERY}
@@ -39,16 +39,16 @@
             - hide-arrow: true
               links:
                 - title: Crunchyroll
-                  icon: si:crunchyroll
+                  icon: auto-invert ${ICONS_URL}/crunchyroll-dark
                   url: http://www.crunchyroll.com
                 - title: AniList
-                  icon: si:anilist
+                  icon: auto-invert ${ICONS_URL}/custom/anilist.svg
                   url: https://anilist.co/search/anime/trending
                 - title: MyAnimeList
-                  icon: si:myanimelist
+                  icon: auto-invert ${ICONS_URL}/custom/myanimelist.svg
                   url: https://myanimelist.net/topanime.php
                 - title: Kitsu
-                  icon: si:kitsu
+                  icon: auto-invert ${ICONS_URL}/custom/kitsu.svg
                   url: https://kitsu.app/explore/anime
             - links:
                 - title: Anime Karma List
@@ -57,23 +57,32 @@
                   url: https://animeschedule.net
                 - title: Anime Scene Search
                   url: https://trace.moe
-            - <<: *links-subtitles
 
     - size: full
       widgets:
 
-        - type: group
+        - type: split-column
+          max-columns: 3
           widgets:
 
-            - <<: *reddit-cover
-              subreddit: anime
+            - type: group
+              widgets:
+
+                - <<: *reddit-cover
+                  subreddit: anime
+
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: anime
+
+            - type: extension
+              url: ${GLIMPSE_URL}/anime/popular
+              allow-potentially-dangerous-html: true
+              cache: *short-cache
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                limit: 13
 
             - <<: *reddit-cover
               subreddit: Animesuggest
-
-    - size: full
-      widgets:
-
-        - <<: *anime-karma-list-7days
-
-        - <<: *anime-karma-list

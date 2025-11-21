@@ -1,4 +1,4 @@
-- name: "🔬 Science"
+- name: "Science" # 🔬
   slug: science
   width: wide
   columns:
@@ -24,9 +24,9 @@
     - size: full
       widgets:
 
-        - <<: *videos-grid-half
+        - <<: *videos-grid
           channels:
-            - UC1yNl2E66ZzKApQdRuTQ4tw #SabineHossenfelder
-            - UCciQ8wFcVoIIMi-lfu8-cjQ #Anton Petrov
-            - UCGHZpIpAWJQ-Jy_CeCdXhMA #CoolWorldsLab
-            - UCFbtcTaMFnOAP0pFO1L8hVw #Kyle Hill
+            - UC1yNl2E66ZzKApQdRuTQ4tw # SabineHossenfelder
+            - UCciQ8wFcVoIIMi-lfu8-cjQ # Anton Petrov
+            - UCGHZpIpAWJQ-Jy_CeCdXhMA # CoolWorldsLab
+            - UCFbtcTaMFnOAP0pFO1L8hVw # Kyle Hill

@@ -1,0 +1,53 @@
+- name: Startpage
+  width: slim
+  # hide-desktop-navigation: true
+  center-vertically: true
+  columns:
+
+    - size: small
+      widgets:
+
+        - type: bookmarks
+          groups:
+            - title: Cloudflare
+              color: 28 92 65
+              links:
+                - title: Workers & Pages
+                  url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/workers-and-pages
+                - title: D1 SQL Database
+                  url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/workers/d1
+            - title: Local Network
+              color: 129 68 58
+              <<: *links-local
+
+    - size: full
+      widgets:
+        - type: search
+          autofocus: true
+
+        - type: bookmarks
+          groups:
+            - title: General
+              links:
+                - title: Gmail
+                  url: https://mail.google.com/mail/u/0/
+                - title: Amazon
+                  url: https://www.amazon.com/
+                - title: Github
+                  url: https://github.com/
+            - title: Entertainment
+              links:
+                - title: YouTube
+                  url: https://www.youtube.com/
+                - title: Prime Video
+                  url: https://www.primevideo.com/
+                - title: Disney+
+                  url: https://www.disneyplus.com/
+            - title: Social
+              links:
+                - title: Reddit
+                  url: https://www.reddit.com/
+                - title: Twitter
+                  url: https://twitter.com/
+                - title: Instagram
+                  url: https://www.instagram.com/

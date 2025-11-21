@@ -1,0 +1,79 @@
+- name: "#crypto" # 🪙
+  slug: crypto
+  width: wide
+
+  head-widgets:
+
+    - type: videos
+      hide-header: true
+      style: horizontal-cards
+      channels:
+        - UCFQMnBA3CS502aghlcr0_aw #@Coffeezilla
+
+  columns:
+
+    - size: small
+      widgets:
+
+        - <<: *markets-base
+          markets:
+            - symbol: TRY=X
+            - symbol: EURTRY=X
+
+        - <<: *markets-base
+          title: Stocks
+          markets:
+            - symbol: TSLA
+            - symbol: NVDA
+            - symbol: AAPL
+            - symbol: AMZN
+            - symbol: INTC
+            - symbol: AMD
+
+        - <<: *markets-base
+          title: Crypto
+          markets:
+            - symbol: BTC-USD
+              name: Bitcoin
+            - symbol: ETH-USD
+              name: Ethereum
+            - symbol: LTC-USD
+              name: Litecoin
+            - symbol: DOGE-USD
+              name: Dogecoin
+            - symbol: XLM-USD
+              name: Stellar
+            #- symbol: XRP-USD
+            #  name: XRP
+            - symbol: SOL-USD
+              name: Solana
+            #- symbol: TRX-USD
+            #  name: TRON
+
+    - size: full
+      widgets:
+
+        - type: group
+          widgets:
+
+            - <<: *reddit-cover
+              subreddit: CryptoCurrency+Bitcoin
+              show-flairs: true
+
+            - <<: *reddit-cover-top-week
+              title: Top This Week
+              subreddit: CryptoCurrency+Bitcoin
+
+    - size: full
+      widgets:
+
+        - type: group
+          widgets:
+
+            - <<: *reddit-cover
+              subreddit: wallstreetbets
+              show-flairs: true
+
+            - <<: *reddit-cover-top-week
+              title: Top This Week
+              subreddit: wallstreetbets

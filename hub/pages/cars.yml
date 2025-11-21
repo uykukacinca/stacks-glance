@@ -1,0 +1,18 @@
+- name: "#cars" # 🚘
+  slug: cars
+  width: wide
+  columns:
+
+    - size: full
+      widgets:
+
+        - <<: *videos-grid
+          limit: 96
+          channels:
+            - UCxpbaAGBv4zrRJx_AjGdVLA # bigtimebigtimebigtime
+            - UCIB5XXHNAWWzTOw6guIMYCg # harrysgarage
+            - UCPFrbCgmpkvdkjTxJq6amlQ # ShopCheckpoint
+            - UCZGkMJEmCR1IqUduqt1uFUw # noriyaro
+            - UCT-2OPZT6P8j4nEKW3DXpOA # LegitStreetCars
+            - UCyXiDU5qjfOPxgOPeFWGwKw # ThrottleHouse
+            - UCDjuge3znPZOc7W2-AsY3Xg # @magnacars

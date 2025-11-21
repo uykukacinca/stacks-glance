@@ -1,27 +1,29 @@
-- name: "🤖"
+- name: "Tech" # 🤖
   slug: tech
   width: wide
+
+  head-widgets:
+
+    - <<: *reddit-base
+      subreddit: Hardware+technology
+      style: horizontal-cards
+
   columns:
 
     - size: full
       widgets:
 
-        - <<: *reddit-cover
-          collapse-after: *widget-half-collapse-after
-          subreddit: Hardware
-         
-        - <<: *reddit-cover
-          collapse-after: *widget-half-collapse-after
-          subreddit: technology
-
-    - size: full
-      widgets:
-
-        - <<: *videos-grid-half
+        - <<: *videos-grid
+          limit: 96
           channels:
-            - UCXuqSBlHAE6Xw-yeJA0Tunw #LinusTechTips
-            - UCBJycsmduvYEL83R_U4JriQ #mkbhd
-            - UCMiJRAwDNSNzuYeN2uWa0pA #Mrwhosetheboss
-            - UChIs72whgZI9w6d6FhwGGHA #GamersNexus
-            - UCRYOj4DmyxhBVrdvbsUwmAA #optimumtech
-            - UCvcRA2Hva1lULVf4GCouH8w #DawidDoesTechStuff
+            - UCXuqSBlHAE6Xw-yeJA0Tunw # LinusTechTips
+            - UCBJycsmduvYEL83R_U4JriQ # mkbhd
+            - UCMiJRAwDNSNzuYeN2uWa0pA # Mrwhosetheboss
+            - UChIs72whgZI9w6d6FhwGGHA # GamersNexus
+            - UCRYOj4DmyxhBVrdvbsUwmAA # optimumtech
+            - UCvcRA2Hva1lULVf4GCouH8w # DawidDoesTechStuff
+            - UC4QZ_LsYcvcq7qOsOhpAX4A #@ColdFusion
+            - UCsTcErHg8oDvUnTzoqsYeNw #@unboxtherapy
+          playlists:
+            - PL70yIS6vx_Y2xaKD3w2qb6Eu06jNBdNJb # WVFRM Podcast
+            - PL8mG-RkN2uTw7PhlnAr4pZZz2QubIbujH # The WAN Show

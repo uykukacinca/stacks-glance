@@ -1,0 +1,65 @@
+- name: "#oss" #
+  slug: oss
+  width: wide
+  columns:
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 5
+          widgets:
+
+            - <<: *github-releases
+              title: Web Apps
+              repositories:
+                - twentyhq/twenty
+                - gitroomhq/postiz-app
+                - Budibase/budibase
+                - nocodb/nocodb
+                - excalidraw/excalidraw
+
+            - <<: *github-releases
+              title: Apps
+              repositories:
+                - DevToys-app/DevToys
+
+            - <<: *github-releases
+              title: Media Players
+              repositories:
+                - obsproject/obs-studio
+                - zhongfly/mpv-winbuild
+
+            - <<: *github-releases
+              title: Code Editors
+              repositories:
+                - zed-industries/zed
+                - microsoft/vscode
+
+            - <<: *github-releases
+              title: API Clients
+              repositories:
+                - usebruno/bruno
+                - mountain-loop/yaak
+                - httpie/desktop
+                - httpie/cli
+
+            - type: bookmarks
+              groups:
+                - title: Awesome Lists
+                  color: 47 92 53
+                  links:
+                    - title: Privacy
+                      url: https://github.com/Lissy93/awesome-privacy
+                    - title: Podcasts
+                      url: https://github.com/rShetty/awesome-podcasts
+                    - title: Sysadmin
+                      url: https://github.com/awesome-foss/awesome-sysadmin
+                    - title: Scalability
+                      url: https://github.com/binhnguyennus/awesome-scalability
+                    - title: Docker
+                      url: https://github.com/veggiemonk/awesome-docker
+                    - title: Linux Software
+                      url: https://github.com/luong-komorebi/Awesome-Linux-Software
+                    - title: Selfhosted
+                      url: https://github.com/awesome-selfhosted/awesome-selfhosted

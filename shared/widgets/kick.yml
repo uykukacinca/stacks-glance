@@ -1,21 +1,22 @@
-widget: &widget-kick-base
+- &widget-kick-base
   type: custom-api
   title: Kick
-  cache: *short-cache
+  cache: *no-cache
   url: https://api.kick.com/public/v1/channels
-  css-class: glimpse-header-tools
+  css-class: xxx-header-tools
   method: GET
   headers:
     Authorization: Bearer ${KICK_TOKEN}
 
-widget: &widget-kick-custom
+- &widget-kick-custom
   type: custom-api
   title: Kick
-  cache: *short-cache
-  css-class: glimpse-header-tools
+  cache: *no-cache
+  css-class: xxx-header-tools
 
-widget: &widget-kick-users
+- &widget-kick-users
   <<: *widget-kick-custom
+  url: ${SECRET_API_URL}/api/kick/streams
   template: |
     {{ $collapseAfter := .Options.IntOr "collapse-after" 5 }}
     <div class="flex gap-10 tools">
@@ -24,7 +25,7 @@ widget: &widget-kick-users
           <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
           <div>Cache: <span class="color-highlight">{{ .JSON.String "datetime" }}</span></div>
         </div>
-        <svg class="glimpse-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <svg class="xxx-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
         </svg>
       </div>
@@ -52,7 +53,7 @@ widget: &widget-kick-users
               </a>
             </div>
             <div class="min-width-0">
-              <a href="https://kick.com/{{ .String "slug" }}" class="size-h3 color-highlight block text-truncate" target="_blank" rel="noreferrer" title="{{ .String "slug" }}">{{ .String "broadcaster.name" }}</a>              
+              <a href="https://kick.com/{{ .String "slug" }}" class="size-h3 color-highlight block text-truncate" target="_blank" rel="noreferrer" title="{{ .String "slug" }}">{{ .String "broadcaster.name" }}</a>
               {{ if .Bool "stream.is_live" }}
               <div class="text-truncate">{{ .String "category.name" }}</div>
               <ul class="list-horizontal-text">
@@ -69,8 +70,9 @@ widget: &widget-kick-users
       </ul>
     {{ end }}
 
-widget: &widget-kick-carousel
+- &widget-kick-carousel
   <<: *widget-kick-custom
+  url: ${SECRET_API_URL}/api/kick/livestreams
   frameless: true
   template: |
     <div class="flex gap-10 tools">
@@ -80,7 +82,7 @@ widget: &widget-kick-carousel
           <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
           <div>Cache: <span class="color-highlight">{{ .JSON.String "datetime" }}</span></div>
         </div>
-        <svg class="glimpse-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <svg class="xxx-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
         </svg>
       </div>
@@ -134,8 +136,9 @@ widget: &widget-kick-carousel
       </div>
     {{ end }}
 
-widget: &widget-kick-category
+- &widget-kick-category
   <<: *widget-kick-custom
+  url: ${SECRET_API_URL}/api/kick/livestreams
   frameless: true
   template: |
     <div class="flex gap-10 tools">
@@ -145,7 +148,7 @@ widget: &widget-kick-category
           <div>Performance: <span class="color-highlight">{{ .JSON.String "performance" }}</span>ms</div>
           <div>Cache: <span class="color-highlight">{{ .JSON.String "datetime" }}</span></div>
         </div>
-        <svg class="glimpse-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <svg class="xxx-icon icon-bolt" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
         </svg>
       </div>
@@ -195,33 +198,3 @@ widget: &widget-kick-category
         </div>
       </div>
     {{ end }}
-
-widget: &widget-kick-followed
-  <<: *widget-kick-users
-  url: ${SECRET_API_URL}/api/kick/streams
-  parameters:
-   id:
-    - 13928 #asmongold
-    - 676 #xqc
-    - 904404 #adinross
-
-widget: &widget-kick-tr-streams
-  <<: *widget-kick-carousel
-  url: ${SECRET_API_URL}/api/kick/livestreams
-  title: Kick Top Streams [TR]
-  parameters:
-   language: tr
-
-widget: &widget-kick-lol
-  <<: *widget-kick-category
-  url: ${SECRET_API_URL}/api/kick/livestreams
-  title: Kick Streams
-  parameters:
-   category: 5
-
-widget: &widget-kick-gta
-  <<: *widget-kick-category
-  url: ${SECRET_API_URL}/api/kick/livestreams
-  title: Kick Streams
-  parameters:
-   category: 8

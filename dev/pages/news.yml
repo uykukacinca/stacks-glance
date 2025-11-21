@@ -1,18 +1,25 @@
-- name: "📢 News"
+- name: "News" # 📢
   slug: news
   width: wide
 
   head-widgets:
 
-    - <<: *widget-twitch-dev
+    - type: videos
       hide-header: true
+      style: horizontal-cards
+      # css-class: hide-details
+      channels:
+        - UCbRP3c757lWg9M-U7TyEkXA # Theo
 
   columns:
+
     - size: full
       widgets:
+
         - type: split-column
           max-columns: 2
           widgets:
+
             - type: split-column
               max-columns: 1
               widgets:
@@ -32,34 +39,69 @@
             - type: split-column
               max-columns: 1
               widgets:
-                - <<: *twitch-channels
+
+                - type: twitch-channels
+                  cache: *short-cache
+                  title: Twitch
                   channels:
                     - theprimeagen
                     - theo
 
-                - <<: *reddit-simple
-                  subreddit: programming
-                  collapse-after: 16
+                - type: group
+                  widgets:
+
+                    - <<: *reddit-simple
+                      subreddit: programming
+
+                    - <<: *reddit-simple-top-week
+                      title: Top This Week
+                      subreddit: programming
 
     - size: full
       widgets:
-        - <<: *videos-grid-half
-          channels:
-            - UC6biysICWOJ-C3P4Tyeggzg #Low Level Learning
-            - UCsBjURrPoezykLs9EqgamOA #Fireship
-            - UCbRP3c757lWg9M-U7TyEkXA #Theo
-            #- UCUyeluBRhGPCW4rPe_UvBZQ #ThePrimeTime
-            #- UCsUalyRg43M8D60mtHe6YcA #CultRepo (formerly Honeypot)
-            - UCyU5wkjgQYGRB0hIHMwm2Sg #@syntaxfm
-            - UC4MZ7zUHb5eAxU75Dc_nqdQ #@TiffInTech
-            #- UCl2mFZoRqjw_ELax4Yisf6w #rossmanngroup
-            - UCJXa3_WNNmIpewOtCHf3B0g #lauriewired
-            - UCVeW9qkBjo3zosnqUbG7CFw #_JohnHammond
-            - UCXzw-OdotBUcNA9yhuYQBwA #@awesome-coding
 
-            #- <<: *videos-grid
-            #  title: Tutorials
-            #  channels:
-            #    - UC0NErq0RhP51iXx64ZmyVfg #BretFisher
-            #    - UC5xzsnp1l8mqchmfqR1nFPQ #Engineering with Morris
-            #    - UCdngmbVKX1Tgre699-XLlUA #TechWorld with Nana
+        - type: group
+          widgets:
+
+            - <<: *videos-grid
+              channels:
+                - UC6biysICWOJ-C3P4Tyeggzg # Low Level Learning
+                - UCsBjURrPoezykLs9EqgamOA # Fireship
+                #- UCUyeluBRhGPCW4rPe_UvBZQ # ThePrimeTime
+                # - UCsUalyRg43M8D60mtHe6YcA # CultRepo (formerly Honeypot)
+                - UCyU5wkjgQYGRB0hIHMwm2Sg # @syntaxfm
+                # - UC4MZ7zUHb5eAxU75Dc_nqdQ # @TiffInTech
+                #- UCl2mFZoRqjw_ELax4Yisf6w # rossmanngroup
+                - UCXzw-OdotBUcNA9yhuYQBwA # @awesome-coding
+                - UCVeW9qkBjo3zosnqUbG7CFw # _JohnHammond
+                - UCKGe7fZ_S788Jaspxg-_5Sg # @pcsecuritychannel
+
+            - <<: *widget-twitch-streams
+              title: Live Streams
+              options:
+                collapse-after-rows: 8
+              body:
+                query: |
+                  query {
+                    game(id: "1469308723") {
+                      streams(first: 30, options: { languages: ["EN", "TR"] }) {
+                        edges {
+                          node {
+                            id
+                            createdAt
+                            previewImageURL(width: 440, height: 248)
+                            type
+                            viewersCount
+                            broadcaster {
+                              login
+                              displayName
+                              profileImageURL(width: 300)
+                              broadcastSettings {
+                                title
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }

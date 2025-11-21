@@ -1,4 +1,4 @@
-- name: "🦠" #Health🧫
+- name: "Health" # 🧫 🦠
   slug: health
   width: wide
   columns:
@@ -10,11 +10,35 @@
           max-columns: 3
           widgets:
 
-            - <<: *reddit-cover
-              subreddit: Health
+            - type: group
+              widgets:
 
-            - <<: *reddit-simple
-              subreddit: psychology
+                - <<: *reddit-cover
+                  subreddit: Health
+                  show-flairs: true
 
-            - <<: *reddit-cover
-              subreddit: Coronavirus
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: Health
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-cover
+                  subreddit: psychology
+                  show-flairs: true
+
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: psychology
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-cover
+                  subreddit: Coronavirus
+                  show-flairs: true
+
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: Coronavirus

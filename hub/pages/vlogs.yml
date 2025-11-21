@@ -1,4 +1,4 @@
-- name: "#vl"
+- name: "Vlogs" #🌅
   slug: vlogs
   width: wide
   columns:
@@ -6,32 +6,12 @@
     - size: full
       widgets:
 
-        - <<: *videos-horizontal
-          title: Casey Neistat
+        - <<: *videos-grid
+          limit: 96
           channels:
-            - UCtinbF-Q-fVthA0qrFQTgXQ
-
-        - <<: *videos-horizontal
-          title: Mike Okay
-          channels:
-            - UCpp3cHR9TWVyXqL1AVw4XkA
-
-        - <<: *videos-horizontal
-          title: Emre Durmuş
-          channels:
-            - UClCBG771sRO6Ap9s84Je7Eg
-
-        - <<: *videos-horizontal
-          title: Testo Taylan
-          channels:
-            - UC1PluvjVa3GI5HJhul5lszg
-
-        - <<: *videos-horizontal
-          title: Mert Ozturk
-          channels:
-            - UCxxsGtsGhZE9KPgUFj-WtIA
-
-        - <<: *videos-horizontal
-          title: Zeliha Akpınar
-          channels:
-            - UChME7blpRpX1ViN-oPBpNmw
+            - UCtinbF-Q-fVthA0qrFQTgXQ # Casey Neistat
+            - UCpp3cHR9TWVyXqL1AVw4XkA # Mike Okay
+            - UClCBG771sRO6Ap9s84Je7Eg # Emre Durmuş
+            - UC1PluvjVa3GI5HJhul5lszg # Testo Taylan
+            - UCxxsGtsGhZE9KPgUFj-WtIA # Mert Ozturk
+            - UChME7blpRpX1ViN-oPBpNmw # Zeliha Akpınar

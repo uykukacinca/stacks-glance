@@ -1,0 +1,88 @@
+- name: "#cms" #
+  slug: cms
+  width: wide
+  columns:
+
+    - size: small
+      widgets:
+
+        - <<: *github-releases
+          repositories:
+            - trailbaseio/trailbase
+            - directus/directus
+            - pocketbase/pocketbase
+
+        # - <<: *github-releases
+        #   repositories:
+        #     - strapi/strapi
+        #     - payloadcms/payload
+        #     - sveltia/sveltia-cms
+        #     - TryGhost/Ghost
+        #     - keystonejs/keystone
+
+        - type: bookmarks
+          groups:
+            - title: PocketBase
+              links:
+                - title: API rules and filters
+                  url: https://pocketbase.io/docs/api-rules-and-filters/
+                - title: Working with relations
+                  url: https://pocketbase.io/docs/working-with-relations/
+                - title: Extending PocketBase
+                  url: https://pocketbase.io/docs/use-as-framework/
+                - title: Going to production
+                  url: https://pocketbase.io/docs/going-to-production/
+                - title: Web APIs reference
+                  url: https://pocketbase.io/docs/api-records/
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 3
+          widgets:
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-simple
+                  collapse-after: *widget-half-collapse-after
+                  subreddit: pocketbase
+
+                - <<: *reddit-simple-top-month
+                  collapse-after: *widget-half-collapse-after
+                  title: Top This Month
+                  subreddit: pocketbase
+
+            - <<: *github-repository
+              repository: pocketbase/pocketbase
+
+            - <<: *github-repository
+              repository: ganigeorgiev/shablon
+
+        - type: split-column
+          max-columns: 3
+          widgets:
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-simple
+                  collapse-after: *widget-half-collapse-after
+                  subreddit: Directus
+
+                - <<: *reddit-simple-top-month
+                  collapse-after: *widget-half-collapse-after
+                  title: Top This Month
+                  subreddit: Directus
+
+            - <<: *github-repository
+              repository: directus/directus
+
+            - <<: *github-repository
+              repository: trailbaseio/trailbase
+
+            # - <<: *videos-grid
+            #   collapse-after-rows: 3
+            #   channels:
+            #     - UC1YAdVv7d36R_YGq3iQnpwA

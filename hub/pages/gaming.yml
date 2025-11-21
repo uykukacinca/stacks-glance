@@ -1,4 +1,4 @@
-- name: "🎲 Gaming"
+- name: "Gaming" # 🎲
   slug: gaming
   width: wide
   columns:
@@ -6,58 +6,62 @@
     - size: small
       widgets:
 
-        - type: group
-          widgets:
+        - <<: *docker-containers
+          category: gaming
+          title: Apps
 
-            - type: bookmarks
-              groups:
-                - hide-arrow: true
-                  links:
-                    - title: Steam Store
-                      icon: si:steam
-                      url: https://store.steampowered.com
-                    - title: Steam Database
-                      url: https://steamdb.info
-                      icon: si:steamdb
-                    - title: Epic Games
-                      icon: si:epicgames
-                      url: https://store.epicgames.com/en-US/free-games
-                    - title: Ubisoft Store
-                      icon: si:ubisoft
-                      url: https://store.ubisoft.com/tr/home
-                    - title: Prime Gaming
-                      icon: si:prime
-                      url: https://gaming.amazon.com/home
-                    - title: GOG
-                      icon: si:gogdotcom
-                      url: https://www.gog.com/en/account
-                    - title: Nexus Mods
-                      icon: si:nexusmods
-                      url: https://www.nexusmods.com
-                - color: 265 89 78
-                  links:
-                    - title: Gamepad Tester
-                      url: https://hardwaretester.com/gamepad
+        - type: bookmarks
+          groups:
+            - hide-arrow: true
+              links:
+                - title: Steam Store
+                  icon: auto-invert ${ICONS_URL}/steam-dark
+                  url: https://store.steampowered.com
+                - title: Steam Database
+                  icon: auto-invert ${ICONS_URL}/custom/steamdb.svg
+                  url: https://steamdb.info
+                - title: Epic Games
+                  icon: auto-invert ${ICONS_URL}/epic-games-dark
+                  url: https://store.epicgames.com/en-US/free-games
+                # - title: Ubisoft Store
+                #   icon: auto-invert ${ICONS_URL}/custom/ubisoft.svg
+                #   url: https://store.ubisoft.com/tr/home
+                - title: Prime Gaming
+                  icon: auto-invert ${ICONS_URL}/amazon-prime-dark
+                  url: https://gaming.amazon.com/home
+                - title: GOG
+                  icon: auto-invert ${ICONS_URL}/custom/gogdotcom.svg
+                  url: https://www.gog.com/en/account
+                - title: Nexus Mods
+                  icon: auto-invert ${ICONS_URL}/custom/nexusmods.svg
+                  url: https://www.nexusmods.com
+            - color: 265 89 78
+              links:
+                - title: Gamepad Tester
+                  url: https://hardwaretester.com/gamepad
 
-            - type: bookmarks
-              hide-arrow: true
-              title: Cloud
-              groups:
-                - links:
-                  - title: Xbox Cloud
-                    url: https://www.xbox.com/en-US/play
-                  - title: r/xCloud
-                    url: https://reddit.com/r/xcloud
-                  - title: GeForce Now
-                    url: https://play.geforcenow.com/#/layout/games
-                  - title: r/GeForceNOW
-                    url: https://reddit.com/r/GeForceNOW
-                  - title: Cloudbase
-                    url: https://cloudbase.gg
+        - type: bookmarks
+          title: Cloud
+          hide-header: true
+          groups:
+            - hide-arrow: true
+              links:
+                - title: Xbox Cloud
+                  icon: auto-invert ${ICONS_URL}/xbox-dark
+                  url: https://www.xbox.com/en-US/play
+                - title: GeForce Now
+                  icon: auto-invert ${ICONS_URL}/custom/nvidia.svg
+                  url: https://play.geforcenow.com/#/layout/games
+            - color: 16 100 50
+              links:
+                - title: r/xCloud
+                  url: https://reddit.com/r/xcloud
+                - title: r/GeForceNOW
+                  url: https://reddit.com/r/GeForceNOW
 
         - type: twitch-top-games
           cache: *long-cache
-          collapse-after: 3
+          collapse-after: 5
           exclude:
             - just-chatting
             - pools-hot-tubs-and-beaches
@@ -73,43 +77,77 @@
             - sports-1
             - art
 
-        - type: group
-          widgets:
-            - <<: *gamepass-pc-recently-added
-
-            - <<: *gamepass-pc-coming-soon
-
         - <<: *steam-specials
 
-    - size: full
-      widgets:
-
-        - <<: *reddit-cover
-          title: Gaming
-          subreddit: pcgaming+gaming
-
-    - size: full
-      widgets:
-
         - type: group
           widgets:
 
-            - <<: *reddit-simple
-              collapse-after: 5
-              subreddit: GamingLeaksAndRumours
-              title: Leaks & Rumours
-              css-class:
+            - type: extension
+              url: ${GLIMPSE_URL}/xbox/gamepass
+              allow-potentially-dangerous-html: true
+              cache: *long-cache
+              title: Rcently Added
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                catalog: pc-recently-added
+                collapseAfter: 3
 
-            - <<: *reddit-simple
-              collapse-after: 5
-              subreddit: CrackWatch
-              title: Watch
-              css-class:
+            - type: extension
+              url: ${GLIMPSE_URL}/xbox/gamepass
+              allow-potentially-dangerous-html: true
+              cache: *long-cache
+              title: Coming soon
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                catalog: pc-coming-soon
+                collapseAfter: 3
 
-        - <<: *videos-grid
-          collapse-after-rows: 5
-          channels:
-            - UCNvzD7Z-g64bPXxGzaQaa4g #gameranx
-            - UCZ7AeeVbyslLM_8-nVy2B8Q #Skill Up
-            - UC9PBzalIcEQCsiIkq36PyUA #Digital Foundry
-            - UCsvn_Po0SmunchJYOWpOxMg #videogamedunkey
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 3
+          widgets:
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-cover
+                  subreddit: gaming
+
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: gaming+pcgaming
+
+            - type: split-column
+              max-columns: 1
+              widgets:
+
+                - <<: *reddit-simple
+                  collapse-after: 5
+                  subreddit: GamingLeaksAndRumours
+                  title: Leaks & Rumours
+                  css-class:
+
+                - <<: *reddit-cover
+                  collapse-after: 5
+                  subreddit: pcgaming
+
+                - <<: *reddit-cover
+                  collapse-after: 5
+                  subreddit: Steam
+
+                - <<: *reddit-simple
+                  collapse-after: 5
+                  subreddit: CrackWatch
+                  title: Watch
+                  css-class:
+
+            - <<: *videos-grid
+              channels:
+                - UCNvzD7Z-g64bPXxGzaQaa4g # gameranx
+                - UCZ7AeeVbyslLM_8-nVy2B8Q # Skill Up
+                - UC9PBzalIcEQCsiIkq36PyUA # Digital Foundry
+                - UCsvn_Po0SmunchJYOWpOxMg # videogamedunkey

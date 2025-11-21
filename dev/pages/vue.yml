@@ -1,9 +1,11 @@
-- name: "🟢 Vue"
+- name: "Vue" # 🟢
   slug: vue
   width: wide
   columns:
+
     - size: small
       widgets:
+
         - type: search
           search-engine: https://github.com/nuxt/nuxt/issues?q={QUERY}
           new-tab: true
@@ -13,7 +15,7 @@
               url: ${YOUTUBE_URL}/results?search_query=nuxt+{QUERY}
             - title: Reddit
               shortcut: "!r"
-              url: ${REDDIT_URL}/r/Nuxt/search?q={QUERY}&restrict_sr=on
+              url: ${REDDIT_URL}/r/Nuxt/search?q={QUERY}&restrict_sr=on&sort=new&t=all
             - title: Github
               shortcut: "!g"
               url: https://github.com/nuxt/nuxt/issues?q={QUERY}
@@ -22,25 +24,32 @@
           groups:
             - hide-arrow: true
               links:
-                - title: Modules
-                  icon: si:nuxt
-                  url: https://nuxt.com/modules
+                - title: Vue.js
+                  icon: auto-invert ${ICONS_URL}/custom/vuedotjs.svg
+                  url: https://vuejs.org/guide/introduction.html
+                - title: Vueuse
+                  icon: auto-invert ${ICONS_URL}/custom/vueuse.svg
+                  url: https://vueuse.org/guide/
+                - title: Awesome Vue
+                  icon: auto-invert ${ICONS_URL}/github-dark
+                  url: https://github.com/vuejs/awesome-vue#readme
+
+        - type: bookmarks
+          title: Nuxt
+          css-class: list-item-inline
+          groups:
             - links:
-                - title: Getting Started
+                - title: Docs
                   url: https://nuxt.com/docs/getting-started/introduction
+                - title: Modules
+                  url: https://nuxt.com/modules
                 - title: Guide
                   url: https://nuxt.com/docs/guide
                 - title: API
                   url: https://nuxt.com/docs/api
-            - links:
-                - title: Awesome Vue
-                  url: https://github.com/vuejs/awesome-vue#readme
 
-        - type: repository
+        - <<: *github-repository
           repository: nuxt/nuxt
-          pull-requests-limit: 2
-          issues-limit: 2
-          commits-limit: 2
 
         - <<: *github-releases
           repositories:
@@ -52,21 +61,34 @@
             - vuejs/pinia
             - vuejs/core
             - vueuse/vueuse
+            - victorgarciaesgi/regle
 
     - size: full
       widgets:
-        - <<: *reddit-simple
-          subreddit: nuxt+vuejs
-          title: Nuxt & Vue
-          collapse-after: 18
+
+        - type: group
+          widgets:
+
+            - <<: *reddit-simple
+              title: Nuxt & Vue
+              subreddit: nuxt+vuejs
+
+            - <<: *reddit-simple-top-week
+              title: Top This Week
+              subreddit: nuxt+vuejs
+
+            - <<: *reddit-simple-top-month
+              title: Month
+              subreddit: nuxt+vuejs
 
     - size: full
       widgets:
+
         - <<: *videos-grid
           channels:
-            - UCgmcPHueYRarnCkihtNIRlw #LearnVue
-            - UCVJ5qp8Vw8gXQ9RkuNdYWMw #TheAlexLichter
-            - UCa1zuotKU4Weuw_fLRnPv0A #vuemastery
-            - UCshZ3rdoCLjDYuTR_RBubzw #programwitherik
-            - UCJ9jj5YMzo-HsyM6WG9Q_Lg #NuxtLabs
-            - UCr0D7PVNOHqB3Td7lVl_LKw #JohnKomarnicki
+            - UCgmcPHueYRarnCkihtNIRlw # LearnVue
+            - UCVJ5qp8Vw8gXQ9RkuNdYWMw # TheAlexLichter
+            - UCa1zuotKU4Weuw_fLRnPv0A # vuemastery
+            - UCshZ3rdoCLjDYuTR_RBubzw # programwitherik
+            - UCJ9jj5YMzo-HsyM6WG9Q_Lg # NuxtLabs
+            - UCr0D7PVNOHqB3Td7lVl_LKw # JohnKomarnicki

@@ -1,0 +1,25 @@
+server:
+  assets-path: /app/config/shared/assets
+
+branding:
+  logo-text: ⋈
+  favicon-url: /assets/favicon.ico
+  app-name: "Glance Test"
+  app-background-color: "#7cd0b0"
+
+document:
+  head: |
+    <link rel="stylesheet" href="${GLIMPSE_URL}/main.css">
+    <script>const GLIMPSE_URL = "${GLIMPSE_URL}";</script>
+    <script src="/assets/custom.js"></script>
+
+$include: shared/index.yml
+
+pages:
+  - $include: pages/startpage.yml
+  - $include: pages/docker.yml
+  - $include: pages/containers.yml
+  - $include: pages/eksisozluk.yml
+  - $include: pages/new.yml
+  - $include: pages/test.yml
+  - $include: pages/jellyfin.yml

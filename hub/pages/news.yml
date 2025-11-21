@@ -1,4 +1,4 @@
-- name: "🌏 News"
+- name: "News" # 🌏
   slug: news
   width: wide
 
@@ -17,12 +17,35 @@
           max-columns: 3
           widgets:
 
-            - <<: *reddit-cover
-              subreddit: worldnews
-              show-flairs: true
+            - type: group
+              widgets:
 
-            - <<: *reddit-cover
-              subreddit: geopolitics
+                - <<: *reddit-cover
+                  subreddit: worldnews
+                  show-flairs: true
 
-            - <<: *reddit-cover
-              subreddit: News
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: worldnews
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-cover
+                  subreddit: geopolitics
+                  show-flairs: true
+
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: geopolitics
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-cover
+                  subreddit: News
+                  show-flairs: true
+
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: News

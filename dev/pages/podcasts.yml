@@ -1,44 +1,23 @@
-- name: "🎙️ Podcasts"
+- name: "Podcasts" # 🎙️
   slug: podcasts
   width: wide
   columns:
-    # - size: small
-    #   widgets:
-    #     - type: bookmarks
-    #       groups:
-    #         - links:
-    #             - title: Awesome Podcasts
-    #               url: https://github.com/rShetty/awesome-podcasts
 
     - size: full
       widgets:
 
-        - <<: *videos-horizontal
-          title: WVFRM Podcast
+        - <<: *videos-grid
           playlists:
-            - PL70yIS6vx_Y2xaKD3w2qb6Eu06jNBdNJb
-
-        - <<: *videos-horizontal
-          title: Syntax - Tasty Web Development Treats
-          playlists:
-            - PLLnpHn493BHHNUfHN5lDf11UD8jQ5Bpzl
-
-        - <<: *videos-horizontal
-          title: The WAN Show
-          playlists:
-            - PL8mG-RkN2uTw7PhlnAr4pZZz2QubIbujH
-
-        - <<: *videos-horizontal
-          title: Socially Inept
+            - PLLnpHn493BHHNUfHN5lDf11UD8jQ5Bpzl # Syntax - Tasty Web Development Treats
+            - PL2Fq-K0QdOQiJpufsnhEd1z3xOv2JMHuk # ThePrimeTime - The Standup
+            - PL2Fq-K0QdOQhLEX54hNhsTRvKnCSQrzyn # ThePrimeTime - TopShelf
+            - PLX6ivsCcfHDOzMIUioOofyF-h-niZL6Qj # Beyond Coding Podcast
+            - PLWKjhJtqVAbm04DK8TSUCRheRjW2P9TR7 # @freecodecamp
           channels:
-            - UCFe2Kq8Hg15UomoVYdmRg_Q
- 
-        - <<: *videos-horizontal
-          title: Beyond Coding Podcast
-          playlists:
-            - PLX6ivsCcfHDOzMIUioOofyF-h-niZL6Qj
-
-        - <<: *videos-horizontal
-          title: Syntax - Self Host 101
-          playlists:
-            - PLLnpHn493BHHAxTeLNUZEDLYc8uUwqGXa
+            # - UCktI_HQAkbr-tJbdWnQ_osw # @LogRocket
+            - UCFe2Kq8Hg15UomoVYdmRg_Q # Socially Inept
+            - UCamLstJyCa-t5gfZegxsFMw # Colin and Samir
+            - UCSHZKyawb77ixDdsGog4iWA # Lex Fridma
+            - UClWTCPVi-AU9TeCN6FkGARg # @eoglobal
+            - UCJXa3_WNNmIpewOtCHf3B0g # lauriewired
+            - UC9H0HzpKf5JlazkADWnW1Jw # @bashbunni

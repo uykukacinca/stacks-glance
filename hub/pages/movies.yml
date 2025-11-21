@@ -1,4 +1,4 @@
-- name: "🍿 Movies"
+- name: "Movies" # 🍿
   slug: movies
   width: wide
   columns:
@@ -17,6 +17,16 @@
             - title: YouTube
               shortcut: "!y"
               url: ${YOUTUBE_URL}/results?search_query={QUERY}
+            - title: Bingeflix
+              shortcut: "!b"
+              url: https://bingeflix.tv/search?tab=movies-tv&q={QUERY}
+            - title: Türkçe Altyazı
+              shortcut: "!t"
+              url: https://turkcealtyazi.org/find.php?cat=sub&find={QUERY}
+            - title: Open Subtitles
+              shortcut: "!o"
+              url: https://www.opensubtitles.org/en/search2/moviename-{QUERY}/sublanguageid-tur,eng
+
 
         - type: bookmarks
           css-class: page-movies
@@ -42,37 +52,68 @@
                   url: https://www.themoviedb.org/movie/upcoming
             - <<: *links-subtitles
             - links:
+                - title: Viki
+                  url: https://www.viki.com
+                - title: Prime Video
+                  url: https://www.primevideo.com
+            - links:
                 - title: Megathread
                   url: ${REDDIT_URL}/r/Piracy/wiki/megathread/movies_and_tv#wiki_.1F4D1_.279C_streaming
-                - title: Bingeflix
-                  url: https://bingeflix.tv/movies
 
-        - <<: *radarr-recently-added
+        - <<: *jellyfin-recent-movies
+          options:
+            collapse-after: 10
 
     - size: full
       widgets:
-
 
         - type: split-column
           max-columns: 3
           widgets:
 
-            - <<: *reddit-cover
-              subreddit: movies
-              show-flairs: true
+            - type: split-column
+              max-columns: 1
+              widgets:
 
-            - <<: *reddit-cover
-              subreddit: movies
-              title: Trailers
-              search: flair:trailer
-              sort-by: new
+                - type: group
+                  widgets:
+
+                    - <<: *reddit-cover
+                      subreddit: movies
+                      show-flairs: true
+                      collapse-after: *widget-half-collapse-after
+
+                    - <<: *reddit-cover-top-week
+                      title: Top This Week
+                      subreddit: movies
+                      collapse-after: *widget-half-collapse-after
+
+                - <<: *reddit-cover
+                  subreddit: movies
+                  title: Trailers
+                  search: flair:trailer
+                  sort-by: new
+                  collapse-after: *widget-half-collapse-after
+
+            - type: split-column
+              max-columns: 1
+              widgets:
+
+                - <<: *reddit-cover
+                  subreddit: Cinema
+                  show-flairs: true
+                  collapse-after: *widget-half-collapse-after
+
+                - <<: *reddit-cover
+                  subreddit: BoxOffice
+                  collapse-after: *widget-half-collapse-after
 
             - <<: *videos-grid
               title: Reviews & Podcasts
               channels:
-                - UC7v3-2K1N84V67IF-WTRG-Q #Jeremy Jahns
-                - UCCqEeDAUf4Mg0GgEN658tkA #The Chris Stuckmans
-                - UCbiOAho0h23IMInURiESx1w #Dan Murrell
-                - UCrTNhL_yO3tPTdQ5XgmmWjA #RedLetterMedia
-                - UCUyvQV2JsICeLZP4c_h40kA #Thomas Flight
-                - UCSJPFQdZwrOutnmSFYtbstA #TheCriticalDrinker
+                - UC7v3-2K1N84V67IF-WTRG-Q # Jeremy Jahns
+                - UCCqEeDAUf4Mg0GgEN658tkA # The Chris Stuckmans
+                - UCbiOAho0h23IMInURiESx1w # Dan Murrell
+                - UCrTNhL_yO3tPTdQ5XgmmWjA # RedLetterMedia
+                - UCUyvQV2JsICeLZP4c_h40kA # Thomas Flight
+                - UCSJPFQdZwrOutnmSFYtbstA # TheCriticalDrinker

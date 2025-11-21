@@ -1,17 +1,19 @@
-- name: "☢️ Selfhost"
+- name: "Selfhost" # ☢️
   slug: selfhost
   width: wide
   columns:
+
     - size: small
       widgets:
+
         - type: search
-          search-engine: ${REDDIT_URL}/r/selfhosted/search?q={QUERY}&restrict_sr=on
+          search-engine: ${REDDIT_URL}/r/selfhosted/search?q={QUERY}&restrict_sr=on&sort=new&t=all
           new-tab: true
           placeholder: Search in r/selfhosted
           bangs:
             - title: Reddit
               shortcut: "!r"
-              url: ${REDDIT_URL}/r/selfhosted/search?q={QUERY}&restrict_sr=on
+              url: ${REDDIT_URL}/r/selfhosted/search?q={QUERY}&restrict_sr=on&sort=new&t=all
             - title: YouTube
               shortcut: "!y"
               url: ${YOUTUBE_URL}/results?search_query=selfhosted+{QUERY}
@@ -19,26 +21,53 @@
         - type: bookmarks
           groups:
             - links:
-                - title: Selfh.st
+                - title: Selfh.st Apps
+                  icon: auto-invert ${ICONS_URL}/selfh-st-dark
                   url: https://selfh.st/apps
-                - title: OpenAlternative
-                  url: https://openalternative.co/self-hosted
+                - title: Awesome-Selfhosted
+                  icon: auto-invert ${ICONS_URL}/custom/awesomelists.svg
+                  url: https://awesome-selfhosted.net/
+                - title: LinuxServer Images
+                  icon: auto-invert ${ICONS_URL}/linuxserver-io-dark
+                  url: https://docs.linuxserver.io/images/
+            - links:
+                - title: Selfh.st Icons
+                  icon: auto-invert ${ICONS_URL}/selfh-st-dark
+                  url: https://selfh.st/icons
+                - title: SimpleIcons
+                  icon: auto-invert ${ICONS_URL}/custom/simpleicons.svg
+                  url: https://simpleicons.org/
+                - title: HeroIcons
+                  url: https://heroicons.com/
             - color: 31 100 71
               links:
-                - title: Awesome Selfhosted
-                  url: https://github.com/awesome-selfhosted/awesome-selfhosted?tab=readme-ov-file#awesome-selfhosted
                 - title: Awesome Compose
                   url: https://github.com/docker/awesome-compose
-            - color: 265 89 78
-              links:
-                - title: LinuxServer Images
-                  url: https://docs.linuxserver.io/images/docker-adguardhome-sync
-                - title: LinuxServer Fleet
-                  url: https://fleet.linuxserver.io
                 - title: Compose Examples
                   url: https://github.com/Haxxnet/Compose-Examples/tree/main/examples
+                - title:  Self Hosting Guide
+                  url: https://github.com/mikeroyal/Self-Hosting-Guide
                 - title: Trash Guides
                   url: https://trash-guides.info
+
+        - type: bookmarks
+          title: Docker
+          css-class: list-item-inline
+          groups:
+            - color: 223 90 50
+              links:
+                - title: Hub
+                  url: https://hub.docker.com/search?badges=official&badges=verified_publisher
+                - title: Services
+                  url: https://docs.docker.com/reference/compose-file/services/
+                - title: Networks
+                  url: https://docs.docker.com/reference/compose-file/networks/
+                - title: Dockerfile
+                  url: https://docs.docker.com/reference/dockerfile/
+                - title: Manuals
+                  url: https://docs.docker.com/manuals/
+                - title: Samples
+                  url: https://docs.docker.com/reference/samples/
 
         - <<: *github-releases
           title: Core
@@ -54,11 +83,11 @@
           collapse-after: 10
           show-source-icon: true
           repositories:
-            - qdm12/gluetun
-            - fosrl/pangolin
+            # - qdm12/gluetun
+            # - fosrl/pangolin
             # - portainer/portainer
             - immich-app/immich
-            - caddyserver/caddy
+            # - caddyserver/caddy
             - jellyfin/jellyfin
             - Sonarr/Sonarr
             - radarr/radarr
@@ -71,12 +100,13 @@
             # - iv-org/invidious
             - docmost/docmost
             # - home-assistant/core
-            # - amir20/dozzle
-            - CorentinTh/it-tools
+            - amir20/dozzle
+            # - sharevb/it-tools
             # - Athou/commafeed
             - henrygd/beszel
-            - kieraneglin/pinchflat
+            # - kieraneglin/pinchflat
             - codeberg:forgejo/forgejo
+            - advplyr/audiobookshelf
 
         #  - type: rss
         #    cache: *long-cache
@@ -104,23 +134,64 @@
     - size: full
       widgets:
 
-        - type: group
+        - type: split-column
+          max-columns: 3
           widgets:
 
-            - <<: *reddit-simple
-              subreddit: selfhosted
+            - type: group
+              widgets:
 
-            - <<: *reddit-simple-top-week
-              title: Top This Week
-              subreddit: selfhosted
+                - <<: *reddit-simple
+                  collapse-after: 20
+                  subreddit: selfhosted
 
-    - size: full
-      widgets:
-        - <<: *videos-grid
-          channels:
-            - UC9x0AN7BWHpCDHSm9NiJFJQ #NetworkChuck
-            - UCOk-gHyjcWZNj3Br4oxwh0A #Techno Tim
-            - UCZNhwA1B5YqiY1nLzmM0ZRg #Christian Lempa
-            - UCVy16RS5eEDh8anP8j94G2A #DB Tech
-            - UCUUTdohVElFLSP4NBnlPEwA #Jim's Garage
-            - UCh66aXZ_hqiT7au6Nwb8p3Q #KTZ Systems
+                - <<: *reddit-simple-top-week
+                  collapse-after: 20
+                  title: Top This Week
+                  subreddit: selfhosted
+
+                - <<: *reddit-simple-top-month
+                  collapse-after: 20
+                  title: Month
+                  subreddit: selfhosted
+
+            - type: split-column
+              max-columns: 1
+              widgets:
+
+                - <<: *github-repository
+                  title: Glance Repository
+                  repository: glanceapp/glance
+
+                - type: group
+                  widgets:
+
+                    - <<: *reddit-simple
+                      collapse-after: 5
+                      subreddit: docker
+
+                    - <<: *reddit-simple-top-week
+                      collapse-after: 5
+                      title: Top This Week
+                      subreddit: docker
+
+                - type: group
+                  widgets:
+
+                    - <<: *reddit-simple
+                      subreddit: Proxmox
+                      collapse-after: 5
+
+                    - <<: *reddit-simple-top-week
+                      title: Top This Week
+                      subreddit: Proxmox
+                      collapse-after: 5
+
+            - <<: *videos-grid
+              channels:
+                - UC9x0AN7BWHpCDHSm9NiJFJQ # NetworkChuck
+                - UCOk-gHyjcWZNj3Br4oxwh0A # Techno Tim
+                - UCZNhwA1B5YqiY1nLzmM0ZRg # Christian Lempa
+                - UCVy16RS5eEDh8anP8j94G2A # DB Tech
+                - UCUUTdohVElFLSP4NBnlPEwA # Jim's Garage
+                - UCh66aXZ_hqiT7au6Nwb8p3Q # KTZ Systems

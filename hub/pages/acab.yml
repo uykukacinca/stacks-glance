@@ -1,4 +1,4 @@
-- name: "#acab"
+- name: "#acab" # 🚨
   slug: acab
   width: wide
   columns:
@@ -19,7 +19,7 @@
     - size: full
       widgets:
 
-        - <<: *videos-grid-half
+        - <<: *videos-grid
           channels:
             - UCcth5uVYORmu5Cu15ZjpzuQ #@thecivilrightslawyer
             - UCfDO_4-o9H0hLHW00zWTVYQ #@X-Cop

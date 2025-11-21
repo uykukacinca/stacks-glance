@@ -1,4 +1,4 @@
-- name: "📟 Hardware"
+- name: "Hardware" # 📟
   slug: hardware
   width: wide
   columns:

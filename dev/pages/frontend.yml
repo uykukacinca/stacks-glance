@@ -1,4 +1,4 @@
-- name: "#frontend"
+- name: "#frontend" # 
   slug: frontend
   width: wide
 
@@ -11,10 +11,12 @@
         - UCFbNIlppjAuEX4znoulh0Cw #@WebDevSimplified
 
   columns:
+
     - size: small
       widgets:
+
         - type: search
-          search-engine: ${REDDIT_URL}/r/webdev/search?q={QUERY}&restrict_sr=on
+          search-engine: ${REDDIT_URL}/r/webdev/search?q={QUERY}&restrict_sr=on&sort=new&t=all
           new-tab: true
           placeholder: Search in r/webdev
           bangs:
@@ -28,7 +30,36 @@
               shortcut: "!g"
               url: https://github.com/search?q={QUERY}&type=repositories
 
-        - <<: *bookmarks-frontend
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Tailwind CSS
+                  icon: auto-invert ${ICONS_URL}/custom/tailwindcss.svg
+                  url: https://tailwindcss.com
+                - title: Tailwind UI
+                  icon: auto-invert ${ICONS_URL}/custom/tailwindcss.svg
+                  url: https://tailwindcss.com/plus/ui-blocks
+            - title: UI
+              color: 129 68 58
+              links:
+                - title: Origin UI
+                  url: https://originui.com
+                - title: Tremor
+                  url: https://tremor.so
+                - title: shadcn/ui
+                  url: https://ui.shadcn.com
+            - title: Icons
+              color: 188 70 50
+              links:
+                - title: Simple Icons
+                  url: https://simpleicons.org
+                - title: Hero Icons
+                  url: https://heroicons.com
+            - links:
+                - title: Webdev Resources
+                  url: https://github.com/RitikPatni/Front-End-Web-Development-Resources
+                - title: Flexbox
+                  url: https://flexbox.tech/
 
         - <<: *github-releases
           title: CSS
@@ -37,24 +68,42 @@
             - saadeghi/daisyui
             - shadcn/ui
             - unovue/reka-ui
+            - codex-team/editor.js
 
         - <<: *github-releases
           title: Frameworks
           repositories:
             - alpinejs/alpine
             - withastro/astro
+            - trueadm/ripple
+            - marko-js/marko
 
     - size: full
       widgets:
-        - <<: *reddit-simple
-          subreddit: webdev
 
-    - size: full
-      widgets:
-        - <<: *reddit-simple
-          collapse-after: *widget-half-collapse-after
-          subreddit: Frontend
+        - type: split-column
+          max-columns: 3
+          widgets:
 
-        - <<: *reddit-simple
-          collapse-after: *widget-half-collapse-after
-          subreddit: css
+            - type: group
+              widgets:
+
+                - <<: *reddit-simple
+                  subreddit: webdev
+
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: webdev
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-simple
+                  subreddit: Frontend
+
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: Frontend
+
+            - <<: *reddit-simple
+              subreddit: css

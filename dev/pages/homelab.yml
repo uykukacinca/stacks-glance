@@ -1,17 +1,19 @@
-- name: "🆘 Homelab"
+- name: "Homelab" # 🆘
   slug: homelab
   width: wide
   columns:
+
     - size: small
       widgets:
+
         - type: search
-          search-engine: ${REDDIT_URL}/r/homelab/search?q={QUERY}&restrict_sr=on
+          search-engine: ${REDDIT_URL}/r/homelab/search?q={QUERY}&restrict_sr=on&sort=new&t=all
           new-tab: true
           placeholder: Search in r/homelab
           bangs:
             - title: Reddit
               shortcut: "!r"
-              url: ${REDDIT_URL}/r/homelab/search?q={QUERY}&restrict_sr=on
+              url: ${REDDIT_URL}/r/homelab/search?q={QUERY}&restrict_sr=on&sort=new&t=all
             - title: YouTube
               shortcut: "!y"
               url: ${YOUTUBE_URL}/results?search_query=homelab+{QUERY}
@@ -21,35 +23,117 @@
           repositories:
             - community-scripts/ProxmoxVE
 
-        - <<: *bookmarks-homelab
+        - type: bookmarks
+          groups:
+            - color: 31 100 71
+              links:
+                - title: Proxmox Scripts
+                  icon: auto-invert ${ICONS_URL}/proxmox-helper-scripts-dark
+                  url: https://community-scripts.github.io/ProxmoxVE/scripts
+                - title: Download Proxmox VE
+                  icon: auto-invert ${ICONS_URL}/proxmox-dark
+                  url: https://www.proxmox.com/en/downloads
+            - links:
+                - title: OPNsense
+                  icon: auto-invert ${ICONS_URL}/opnsense-dark
+                  url: https://opnsense.org/download
+
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Github Trending
+                  url: https://github.com/trending
+                - title: Free for Developers
+                  url: https://free-for.dev
+                - title: DEV.to
+                  url: https://dev.to
+            - title: Cheatsheets
+              links:
+                - title: Git Commands
+                  url: https://github.com/LeCoupa/awesome-cheatsheets/blob/master/tools/git.sh
+                - title: Gitea Config
+                  url: https://docs.gitea.com/administration/config-cheat-sheet
+                - title: Docker Commands
+                  url: https://github.com/LeCoupa/awesome-cheatsheets/blob/master/tools/docker.sh
+                - title: MongoDb CLI
+                  url: https://github.com/LeCoupa/awesome-cheatsheets/blob/master/databases/mongodb.sh
+                - title: Glance
+                  url: https://github.com/glanceapp/glance/blob/main/docs/configuration.md#configuration
+            - links:
+                - title: Neal.fun
+                  url: https://neal.fun
+                - title: Bop Spotter
+                  url: https://walzr.com/bop-spotter
 
     - size: full
       widgets:
-        - type: group
+
+        - type: split-column
+          max-columns: 3
           widgets:
-            - <<: *reddit-simple
-              subreddit: homelab
-              search: self:true
-              collapse-after: *widget-half-collapse-after
 
-            - <<: *reddit-simple
-              subreddit: HomeServer
-              collapse-after: *widget-half-collapse-after
+            - type: group
+              widgets:
+                - <<: *reddit-simple
+                  subreddit: homelab
+                  search: self:true
+                  collapse-after: *widget-half-collapse-after
 
-        - <<: *reddit-simple
-          subreddit: Proxmox
-          collapse-after: *widget-half-collapse-after
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: homelab
+                  # search: self:true
+                  collapse-after: *widget-half-collapse-after
 
-    - size: full
-      widgets:
-        - <<: *videos-grid
-          title: Hardware
-          channels:
-            - UCgdTVe88YVSrOZ9qKumhULQ #Hardware Haven
-            - UC9evhW4JB_UdXSLeZGy8lGw #Raid Owl
-            - UCHkYOD-3fZbuGhwsADBd9ZQ #Lawrence Systems
-            - UCR-DXc1voovS8nhAvccRZhg #Jeff Geerling
-            - UCbiGcwDWZjz05njNPrJU7jA #ExplainingComputers
-            - UCsnGwSIHyoYN0kiINAGUKxg #Wolfgang's Channel
-            - UCBUGoNsdqLA7gyAB2zSa0rQ #Robtech
-            - UC1733iBvNpXIscZk4QnfYBw #WunderTechTutorials
+            - type: group
+              widgets:
+
+                - <<: *reddit-simple
+                  subreddit: HomeServer
+                  collapse-after: *widget-half-collapse-after
+
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: HomeServer
+                  collapse-after: *widget-half-collapse-after
+
+            - <<: *videos-grid
+              title: Hardware
+              channels:
+                - UCgdTVe88YVSrOZ9qKumhULQ # Hardware Haven
+                - UC9evhW4JB_UdXSLeZGy8lGw # Raid Owl
+                - UCHkYOD-3fZbuGhwsADBd9ZQ # Lawrence Systems
+                - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
+                - UCbiGcwDWZjz05njNPrJU7jA # ExplainingComputers
+                - UCsnGwSIHyoYN0kiINAGUKxg # Wolfgang's Channel
+                - UCBUGoNsdqLA7gyAB2zSa0rQ # Robtech
+                - UC1733iBvNpXIscZk4QnfYBw # WunderTechTutorials
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-simple
+                  subreddit: sysadmin
+                  collapse-after: *widget-half-collapse-after
+
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: sysadmin
+                  collapse-after: *widget-half-collapse-after
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-simple
+                  subreddit: Proxmox
+                  collapse-after: *widget-half-collapse-after
+
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: Proxmox
+                  collapse-after: *widget-half-collapse-after
+
+                - <<: *reddit-simple-top-month
+                  title: Month
+                  subreddit: Proxmox
+                  collapse-after: *widget-half-collapse-after

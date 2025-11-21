@@ -12,7 +12,7 @@
         - <<: *videos-grid
           channels:
             - UCE1u2aEeOZn22nsochlieFQ #@DinaBelenkaya
-            - UCAn8NrZ-J4CRfwodajqFYoQ #BotezLive
-            - UCOVfq3NNYjlYCz1iou69FwQ #AnnaCramling
-            - UCX1aKS73OTYKAD-D5dno73w #akaNemsko
-            - UCQHX6ViZmPsWiYSFAyS0a3Q #GothamChess
+            - UCAn8NrZ-J4CRfwodajqFYoQ # BotezLive
+            - UCOVfq3NNYjlYCz1iou69FwQ # AnnaCramling
+            - UCX1aKS73OTYKAD-D5dno73w # akaNemsko
+            - UCQHX6ViZmPsWiYSFAyS0a3Q # GothamChess

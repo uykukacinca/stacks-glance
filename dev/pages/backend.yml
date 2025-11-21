@@ -1,4 +1,4 @@
-- name: "#backend"
+- name: "#backend" #
   slug: backend
   width: wide
   columns:
@@ -7,7 +7,7 @@
       widgets:
 
         - type: search
-          search-engine: ${REDDIT_URL}/r/backend/search?q={QUERY}&restrict_sr=on
+          search-engine: ${REDDIT_URL}/r/backend/search?q={QUERY}&restrict_sr=on&sort=new&t=all
           new-tab: true
           placeholder: Search in r/backend
 
@@ -24,15 +24,17 @@
           title: Backend
           repositories:
             - nitrojs/nitro
+            - honojs/hono
             - unjs/h3
             - unjs/db0
+            - unkeyed/unkey
 
         - <<: *github-releases
+          title: JS Runtime
           repositories:
             - denoland/deno
             - nodejs/node
-
-        - <<: *html-node
+            - oven-sh/bun
 
         - <<: *github-releases
           title: Software
@@ -41,6 +43,8 @@
             - mountain-loop/yaak
             - httpie/desktop
 
+        - <<: *html-node
+
         - type: bookmarks
           groups:
             - links:
@@ -48,23 +52,43 @@
                   url: https://github.com/public-apis/public-apis#readme
                 - title: Awesome Node.js
                   url: https://github.com/sindresorhus/awesome-nodejs#readme
-                - title: Download OrbStack
-                  url: https://orbstack.dev/download
 
     - size: full
       widgets:
 
-        - <<: *reddit-simple
-          subreddit: Backend
+        - type: group
+          widgets:
+
+            - <<: *reddit-simple
+              subreddit: Backend
+
+            - <<: *reddit-simple-top-week
+              title: Top This Week
+              subreddit: Backend
 
     - size: full
       widgets:
 
-        - <<: *reddit-simple
-          collapse-after: *widget-half-collapse-after
-          subreddit: deno
+        - type: group
+          widgets:
 
+            - <<: *reddit-simple
+              subreddit: node
+              collapse-after: *widget-half-collapse-after
 
-        - <<: *reddit-simple
-          collapse-after: *widget-half-collapse-after
-          subreddit: node
+            - <<: *reddit-simple-top-week
+              title: Top This Week
+              subreddit: node
+              collapse-after: *widget-half-collapse-after
+
+        - type: group
+          widgets:
+
+            - <<: *reddit-simple
+              subreddit: deno
+              collapse-after: *widget-half-collapse-after
+
+            - <<: *reddit-simple-top-week
+              title: Top This Week
+              subreddit: deno
+              collapse-after: *widget-half-collapse-after

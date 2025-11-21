@@ -1,0 +1,46 @@
+- name: "Docker"
+  slug: docker
+  # width: wide
+  # hide-desktop-navigation: true
+  center-vertically: true
+  columns:
+    - size: full
+      widgets:
+        - type: docker-containers
+          css-class: widget-containers-custom icon-only light-up
+          running-only: true
+
+        - type: docker-containers
+          css-class: widget-containers-custom
+          hide-by-default: false
+
+        - type: html
+          cache: *short-cache
+          source: |
+            <div class="widget widget-type-html" hidden>
+              <div class="widget-header">
+                  <h2 class="uppercase">code</h2>
+              </div>
+              <div class="widget-content">
+                <div>
+                  <code>
+                    var elements = document.querySelectorAll("img");
+                    elements.forEach((e)=>{
+                      if(/-light/.test(e.src)) {
+                        e.src = e.src.replace("-light","")
+                      }
+                    })
+                  </code>
+                </div>
+                <div>
+                  <code>
+                    var elements = document.querySelectorAll(".widget-containers-custom:not(.icon-only) img");
+                    elements.forEach((e)=>{
+                      if(/-light/.test(e.src)) {
+                        e.src = e.src.replace("-light","")
+                      }
+                    })
+                  </code>
+                </div>
+              </div>
+            </div>

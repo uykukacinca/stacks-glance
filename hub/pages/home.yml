@@ -1,4 +1,4 @@
-- name: "🗂️ Home"
+- name: "Home"
   slug: home
   width: wide
   columns:
@@ -18,7 +18,7 @@
         - type: weather
           units: metric
           hour-format: 12h
-          location: Istanbul, Turkey
+          location: Bahçelievler
 
         - <<: *markets-base
           markets:
@@ -46,7 +46,7 @@
               url: ${YOUTUBE_URL}/search?q={QUERY}
             - title: Reddit
               shortcut: "!r"
-              url: ${REDDIT_URL}/search?q={QUERY}&restrict_sr=on
+              url: ${REDDIT_URL}/search?q={QUERY}&restrict_sr=on&sort=new&t=all
             - title: Steam
               shortcut: "!s"
               url: https://store.steampowered.com/search/?term={QUERY}
@@ -60,9 +60,7 @@
               shortcut: "!d"
               url: https://hub.docker.com/search?q={QUERY}
 
-        - type: docker-containers
-          hide-by-default: false
-        # - <<: *my-docker-table
+        - <<: *docker-containers
 
 
     - size: small
@@ -73,8 +71,30 @@
             - type: local
               name: Services
 
-        - <<: *widget-adguard
+        - type: dns-stats
+          service: adguard
+          hide-graph: true
+          hide-top-domains: true
+          url: ${ADGUARD_URL}
+          username: ${ADGUARD_USERNAME}
+          password: ${ADGUARD_PASSWORD}
 
-        - <<: *gluetun-stats
-
-        - <<: *bookmarks-home
+        - type: bookmarks
+          groups:
+            - title: Local Network
+              color: 31 100 71
+              <<: *links-local
+            - title: Privacy
+              color: 10 70 50
+              links:
+                - title: Browser Leaks
+                  url: https://browserleaks.com/ip
+                - title: 1.1.1.1 Debug
+                  url: https://one.one.one.one/help
+            - links:
+                - title: Speed Test
+                  url: https://speed.cloudflare.com
+                - title: Windscribe Wireguard
+                  url: https://windscribe.com/getconfig/wireguard
+                - title: Configuration
+                  url: https://github.com/glanceapp/glance/blob/main/docs/configuration.md#configuration

@@ -1,0 +1,133 @@
+- name: "Dashboard" #
+  slug: dashboard
+  width: wide
+  columns:
+
+    - size: small
+      widgets:
+
+        - type: clock
+          hour-format: 24h
+          timezones:
+            - timezone: America/New_York
+              label: New York
+
+        - type: server-stats
+          servers:
+            - type: local
+              hide-mountpoints-by-default: true
+              name: Docker
+              mountpoints:
+                "/":
+                  name: root
+                  hide: false
+                "/vault":
+                  name: vault
+                  hide: false
+
+        - type: dns-stats
+          service: adguard
+          hide-top-domains: true
+          url: ${ADGUARD_URL}
+          username: ${ADGUARD_USERNAME}
+          password: ${ADGUARD_PASSWORD}
+
+        - type: bookmarks
+          groups:
+            - color: 28 92 65
+            # title: Cloudflare
+              links:
+                - title: Cloudflare
+                  icon: auto-invert ${ICONS_URL}/custom/cloudflare.svg
+                  url: https://dash.cloudflare.com
+                - title: Workers & Pages
+                  icon: auto-invert ${ICONS_URL}/custom/cloudflareworkers.svg
+                  url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/workers-and-pages
+                - title: D1 SQL Database
+                  icon: auto-invert ${ICONS_URL}/custom/cloudflarepages.svg
+                  url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/workers/d1
+            # - title: Hosting
+            #   hide-arrow: true
+            #   links:
+                # - title: Netlify
+                #   icon: auto-invert ${ICONS_URL}/custom/netlify.svg
+                #   url: https://www.netlify.com
+                # - title: Digital Ocean
+                #   icon: auto-invert ${ICONS_URL}/custom/digitalocean.svg
+                #   url: https://www.digitalocean.com
+                # - title: Amazon Web Services
+                #   icon: auto-invert ${ICONS_URL}/custom/amazon.svg
+                #   url: https://aws.amazon.com
+                # - title: Vercel
+                # icon: auto-invert ${ICONS_URL}/custom/vercel.svg
+                #   url: https://vercel.com
+                # - title: Railway
+                # icon: auto-invert ${ICONS_URL}/custom/railway.svg
+                #   url: https://railway.app
+
+        - type: bookmarks
+          title: Domains
+          hide-header: true
+          groups:
+            - links:
+                # - title: Namecheap
+                #   icon: auto-invert ${ICONS_URL}/custom/namecheap.svg
+                #   url: https://ap.www.namecheap.com/Domains/DomainList
+                - title: Porkbun
+                  icon: auto-invert ${ICONS_URL}/custom/porkbun.svg
+                  url: https://porkbun.com/event/holidaysales
+                - title: Spaceship
+                  icon: auto-invert ${ICONS_URL}/custom/spaceship.svg
+                  url: https://www.spaceship.com/domain-search/?query=&tab=domains
+            - links:
+                - title: ICANN Lookup
+                  url: https://lookup.icann.org/en/lookup
+                - title: TLD List
+                  url: https://tld-list.com
+                # - title: TLDes
+                #   url: https://tldes.com/cheapest-domains
+
+        - type: bookmarks
+          title: Local Network
+          hide-header: true
+          groups:
+            - color: 129 68 58
+              <<: *links-local
+
+    - size: full
+      widgets:
+
+        - <<: *docker-containers
+
+    - size: full
+      widgets:
+
+        - <<: *jellyfin-next-up
+
+        - type: split-column
+          max-columns: 2
+          widgets:
+
+            - <<: *jellyfin-recent-movies
+              options:
+                collapse-after: 4
+
+            - <<: *jellyfin-recent-episodes
+              options:
+                collapse-after: 4
+
+            # - <<: *radarr-recently-added
+            #   options:
+            #     collapse-after: 3
+
+            # - <<: *sonarr-recently-added
+            #   options:
+            #     collapse-after: 3
+
+            - <<: *podcasts-recently-added
+              options:
+                collapse-after: 4
+
+            - <<: *audiobooks-recently-added
+              options:
+                collapse-after: 4

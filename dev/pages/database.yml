@@ -1,8 +1,8 @@
-- name: "#database"
+- name: "#db" #
   slug: database
   width: wide
-
   columns:
+
     - size: small
       widgets:
 
@@ -11,14 +11,19 @@
             - hide-arrow: true
               links:
                 - title: PostgreSQL
-                  icon: si:postgresql
+                  icon: auto-invert ${ICONS_URL}/custom/postgresql.svg
                   url: https://www.postgresql.org/download/
                 - title: MongoDB
-                  icon: si:mongodb
+                  icon: auto-invert ${ICONS_URL}/custom/mongodb.svg
                   url: https://www.mongodb.com/try/download/community
                 - title: SQLite
-                  icon: si:sqlite
+                  icon: auto-invert ${ICONS_URL}/custom/sqlite.svg
                   url: https://www.sqlite.org/download.html
+            - links:
+                - title: Convex
+                  url: https://www.convex.dev/
+                - title: Convex Docs
+                  url: https://docs.convex.dev/home
 
         - <<: *github-releases
           title: Database
@@ -27,6 +32,7 @@
             - ClickHouse/ClickHouse
             - DiceDB/dice
             - pubkey/rxdb
+            - get-convex/convex-backend
 
         - <<: *github-releases
           title: DB/ORM
@@ -49,16 +55,18 @@
         - <<: *reddit-simple
           subreddit: SQL+Database+dataengineering
           title: SQL & Database & Data Engineering
-          collapse-after: 18
 
     - size: full
       widgets:
 
         - <<: *reddit-simple
-          collapse-after: *widget-half-collapse-after
+          collapse-after: 5
           subreddit: PostgreSQL
 
+        - <<: *reddit-simple
+          collapse-after: 5
+          subreddit: sqlite
 
         - <<: *reddit-simple
-          collapse-after: *widget-half-collapse-after
+          collapse-after: 5
           subreddit: mongodb

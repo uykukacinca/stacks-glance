@@ -1,4 +1,4 @@
-- name: "👽 Space"
+- name: "Space" # 👽
   slug: space
   width: wide
   columns:
@@ -13,22 +13,34 @@
             - <<: *reddit-cover
               title: Space & Astronomy
               subreddit: space+spaceporn+Astronomy
+              collapse-after: 10
 
             - <<: *reddit-cover
               title: NASA & SpaceX
               subreddit: nasa+spacex
+              collapse-after: 10
+
+            - <<: *reddit-cover
+              title: 3I/ATLAS
+              subreddit: 3I_ATLAS
+              collapse-after: 10
+
+            - <<: *reddit-cover
+              title: UFOs
+              subreddit: UFOs
+              collapse-after: 10
 
     - size: full
       widgets:
 
-        - <<: *videos-grid-half
+        - <<: *videos-grid
           title: Podcasts & Stuff
           channels:
-            - UCqoAEDirJPjEUFcF2FklnBA #StarTalk
-            - UCEszlI8-W79IsU8LSAiRbDg #JohnMichaelGodier
-            - UC-9b7aDP6ZN0coj9-xFnrtw #astrumspace
-            - UC7_gcs09iThXybpVgjHZ_7g #pbsspacetime
-            - UCrMePiHCWG4Vwqv3t7W9EFg #scishowspace
-            - UCtRFmSyL4fSLQkn-wMqlmdA #HistoryoftheUniverse
-            - UCIBaDdAbGlFDeS33shmlD0A #European Space Agency, ESA
-            - UCLA_DiR1FfKNvjuUpBHmylQ #NASA
+            - UCqoAEDirJPjEUFcF2FklnBA # StarTalk
+            - UCEszlI8-W79IsU8LSAiRbDg # JohnMichaelGodier
+            - UC-9b7aDP6ZN0coj9-xFnrtw # astrumspace
+            - UC7_gcs09iThXybpVgjHZ_7g # pbsspacetime
+            - UCrMePiHCWG4Vwqv3t7W9EFg # scishowspace
+            - UCtRFmSyL4fSLQkn-wMqlmdA # HistoryoftheUniverse
+            - UCIBaDdAbGlFDeS33shmlD0A # European Space Agency, ESA
+            - UCLA_DiR1FfKNvjuUpBHmylQ # NASA

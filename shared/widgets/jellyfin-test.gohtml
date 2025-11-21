@@ -1,0 +1,16 @@
+<div class="flex gap-20">
+  <div class="widget-content " style="width: 50%;">
+    <pre class="break-alll">{{ .JSON.String `0|@pretty` }}</pre>
+  </div>
+  <div class="widget-content " style="width: 50%;">
+    {{ range .JSON.Array `#.{"fields":[{"key":!"a","val":CommunityRating}],"id":Id,"image":ImageTags.Primary,"title":Name,"subtitle":ProductionYear,"genres":GenreItems.#.Name}` }}
+      <p class="break-all">
+        {{ .String `` }}
+      </p>
+      <p class="break-all">
+        {{ .String `fields` }}
+      </p>
+      <hr class="margin-block-10" />
+    {{ end }}
+  </div>
+</div>

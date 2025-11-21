@@ -1,0 +1,48 @@
+- name: "Containers"
+  slug: containers
+  # width: wide
+  # hide-desktop-navigation: true
+  center-vertically: true
+  columns:
+    - size: full
+      widgets:
+
+        - <<: *containers
+          title: arr-suite
+          category: arr-suite
+
+        - <<: *containers
+          title: core
+          category: core
+
+        - <<: *containers
+          title: media
+          category: media
+
+        - <<: *containers
+          title: docker
+          category: docker
+
+        - <<: *containers
+          title: apps
+          category: apps
+
+        - <<: *containers
+          title: download
+          category: download
+
+        - <<: *containers
+          title: dev
+          category: dev
+
+        - <<: *containers
+          title: api
+          category: api
+
+        - <<: *containers
+          title: gaming
+          category: gaming
+
+        - <<: *containers
+          title: test
+          category: test

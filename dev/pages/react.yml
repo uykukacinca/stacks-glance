@@ -1,9 +1,11 @@
-- name: "🔵 React"
+- name: "React" # 🔵
   slug: react
   width: wide
   columns:
+
     - size: small
       widgets:
+
         - type: search
           search-engine: google
           new-tab: true
@@ -13,54 +15,68 @@
               url: ${YOUTUBE_URL}/results?search_query=nextjs+{QUERY}
             - title: Reddit
               shortcut: "!r"
-              url: ${REDDIT_URL}/r/nextjs/search?q={QUERY}&restrict_sr=on
+              url: ${REDDIT_URL}/r/nextjs/search?q={QUERY}&restrict_sr=on&sort=new&t=all
             - title: Github
               shortcut: "!g"
               url: https://github.com/vercel/next.js/issues?q={QUERY}
 
         - type: bookmarks
           groups:
-            - hide-arrow: true
-              links:
-                - title: Blog
-                  icon: si:nextdotjs
-                  url: https://nextjs.org/blog
             - links:
-                - title: Getting Started
-                  url: https://nextjs.org/docs/app/getting-started/installation
-                - title: Examples
-                  url: https://nextjs.org/docs/app/examples
-                - title: Api Reference
-                  url: https://nextjs.org/docs/app/api-reference
-            - links:
+                - title: TanStack
+                  url: https://tanstack.com/
                 - title: Awesome React
                   url: https://github.com/enaqx/awesome-react#readme
                 - title: Awesome React Components
                   url: https://github.com/brillout/awesome-react-components#readme
 
-        - type: repository
+        - type: bookmarks
+          title: Next
+          css-class: list-item-inline
+          groups:
+            - links:
+                - title: Docs
+                  url: https://nextjs.org/docs/app/getting-started/installation
+                - title: Examples
+                  url: https://nextjs.org/docs/app/examples
+                - title: Blog
+                  url: https://nextjs.org/blog
+                - title: API
+                  url: https://nextjs.org/docs/app/api-reference
+
+        - <<: *github-repository
           repository: vercel/next.js
-          pull-requests-limit: 2
-          issues-limit: 2
-          commits-limit: 2
 
         - <<: *github-releases
           title: React
           repositories:
             - vercel/next.js
             - facebook/react
+            - TanStack/query
 
     - size: full
       widgets:
-        - <<: *reddit-simple
-          subreddit: nextjs+reactjs
-          title: Next & React
-          collapse-after: 18
+
+        - type: group
+          widgets:
+
+            - <<: *reddit-simple
+              title: Next & React
+              subreddit: nextjs+reactjs
+
+            - <<: *reddit-simple-top-week
+              title: Top This Week
+              subreddit: nextjs+reactjs
+
+            - <<: *reddit-simple-top-month
+              title: Month
+              subreddit: nextjs+reactjs
 
     - size: full
       widgets:
+
         - <<: *videos-grid
           channels:
-            - UCf6AGqO98eGk11nfazociVQ #ByteGrad
-            - UCZMli3czZnd1uoc1ShTouQw #leerob
-            - UCsrVDPJBYeXItETFHG0qzyw #WebDevCody
+            - UCf6AGqO98eGk11nfazociVQ # ByteGrad
+            - UCZMli3czZnd1uoc1ShTouQw # leerob
+            - UCsrVDPJBYeXItETFHG0qzyw # WebDevCody

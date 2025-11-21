@@ -1,4 +1,4 @@
-- name: "🚀"
+- name: "Think" # 🚀
   slug: think
   width: wide
   columns:
@@ -7,14 +7,15 @@
       widgets:
 
         - <<: *videos-grid
+          limit: 96
           channels:
-            - UCsXVk37bltHxD1rDPwtNM8Q #Kurzgesagt
+            - UCsXVk37bltHxD1rDPwtNM8Q # Kurzgesagt
             - UCvG04Y09q0HExnIjdgaqcDQ #@becausescience
-            - UCHnyfMqiRRG1u-2MsSQLbXA #veritasium
+            - UCHnyfMqiRRG1u-2MsSQLbXA # veritasium
             - UCY1kMZp36IQSyNx_9h4mpCg #@MarkRober
             - UCR1IuLEqb6UEA_zQ81kwXfg #@RealEngineering
-            - UC415bOPUcGSamy543abLmRA #@CleoAbram
-            - UC4QZ_LsYcvcq7qOsOhpAX4A #@ColdFusion
             - UCUQo7nzH1sXVpzL92VesANw #@DIYPerks
             - UCGudGqToOw9hWGR88W9Jutg #@Howtown
             - UCMOqf8ab-42UUQIdVoKwjlQ #@PracticalEngineeringChannel
+            - UCJ_2hNMxOzNjviJBiLWHMqg #@DamiLeeArch
+            - UCjtUS7-SZTi6pXjUbzGHQCg #@UndecidedMF
