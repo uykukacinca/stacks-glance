@@ -197,7 +197,7 @@
                         limit: 20
                         collapseAfter: 5
 
-                - <<: *reddit-cover
+                - <<: *reddit-simple
                   subreddit: SummonerSchool
                   collapse-after: 10
 
@@ -205,7 +205,7 @@
               title: Videos
               channels:
                 - UC0aFOAetT4Hur0qmOnmmbBA #@Polypuff
-                #- UChwh1KpZf0Y5KsmaCCMSt6A #@AloisNL
+                - UChwh1KpZf0Y5KsmaCCMSt6A #@AloisNL
                 - UCu7ODDeIZ4x1rJwM1LCVL8w #@Thebausffs
                 - UCiUHGAbtjCrLO3ZPrTfle3Q #@Necrit
                 - UCOFiUtKui6-x4T-J7_DgCag #@Caedrel
@@ -213,3 +213,4 @@
                 - UCmy0tPEqRcU486RVLiAWhGg #@archelauslol
                 - UCyTc5CL7MnmK5LeBvbqIOvw #@LolElekktro
                 - UCehQZaeGhmNzlEyPhpdvDLQ #@ElayjaLol
+                - UCFPMHqnYZTvmth1f7opzxKw #@Elayjagaming

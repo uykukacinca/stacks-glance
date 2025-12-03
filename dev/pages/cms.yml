@@ -3,38 +3,6 @@
   width: wide
   columns:
 
-    - size: small
-      widgets:
-
-        - <<: *github-releases
-          repositories:
-            - trailbaseio/trailbase
-            - directus/directus
-            - pocketbase/pocketbase
-
-        # - <<: *github-releases
-        #   repositories:
-        #     - strapi/strapi
-        #     - payloadcms/payload
-        #     - sveltia/sveltia-cms
-        #     - TryGhost/Ghost
-        #     - keystonejs/keystone
-
-        - type: bookmarks
-          groups:
-            - title: PocketBase
-              links:
-                - title: API rules and filters
-                  url: https://pocketbase.io/docs/api-rules-and-filters/
-                - title: Working with relations
-                  url: https://pocketbase.io/docs/working-with-relations/
-                - title: Extending PocketBase
-                  url: https://pocketbase.io/docs/use-as-framework/
-                - title: Going to production
-                  url: https://pocketbase.io/docs/going-to-production/
-                - title: Web APIs reference
-                  url: https://pocketbase.io/docs/api-records/
-
     - size: full
       widgets:
 
@@ -54,16 +22,6 @@
                   title: Top This Month
                   subreddit: pocketbase
 
-            - <<: *github-repository
-              repository: pocketbase/pocketbase
-
-            - <<: *github-repository
-              repository: ganigeorgiev/shablon
-
-        - type: split-column
-          max-columns: 3
-          widgets:
-
             - type: group
               widgets:
 
@@ -76,13 +34,48 @@
                   title: Top This Month
                   subreddit: Directus
 
+        - type: split-column
+          max-columns: 4
+          widgets:
+
+            - <<: *github-repository
+              repository: pocketbase/pocketbase
+
+            - <<: *github-repository
+              repository: ganigeorgiev/shablon
+
             - <<: *github-repository
               repository: directus/directus
 
             - <<: *github-repository
               repository: trailbaseio/trailbase
 
-            # - <<: *videos-grid
-            #   collapse-after-rows: 3
-            #   channels:
-            #     - UC1YAdVv7d36R_YGq3iQnpwA
+            - type: bookmarks
+              groups:
+                - title: PocketBase
+                  links:
+                    - title: API rules and filters
+                      url: https://pocketbase.io/docs/api-rules-and-filters/
+                    - title: Working with relations
+                      url: https://pocketbase.io/docs/working-with-relations/
+                    - title: Extending PocketBase
+                      url: https://pocketbase.io/docs/use-as-framework/
+                    - title: Going to production
+                      url: https://pocketbase.io/docs/going-to-production/
+                    - title: Web APIs reference
+                      url: https://pocketbase.io/docs/api-records/
+
+            - <<: *github-releases
+              repositories:
+                - trailbaseio/trailbase
+                - directus/directus
+                - pocketbase/pocketbase
+
+            # - <<: *github-releases
+            #   repositories:
+            #     - strapi/strapi
+            #     - payloadcms/payload
+            #     - sveltia/sveltia-cms
+            #     - TryGhost/Ghost
+            #     - keystonejs/keystone
+

@@ -5,13 +5,6 @@ branding:
   logo-text: ⋈
   favicon-url: /assets/favicon-dev.ico
   app-name: "Glance Dev"
-  app-background-color: "#7cd0b0"
-
-document:
-  head: |
-    <script defer src="${UMAMI_URL}/script.js" data-website-id="${UMAMI_ID}"></script>
-    <script>const GLIMPSE_URL = "${GLIMPSE_URL}";</script>
-    <script src="/assets/custom.js"></script>
 
 $include: shared/index.yml
 

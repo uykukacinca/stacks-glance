@@ -46,6 +46,15 @@
                 - title: D1 SQL Database
                   icon: auto-invert ${ICONS_URL}/custom/cloudflarepages.svg
                   url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/workers/d1
+                - title: R2 Object Storage
+                  icon: auto-invert ${ICONS_URL}/custom/cloudflare.svg
+                  url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/r2/overview
+            - color: 356 77 50
+            # title: Backblaze
+              links:
+                - title: Backblaze B2
+                  icon: auto-invert ${ICONS_URL}/custom/backblaze.svg
+                  url: https://secure.backblaze.com/b2_buckets.htm
             # - title: Hosting
             #   hide-arrow: true
             #   links:
@@ -84,8 +93,8 @@
                   url: https://lookup.icann.org/en/lookup
                 - title: TLD List
                   url: https://tld-list.com
-                # - title: TLDes
-                #   url: https://tldes.com/cheapest-domains
+                - title: FFD
+                  url: https://free-for.dev/#/
 
         - type: bookmarks
           title: Local Network
@@ -97,7 +106,30 @@
     - size: full
       widgets:
 
-        - <<: *docker-containers
+        - <<: *containers
+          title: core Services
+          category: core
+
+        - <<: *containers
+          title: Multimedia
+          category: media
+
+        - <<: *containers
+          title: apps
+          category: apps
+
+        - <<: *containers
+          title: arr suite
+          category: arr-suite
+          running-only: true
+
+        - <<: *containers
+          title: dev corner
+          category: dev
+
+        - <<: *containers
+          title: gaming
+          category: gaming
 
     - size: full
       widgets:

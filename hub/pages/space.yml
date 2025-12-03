@@ -7,7 +7,7 @@
       widgets:
 
         - type: split-column
-          max-columns: 2
+          max-columns: 3
           widgets:
 
             - <<: *reddit-cover
@@ -20,6 +20,18 @@
               subreddit: nasa+spacex
               collapse-after: 10
 
+            - <<: *videos-grid
+              title: Podcasts & Stuff
+              channels:
+                - UCqoAEDirJPjEUFcF2FklnBA # StarTalk
+                - UCEszlI8-W79IsU8LSAiRbDg # JohnMichaelGodier
+                - UC-9b7aDP6ZN0coj9-xFnrtw # astrumspace
+                - UC7_gcs09iThXybpVgjHZ_7g # pbsspacetime
+                - UCrMePiHCWG4Vwqv3t7W9EFg # scishowspace
+                - UCtRFmSyL4fSLQkn-wMqlmdA # HistoryoftheUniverse
+                - UCIBaDdAbGlFDeS33shmlD0A # European Space Agency, ESA
+                - UCLA_DiR1FfKNvjuUpBHmylQ # NASA
+
             - <<: *reddit-cover
               title: 3I/ATLAS
               subreddit: 3I_ATLAS
@@ -29,18 +41,3 @@
               title: UFOs
               subreddit: UFOs
               collapse-after: 10
-
-    - size: full
-      widgets:
-
-        - <<: *videos-grid
-          title: Podcasts & Stuff
-          channels:
-            - UCqoAEDirJPjEUFcF2FklnBA # StarTalk
-            - UCEszlI8-W79IsU8LSAiRbDg # JohnMichaelGodier
-            - UC-9b7aDP6ZN0coj9-xFnrtw # astrumspace
-            - UC7_gcs09iThXybpVgjHZ_7g # pbsspacetime
-            - UCrMePiHCWG4Vwqv3t7W9EFg # scishowspace
-            - UCtRFmSyL4fSLQkn-wMqlmdA # HistoryoftheUniverse
-            - UCIBaDdAbGlFDeS33shmlD0A # European Space Agency, ESA
-            - UCLA_DiR1FfKNvjuUpBHmylQ # NASA

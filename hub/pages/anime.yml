@@ -84,5 +84,18 @@
               parameters:
                 limit: 13
 
-            - <<: *reddit-cover
-              subreddit: Animesuggest
+            - type: split-column
+              max-columns: 1
+              widgets:
+
+                - <<: *reddit-simple
+                  subreddit: Animesuggest
+                  collapse-after: 8
+
+                - <<: *reddit-simple
+                  subreddit: OnePiece
+                  collapse-after: 8
+
+                - <<: *reddit-simple
+                  subreddit: anime_irl
+                  collapse-after: 8

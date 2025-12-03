@@ -47,6 +47,10 @@
                 - title: Learn Regex
                   icon: auto-invert ${ICONS_URL}/github-dark
                   url: https://github.com/ziishaned/learn-regex
+
+        - type: bookmarks
+          hide-header: true
+          groups:
             - color: 320 100 76
               links:
                 - title: Zod
@@ -75,7 +79,7 @@
             - type: group
               widgets:
 
-                - <<: *reddit-simple
+                - <<: *reddit-simple-full
                   subreddit: javascript
 
                 - <<: *reddit-simple-top-week
@@ -89,7 +93,7 @@
             - type: group
               widgets:
 
-                - <<: *reddit-simple
+                - <<: *reddit-simple-full
                   subreddit: typescript
 
                 - <<: *reddit-simple-top-week
@@ -100,5 +104,5 @@
                   title: Month
                   subreddit: typescript
 
-            - <<: *reddit-simple
+            - <<: *reddit-simple-full
               subreddit: learnjavascript

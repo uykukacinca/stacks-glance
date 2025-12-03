@@ -9,12 +9,6 @@
       parameters:
         language: tr
 
-    - type: videos
-      title: Kıskanmak
-      style: horizontal-cards
-      playlists:
-        - PLvFvMVi8gPxDZEY9Kaj-uaTrJC6TbBusr #Kıskanmak
-
   columns:
 
     - size: full
@@ -26,5 +20,11 @@
             - UC6q0eGHt5euC8aYLDjhaHpA # Can Sungur ve Yakın Evren
             - UCSOTLIwx3susvZ_LLHLJAeQ
             - UCTpnOrDAyEUsCCfC0AE6zDw # Murat Soner
-            - UCkEp_OUCCx-UU3A9-y62NiA #@DiamondTema
+            # - UCkEp_OUCCx-UU3A9-y62NiA #@DiamondTema
             - UCatnasFAiXUvWwH8NlSdd3A #@evrimagaci
+            - UC1PluvjVa3GI5HJhul5lszg # Testo Taylan
+            - UClCBG771sRO6Ap9s84Je7Eg # Emre Durmuş
+            - UCxxsGtsGhZE9KPgUFj-WtIA # Mert Ozturk
+            - UChME7blpRpX1ViN-oPBpNmw # Zeliha Akpınar
+          # playlists:
+            # - PLvFvMVi8gPxDZEY9Kaj-uaTrJC6TbBusr #Kıskanmak

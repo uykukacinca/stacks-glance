@@ -48,9 +48,6 @@
                 - title: API
                   url: https://nuxt.com/docs/api
 
-        - <<: *github-repository
-          repository: nuxt/nuxt
-
         - <<: *github-releases
           repositories:
             - nuxt/nuxt
@@ -66,29 +63,48 @@
     - size: full
       widgets:
 
-        - type: group
+        - type: split-column
+          max-columns: 3
           widgets:
 
-            - <<: *reddit-simple
-              title: Nuxt & Vue
-              subreddit: nuxt+vuejs
+            - <<: *github-repository
+              repository: nuxt/nuxt
 
-            - <<: *reddit-simple-top-week
-              title: Top This Week
-              subreddit: nuxt+vuejs
+            - type: group
+              widgets:
 
-            - <<: *reddit-simple-top-month
-              title: Month
-              subreddit: nuxt+vuejs
+                - <<: *reddit-simple-full
+                  title: Vue
+                  subreddit: vuejs
 
-    - size: full
-      widgets:
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: vuejs
 
-        - <<: *videos-grid
-          channels:
-            - UCgmcPHueYRarnCkihtNIRlw # LearnVue
-            - UCVJ5qp8Vw8gXQ9RkuNdYWMw # TheAlexLichter
-            - UCa1zuotKU4Weuw_fLRnPv0A # vuemastery
-            - UCshZ3rdoCLjDYuTR_RBubzw # programwitherik
-            - UCJ9jj5YMzo-HsyM6WG9Q_Lg # NuxtLabs
-            - UCr0D7PVNOHqB3Td7lVl_LKw # JohnKomarnicki
+                - <<: *reddit-simple-top-month
+                  title: Month
+                  subreddit: vuejs
+              
+            - <<: *videos-grid
+              channels:
+                - UCgmcPHueYRarnCkihtNIRlw # LearnVue
+                - UCVJ5qp8Vw8gXQ9RkuNdYWMw # TheAlexLichter
+                - UCa1zuotKU4Weuw_fLRnPv0A # vuemastery
+                - UCshZ3rdoCLjDYuTR_RBubzw # programwitherik
+                - UCJ9jj5YMzo-HsyM6WG9Q_Lg # NuxtLabs
+                - UCr0D7PVNOHqB3Td7lVl_LKw # JohnKomarnicki
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-simple-full
+                  title: Nuxt
+                  subreddit: nuxt
+
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: nuxt
+
+                - <<: *reddit-simple-top-month
+                  title: Month
+                  subreddit: nuxt

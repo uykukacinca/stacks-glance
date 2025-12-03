@@ -10,7 +10,7 @@
 
 - &jellyfin-recent-movies
   <<: *jellyfin-base
-  title: Jellyfin Latest Movies
+  title: Latest Movies
   parameters:
     SortBy: DateCreated,SortName,ProductionYear
     SortOrder: Descending
@@ -61,7 +61,7 @@
                         {{ end }}
                         </li>
                     </ul>
-                    <ul class="list-horizontal-text flex-nowrap text-truncate">
+                    <ul class="list-horizontal-text flex-nowrap text-truncate color-subdue">
                       {{ range $i, $genre := .Array "GenreItems" }}
                         {{ if eq $i 3 }}
                           {{ break }}
@@ -80,7 +80,7 @@
 
 - &jellyfin-recent-episodes
   <<: *jellyfin-base
-  title: Jellyfin Latest Episodes
+  title: Latest TV Episodes
   parameters:
     SortBy: DateCreated,SeriesSortName,SortName
     SortOrder: Descending
@@ -109,7 +109,7 @@
                 <div class="grow min-width-0">
                     <a href="${JELLYFIN_URL}/web/index.html#/details?id={{ .String "Id" }}&serverId={{ .String "ServerId" }}" class="color-highlight size-title-dynamic block text-truncate" target="_blank" rel="noreferrer">{{ .String "Name" }}</a>
                     <div>{{ .String "SeriesName" }}</div>
-                    <ul class="list-horizontal-text flex-nowrap text-compact">
+                    <ul class="list-horizontal-text flex-nowrap text-compact color-subdue">
                         <li class="shrink-0">{{ .String "SeasonName" | replaceAll "Season " "S" }} E{{ .String "IndexNumber" }}</li>
                         <li class="shrink-0 flex gap-5 items-center">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon-14">
@@ -132,7 +132,7 @@
                         {{ end }}
                         </li>
                     </ul>
-                    <ul class="list-horizontal-text flex-nowrap text-truncate">
+                    <ul class="list-horizontal-text flex-nowrap text-truncate color-subdue">
                       {{ range .Array "movie.genres" }}
                         <li>{{ .String "" }}</li>
                       {{ end }}
@@ -155,7 +155,7 @@
     UserId: ${JELLYFIN_USER}
     EnableResumable: true
     StartIndex: 0
-    Limit: 15
+    Limit: 3
   template: |
     $include: jellyfin-home/utils.gohtml
     $include: jellyfin-home/card-thumb.gohtml

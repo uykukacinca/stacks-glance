@@ -2,14 +2,6 @@
   slug: frontend
   width: wide
 
-  head-widgets:
-
-    - type: videos
-      hide-header: true
-      style: horizontal-cards
-      channels:
-        - UCFbNIlppjAuEX4znoulh0Cw #@WebDevSimplified
-
   columns:
 
     - size: small
@@ -78,8 +70,18 @@
             - trueadm/ripple
             - marko-js/marko
 
+        - <<: *github-releases
+          repositories:
+            - biomejs/biome
+
     - size: full
       widgets:
+
+        - type: videos
+          hide-header: true
+          style: horizontal-cards
+          channels:
+            - UCFbNIlppjAuEX4znoulh0Cw #@WebDevSimplified
 
         - type: split-column
           max-columns: 3
@@ -88,7 +90,7 @@
             - type: group
               widgets:
 
-                - <<: *reddit-simple
+                - <<: *reddit-simple-full
                   subreddit: webdev
 
                 - <<: *reddit-simple-top-week
@@ -98,12 +100,12 @@
             - type: group
               widgets:
 
-                - <<: *reddit-simple
+                - <<: *reddit-simple-full
                   subreddit: Frontend
 
                 - <<: *reddit-simple-top-week
                   title: Top This Week
                   subreddit: Frontend
 
-            - <<: *reddit-simple
+            - <<: *reddit-simple-full
               subreddit: css

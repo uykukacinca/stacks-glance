@@ -66,7 +66,7 @@
             - type: group
               widgets:
 
-                - <<: *reddit-simple
+                - <<: *reddit-simple-full
                   subreddit: cybersecurity
 
                 - <<: *reddit-simple-top-week
@@ -76,7 +76,7 @@
             - type: group
               widgets:
 
-                - <<: *reddit-simple
+                - <<: *reddit-simple-full
                   subreddit: hacking
 
                 - <<: *reddit-simple-top-week
@@ -86,7 +86,7 @@
             - type: group
               widgets:
 
-                - <<: *reddit-simple
+                - <<: *reddit-simple-full
                   subreddit: netsec
 
                 - <<: *reddit-simple-top-week

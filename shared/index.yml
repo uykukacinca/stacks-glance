@@ -1,4 +1,10 @@
-- $include: variables.yml
-- $include: definitions.yml
-- $include: theme.yml
-- $include: widgets.yml
+document:
+  head: |
+    <link rel="stylesheet" href="${GLIMPSE_URL}/main.css">
+    <script>const GLIMPSE_URL = "${GLIMPSE_URL}"; </script>
+    <script src="/assets/custom.js"></script>
+
+$include: variables.yml
+$include: definitions.yml
+$include: theme.yml
+$include: widgets.yml

@@ -49,6 +49,8 @@
                   url: https://github.com/mikeroyal/Self-Hosting-Guide
                 - title: Trash Guides
                   url: https://trash-guides.info
+                - title: Geek's Cookbook
+                  url: https://geek-cookbook.funkypenguin.co.nz/
 
         - type: bookmarks
           title: Docker
@@ -86,6 +88,7 @@
             # - qdm12/gluetun
             # - fosrl/pangolin
             # - portainer/portainer
+            - nicotsx/zerobyte
             - immich-app/immich
             # - caddyserver/caddy
             - jellyfin/jellyfin
@@ -98,15 +101,16 @@
             - glanceapp/glance
             - umami-software/umami
             # - iv-org/invidious
-            - docmost/docmost
+            # - docmost/docmost
             # - home-assistant/core
             - amir20/dozzle
             # - sharevb/it-tools
-            # - Athou/commafeed
+            - binwiederhier/ntfy
             - henrygd/beszel
             # - kieraneglin/pinchflat
-            - codeberg:forgejo/forgejo
+            # - codeberg:forgejo/forgejo
             - advplyr/audiobookshelf
+            # - RostislavDugin/postgresus
 
         #  - type: rss
         #    cache: *long-cache
@@ -141,17 +145,16 @@
             - type: group
               widgets:
 
-                - <<: *reddit-simple
-                  collapse-after: 20
+                - <<: *reddit-simple-full
                   subreddit: selfhosted
 
                 - <<: *reddit-simple-top-week
-                  collapse-after: 20
+                  collapse-after: 30
                   title: Top This Week
                   subreddit: selfhosted
 
                 - <<: *reddit-simple-top-month
-                  collapse-after: 20
+                  collapse-after: 30
                   title: Month
                   subreddit: selfhosted
 

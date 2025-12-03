@@ -3,5 +3,19 @@
 // For a full list of overridable settings, and general information on folder-specific settings,
 // see the documentation: https://zed.dev/docs/configuring-zed#settings-files
 {
-  "file_scan_exclusions": ["**/.git", "**/.vscode", "**/.zed", "**/*/shared"]
+  "file_scan_exclusions": [
+    "node_modules",
+    "**/.git",
+    "**/.vscode",
+    "**/.zed",
+    "**/*/shared"
+  ],
+  "lsp": {
+    "biome": {
+      "binary": {
+        "path": "/var/biome-2.2.3/bin/biome",
+        "arguments": ["lsp-proxy"]
+      }
+    }
+  }
 }

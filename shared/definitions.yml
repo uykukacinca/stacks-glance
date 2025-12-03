@@ -2,7 +2,6 @@ definitions:
   - &reddit-base
     type: reddit
     cache: *default-cache
-    css-class: xxx-list-bordered xxx-cover
     comments-url-template: *reddit
 
   - &reddit-top-week
@@ -36,10 +35,15 @@ definitions:
   - &reddit-simple-top-month
     <<: [*reddit-simple, *reddit-top-month]
 
+  - &reddit-simple-full
+    <<: *reddit-simple
+    collapse-after: 30
+
   # reddit thumb
 
   - &reddit-thumb
     <<: *reddit-simple
+    css-class: xxxxxx-list-bordered xxx-cover
     show-thumbnails: true
 
   - &reddit-thumb-top-week
@@ -52,7 +56,7 @@ definitions:
 
   - &reddit-cover
     <<: *reddit-thumb
-    css-class: xxx-list-bordered xxx-cover xxx-cover-large
+    css-class: xxxxxx-list-bordered xxx-cover xxx-cover-large
 
   - &reddit-cover-top-week
     <<: [*reddit-cover, *reddit-top-week]
@@ -113,7 +117,7 @@ definitions:
     repository: glanceapp/glance
     pull-requests-limit: 3
     issues-limit: 3
-    commits-limit: 5
+    commits-limit: 3
 
   - &monitor-base
     type: monitor
@@ -130,11 +134,12 @@ definitions:
   - &docker-containers
     type: docker-containers
     cache: *no-cache
-    css-class: widget-containers-custom hide-running
+    css-class: widget-containers-custom
     hide-by-default: false
 
   - &containers
     type: docker-containers
     cache: *no-cache
-    css-class: widget-containers-custom columns-6
+    css-class: widget-containers-custom hide-running
     hide-by-default: false
+    #running-only: true

@@ -1,7 +1,7 @@
 - name: "*jelly"
   slug: jellyfin
   show-in-navigation: false
-  #width: wide
+  width: wide
 
   columns:
     - size: full

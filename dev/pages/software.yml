@@ -9,12 +9,11 @@
     - size: full
       widgets:
 
-        - <<: *reddit-simple
+        - <<: *reddit-simple-full
           subreddit: software
 
     - size: full
       widgets:
 
-        - <<: *reddit-simple
-          collapse-after: *widget-half-collapse-after
+        - <<: *reddit-simple-full
           subreddit: opensource

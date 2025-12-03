@@ -28,6 +28,7 @@
             - unjs/h3
             - unjs/db0
             - unkeyed/unkey
+            - elysiajs/elysia
 
         - <<: *github-releases
           title: JS Runtime
@@ -59,12 +60,13 @@
         - type: group
           widgets:
 
-            - <<: *reddit-simple
+            - <<: *reddit-simple-full
               subreddit: Backend
 
             - <<: *reddit-simple-top-week
               title: Top This Week
               subreddit: Backend
+              collapse-after: 30
 
     - size: full
       widgets:
@@ -74,21 +76,17 @@
 
             - <<: *reddit-simple
               subreddit: node
-              collapse-after: *widget-half-collapse-after
 
             - <<: *reddit-simple-top-week
               title: Top This Week
               subreddit: node
-              collapse-after: *widget-half-collapse-after
 
         - type: group
           widgets:
 
             - <<: *reddit-simple
               subreddit: deno
-              collapse-after: *widget-half-collapse-after
 
             - <<: *reddit-simple-top-week
               title: Top This Week
               subreddit: deno
-              collapse-after: *widget-half-collapse-after

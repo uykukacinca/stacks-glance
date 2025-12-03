@@ -11,4 +11,4 @@ variables:
   - &long-cache 5m
   - &deep-cache 30m
 
-  - &widget-half-collapse-after 7
+  - &widget-half-collapse-after 10

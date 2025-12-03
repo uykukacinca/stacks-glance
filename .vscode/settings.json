@@ -1,5 +1,6 @@
 {
   "files.exclude": {
+    "node_modules": true,
     "**/.git": true,
     "**/.vscode": true,
     "**/.zed": true,

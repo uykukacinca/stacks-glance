@@ -1,15 +1,11 @@
 - name: "Containers"
   slug: containers
-  # width: wide
+  width: wide
   # hide-desktop-navigation: true
   center-vertically: true
   columns:
     - size: full
       widgets:
-
-        - <<: *containers
-          title: arr-suite
-          category: arr-suite
 
         - <<: *containers
           title: core
@@ -20,29 +16,19 @@
           category: media
 
         - <<: *containers
-          title: docker
-          category: docker
-
-        - <<: *containers
           title: apps
           category: apps
 
         - <<: *containers
-          title: download
-          category: download
+          title: arr-suite
+          category: arr-suite
 
         - <<: *containers
           title: dev
           category: dev
 
-        - <<: *containers
-          title: api
-          category: api
+    - size: full
+      widgets:
 
-        - <<: *containers
-          title: gaming
-          category: gaming
+        - <<: *docker-containers
 
-        - <<: *containers
-          title: test
-          category: test

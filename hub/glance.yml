@@ -5,14 +5,6 @@ branding:
   logo-text: ⋈
   favicon-url: /assets/favicon-hub.ico
   app-name: "Glance Hub"
-  app-background-color: "#ef4343"
-
-document:
-  head: |
-    <script defer src="${UMAMI_URL}/script.js" data-website-id="${UMAMI_ID}"></script>
-    <link rel="stylesheet" href="${GLIMPSE_URL}/main.css">
-    <script>const GLIMPSE_URL = "${GLIMPSE_URL}";</script>
-    <script src="/assets/custom.js"></script>
 
 $include: shared/index.yml
 
@@ -41,5 +33,6 @@ pages:
   - $include: pages/wildrift.yml
   - $include: pages/crew.yml
   - $include: pages/gta.yml
+  - $include: pages/starcitizen.yml
   - $include: pages/cars.yml
   - $include: pages/crypto.yml

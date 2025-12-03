@@ -17,51 +17,33 @@
       widgets:
 
         - type: split-column
-          max-columns: 2
+          max-columns: 4
           widgets:
 
-            - type: split-column
-              max-columns: 1
-              widgets:
-                - type: hacker-news
-                  css-class: widget-list-bordered
-                  cache: *default-cache
-                  limit: 20
-                  collapse-after: 10
+            - type: hacker-news
+              cache: *default-cache
+              limit: 20
+              collapse-after: 10
 
-                - type: lobsters
-                  css-class: widget-list-bordered
-                  cache: *default-cache
-                  sort-by: hot
-                  limit: 20
-                  collapse-after: 10
-
-            - type: split-column
-              max-columns: 1
+            - type: group
               widgets:
 
-                - type: twitch-channels
-                  cache: *short-cache
-                  title: Twitch
-                  channels:
-                    - theprimeagen
-                    - theo
+                - <<: *reddit-cover
+                  subreddit: technology
 
-                - type: group
-                  widgets:
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: technology
 
-                    - <<: *reddit-simple
-                      subreddit: programming
+            - type: group
+              widgets:
 
-                    - <<: *reddit-simple-top-week
-                      title: Top This Week
-                      subreddit: programming
+                - <<: *reddit-simple
+                  subreddit: programming
 
-    - size: full
-      widgets:
-
-        - type: group
-          widgets:
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: programming
 
             - <<: *videos-grid
               channels:
@@ -73,35 +55,11 @@
                 # - UC4MZ7zUHb5eAxU75Dc_nqdQ # @TiffInTech
                 #- UCl2mFZoRqjw_ELax4Yisf6w # rossmanngroup
                 - UCXzw-OdotBUcNA9yhuYQBwA # @awesome-coding
-                - UCVeW9qkBjo3zosnqUbG7CFw # _JohnHammond
-                - UCKGe7fZ_S788Jaspxg-_5Sg # @pcsecuritychannel
+                # - UCVeW9qkBjo3zosnqUbG7CFw # _JohnHammond
+                # - UCKGe7fZ_S788Jaspxg-_5Sg # @pcsecuritychannel
 
-            - <<: *widget-twitch-streams
-              title: Live Streams
-              options:
-                collapse-after-rows: 8
-              body:
-                query: |
-                  query {
-                    game(id: "1469308723") {
-                      streams(first: 30, options: { languages: ["EN", "TR"] }) {
-                        edges {
-                          node {
-                            id
-                            createdAt
-                            previewImageURL(width: 440, height: 248)
-                            type
-                            viewersCount
-                            broadcaster {
-                              login
-                              displayName
-                              profileImageURL(width: 300)
-                              broadcastSettings {
-                                title
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
+            - type: lobsters
+              cache: *default-cache
+              sort-by: hot
+              limit: 20
+              collapse-after: 10

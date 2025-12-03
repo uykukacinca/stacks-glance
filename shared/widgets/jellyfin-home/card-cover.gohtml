@@ -32,6 +32,8 @@
   {{ else if eq $mediaType "MusicAlbum" }}
     {{ $artist = $item.String "AlbumArtist" }}
     {{ $ChildCount = $item.Int "ChildCount" }}
+  {{ else if eq $mediaType "Playlist" }}
+    {{ $ChildCount = $item.Int "ChildCount" }}
   {{ end }}
 
   {{ $linkURL := print "https://tv.kod.run" "/web/#/details?id=" $itemID $serverQuery }}

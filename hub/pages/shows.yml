@@ -8,9 +8,9 @@
       widgets:
 
         - type: search
-          search-engine: https://www.imdb.com/find/?s=tt&q={QUERY}
+          search-engine: ${REDDIT_URL}/r/television/search?q={QUERY}&restrict_sr=on&sort=new&t=all
           new-tab: true
-          placeholder: Search on IMDb
+          placeholder: Search on r/tv
           bangs:
             - title: Reddit
               shortcut: "!r"
@@ -59,21 +59,42 @@
           max-columns: 3
           widgets:
 
-            - type: group
+            - type: split-column
+              max-columns: 1
               widgets:
 
                 - <<: *reddit-cover
                   subreddit: television
+                  collapse-after: 8
 
                 - <<: *reddit-cover-top-week
                   title: Top This Week
                   subreddit: television
+                  collapse-after: 8
 
-            - <<: *reddit-simple
-              subreddit: television
-              title: Episode Discussions
-              search: episode discussion flair:Premiere author:NicholasCajun
-              sort-by: new
+            - type: split-column
+              max-columns: 1
+              widgets:
 
-            - <<: *reddit-cover
-              subreddit: TVDetails
+                - <<: *reddit-simple
+                  subreddit: television
+                  title: Episode Discussions
+                  search: episode discussion flair:Premiere author:NicholasCajun
+                  sort-by: new
+                  collapse-after: 12
+                  css-class: xxx-replace-text
+
+                - <<: *reddit-simple
+                  subreddit: television
+                  title: Series Premiere Discussions
+                  search: series premiere discussion flair:Premiere author:NicholasCajun
+                  sort-by: new
+                  collapse-after: 12
+                  css-class: xxx-replace-text
+
+            - type: split-column
+              max-columns: 1
+              widgets:
+
+                - <<: *reddit-cover
+                  subreddit: TVDetails

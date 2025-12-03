@@ -38,9 +38,6 @@
                 - title: Awesome Svelte
                   url: https://github.com/TheComputerM/awesome-svelte#readme
 
-        - <<: *github-repository
-          repository: sveltejs/svelte
-
         - <<: *github-releases
           repositories:
             - sveltejs/svelte
@@ -52,23 +49,41 @@
     - size: full
       widgets:
 
-        - type: group
+        - type: split-column
+          max-columns: 3
           widgets:
 
-            - <<: *reddit-simple
-              subreddit: sveltejs
+            - <<: *github-repository
+              repository: sveltejs/svelte
 
-            - <<: *reddit-simple-top-week
-              title: Top This Week
-              subreddit: sveltejs
+            - type: group
+              widgets:
 
-            - <<: *reddit-simple-top-month
-              title: Month
-              subreddit: sveltejs
+                - <<: *reddit-simple-full
+                  subreddit: sveltejs
 
-    - size: full
-      widgets:
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: sveltejs
 
-        - <<: *videos-grid
-          channels:
-            - UCFvPgPdb_emE_bpMZq6hmJQ #@bmdavis419
+                - <<: *reddit-simple-top-month
+                  title: Month
+                  subreddit: sveltejs
+
+            - <<: *videos-grid
+              channels:
+                - UCFvPgPdb_emE_bpMZq6hmJQ #@bmdavis419
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-simple-full
+                  subreddit: SvelteKit
+
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: SvelteKit
+
+                - <<: *reddit-simple-top-month
+                  title: Month
+                  subreddit: SvelteKit

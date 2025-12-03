@@ -57,6 +57,30 @@ class Utils {
     });
   }
 
+  static replaceText() {
+    const text = [
+      { type: "remove", val: "- Episode Discussion" },
+      { type: "remove", val: "- Series Premiere Discussion" },
+      {
+        type: "extract",
+        val: /What are you watching and what do you recommend\? \((.*?)\)/,
+      },
+    ];
+    const elements = document.querySelectorAll(
+      ".xxx-replace-text a.size-title-dynamic",
+    );
+    text.forEach((t) => {
+      elements.forEach((e) => {
+        if (t.type === "remove") {
+          e.textContent = e.textContent.replace(t.val, "").trim();
+        } else if (t.type === "extract") {
+          let ex = e.textContent.match(t.val);
+          if (ex) e.textContent = ex[1].trim();
+        }
+      });
+    });
+  }
+
   static dockerLink() {
     const elements = document.querySelectorAll(
       ".widget-containers-custom .widget-content > ul > li",
@@ -74,45 +98,45 @@ class Utils {
     document.querySelectorAll(`[href^="${handler}"]`).forEach((el) => {
       const path = el.href.replace(handler, "");
       let data = btoa(path);
-      let safe = data.replace(/\//g, "_").replace(/\+/g, "-").replace(
-        /\=/g,
-        "",
-      );
+      let safe = data
+        .replace(/\//g, "_")
+        .replace(/\+/g, "-")
+        .replace(/\=/g, "");
       el.href = handler + safe;
     });
   }
 
   static setupCopy() {
-    const elements = document.querySelectorAll(
-      ".glimpse-clipboard",
-    );
+    const elements = document.querySelectorAll(".glimpse-clipboard");
     if (!elements.length) return;
 
     elements.forEach((el) => {
-      el.addEventListener("click", (e) => {
-        const { target } = e;
-        const textDiv = target.querySelector(".glimpse-copy");
-        const icon = target.querySelector("svg");
+      el.addEventListener(
+        "click",
+        (e) => {
+          const { target } = e;
+          const textDiv = target.querySelector(".glimpse-copy");
+          const icon = target.querySelector("svg");
 
-        if (
-          !textDiv || icon.classList.contains("color-positive")
-        ) {
-          return;
-        }
+          if (!textDiv || icon.classList.contains("color-positive")) {
+            return;
+          }
 
-        navigator.clipboard
-          .writeText(textDiv.textContent)
-          .then(() => {
-            console.log("Text copied to clipboard:", textDiv.textContent);
-            icon.classList.add("color-positive");
-            setTimeout(() => {
-              icon.classList.remove("color-positive");
-            }, 1500);
-          })
-          .catch((err) => {
-            console.error("Failed to copy text:", err);
-          });
-      }, false);
+          navigator.clipboard
+            .writeText(textDiv.textContent)
+            .then(() => {
+              console.log("Text copied to clipboard:", textDiv.textContent);
+              icon.classList.add("color-positive");
+              setTimeout(() => {
+                icon.classList.remove("color-positive");
+              }, 1500);
+            })
+            .catch((err) => {
+              console.error("Failed to copy text:", err);
+            });
+        },
+        false,
+      );
     });
   }
   static async setupEksiSearch() {
@@ -212,17 +236,18 @@ class Carousel {
 
     let delta = deltaY * (deltaFactors[deltaMode] || deltaFactors[0]);
     const acceleration = Math.min(Math.abs(delta) / 100, maxAcceleration);
-    delta = Math.sign(delta) *
-      Math.min(Math.abs(delta) * acceleration, maxDelta);
+    delta =
+      Math.sign(delta) * Math.min(Math.abs(delta) * acceleration, maxDelta);
 
     this.#performSmartScroll(container, delta);
   }
 
   static #performSmartScroll(container, delta) {
-    const behavior = container.scrollWidth >
-        container.clientWidth * this.#scrollConfig.smoothScrollThreshold
-      ? "auto"
-      : "smooth";
+    const behavior =
+      container.scrollWidth >
+      container.clientWidth * this.#scrollConfig.smoothScrollThreshold
+        ? "auto"
+        : "smooth";
 
     container.scrollBy({
       left: delta,
@@ -294,26 +319,28 @@ class CollapsibleGrids {
       const firstChild = gridElement.querySelector(":scope > *");
       minCardWidth = firstChild
         ? this.#parsePx(
-          getComputedStyle(firstChild).getPropertyValue("min-width"),
-        ) ||
+            getComputedStyle(firstChild).getPropertyValue("min-width"),
+          ) ||
           firstChild.getBoundingClientRect().width ||
           firstChild.offsetWidth
         : 280;
     }
 
-    minCardWidth = Number.isFinite(minCardWidth) && minCardWidth > 0
-      ? minCardWidth
-      : 280;
-    const gap = this.#parsePx(style.getPropertyValue("gap")) ||
-      this.#parsePx(style.getPropertyValue("column-gap")) || 0;
+    minCardWidth =
+      Number.isFinite(minCardWidth) && minCardWidth > 0 ? minCardWidth : 280;
+    const gap =
+      this.#parsePx(style.getPropertyValue("gap")) ||
+      this.#parsePx(style.getPropertyValue("column-gap")) ||
+      0;
 
     const cards = Math.floor((availableWidth + gap) / (minCardWidth + gap));
     return Math.max(1, cards);
   }
 
   static setupCollapsibleGrids() {
-    document.querySelectorAll(".glimpse-collapsible-container").forEach(
-      (gridElement) => {
+    document
+      .querySelectorAll(".glimpse-collapsible-container")
+      .forEach((gridElement) => {
         const collapseAfterRows = parseInt(
           gridElement.dataset.collapseAfterRows,
         );
@@ -353,16 +380,14 @@ class CollapsibleGrids {
         }).observe(gridElement);
 
         updateCollapsible();
-      },
-    );
+      });
   }
 
   static #attachExpandToggleButton(container) {
     let expanded = false;
     const button = document.createElement("button");
     button.className = "expand-toggle-button";
-    button.innerHTML =
-      `Show more<span class="expand-toggle-button-icon"></span>`;
+    button.innerHTML = `Show more<span class="expand-toggle-button-icon"></span>`;
     const textNode = button.firstChild;
 
     button.addEventListener("click", () => {
@@ -689,8 +714,8 @@ class YoutubeProgress {
 
   static #renderProgressBar(element, progress) {
     const container = document.createElement("div");
-    container.className = this.#config.selectors.progressBar.replace(".", "") +
-      "-container";
+    container.className =
+      this.#config.selectors.progressBar.replace(".", "") + "-container";
 
     const bar = document.createElement("div");
     bar.className = this.#config.selectors.progressBar.replace(".", "");
@@ -783,7 +808,7 @@ class ModalState {
       callback({
         type: changeType,
         currentState: this.snapshot(),
-      })
+      }),
     );
   }
 
@@ -1095,10 +1120,11 @@ class ModalManager {
     requestAnimationFrame(() => {
       const [scrollEl] = modal.getElementsByClassName(CONFIG.classes.scroll);
       if (scrollEl) {
-        const scrollPos = target.classList.contains(CONFIG.classes.back) ||
-            target.classList.contains(CONFIG.classes.home)
-          ? modalState.historyCurrent?.scrollPos || 0
-          : 0;
+        const scrollPos =
+          target.classList.contains(CONFIG.classes.back) ||
+          target.classList.contains(CONFIG.classes.home)
+            ? modalState.historyCurrent?.scrollPos || 0
+            : 0;
 
         scrollEl.scrollTop = scrollPos;
       }
@@ -1180,11 +1206,12 @@ document.addEventListener(
   () => {
     const observer = new MutationObserver((mutations) => {
       const hasTransitioned = mutations.some((mutation) =>
-        mutation.target.classList.contains("page-columns-transitioned")
+        mutation.target.classList.contains("page-columns-transitioned"),
       );
 
       if (hasTransitioned) {
         Utils.lightUp();
+        Utils.replaceText();
         Utils.dockerLink();
         Utils.setupEksiSearch();
         Utils.setupCopy();

@@ -3,13 +3,207 @@
     var(--bghs),
     calc(var(--scheme) (var(--scheme) var(--bgl) + 6%))
   );
+
   --widget-content-vertical-padding-reverse: calc(
     var(--widget-content-vertical-padding) * -1
   );
   --widget-content-horizontal-padding-reverse: calc(
     var(--widget-content-horizontal-padding) * -1
   );
+
+  --color-widget-background-hover: hsl(
+    var(--bghs),
+    calc(var(--scheme) var(--bgl) + 2%)
+  );
+
+  --widget-table-spacing: var(--widget-content-horizontal-padding);
+  --widget-table-spacing-half: calc(var(--widget-table-spacing) / 2);
 }
+
+/*****************************************************************************/
+
+:root[data-theme^="X-"] {
+  --bbgh: 214.3;
+  --bbgs: 25%;
+  --bbgl: 11%;
+
+  --bgh: 212;
+  --bgs: 18.5%;
+  --bgl: 15.9%;
+
+  --color-background: hsl(var(--bbgh), var(--bbgs), var(--bbgl));
+
+  --color-widget-background-hsl-values: var(--bghs), var(--bgl);
+
+  --color-widget-content-border: hsla(
+    var(--bghs),
+    calc(var(--scheme) var(--bgl) + 10%),
+    0.7
+  );
+  --box-shadow: 0px 3px 0px 0px
+    hsl(var(--bbghs), calc(var(--scheme) (var(--scheme) var(--bbgl)) - 0.5%));
+
+  --border-radius: 10px;
+}
+
+:root[data-theme="X-Bio"] {
+  --bbgh: 180;
+  --bbgs: 2%;
+  --bbgl: 8%;
+  --bgh: 180;
+  --bgs: 3.1%;
+  --bgl: 12.5%;
+}
+
+:root[data-theme="X-Astra"] {
+  --bbgh: 230;
+  --bbgs: 30%;
+  --bbgl: 14%;
+  --bgh: 230;
+  --bgs: 30%;
+  --bgl: 20%;
+}
+
+:root[data-theme="X-Hub"] {
+  --bbgh: 228;
+  --bbgs: 9.8%;
+  --bbgl: 10%;
+  --bgh: 223.6;
+  --bgs: 13.3%;
+  --bgl: 16.3%;
+}
+
+:root[data-theme="X-Frappe"] {
+  --bbgh: 231;
+  --bbgs: 20%;
+  --bbgl: 20%;
+  --bgh: 229;
+  --bgs: 19%;
+  --bgl: 23%;
+}
+
+:root[data-theme="X-Macchiato"] {
+  --bbgh: 230;
+  --bbgs: 24%;
+  --bbgl: 15%;
+  --bgh: 231;
+  --bgs: 23%;
+  --bgl: 18%;
+}
+
+:root[data-theme="X-Mocha"] {
+  --bbgh: 240;
+  --bbgs: 21%;
+  --bbgl: 12%;
+  --bgh: 240;
+  --bgs: 21%;
+  --bgl: 15%;
+}
+
+:root[data-theme="X-Monlight"] {
+  --bbgh: 230;
+  --bbgs: 24%;
+  --bbgl: 15%;
+  --bgh: 234;
+  --bgs: 23%;
+  --bgl: 17%;
+}
+
+:root[data-theme="X-Dev"] {
+  --color-text-base: hsl(214, 8%, 60%);
+  --color-text-base-muted: hsl(214, 8%, 50%);
+  ---color-text-subdue: hsl(214, 8%, 40%);
+  ---color-widget-background-hover: hsl(217.5, 17.4%, 18%);
+  ---color-widget-content-border: hsla(213.8, 11.6%, 27.1%, 0.7);
+}
+
+:root[data-theme^="X-"] .widget-content:not(.widget-content-frameless),
+:root[data-theme^="X-"] .widget-content-frame {
+  box-shadow: var(--box-shadow);
+}
+
+:root[data-theme^="X-"] .twitch-channel-live .twitch-channel-avatar-container,
+:root[data-theme^="X-"] .progress-bar,
+:root[data-theme^="X-"] .dns-stats-graph-columns,
+:root[data-theme^="X-"] .twitch-category-thumbnail {
+  --border-radius: 5px;
+}
+
+/**/
+
+:root[data-theme^="X-"] .glimpse-app-header,
+:root[data-theme^="X-"] .glimpse-app-footer {
+  background-color: hsl(
+    var(--bghs),
+    calc(var(--scheme) var(--bgl) + -2%)
+  ) !important;
+}
+
+:root[data-theme^="X-"] .glimpse-widget > .glimpse-content,
+:root[data-theme^="X-"] .glimpse-app {
+  box-shadow: var(--box-shadow);
+}
+
+/*****************************************************************************/
+
+:root[data-theme^="N-"] {
+  --color-widget-background-hsl-values: var(--bghs), calc(var(--bgl) + 3%);
+
+  --color-widget-content-border: hsla(
+    var(--bghs),
+    calc(var(--scheme) var(--bgl) + 12%),
+    0.75
+  );
+
+  --color-separator: hsl(
+    var(--bghs),
+    calc(var(--scheme) ((var(--scheme) var(--bgl)) + 10% * var(--cm)))
+  );
+
+  --color-graph-gridlines: hsl(
+    var(--bghs),
+    calc(var(--scheme) ((var(--scheme) var(--bgl)) + 8% * var(--cm)))
+  );
+
+  --box-shadow: 0px 3px 0px 0px
+    hsl(var(--bbghs), calc(var(--scheme) (var(--scheme) var(--bbgl)) - 0.5%));
+
+  --border-radius: 10px;
+
+  --color-widget-background-hover: hsl(
+    var(--bghs),
+    calc(var(--scheme) var(--bgl) + 5%)
+  );
+}
+
+:root[data-theme^="N-"] .widget-content:not(.widget-content-frameless),
+:root[data-theme^="N-"] .widget-content-frame {
+  box-shadow: var(--box-shadow);
+}
+
+:root[data-theme^="N-"] .twitch-channel-live .twitch-channel-avatar-container,
+:root[data-theme^="N-"] .progress-bar,
+:root[data-theme^="N-"] .dns-stats-graph-columns,
+:root[data-theme^="N-"] .twitch-category-thumbnail {
+  --border-radius: 5px;
+}
+
+/**/
+
+:root[data-theme^="N-"] .glimpse-app-header,
+:root[data-theme^="N-"] .glimpse-app-footer {
+  background-color: hsl(
+    var(--bghs),
+    calc(var(--scheme) var(--bgl) + 3%)
+  ) !important;
+}
+
+:root[data-theme^="N-"] .glimpse-widget > .glimpse-content,
+:root[data-theme^="N-"] .glimpse-app {
+  box-shadow: var(--box-shadow);
+}
+
+/*****************************************************************************/
 
 [hidden] {
   display: none;
@@ -19,13 +213,19 @@
   visibility: hidden;
 }
 
-.gradient{
+.gradient {
   background-size: 100%;
   background-repeat: repeat;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(90deg,#566cec,#d749af 50%,#ff7c51);
-  background-image: linear-gradient(90.42deg,#4AB1F1 0.58%,#566CEC 37.22%,#D749AF 73.87%,#FF7C51 112.26%);
+  background-image: linear-gradient(90deg, #566cec, #d749af 50%, #ff7c51);
+  background-image: linear-gradient(
+    90.42deg,
+    #4ab1f1 0.58%,
+    #566cec 37.22%,
+    #d749af 73.87%,
+    #ff7c51 112.26%
+  );
 }
 
 /*
@@ -46,6 +246,8 @@
   grid-column: span 6;
 }
 */
+
+/*****************************************************************************/
 
 .header a.nav-item {
   display: flex;
@@ -85,6 +287,10 @@ a.nav-item[href="/lol"]::before {
   place-self: center;
 }
 */
+
+a.nav-item::before {
+  margin-top: 1px;
+}
 
 a.nav-item[href="/space"]::before {
   content: "⬡";
@@ -221,7 +427,7 @@ a.nav-item-current[href="/react"] {
 }
 
 .card.thumbnail-parent:hover {
-  background-color: hsl(var(--bghs), calc(var(--bgl) + 3%));
+  background-color: var(--color-widget-background-hover);
 }
 
 /*****************************************************************************/
@@ -361,6 +567,18 @@ a.nav-item-current[href="/react"] {
   padding: 0 var(--widget-content-horizontal-padding);
 }
 
+.xxx-list-bordered .list > li:only-child {
+  border-radius: var(--border-radius);
+}
+
+.xxx-list-bordered .list > li:first-child:not(:only-child) {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.xxx-list-bordered .list > li:last-child:not(:only-child) {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
 .xxx-list-bordered .list > li > div {
   padding: var(--widget-content-vertical-padding) 0;
 }
@@ -371,7 +589,7 @@ a.nav-item-current[href="/react"] {
 
 .xxx-list-bordered .list > li:hover,
 .xxx-list-bordered .expand-toggle-button:hover {
-  background-color: hsl(var(--bghs), calc(var(--bgl) + 3%));
+  background-color: var(--color-widget-background-hover);
 }
 
 .xxx-list-small .list,
@@ -417,6 +635,10 @@ a.nav-item-current[href="/react"] {
 
 /*****************************************************************************/
 
+:root[data-theme^="X-"] .widget-containers-custom ul > li {
+  box-shadow: var(--box-shadow);
+}
+
 .widget-containers-custom .widget-content {
   background: transparent;
   padding: 0;
@@ -452,7 +674,7 @@ a.nav-item-current[href="/react"] {
 }
 
 .widget-containers-custom ul > li:hover {
-  background-color: hsl(var(--bghs), calc(var(--bgl) + 3%));
+  background-color: var(--color-widget-background-hover);
 }
 
 .widget-containers-custom .docker-container-icon {
@@ -541,7 +763,7 @@ a.nav-item-current[href="/react"] {
 }
 
 .widget-monitor-custom .monitor-site:hover {
-  background-color: hsl(var(--bghs), calc(var(--bgl) + 3%));
+  background-color: var(--color-widget-background-hover);
 }
 
 /* --- */
@@ -555,11 +777,6 @@ a.nav-item-current[href="/react"] {
 }
 
 /* --- */
-
-:root {
-  --widget-table-spacing: var(--widget-content-horizontal-padding);
-  --widget-table-spacing-half: calc(var(--widget-table-spacing) / 2);
-}
 
 .widget-table .widget-content {
   padding: 0;
@@ -584,7 +801,7 @@ a.nav-item-current[href="/react"] {
 }
 
 .widget-table table tbody tr:hover {
-  background-color: hsl(var(--bghs), calc(var(--bgl) + 3%));
+  background-color: var(--color-widget-background-hover);
 }
 
 .widget-table table td,
@@ -713,8 +930,6 @@ a.nav-item-current[href="/react"] {
   background: var(--color-widget-background);
   border-radius: var(--border-radius);
   border: 1px solid var(--color-widget-content-border);
-  box-shadow: 0px 3px 0px 0px
-    hsl(var(--bghs), calc(var(--scheme) (var(--scheme) var(--bgl)) - 0.5%));
   padding: 0;
 }
 
@@ -758,8 +973,9 @@ a.nav-item-current[href="/react"] {
 
 /*****************************************************************************/
 
+.widget-containers-custom .dynamic-columns,
 .glimpse-cards-grid {
-  --min-card-width: 240px;
+  --min-card-width: 250px;
   --max-card-width: 1fr;
   --columns: auto-fill;
   display: grid;
@@ -814,7 +1030,7 @@ a.nav-item-current[href="/react"] {
 }
 
 .jellyfin-item .thumbnail-wrapper .thumbnail {
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
 .jellyfin-item .thumbnail-wrapper:hover .thumbnail {

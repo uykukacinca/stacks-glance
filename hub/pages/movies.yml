@@ -7,9 +7,9 @@
       widgets:
 
         - type: search
-          search-engine: https://www.imdb.com/find/?s=tt&q={QUERY}
+          search-engine: ${REDDIT_URL}/r/movies/search?q={QUERY}&restrict_sr=on&sort=new&t=all
           new-tab: true
-          placeholder: Search on IMDb
+          placeholder: Search on r/movies
           bangs:
             - title: Reddit
               shortcut: "!r"
@@ -99,14 +99,21 @@
               max-columns: 1
               widgets:
 
+                - <<: *reddit-simple
+                  subreddit: movies
+                  title: Discussions
+                  search: flair:Discussion
+                  sort-by: new
+                  collapse-after: 6
+
                 - <<: *reddit-cover
                   subreddit: Cinema
                   show-flairs: true
-                  collapse-after: *widget-half-collapse-after
+                  collapse-after: 6
 
                 - <<: *reddit-cover
                   subreddit: BoxOffice
-                  collapse-after: *widget-half-collapse-after
+                  collapse-after: 6
 
             - <<: *videos-grid
               title: Reviews & Podcasts
@@ -117,3 +124,4 @@
                 - UCrTNhL_yO3tPTdQ5XgmmWjA # RedLetterMedia
                 - UCUyvQV2JsICeLZP4c_h40kA # Thomas Flight
                 - UCSJPFQdZwrOutnmSFYtbstA # TheCriticalDrinker
+                - UCtu6CSE-BvaZUUGqW4tuEJA # Just One More Thing

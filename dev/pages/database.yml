@@ -48,11 +48,12 @@
             - sqlitebrowser/sqlitebrowser
             - dbeaver/dbeaver
             - chartdb/chartdb
+            - RostislavDugin/postgresus
 
     - size: full
       widgets:
 
-        - <<: *reddit-simple
+        - <<: *reddit-simple-full
           subreddit: SQL+Database+dataengineering
           title: SQL & Database & Data Engineering
 
@@ -60,13 +61,13 @@
       widgets:
 
         - <<: *reddit-simple
-          collapse-after: 5
+          collapse-after: *widget-half-collapse-after
           subreddit: PostgreSQL
 
         - <<: *reddit-simple
-          collapse-after: 5
+          collapse-after: *widget-half-collapse-after
           subreddit: sqlite
 
         - <<: *reddit-simple
-          collapse-after: 5
+          collapse-after: *widget-half-collapse-after
           subreddit: mongodb

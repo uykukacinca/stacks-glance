@@ -34,7 +34,7 @@
 
             - type: group
               widgets:
-                - <<: *reddit-simple
+                - <<: *reddit-simple-full
                   title: Hot Today
                   subreddit: linux
 

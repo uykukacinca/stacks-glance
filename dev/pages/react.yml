@@ -44,9 +44,6 @@
                 - title: API
                   url: https://nextjs.org/docs/app/api-reference
 
-        - <<: *github-repository
-          repository: vercel/next.js
-
         - <<: *github-releases
           title: React
           repositories:
@@ -57,26 +54,46 @@
     - size: full
       widgets:
 
-        - type: group
+        - type: split-column
+          max-columns: 3
           widgets:
 
-            - <<: *reddit-simple
-              title: Next & React
-              subreddit: nextjs+reactjs
+            - <<: *github-repository
+              repository: vercel/next.js
 
-            - <<: *reddit-simple-top-week
-              title: Top This Week
-              subreddit: nextjs+reactjs
+            - type: group
+              widgets:
 
-            - <<: *reddit-simple-top-month
-              title: Month
-              subreddit: nextjs+reactjs
+                - <<: *reddit-simple-full
+                  title: React
+                  subreddit: reactjs
 
-    - size: full
-      widgets:
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: reactjs
 
-        - <<: *videos-grid
-          channels:
-            - UCf6AGqO98eGk11nfazociVQ # ByteGrad
-            - UCZMli3czZnd1uoc1ShTouQw # leerob
-            - UCsrVDPJBYeXItETFHG0qzyw # WebDevCody
+                - <<: *reddit-simple-top-month
+                  title: Month
+                  subreddit: reactjs
+
+            - <<: *videos-grid
+              channels:
+                - UCf6AGqO98eGk11nfazociVQ # ByteGrad
+                - UCZMli3czZnd1uoc1ShTouQw # leerob
+                - UCsrVDPJBYeXItETFHG0qzyw # WebDevCody
+                - UCvGwM5woTl13I-qThI4YMCg # joshtriedcoding
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-simple-full
+                  title: Next
+                  subreddit: nextjs
+
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: nextjs
+
+                - <<: *reddit-simple-top-month
+                  title: Month
+                  subreddit: nextjs
