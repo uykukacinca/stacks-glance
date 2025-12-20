@@ -1,0 +1,27 @@
+- name: "*youtube"
+  slug: youtube
+  show-in-navigation: false
+  width: wide
+
+  columns:
+
+    - size: full
+      widgets:
+
+        - <<: *youtube-base
+          title: "@Theo"
+          options:
+            collapse-after-rows: 1
+          parameters:
+            part: "snippet"
+            playlistId: UUbRP3c757lWg9M-U7TyEkXA
+            maxResults: 20
+
+        - <<: *youtube-base
+          title: "@Syntax"
+          options:
+            collapse-after-rows: 1
+          parameters:
+            part: "snippet"
+            playlistId: UUyU5wkjgQYGRB0hIHMwm2Sg
+            maxResults: 20

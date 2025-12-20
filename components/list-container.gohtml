@@ -1,0 +1,23 @@
+{{ $collapseAfter := .Options.IntOr "collapse-after" 5 }}
+
+{{- if $items | len | eq 0 -}}
+  <div class="widget-content ">
+    <p>Empty</p>
+  </div>
+{{- else -}}
+  <div
+    class="x-container">
+    <div
+      class="x-list x-collapsible"
+      data-collapse-after-rows="{{ $collapseAfter }}"
+    >
+      {{- range $item := $items -}}
+        {{- if or (eq ($item.String "title") "") (not ($item.Exists "title")) -}}
+          {{ continue }}
+        {{- end -}}
+
+        {{ template "ListItem" $item }}
+      {{- end -}}
+    </div>
+  </div>
+{{- end -}}

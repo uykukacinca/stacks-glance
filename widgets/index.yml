@@ -1,0 +1,46 @@
+widgets:
+  - $include: jellyfin/base.yml
+  - $include: jellyfin/episodes.yml
+  - $include: jellyfin/episodes-list.yml
+  - $include: jellyfin/movies.yml
+  - $include: jellyfin/movies-list.yml
+  - $include: jellyfin/movies-primary.yml
+  - $include: jellyfin/next-up.yml
+
+  - $include: kick/base.yml
+  - $include: kick/category.yml
+  - $include: kick/channels.yml
+  - $include: kick/streams.yml
+
+  - $include: twitch/base.yml
+  - $include: twitch/category.yml
+  - $include: twitch/channels.yml
+  - $include: twitch/clips.yml
+  - $include: twitch/streams.yml
+
+  - $include: youtube/base.yml
+
+  - $include: audiobookshelf/podcasts.yml
+  - $include: audiobookshelf/audiobooks.yml
+
+  - $include: radarr/history.yml
+  - $include: sonarr/history.yml
+
+  # refactor below
+  - $include: gluetun.yml
+  - $include: html.yml
+  - $include: links.yml
+  - $include: my-domains.yml
+  - $include: my-ip.yml
+  - $include: my-monitor.yml
+  - $include: my-workers.yml
+  - $include: proxmox-ve-nodes.yml
+  - $include: steam.yml
+  - $include: tmdb.yml
+
+  - $include: kaiten/docker/grouped.yml
+  - $include: kaiten/docker/glance.yml
+  - $include: kaiten/docker/list.yml
+  - $include: kaiten/cron.yml
+
+  - $include: sonarr/calendar.yml

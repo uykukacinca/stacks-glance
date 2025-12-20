@@ -1,0 +1,10 @@
+- &twitch-channels
+  <<: *twitch-base
+  title: Twitch Following
+  options:
+    collapse-after-rows: 2
+  template: |
+    {{ $items := .JSON.Array `data.users.#(stream.title)#.{"id":login,"title":stream.title,"url":{"fn":!"replace","val":login,"href":!"https://twitch.tv/{val}"},"header":[{"tpl":!"Text","val":stream.game.name,"class":!"block text-truncate"},{"tpl":!"Title","class":!"color-highlight x-grayscale text-truncate-2-lines"}],"image":{"src":stream.previewImageURL,"overlays":[{"tpl":!"PlayIcon","class":!"x-br-t x-center x-play"},{"tpl":!"TemplateArray","val":[{"tpl":!"LiveCount","val":stream.viewersCount,"class":!"x-blur x-blur-title"}],"class":!"x-ps-ee x-margin-gap"}]},"footer":[{"tpl":!"RelativeTime","val":stream.createdAt},{"tpl":!"Link","val":{"title":displayName,"link":{"fn":!"replace","val":login,"href":!"https://twitch.tv/{val}"}}}]}` }}
+    $include: /components/templates.gohtml
+    $include: /components/media.gohtml
+    $include: /components/media-container.gohtml

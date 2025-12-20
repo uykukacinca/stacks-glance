@@ -1,10 +1,17 @@
 document:
   head: |
     <link rel="stylesheet" href="${GLIMPSE_URL}/main.css">
-    <script>const GLIMPSE_URL = "${GLIMPSE_URL}"; </script>
+    <script defer src="${UMAMI_URL}/script.js" data-website-id="${UMAMI_ID}"></script>
+    <script>const GLIMPSE_URL = "${GLIMPSE_URL}";const HOST_NAME = "${HOST_NAME}"; </script>
     <script src="/assets/custom.js"></script>
+    <link rel="stylesheet" href="/assets/css/utils.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/override.css">
 
-$include: variables.yml
-$include: definitions.yml
 $include: theme.yml
-$include: widgets.yml
+
+shared:
+  - $include: variables.yml
+  - $include: definitions.yml
+  - $include: /widgets/index.yml
+  - $include: /widgets/wip/index.yml

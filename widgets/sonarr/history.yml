@@ -1,0 +1,19 @@
+- &sonarr-recently-added
+  type: custom-api
+  title: Sonarr History
+  cache: *no-cache
+  frameless: true
+  url: ${SONARR_URL}/api/v3/history
+  parameters:
+    eventType: 3
+    includeSeries: true
+    includeEpisode: true
+    pageSize: 15
+  headers:
+    Accept: application/json
+    X-Api-Key: ${SONARR_API_KEY}
+  template: |
+    {{ $items := .JSON.Array `records.#.{"id":series.titleSlug,"title":episode.title,"url":{"fn":!"replace","val":series.titleSlug,"href":!"${SONARR_URL}/series/{val}"},"image":{"src":series.images.1.remoteUrl,"class":!"x-ar-3x4"},"header":[{"tpl":!"Episode","val":{"season":episode.seasonNumber,"episode":episode.episodeNumber},"class":!"shrink-0"},{"tpl":!"Text","val":series.title,"class":!"shrink-0"}],"footer":[{"tpl":!"Duration","val":episode.runtime},{"tpl":!"Rating","val":series.ratings.value}]}` }}
+    $include: /components/templates.gohtml
+    $include: /components/list.gohtml
+    $include: /components/list-container.gohtml

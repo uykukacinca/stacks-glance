@@ -1,0 +1,10 @@
+- &twitch-streams
+  <<: *twitch-base
+  title: Twitch Streams [EN, TR]
+  options:
+    collapse-after-rows: 1
+  template: |
+    {{ $items := .JSON.Array `data.streams.edges.#.{"id":node.broadcaster.login,"title":node.broadcaster.broadcastSettings.title,"url":{"fn":!"replace","val":node.broadcaster.login,"href":!"https://twitch.tv/{val}"},"header":[{"tpl":!"Text","val":node.game.displayName,"class":!"block text-truncate"},{"tpl":!"Title","class":!"color-highlight x-grayscale text-truncate-2-lines"}],"image":{"src":node.previewImageURL,"overlays":[{"tpl":!"PlayIcon","class":!"x-br-t x-center x-play"},{"tpl":!"TemplateArray","val":[{"tpl":!"LiveCount","val":node.viewersCount,"class":!"x-blur x-blur-title"}],"class":!"x-ps-ee x-margin-gap"}]},"footer":[{"tpl":!"RelativeTime","val":node.createdAt},{"tpl":!"Link","val":{"title":node.broadcaster.displayName,"link":{"fn":!"replace","val":node.broadcaster.login,"href":!"https://twitch.tv/{val}"}}}]}` }}
+    $include: /components/templates.gohtml
+    $include: /components/media.gohtml
+    $include: /components/media-container.gohtml

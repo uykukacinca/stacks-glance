@@ -1,0 +1,11 @@
+.x-m10 {
+  margin: var(--widget-content-vertical-padding);
+  background-color: var(--color-background);
+  color: var(--color-text-highlight);
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}

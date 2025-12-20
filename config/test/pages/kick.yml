@@ -1,0 +1,30 @@
+- name: "*kick"
+  slug: kick
+  show-in-navigation: false
+  width: wide
+
+  columns:
+
+    - size: full
+      widgets:
+
+        - <<: *kick-channels
+          title: Kick Following
+          options:
+            collapse-after-rows: 1
+          parameters:
+            slug:
+              - asmongold
+
+        - <<: *kick-streams
+          options:
+            collapse-after-rows: 1
+          parameters:
+            #limit: 7
+
+        - <<: *kick-category
+          title: GTA
+          options:
+            collapse-after-rows: 1
+          parameters:
+            category: 8

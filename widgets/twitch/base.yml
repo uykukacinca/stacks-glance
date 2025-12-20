@@ -1,0 +1,10 @@
+- &twitch-base
+  type: custom-api
+  title: Twitch
+  cache: *no-cache
+  frameless: true
+  url: https://gql.twitch.tv/gql
+  method: POST
+  headers:
+    Client-Id: kimne78kx3ncx6brgo4mv6wki5h1ko
+  body-type: json

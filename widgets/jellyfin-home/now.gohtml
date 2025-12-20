@@ -1,0 +1,18 @@
+{{- define "Now" -}}
+  {{ $now := now }}
+  <div style="margin-top: var(--widget-gap);">
+    {{ $now }} --- cached
+    <span
+      class="color-highlight"
+      {{ $now | toRelativeTime }}
+      data-units="2"
+      data-relative
+    ></span>
+    <span
+      class="color-highlight"
+      data-glimpse-dynamic-relative-time="{{ $now | formatTime "unix" }}"
+    ></span>
+  </div>
+{{- end -}}
+
+{{ template "Now" }}

@@ -1,0 +1,171 @@
+- name: "Live" # 🔴
+  slug: live
+  width: wide
+
+  head-widgets:
+
+    - <<: *twitch-category
+      title: Twitch Just Chatting [EN, TR]
+      options:
+        collapse-after-rows: 1
+      body:
+        query: |
+          query {
+            game(id: "509658") {
+              streams(first: 30, options: { languages: ["EN", "TR"] }) {
+                edges {
+                  node {
+                    id
+                    createdAt
+                    previewImageURL(width: 440, height: 248)
+                    type
+                    viewersCount
+                    broadcaster {
+                      login
+                      displayName
+                      profileImageURL(width: 300)
+                      broadcastSettings {
+                        title
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+  columns:
+
+    - size: small
+      widgets:
+
+        - <<: *kick-channels
+          title: Kick Following
+          parameters:
+            slug:
+              - asmongold
+
+        - <<: *twitch-channels
+          options:
+            collapse-after-rows: 2
+          body:
+            query: |
+              query {
+                users(logins: ["asmongold","zackrawrr"]) {
+                  login
+                  displayName
+                  profileImageURL(width: 70)
+                  stream {
+                    title
+                    viewersCount
+                    createdAt
+                    previewImageURL(width: 440, height: 248)
+                    game {
+                      name
+                    }
+                  }
+                }
+              }
+
+        - type: twitch-channels
+          channels: ["lacy","zackrawrr","asmongold247","robcdee","EsfandTV","emiru","bonnie","kitboga","ej_sa","CriticalRole","ariathome","sweet_anita","agendafreetv"]
+          title: Streamers
+
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Rumble
+                  icon: auto-invert ${ICONS_URL}/custom/rumble.svg
+                  url: https://rumble.com
+                - title: Social Blade
+                  icon: auto-invert ${ICONS_URL}/custom/socialblade.svg
+                  url: https://socialblade.com/
+            - links:
+                - title: x/yeet
+                  url: https://x.com/Awk20000
+                - title: Streams Charts
+                  url: https://streamscharts.com/overview
+                - title: Stream Bans
+                  url: https://streamerbans.com
+                - title: Twitch Tracker
+                  url: https://twitchtracker.com
+                - title: Naver's CHZZK
+                  url: https://chzzk.naver.com
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 3
+          widgets:
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-cover
+                  subreddit: LivestreamFail
+
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: LivestreamFail
+
+                - <<: *twitch-clips
+                  title: Popular Clips - Week
+                  options:
+                    collapse-after-rows: 8
+                  body:
+                    query: |
+                      query {
+                        game(name: "Just Chatting") {
+                          clips(first: 30, criteria: { languages: [], period: LAST_WEEK }) {
+                            edges {
+                              node {
+                                url
+                                title
+                                durationSeconds
+                                createdAt
+                                thumbnailURL(width: 440, height: 248)
+                                viewCount
+                                game {
+                                  displayName
+                                }
+                                curator {
+                                  login
+                                  displayName
+                                  profileImageURL(width: 50)
+                                }
+                                broadcaster {
+                                  login
+                                  displayName
+                                  profileImageURL(width: 50)
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-cover
+                  subreddit: Asmongold
+
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: Asmongold
+
+            - type: group
+              widgets:
+
+                - <<: *videos-grid
+                  limit: 24
+                  channels:
+                    - UCQeRaTukNYft1_6AZPACnog # AsmonTV
+                    - UCkAsdQZolgJdKmZ3T3zn-dA # steakandeggspod
+
+                - <<: *videos-grid
+                  title: Clips
+                  limit: 24
+                  channels:
+                    - UCMwJJL5FJFuTRT55ksbQ4GQ #@AsmongoldClips

@@ -1,0 +1,10 @@
+- &kaiten-docker-glance
+  type: custom-api
+  cache: *no-cache
+  #url: http://192.168.0.100:3000/docker/glance
+  url: http://kaiten:3000/docker/glance
+  allow-insecure: true
+  frameless: true
+  hide-header: true
+  template: | #html
+    $include: glance.gohtml

@@ -1,0 +1,73 @@
+- name: "#database" #
+  slug: database
+  width: wide
+  columns:
+
+    - size: small
+      widgets:
+
+        - type: bookmarks
+          groups:
+            - hide-arrow: true
+              links:
+                - title: PostgreSQL
+                  icon: auto-invert ${ICONS_URL}/custom/postgresql.svg
+                  url: https://www.postgresql.org/download/
+                - title: MongoDB
+                  icon: auto-invert ${ICONS_URL}/custom/mongodb.svg
+                  url: https://www.mongodb.com/try/download/community
+                - title: SQLite
+                  icon: auto-invert ${ICONS_URL}/custom/sqlite.svg
+                  url: https://www.sqlite.org/download.html
+            - links:
+                - title: Convex
+                  url: https://www.convex.dev/
+                - title: Convex Docs
+                  url: https://docs.convex.dev/home
+
+        - <<: *github-releases
+          title: Database
+          repositories:
+            - clockworklabs/SpacetimeDB
+            - ClickHouse/ClickHouse
+            - DiceDB/dice
+            - pubkey/rxdb
+            - get-convex/convex-backend
+
+        - <<: *github-releases
+          title: DB/ORM
+          repositories:
+            - supabase/supabase
+            - prisma/prisma
+            - drizzle-team/drizzle-orm
+            - meilisearch/meilisearch
+
+        - <<: *github-releases
+          title: Software
+          repositories:
+            - sqlitebrowser/sqlitebrowser
+            - dbeaver/dbeaver
+            - chartdb/chartdb
+            - RostislavDugin/postgresus
+
+    - size: full
+      widgets:
+
+        - <<: *reddit-simple-full
+          subreddit: SQL+Database+dataengineering
+          title: SQL & Database & Data Engineering
+
+    - size: full
+      widgets:
+
+        - <<: *reddit-simple
+          collapse-after: *widget-half-collapse-after
+          subreddit: PostgreSQL
+
+        - <<: *reddit-simple
+          collapse-after: *widget-half-collapse-after
+          subreddit: sqlite
+
+        - <<: *reddit-simple
+          collapse-after: *widget-half-collapse-after
+          subreddit: mongodb

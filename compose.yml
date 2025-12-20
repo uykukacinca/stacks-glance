@@ -1,0 +1,28 @@
+services:
+  glance-test:
+    container_name: glance-test
+    env_file: .env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+      - ./-test:/app/config
+      - ./shared:/shared
+      - ./assets:/assets
+      - ./components:/components
+      - ./widgets:/widgets
+    networks:
+      - proxy
+    ports:
+      - 8080:8080
+    restart: always
+    healthcheck:
+      test: wget --spider -q http://127.0.0.1:8080/api/healthz
+      interval: 30s
+      retries: "5"
+      start_period: 10s
+      timeout: 10s
+    image: glanceapp/glance
+networks:
+  proxy:
+    external: true
+    name: proxy

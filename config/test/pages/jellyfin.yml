@@ -1,0 +1,9 @@
+- name: "*jellyfin"
+  slug: jellyfin
+  show-in-navigation: false
+  width: wide
+
+  columns:
+    - size: full
+      widgets:
+        $include: /widgets/jellyfin-home/home.yml

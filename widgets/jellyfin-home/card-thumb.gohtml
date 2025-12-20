@@ -1,0 +1,180 @@
+{{- define "card-thumb" -}}
+  {{ $item := . }}
+  {{/* Common item variables */}}
+  {{ $mediaType := $item.String "Type" }}
+  {{ $title := $item.String "Name" }}
+  {{ $itemID := $item.String "Id" }}
+  {{ $serverQuery := print "&serverId=" ($item.String "ServerId") }}
+
+  {{/* Media type specific variables */}}
+  {{ $seriesTitle := "" }}
+  {{ $artist := "" }}
+  {{ $seriesID := "" }}
+  {{ $season := "" }}
+  {{ $episode := "" }}
+  {{ $episodeFull := "" }}
+  {{ $playPercentage := "" }}
+  {{ $UnplayedItemCount := 0 }}
+  {{ $ProductionYear := $item.Int "ProductionYear" }}
+  {{ $ImageAspectRatio := $item.Int "PrimaryImageAspectRatio" }}
+
+  {{- if eq $mediaType "Movie" -}}
+  {{- else if eq $mediaType "Series" -}}
+    {{ $UnplayedItemCount = $item.Int "UserData.UnplayedItemCount" }}
+  {{- else if eq $mediaType "Episode" -}}
+    {{ $UnplayedItemCount = 1 }}
+    {{ $seriesTitle = $item.String "SeriesName" }}
+    {{ $seriesID = $item.String "SeriesId" }}
+    {{ $season = $item.Int "ParentIndexNumber" }}
+    {{ $episode = $item.Int "IndexNumber" }}
+    {{ $episodeFull = print "S" $season ":E" $episode }}
+  {{- else if eq $mediaType "MusicAlbum" -}}
+    {{ $artist = $item.String "AlbumArtist" }}
+  {{- end -}}
+
+  {{ $linkURL := print "https://tv.${HOST_NAME}" "/web/#/details?id=" $itemID $serverQuery }}
+
+  {{ $thumbURL := print "https://tv.${HOST_NAME}" "/Items/" $itemID "/Images/Thumb" }}
+  {{- if eq $mediaType "Episode" -}}
+    {{/* $thumbURL = print "https://tv.${HOST_NAME}" "/Items/" ($item.String "ParentThumbItemId") "/Images/Thumb?tag=" ($item.String "ParentThumbImageTag") */}}
+    {{ $thumbURL = print "https://tv.${HOST_NAME}" "/Items/" ($item.String "SeriesId") "/Images/Thumb?tag=" ($item.String "SeriesPrimaryImageTag") }}
+  {{- end -}}
+
+  {{- if $item.Exists "UserData.PlayedPercentage" -}}
+    {{ $playPercentage = $item.String "UserData.PlayedPercentage" }}
+  {{- end -}}
+
+
+  <div
+    class="card jellyfin-item widget-content-frame thumbnail-parent"
+    type="{{ $mediaType }}"
+  >
+    <div class="thumbnail-wrapper">
+      <a
+        href="{{ $linkURL }}"
+        target="_blank"
+        rel="noreferrer"
+        title="{{ $title }}"
+      >
+        <img
+          class="video-thumbnail thumbnail"
+          loading="lazy"
+          src="{{ $thumbURL }}"
+          style="--aspect-ratio: {{ $ImageAspectRatio }};"
+          alt=""
+        />
+        {{- if eq $mediaType "Book" -}}
+          {{ template "book-icon-24" "jellyfin-play-icon" }}
+        {{- else if eq $mediaType "MusicAlbum" -}}
+          {{ template "music-icon-24" "jellyfin-play-icon" }}
+        {{- else -}}
+          {{ template "play-icon-24" "jellyfin-play-icon" }}
+        {{- end -}}
+      </a>
+
+      {{- if gt $UnplayedItemCount 1 -}}
+        <div class="jellyfin-item-unwatched-badge size-h6">
+          {{- if gt $UnplayedItemCount 99 -}}
+            {{ "99+" }}
+          {{- else -}}
+            {{ $UnplayedItemCount }}
+          {{- end -}}
+        </div>
+      {{- end -}}
+
+      {{- if not (eq $playPercentage "") -}}
+        <div class="xxx-progress-bar-container">
+          <div
+            class="xxx-progress-bar"
+            style="--percent: {{ $playPercentage }}"
+          ></div>
+        </div>
+      {{- end -}}
+    </div>
+    <div
+      class="margin-top-10 margin-bottom-widget flex flex-column grow padding-inline-widget"
+    >
+      {{- if or (eq $mediaType "Episode") (eq $mediaType "Movie")  (eq $mediaType "Series") -}}
+        <ul class="list-horizontal-text flex-nowrap margin-bottom-7" hidden>
+          {{- if ne $episodeFull "" -}}
+            <li class="shrink-0">{{ $episodeFull }}</li>
+          {{- else -}}
+            <li class="shrink-0 search-bangs">
+              {{ $item.String "ProductionYear" }}
+            </li>
+          {{- end -}}
+          {{- if gt ($item.Float "CommunityRating") 0.0 -}}
+            <li class="shrink-0 flex items-center">
+              {{ template "star-icon-16" "jellyfin-text-icon" }}
+              {{ printf "%.1f" ($item.Float "CommunityRating") }}
+            </li>
+          {{- end -}}
+          {{ $duration := $item.Int "RunTimeTicks" }}
+          {{ $durationMins := div (div $duration 10_000_000) 60 }}
+          {{- if gt $durationMins 0 -}}
+            {{ $hours := div $durationMins 60 }}
+            {{ $minutes := mod $durationMins 60 }}
+            <li class="flex items-center">
+              {{ template "time-icon-16" "jellyfin-text-icon" }}
+              {{- if gt $hours 0 -}}
+                {{ printf "%dh %dm" $hours $minutes }}
+              {{- else -}}
+                {{ printf "%dm" $minutes }}
+              {{- end -}}
+            </li>
+          {{- end -}}
+        </ul>
+      {{- end -}}
+
+
+      <div
+        class="{{- if eq $mediaType "Episode" -}}
+          text-truncate
+        {{- else if or (eq $mediaType "MusicAlbum") (eq $mediaType "Book") -}}
+          text-truncate-2-lines
+        {{- else -}}
+          text-truncate-2-lines
+        {{- end -}} color-highlight"
+      >
+        <a
+          href="{{ $linkURL }}"
+          target="_blank"
+          rel="noreferrer"
+          title="{{ $title }}"
+          class="color-highlight"
+        >
+          {{ $title }}
+        </a>
+      </div>
+      <div class="text-truncate flex items-center justify-between gap-10">
+        {{- if eq $mediaType "MusicAlbum" -}}
+
+          {{ $item.String "AlbumArtist" }}
+
+        {{- else if or (eq $mediaType "Series") (eq $mediaType "Episode") -}}
+
+          {{ $seriesTitle }}
+
+        {{- end -}}
+        {{- if eq $mediaType "Series" -}}
+          {{ $EndYear := $item.String "EndDate" | parseTime "RFC3339" | formatTime "2006" }}
+
+          {{ $ProductionYear }} -
+          {{- if eq ($item.String "Status") "Ended" -}}
+            {{ $EndYear }}
+          {{- else -}}
+            Present
+          {{- end -}}
+
+        {{- else if eq $mediaType "Movie" -}}
+          {{ $ProductionYear }}
+        {{- end -}}
+        {{- if not ($item.Bool "IsFolder") -}}
+          {{ $path := print "D:/ark" ($item.String "Path") }}
+          {{ template "Clipboard" $path }}
+        {{- end -}}
+
+      </div>
+    </div>
+  </div>
+{{- end -}}

@@ -1,0 +1,16 @@
+- &audiobookshelf-recent-podcasts
+  type: custom-api
+  title: Audiobookshelf Podcasts
+  cache: *no-cache
+  frameless: true
+  url: ${AUDIOBOOKSHELF_URL}/audiobookshelf/api/libraries/3c472da7-7aa5-41b8-89d3-a6d938a2a88c/recent-episodes
+  parameters:
+    limit: 15
+  headers:
+    Accept: application/json
+    Authorization: Bearer ${AUDIOBOOKSHELF_KEY}
+  template: |
+    {{ $items := .JSON.Array `episodes.#.{"id":libraryItemId,"title":title,"url":{"fn":!"replace","val":libraryItemId,"href":!"${AUDIOBOOKSHELF_URL}/audiobookshelf/item/{val}"},"image":{"fn":!"replace","val":libraryItemId,"src":!"${AUDIOBOOKSHELF_URL}/audiobookshelf/api/items/{val}/cover","class":!"x-ar-1x1"},"header":[{"tpl":!"Text","val":podcast.metadata.title,"class":!"block text-truncate"}],"footer":[{"tpl":!"Episode","val":{"season":season,"episode":episode},"class":!"shrink-0"},{"tpl":!"Duration","units":!"seconds","val":duration}]}` }}
+    $include: /components/templates.gohtml
+    $include: /components/list.gohtml
+    $include: /components/list-container.gohtml

@@ -1,0 +1,39 @@
+- name: "*gallery"
+  slug: gallery
+  show-in-navigation: false
+  width: wide
+
+  columns:
+
+    - size: full
+      widgets:
+
+        - type: group
+          widgets:
+
+            - <<: *components-gallery
+              url: http://localhost:8080/assets/r/art/top.json
+              title: x-Gallery art
+              options:
+                columns: 4
+            - <<: *components-gallery
+              url: http://localhost:8080/assets/r/earth/top.json
+              title: x-Gallery earth
+              options:
+                columns: 4
+
+    - size: full
+      widgets:
+
+        - type: group
+          widgets:
+            - <<: *components-gallery
+              url: http://localhost:8080/assets/r/space/top.json
+              title: x-Gallery space
+              options:
+                columns: 4
+            - <<: *components-gallery
+              url: http://localhost:8080/assets/r/cat/top.json
+              title: x-Gallery cat
+              options:
+                columns: 4

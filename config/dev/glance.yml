@@ -1,0 +1,32 @@
+server:
+  assets-path: /assets
+
+branding:
+  logo-text: ⋈
+  favicon-url: /assets/favicon-dev.ico
+  app-name: "Glance Dev"
+
+$include: /shared/index.yml
+
+pages:
+  - $include: pages/dash.yml
+  - $include: pages/news.yml
+  - $include: pages/selfhost.yml
+  - $include: pages/homelab.yml
+  - $include: pages/devops.yml
+  - $include: pages/javascript.yml
+  - $include: pages/vue.yml
+  - $include: pages/react.yml
+  - $include: pages/svelte.yml
+  - $include: pages/frontend.yml
+  - $include: pages/backend.yml
+  - $include: pages/database.yml
+  - $include: pages/security.yml
+  - $include: pages/linux.yml
+  - $include: pages/windows.yml
+  - $include: pages/podcasts.yml
+  - $include: pages/tutorials.yml
+  - $include: pages/cms.yml
+  - $include: pages/oss.yml
+  - $include: pages/svc.yml
+  #- $include: pages/hardware.yml

@@ -20,50 +20,52 @@ theme:
       contrast-multiplier: 1.1
 
     X-Bio:
-      background-color: 212 18.5 15.9
       primary-color: 52.6 55 76.1
       positive-color: 157 47 65
       negative-color: 358.8 100 69.6
 
     X-Hub:
-      background-color: 223.6 13.3 16.3
+      primary-color: 52.6 55 76.1
+      positive-color: 168.9 56.1 67.8
+      negative-color: 349.9 100 70.8
+
+    X-Hub2:
       primary-color: 52.6 55 76.1
       positive-color: 168.9 56.1 67.8
       negative-color: 349.9 100 70.8
 
     X-Dev:
-      background-color: 212 18.5 15.9
       primary-color: 157 47 65
       positive-color: 157 47 65
       negative-color: 0 70 70
 
     X-Astra:
-      background-color: 230 30 20
       primary-color: 207.2 86.5 68
 
     X-Frappe:
-      background-color: 229 19 23
       primary-color: 65 92 76
       positive-color: 96 44 55
       negative-color: 359 68 57
 
     X-Macchiato:
-      background-color: 231 23 18
       primary-color: 157 47 65
       positive-color: 105 48 58
       negative-color: 351 74 59
 
     X-Mocha:
-      background-color: 240 21 15
       primary-color: 265 89 78
       positive-color: 115 43 55
       negative-color: 343 65 54
 
     X-Monlight:
-      background-color: 234 23 17
       primary-color: 259 48 66
       positive-color: 174 66 49
       negative-color: 356 100 66
+
+    X-Sky:
+      primary-color: 164 51 60
+      positive-color: 164 61 70
+      negative-color: 351 74 59
 
     N-Bio:
       background-color: 212 18.5 11
@@ -79,8 +81,8 @@ theme:
 
     N-Dev:
       background-color: 212 18.5 11
-      primary-color: 157 47 65
-      positive-color: 157 47 65
+      primary-color: 164 51 60
+      positive-color: 164 61 70
       negative-color: 0 70 70
 
     N-Astra:
@@ -89,14 +91,14 @@ theme:
 
     N-Frappe:
       background-color: 229 19 20
-      primary-color: 65 92 76
+      primary-color: 65 72 76 # 65 92 76
       positive-color: 96 44 55
       negative-color: 359 68 57
 
     N-Macchiato:
       background-color: 231 23 15
-      primary-color: 157 47 65
-      positive-color: 105 48 58
+      primary-color: 164 51 60
+      positive-color: 164 61 70
       negative-color: 351 74 59
 
     N-Mocha:
@@ -107,6 +109,12 @@ theme:
 
     N-Monlight:
       background-color: 234 23 14
-      primary-color: 259 48 66
+      primary-color: 234 90 80
       positive-color: 174 66 49
       negative-color: 356 100 66
+
+    N-Sky:
+      background-color: 214 30 11
+      primary-color: 164 51 60
+      positive-color: 164 61 70
+      negative-color: 351 74 59

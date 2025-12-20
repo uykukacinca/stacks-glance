@@ -1,0 +1,18 @@
+- &youtube-base
+  type: custom-api
+  title: Youtube Playlist
+  cache: *long-cache
+  frameless: true
+  url: https://www.googleapis.com/youtube/v3/playlistItems
+  headers:
+    X-Goog-Api-Key: ${YOUTUBE_API_KEY}
+  parameters:
+    part: "snippet"
+    playlistId: UUbRP3c757lWg9M-U7TyEkXA
+    maxResults: 20
+  template: |
+    {{ $items := .JSON.Array `items.#.{"id":snippet.resourceId.videoId,"title":snippet.title,"url":{"fn":!"replace","val":snippet.resourceId.videoId,"href":!"https://www.youtube.com/watch?v={val}"},"header":[{"tpl":!"Title"}],"image":{"src":snippet.thumbnails.standard.url,"overlays":[{"class":!"x-center x-play","tpl":!"PlayIcon"}]},"footer":[{"class":!"","tpl":!"RelativeTime","val":snippet.publishedAt},{"class":!"","tpl":!"Link","val":{"title":snippet.channelTitle,"link":{"fn":!"replace","val":snippet.videoOwnerChannelId,"href":!"https://www.youtube.com/channel/{val}/videos" }}}]}`
+    }}
+    $include: /components/templates.gohtml
+    $include: /components/media.gohtml
+    $include: /components/media-container.gohtml

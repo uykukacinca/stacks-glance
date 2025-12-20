@@ -1,0 +1,65 @@
+{{ $columns := .Options.IntOr "columns" 3 }}
+{{ $imageProxy := .Options.StringOr "image-proxy" "" }}
+
+{{- if .JSON.Int "error" -}}
+  {{ $message := concat (.JSON.String "error") ": " (.JSON.String "message") }}
+  {{ template "ErrorMessage" $message }}
+{{- else -}}
+
+  {{- if eq (len $items) 0 -}}
+    {{ $message := concat "Empty" }}
+    {{ template "ErrorMessage" $message }}
+  {{- else -}}
+
+    <div class="x-gallery" style="--columns:{{ $columns }};">
+      {{- range $gallery := $items -}}
+        {{ $id := $gallery.String "id" }}
+        {{ $title := $gallery.String "title" }}
+        {{ $url := concat "https://www.reddit.com/r/pics/comments/" $id }}
+        {{ $imageUrl := $gallery.String "image" }}
+        {{- if ne $imageProxy "" -}}
+          {{ $imageUrl = replaceAll "https://i.redd.it/" $imageProxy $imageUrl }}
+        {{- end -}}
+
+
+        <div class="x-image x-thumb-parent">
+          <div class="x-stack">
+            <a href="{{ $url }}">
+              <img class="x-thumb" src="{{ $imageUrl }}" loading="lazy" />
+            </a>
+
+            <div class="x-ps-se x-m-small">
+              <button
+                class="x-blur x-image-enlarge"
+                onclick="this.nextElementSibling.showModal()"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="square-18"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"
+                  />
+                </svg>
+              </button>
+              <dialog id="{{ $id }}" class="x-dialog" closedby="any">
+                <img src="{{ $imageUrl }}" loading="lazy" />
+              </dialog>
+            </div>
+            <div class="x-ps-es x-pe-none x-m-small">
+              <div class="x-blur x-image-title">
+                {{ $title }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{- end -}}
+    </div>
+  {{- end -}}
+{{- end -}}

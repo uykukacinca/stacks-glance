@@ -1,0 +1,114 @@
+- name: "#frontend" # 
+  slug: frontend
+  width: wide
+
+  columns:
+
+    - size: small
+      widgets:
+
+        - type: search
+          search-engine: ${REDDIT_URL}/r/webdev/search?q={QUERY}&restrict_sr=on&sort=new&t=all
+          new-tab: true
+          placeholder: Search in r/webdev
+          bangs:
+            - title: YouTube
+              shortcut: "!y"
+              url: ${YOUTUBE_URL}/results?search_query=nextjs+{QUERY}
+            - title: Reddit
+              shortcut: "!r"
+              url: ${REDDIT_URL}/search/?q={QUERY}
+            - title: Github
+              shortcut: "!g"
+              url: https://github.com/search?q={QUERY}&type=repositories
+
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Tailwind CSS
+                  icon: auto-invert ${ICONS_URL}/custom/tailwindcss.svg
+                  url: https://tailwindcss.com
+                - title: Tailwind UI
+                  icon: auto-invert ${ICONS_URL}/custom/tailwindcss.svg
+                  url: https://tailwindcss.com/plus/ui-blocks
+            - title: UI
+              color: 129 68 58
+              links:
+                - title: Origin UI
+                  url: https://originui.com
+                - title: Tremor
+                  url: https://tremor.so
+                - title: shadcn/ui
+                  url: https://ui.shadcn.com
+            - title: Icons
+              color: 188 70 50
+              links:
+                - title: Simple Icons
+                  url: https://simpleicons.org
+                - title: Hero Icons
+                  url: https://heroicons.com
+            - links:
+                - title: Webdev Resources
+                  url: https://github.com/RitikPatni/Front-End-Web-Development-Resources
+                - title: Flexbox
+                  url: https://flexbox.tech/
+
+        - <<: *github-releases
+          title: CSS
+          repositories:
+            - tailwindlabs/tailwindcss
+            - saadeghi/daisyui
+            - shadcn/ui
+            - unovue/reka-ui
+            - codex-team/editor.js
+            - repository: mui/base-ui
+              include-prereleases: true
+
+        - <<: *github-releases
+          title: Frameworks
+          repositories:
+            - alpinejs/alpine
+            - withastro/astro
+            - repository: trueadm/ripple
+              include-prereleases: true
+            - marko-js/marko
+
+        - <<: *github-releases
+          repositories:
+            - biomejs/biome
+
+    - size: full
+      widgets:
+
+        - type: videos
+          hide-header: true
+          style: horizontal-cards
+          channels:
+            - UCFbNIlppjAuEX4znoulh0Cw #@WebDevSimplified
+
+        - type: split-column
+          max-columns: 3
+          widgets:
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-simple-full
+                  subreddit: webdev
+
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: webdev
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-simple-full
+                  subreddit: Frontend
+
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: Frontend
+
+            - <<: *reddit-simple-full
+              subreddit: css

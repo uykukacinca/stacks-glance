@@ -1,0 +1,7 @@
+- &kick-base
+  type: custom-api
+  title: Kick
+  cache: *no-cache
+  frameless: true
+  headers:
+    Authorization: Bearer ${KICK_TOKEN}

@@ -1,0 +1,20 @@
+- type: custom-api
+  title: Jellyfin Home
+  frameless: true
+  hide-header: true
+  cache: 3s
+  options:
+    BaseURL: ${JELLYFIN_URL}
+    ApiKey: ${JELLYFIN_KEY}
+    UserId: ${JELLYFIN_USER}
+    LimitsNextUpResume: "14"
+    LimitsRecentlyAdded: "30"
+  template: |
+    $include: utils.gohtml
+    {{- define "OpenInMpv" -}}
+      <a href="mpv-handler://play/{{ . }}">mpv</a>
+    {{- end -}}
+    $include: card-cover.gohtml
+    $include: card-thumb.gohtml
+    $include: home.gohtml
+  #  $include: now.gohtml

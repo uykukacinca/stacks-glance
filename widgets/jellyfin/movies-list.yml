@@ -1,0 +1,7 @@
+- &jellyfin-movies-list
+  <<: *jellyfin-movies
+  template: |
+    {{ $items := .JSON.Array `#.{"id":Id,"title":Name,"url":{"fn":!"replace","val":Id,"href":!"${JELLYFIN_URL}/web/#/details?id={val}"},"image":{"fn":!"replace","val":Id,"src":!"${JELLYFIN_URL}/Items/{val}/Images/Primary","class":!"x-ar-3x4"},"header":[{"tpl":!"Text","val":ProductionYear,"class":!"shrink-0"},{"tpl":!"Text","val":GenreItems.0.Name,"class":!"block text-truncate"}],"footer":[{"tpl":!"Duration","units":!"ticks","val":RunTimeTicks},{"tpl":!"Rating","val":CommunityRating}]}` }}
+    $include: /components/templates.gohtml
+    $include: /components/list.gohtml
+    $include: /components/list-container.gohtml

@@ -1,0 +1,258 @@
+{{- define "Link" -}}
+  {{ $item := . }}
+  {{ $title := $item.String "val.title" }}
+  {{ $url := $item.String "val.link.url" }}
+  {{ $class := $item.String "val.class" }}
+  {{- if eq ($item.String "val.link.fn") "replace" -}}
+    {{ $url = replaceAll "{val}" ($item.String "val.link.val") ($item.String "val.link.href") }}
+  {{- end -}}
+  <a
+    class="block text-truncate {{ or $class "" }}"
+    href="{{ $url }}"
+    target="_blank"
+    rel="noreferrer"
+    >{{ $title }}</a
+  >
+{{- end -}}
+
+{{- define "Text" -}}
+  {{ .String "val" }}
+{{- end -}}
+
+{{- define "TextTag" -}}
+  <div class="x-blur x-blur-title">
+    {{ .String "val" }}
+  </div>
+{{- end -}}
+
+{{- define "TextArray" -}}
+    {{- range $s := (.Array "val") -}}{{ $s.String "" }}{{- end -}}
+{{- end -}}
+
+{{- define "TextJoin" -}}
+  {{- range $s := (.Array "val") -}}{{ $s.String "" }}{{- end -}}
+{{- end -}}
+
+{{- define "RelativeTime" -}}
+  <span {{ .String "val" | parseRelativeTime "rfc3339" }}></span>
+{{- end -}}
+
+{{- define "LiveCount" -}}
+  {{ $val := formatApproxNumber (.Int "val") }}
+  <div class="flex x-gap-small items-center">
+    <span class="color-negative">{{ template "Dot" }}</span>
+    {{ $val }}
+  </div>
+{{- end -}}
+
+{{- define "ApproxNumber" -}}
+  {{ $val := formatApproxNumber (.Int "val") }}
+  <div>
+    {{ $val }}
+  </div>
+{{- end -}}
+
+{{- define "Rating" -}}
+  {{ $val := .Float "val" | printf "%.1f" | replaceAll ".0" "" }}
+  {{- if ne $val "0" -}}
+    <div
+      class="flex x-gap-small items-center"
+      aria-label="Rating: {{ $val }}"
+    >
+      {{ template "StarIcon" }}
+      <span>{{ $val }}</span>
+    </div>
+  {{- end -}}
+{{- end -}}
+
+{{- define "Episode" -}}
+  {{ $season := .String "val.season" }}
+  {{ $episode := .String "val.episode" }}
+  {{ $text := "" }}
+  {{ if $season }}
+    {{ $text = concat "S" $season ":" }}
+  {{ end }}
+  {{ if $episode }}
+    {{ $text = concat $text "E" $episode }}
+  {{ end }}
+  {{ $text }}
+{{- end -}}
+
+{{- define "ProgressBar" -}}
+  {{ $val := .Int "val" }}
+  {{- if gt $val 1 -}}
+    <div class="x-progress-bar" style="--width: {{ $val }}%;"></div>
+  {{- end -}}
+{{- end -}}
+
+{{- define "Duration" -}}
+  {{ $val := .Int "val" }}
+  {{ $units := .String "units" }}
+  {{- if eq $units "ticks" -}}
+    {{ $val = div (div (.Int "val") 10000000) 60 }}
+  {{- else if eq $units "seconds" -}}
+    {{ $val = div (.Int "val") 60  }}
+  {{- end -}}
+  <div class="flex x-gap-small items-center">
+    {{ $h := div $val 60 }}
+    {{ $m := mod $val 60 }}
+    {{ template "ClockIcon" }}
+    {{ if gt $h 0 -}}
+      {{ printf "%dh %dm" $h $m }}
+    {{- else -}}
+      {{ printf "%dm" $m }}
+    {{- end -}}
+  </div>
+{{- end -}}
+
+{{- define "Now" -}}
+  {{ $now := now }}
+  <div style="margin-top: var(--widget-gap);">
+    {{ $now }} --- cached
+    <span
+      class="color-highlight"
+      {{ $now | toRelativeTime }}
+      data-units="2"
+      data-relative
+    ></span>
+    <span
+      class="color-highlight"
+      data-glimpse-dynamic-relative-time="{{ $now | formatTime "unix" }}"
+    ></span>
+  </div>
+{{- end -}}
+
+{{- define "TemplateArray" -}}
+  {{ $item := . }}
+  {{ $tpl := $item.String "tpl" }}
+  {{ $class := $item.String "class" }}
+    {{- if eq $tpl "TemplateArray" -}}
+    <div class="{{ $class }}">
+      {{- range $item := .Array "val" -}}
+          {{ template "TemplateArray" $item }}
+      {{- end -}}
+    </div>
+    {{- else -}}
+    {{- if $class -}}<div class="{{ $class }}">{{- end -}}
+      {{- if eq $tpl "RelativeTime" -}}
+        {{ template "RelativeTime" $item }}
+      {{- else if eq $tpl "Duration" -}}
+        {{ template "Duration" $item }}
+      {{- else if eq $tpl "Link" -}}
+        {{ template "Link" $item }}
+      {{- else if eq $tpl "Text" -}}
+        {{ template "Text" $item }}
+      {{- else if eq $tpl "TextArray" -}}
+        {{ template "TextArray" $item }}
+      {{- else if eq $tpl "TextJoin" -}}
+        {{ template "TextJoin" $item }}
+      {{- else if eq $tpl "LiveCount" -}}
+        {{ template "LiveCount" $item }}
+      {{- else if eq $tpl "ApproxNumber" -}}
+        {{ template "ApproxNumber" $item }}
+      {{- else if eq $tpl "TextTag" -}}
+        {{ template "TextTag" $item }}
+      {{- else if eq $tpl "Rating" -}}
+        {{ template "Rating" $item }}
+      {{- else if eq $tpl "ProgressBar" -}}
+        {{ template "ProgressBar" $item }}
+      {{- else if eq $tpl "ProgressBar" -}}
+        {{ template "ProgressBar" $item }}
+      {{- else if eq $tpl "Episode" -}}
+        {{ template "Episode" $item }}
+      {{- else if eq $tpl "PlayIcon" -}}
+        {{ template "PlayIcon" }}
+      {{- end -}}
+    {{- if $class -}}</div>{{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- define "ErrorMessage" -}}
+  <div class="widget-content">
+    <div class="widget-error-header">
+      <div class="color-negative size-h3">ERROR</div>
+      {{ template "ErrorIcon" }}
+    </div>
+    <p class="break-all">{{ . }}</p>
+  </div>
+{{- end -}}
+
+{{- define "ErrorIcon" -}}
+  <svg
+    class="widget-error-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
+    ></path>
+  </svg>
+{{- end -}}
+
+{{- define "Dot" -}}
+  {{ $class := or . "" }}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    stroke-width="2"
+    fill="currentColor"
+    stroke="currentColor"
+    class="shrink-0 dot x-wh-8 {{ $class }}"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+    />
+  </svg>
+{{- end -}}
+
+{{- define "PlayIcon" -}}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"
+      clip-rule="evenodd"
+    />
+  </svg>
+{{- end -}}
+
+{{- define "StarIcon" -}}
+  <span class="x-wh-12" style="margin-top:-1px;">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </span>
+{{- end -}}
+
+{{- define "ClockIcon" -}}
+  <span class="x-wh-12" style="margin-top:-1px;">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8Zm7.75-4.25a.75.75 0 0 0-1.5 0V8c0 .414.336.75.75.75h3.25a.75.75 0 0 0 0-1.5h-2.5v-3.5Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </span>
+{{- end -}}

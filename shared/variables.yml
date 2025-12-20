@@ -1,6 +1,5 @@
 variables:
   - &youtube ${YOUTUBE_URL}/watch?v={VIDEO-ID}
-  # var: &reddit ${REDDIT_URL}/comments/{POST-ID}
   - &reddit ${REDDIT_URL}/{POST-PATH}
   - &gluetun http://gluetun:8888/{REQUEST-URL}
   - &yahoo-chart https://finance.yahoo.com/quote/{SYMBOL}/chart

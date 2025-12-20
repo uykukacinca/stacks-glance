@@ -1,0 +1,144 @@
+- name: "Dashboard" #
+  slug: dashboard
+  width: wide
+  columns:
+
+    - size: small
+      widgets:
+
+        - type: clock
+          hour-format: 24h
+          timezones:
+            - timezone: America/Chicago
+              label: Chicago
+
+        - type: server-stats
+          servers:
+            - type: local
+              hide-mountpoints-by-default: true
+              name: Docker
+              mountpoints:
+                "/":
+                  name: root
+                  hide: false
+                "/vault":
+                  name: vault
+                  hide: false
+
+        - type: dns-stats
+          service: adguard
+          hide-top-domains: true
+          url: ${ADGUARD_URL}
+          username: ${ADGUARD_USERNAME}
+          password: ${ADGUARD_PASSWORD}
+
+        - <<: *kaiten-cron
+
+        - type: bookmarks
+          groups:
+            - color: 28 92 65
+            # title: Cloudflare
+              links:
+                - title: Workers & Pages
+                  icon: auto-invert ${ICONS_URL}/custom/cloudflareworkers.svg
+                  url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/workers-and-pages
+                - title: D1 SQL Database
+                  icon: auto-invert ${ICONS_URL}/custom/cloudflarepages.svg
+                  url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/workers/d1
+                - title: R2 Object Storage
+                  icon: auto-invert ${ICONS_URL}/custom/cloudflare.svg
+                  url: https://dash.cloudflare.com/0ec26e9e8262728ce87f37992f2fecb1/r2/overview
+            - links:
+                - title: Backblaze B2
+                  color: 356 77 50
+                  icon: auto-invert ${ICONS_URL}/custom/backblaze.svg
+                  url: https://secure.backblaze.com/b2_buckets.htm
+                - title: Google Cloud Console
+                  color: 214.1 89.8 46.1
+                  icon: auto-invert ${ICONS_URL}/google-cloud-dark
+                  url: https://console.cloud.google.com/home/dashboard
+            # - title: Hosting
+            #   hide-arrow: true
+            #   links:
+                # - title: Netlify
+                #   icon: auto-invert ${ICONS_URL}/custom/netlify.svg
+                #   url: https://www.netlify.com
+                # - title: Digital Ocean
+                #   icon: auto-invert ${ICONS_URL}/custom/digitalocean.svg
+                #   url: https://www.digitalocean.com
+                # - title: Amazon Web Services
+                #   icon: auto-invert ${ICONS_URL}/custom/amazon.svg
+                #   url: https://aws.amazon.com
+                # - title: Vercel
+                # icon: auto-invert ${ICONS_URL}/custom/vercel.svg
+                #   url: https://vercel.com
+                # - title: Railway
+                # icon: auto-invert ${ICONS_URL}/custom/railway.svg
+                #   url: https://railway.app
+
+        - type: bookmarks
+          title: Domains
+          hide-header: true
+          groups:
+            - links:
+                # - title: Namecheap
+                #   icon: auto-invert ${ICONS_URL}/custom/namecheap.svg
+                #   url: https://ap.www.namecheap.com/Domains/DomainList
+                - title: Porkbun
+                  icon: auto-invert ${ICONS_URL}/custom/porkbun.svg
+                  url: https://porkbun.com/event/holidaysales
+                - title: Spaceship
+                  icon: auto-invert ${ICONS_URL}/custom/spaceship.svg
+                  url: https://www.spaceship.com/domain-search/?query=&tab=domains
+            - links:
+                # - title: ICANN Lookup
+                #   url: https://lookup.icann.org/en/lookup
+                - title: TLD List
+                  url: https://tld-list.com
+                # - title: FFD
+                #   url: https://free-for.dev/#/
+
+        - type: bookmarks
+          title: Local Network
+          hide-header: true
+          groups:
+            - color: 129 68 58
+              <<: *links-local
+
+    - size: full
+      widgets:
+
+        - <<: *kaiten-docker-glance
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 2
+          widgets:
+
+            - <<: *jellyfin-movies-list
+              options:
+                collapse-after: 3
+
+            - <<: *jellyfin-episodes-list
+              options:
+                collapse-after: 3
+
+            # - <<: *radarr-recently-added
+            #   options:
+            #     collapse-after: 3
+
+            # - <<: *sonarr-recently-added
+            #   options:
+            #     collapse-after: 3
+
+            - <<: *audiobookshelf-recent-podcasts
+              options:
+                collapse-after: 3
+
+            - <<: *audiobookshelf-recent-audiobooks
+              options:
+                collapse-after: 3
+
+            - <<: *sonarr-calendar

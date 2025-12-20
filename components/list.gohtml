@@ -1,0 +1,45 @@
+{{- define "ListItem" -}}
+  {{ $item := . }}
+
+  {{ $url := $item.String "url.href" }}
+  {{- if eq ($item.String "url.fn") "replace" -}}
+    {{ $url = replaceAll "{val}" ($item.String "url.val") ($item.String "url.href") }}
+  {{- end -}}
+
+  {{ $title := $item.String "title" }}
+
+  {{ $image := $item.String "image.src" }}
+  {{- if eq ($item.String "image.fn") "replace" -}}
+    {{ $image = replaceAll "{val}" ($item.String "image.val") ($item.String "image.src") }}
+  {{- end -}}
+
+
+  <div class="flex gap-10 row-reverse-on-mobile thumbnail-parent">
+    <div class="shrink-0">
+      <img
+        class="x-thumb {{ or ($item.String "image.class") "x-ar-16x9" }}"
+        src="{{ $image }}"
+        loading="lazy"
+      />
+    </div>
+    <div class="grow min-width-0">
+      <a
+        href="{{ $url }}"
+        class="color-highlight size-title-dynamic block text-truncate"
+        target="_blank"
+        rel="noreferrer"
+        >{{ $title }}</a
+      >
+      <div class="list-horizontal-text flex-nowrap">
+        {{- range $el := $item.Array "header" -}}
+          {{ template "TemplateArray" $el }}
+        {{- end -}}
+      </div>
+      <div class="list-horizontal-text flex-nowrap color-subdue">
+        {{- range $el := $item.Array "footer" -}}
+          {{ template "TemplateArray" $el }}
+        {{- end -}}
+      </div>
+    </div>
+  </div>
+{{- end -}}

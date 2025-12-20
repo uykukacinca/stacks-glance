@@ -1,0 +1,51 @@
+- name: "#svc" #
+  slug: svc
+  width: wide
+  columns:
+
+    - size: small
+      widgets:
+
+        - type: bookmarks
+          groups:
+            - title: Audio
+              links:
+                - title: Lucida
+                  url: https://lucida.to/
+            - title: Books
+              links:
+                - title: Anna’s Archive
+                  url: https://annas-archive.org/
+            - links:
+                - title: Megathread
+                  url: ${REDDIT_URL}/r/Piracy/wiki/megathread/movies_and_tv#wiki_.1F4D1_.279C_streaming
+
+        - type: bookmarks
+          title: Browser Extensions
+          groups:
+            - links:
+                - title: Dark Reader
+                  url: https://github.com/darkreader/darkreader
+                - title: LibRedirect
+                  url: https://github.com/libredirect/browser_extension
+                - title: Stylus
+                  url: https://github.com/openstyles/stylus
+                - title:  Refined GitHub
+                  url: https://github.com/refined-github/refined-github
+                - title: SponsorBlock
+                  url: https://github.com/ajayyy/SponsorBlock
+                - title: Enhancer for YouTube™
+                  url: https://www.mrfdev.com/enhancer-for-youtube
+
+
+    - size: full
+      widgets:
+
+    - size: full
+      widgets:
+
+        - <<: *proxmox-ve-nodes
+
+        - <<: *my-workers-table
+
+        - <<: *my-domains-table

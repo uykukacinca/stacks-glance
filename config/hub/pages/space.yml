@@ -1,0 +1,37 @@
+- name: "Space" # 👽
+  slug: space
+  width: wide
+  columns:
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 4
+          widgets:
+
+            - <<: *components-gallery
+              title: Space & Astronomy
+              url: https://www.reddit.com/r/space+spaceporn+Astronomy/hot.json
+              options:
+                columns: 2
+
+            - <<: *reddit-cover
+              title: NASA & SpaceX
+              subreddit: nasa+spacex
+
+            - <<: *reddit-cover
+              title: UFOs
+              subreddit: UFOs
+
+            - <<: *videos-grid
+              title: Podcasts & Stuff
+              channels:
+                - UCqoAEDirJPjEUFcF2FklnBA # StarTalk
+                - UCEszlI8-W79IsU8LSAiRbDg # JohnMichaelGodier
+                - UC-9b7aDP6ZN0coj9-xFnrtw # astrumspace
+                - UC7_gcs09iThXybpVgjHZ_7g # pbsspacetime
+                - UCrMePiHCWG4Vwqv3t7W9EFg # scishowspace
+                - UCtRFmSyL4fSLQkn-wMqlmdA # HistoryoftheUniverse
+                - UCIBaDdAbGlFDeS33shmlD0A # European Space Agency, ESA
+                - UCLA_DiR1FfKNvjuUpBHmylQ # NASA

@@ -1,0 +1,18 @@
+- &audiobookshelf-recent-audiobooks
+  type: custom-api
+  title: Audiobookshelf Audiobooks
+  cache: *no-cache
+  frameless: true
+  url: ${AUDIOBOOKSHELF_URL}/audiobookshelf/api/libraries/0519600d-6f54-457a-b601-4ab49646d84c/items
+  parameters:
+    limit: 15
+    sort: addedAt
+    desc: 1
+  headers:
+    Accept: application/json
+    Authorization: Bearer ${AUDIOBOOKSHELF_KEY}
+  template: |
+    {{ $items := .JSON.Array `results.#.{"id":id,"title":media.metadata.title,"url":{"fn":!"replace","val":id,"href":!"${AUDIOBOOKSHELF_URL}/audiobookshelf/item/{val}"},"image":{"fn":!"replace","val":id,"src":!"${AUDIOBOOKSHELF_URL}/audiobookshelf/api/items/{val}/cover","class":!"x-ar-1x1"},"header":[{"tpl":!"Text","val":media.metadata.authorName,"class":!"block text-truncate"}],"footer":[{"tpl":!"Text","val":media.metadata.publishedYear,"class":!"shrink-0"},{"tpl":!"Duration","units":!"seconds","val":media.duration}]}` }}
+    $include: /components/templates.gohtml
+    $include: /components/list.gohtml
+    $include: /components/list-container.gohtml

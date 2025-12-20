@@ -1,0 +1,123 @@
+{{ $Categories := .JSON.Array "" }}
+
+{{- define "StateIcon" -}}
+
+  {{ $State := . }}
+  {{ $statusColor := "color-text-base" }}
+  {{- if eq $State "running" -}}
+    {{ $statusColor = "color-positive" }}
+  {{- else if eq $State "exited" -}}
+    {{ $statusColor = "color-negative" }}
+  {{- end -}}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    stroke-width="2"
+    fill="currentColor"
+    stroke="currentColor"
+    class="dot {{ $statusColor }}"
+    class="shrink-0"
+    style="width: 0.8rem;height: 0.8rem;margin-top: 0px;"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+    />
+  </svg>
+{{- end -}}
+
+{{- define "ContainerCard" -}}
+  {{ $Container := . }}
+  {{ $Children :=  $Container.Array "Children" }}
+  {{ $State := $Container.String "State" }}
+  {{ $Status := $Container.String "Status" }}
+  {{ $Image := $Container.String "Image" }}
+  {{ $Name := replaceAll "/" "" ($Container.String "Names.0") }}
+  {{ $GlanceName := $Container.String "Labels.glance.name" }}
+  {{ $GlanceDescription := $Container.String "Labels.glance.description" }}
+  {{ $GlanceIcon := $Container.String "Labels.glance.icon" }}
+  {{ $GlanceURL := $Container.String "Labels.glance.url" }}
+  {{ $URL0 := $Container.String "Labels.urls.0" }}
+  {{ $GlanceCategory := $Container.String "Labels.glance.category" }}
+
+
+  <div class="flex items-center gap-15 icon-parent">
+    <div
+      data-popover-type="html"
+      data-popover-position="above"
+      data-popover-offset="0.25"
+      data-popover-margin="0.1rem"
+      data-popover-max-width="400px"
+      aria-hidden="true"
+    >
+      <img class="icon square-27" src="{{ $GlanceIcon }}" loading="lazy" />
+      <div data-popover-html>
+        <div class="color-highlight text-truncate block">{{ $Image }}</div>
+        <div>{{ $Status }}</div>
+        {{- if gt (len $Children) 0 -}}
+          <ul class="list list-gap-4 margin-top-10">
+            {{- range $Child := $Children -}}
+              <li class="flex gap-7 items-center">
+                <div class="margin-bottom-3">
+                  {{ template "StateIcon" $Child.String "State" }}
+                </div>
+                <div class="color-highlight">
+                  {{ $Child.String "Labels.glance.name" }}
+                  <span class="size-h5 color-base"
+                    >{{ $Child.String "Status" }}</span
+                  >
+                </div>
+              </li>
+            {{- end -}}
+          </ul>
+        {{- end -}}
+      </div>
+    </div>
+
+    <div>
+      <div class="flex gap-7 items-center">
+        {{- if $GlanceURL -}}
+          <a
+            href="{{ $GlanceURL }}"
+            class="color-highlight size-h4"
+            target="_blank"
+            rel="noreferrer"
+            >{{ $GlanceName }}</a
+          >
+        {{- else -}}
+          <div class="size-h4">{{ $GlanceName }}</div>
+        {{- end -}}
+
+        {{- if not (eq $State "running") -}}
+          {{ template "StateIcon" $State }}
+        {{- end -}}
+      </div>
+
+      {{ $GlanceDescription }}
+
+    </div>
+  </div>
+{{- end -}}
+
+{{- range $i, $Category := $Categories -}}
+
+  {{ $CategoryId :=  $Category.String "Id" }}
+  {{ $Containers :=  $Category.Array "Children" }}
+  <div class="widget widget-x">
+    <div class="widget-header">
+      <h2 class="uppercase">{{ $CategoryId }}</h2>
+    </div>
+
+    <div class="widget-content">
+      <div class="x-cards" style="--columns: auto-fit;--min-width: 230px;">
+        {{- range $Container := $Containers -}}
+
+          {{ template "ContainerCard" $Container }}
+
+        {{- end -}}
+
+      </div>
+    </div>
+  </div>
+{{- end -}}

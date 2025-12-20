@@ -1,0 +1,46 @@
+- name: "*media"
+  slug: media
+  show-in-navigation: false
+  width: wide
+
+  columns:
+
+    - size: small
+      widgets:
+
+      - <<: *jellyfin-movies-list
+        options:
+          collapse-after: 4
+
+      - <<: *radarr-recently-added
+        options:
+          collapse-after: 4
+
+      - <<: *audiobookshelf-recent-audiobooks
+        options:
+          collapse-after: 4
+
+    - size: small
+      widgets:
+
+
+      - <<: *jellyfin-episodes-list
+        options:
+          collapse-after: 4
+
+      - <<: *sonarr-recently-added
+        options:
+          collapse-after: 4
+
+      - <<: *audiobookshelf-recent-podcasts
+        options:
+          collapse-after: 4
+
+    - size: full
+      widgets:
+
+        - <<: *jellyfin-next-up
+
+        - <<: *jellyfin-movies
+
+        - <<: *jellyfin-movies-primary

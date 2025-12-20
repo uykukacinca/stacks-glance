@@ -1,0 +1,5 @@
+- &components-app
+  type: html
+  title: app
+  source: |
+    $include: app.html

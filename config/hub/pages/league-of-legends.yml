@@ -1,0 +1,199 @@
+- name: "#league"
+  slug: lol
+  width: wide
+
+  head-widgets:
+
+    - type: split-column
+      max-columns: 2
+      widgets:
+
+        - <<: *twitch-category
+          title: Twitch LoL Streams
+          options:
+            collapse-after-rows: 1
+            min-card-width-px: 200
+          body:
+            query: |
+              query {
+                game(id: "21779") {
+                  streams(first: 30, options: { languages: ["EN", "TR"] }) {
+                    edges {
+                      node {
+                        id
+                        createdAt
+                        previewImageURL(width: 440, height: 248)
+                        type
+                        viewersCount
+                        broadcaster {
+                          login
+                          displayName
+                          profileImageURL(width: 300)
+                          broadcastSettings {
+                            title
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+        - <<: *kick-category
+          title: Kick Streams
+          parameters:
+            category: 5
+
+  columns:
+
+    - size: small
+      widgets:
+
+        - type: twitch-channels
+          channels: ["riotgames","lec","lck","riotgamesturkish","caedrel","thebausffs"]
+          title: Streamers
+
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Account Management
+                  icon: auto-invert ${ICONS_URL}/custom/riotgames.svg
+                  url: https://account.riotgames.com/account
+                - title: LoL Esports
+                  icon: auto-invert ${ICONS_URL}/custom/leagueoflegends.svg
+                  url: https://lolesports.com/
+            - links:
+                - title: Mobalytics
+                  url: https://mobalytics.gg/lol/champions
+                - title: League of Graphs
+                  url: https://www.leagueofgraphs.com
+                - title: Liquipedia
+                  url: https://liquipedia.net/leagueoflegends/Main_Page
+                - title: Event VODs
+                  url: https://eventvods.com/featured/lol
+
+        - type: extension
+          url: ${GLIMPSE_URL}/riot/news
+          title: Patch Notes
+          allow-potentially-dangerous-html: true
+          css-class: lol-patch-notes
+          cache: *short-cache
+          headers:
+            x-glimpse-output: glance
+          parameters:
+            game: leagueoflegends
+            tag: patch-notes
+            limit: 20
+            collapseAfter: 5
+
+        - type: bookmarks
+          title: Youtube Channels
+          groups:
+            - links:
+                - title: LoL Esports
+                  url: https://www.youtube.com/@lolesports/streams
+                - title: League of Legends
+                  url: https://www.youtube.com/@leagueoflegends/videos
+                - title: Riot Games
+                  url: https://www.youtube.com/@riotgames/videos
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 3
+          widgets:
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-cover
+                  subreddit: leagueoflegends
+                  collapse-after: 20
+
+                - <<: *reddit-cover
+                  subreddit: arcane
+                  collapse-after: 20
+
+
+            - type: split-column
+              max-columns: 1
+              widgets:
+
+                - type: group
+                  widgets:
+
+                    - type: extension
+                      url: ${GLIMPSE_URL}/riot/esports
+                      allow-potentially-dangerous-html: true
+                      cache: *short-cache
+                      headers:
+                        x-glimpse-output: glance
+                      parameters:
+                        limit: 40
+                        language: en-us # ar-ae, de-de, en-gb, en-sg, en-us, es-es, es-mx, fr-fr, id-id, it-it, ja-jp, ko-kr, ms-my, pl-pl, pt-br, ru-ru, th-th, tr-tr, vi-vn, zh-tw
+                        leagues: # msi, lta_n, lta_c, lta_s, lec, lck, lpl, lcp, nacl, emea, fs, worlds, ljl, tcl, nlc, llf, rol, lp, lit, rl, sl, pl, hm, ebl, hll, al, lck_c, cd, pcs, lrn, lrs, tft
+                          - worlds
+                          - msi
+                          - lck
+                          - lec
+                          - lcp
+                          - lpl
+                          - lta_n
+                          - emea
+                        states:
+                          - inProgress
+                          - unstarted
+
+                    - type: extension
+                      url: ${GLIMPSE_URL}/riot/esports
+                      allow-potentially-dangerous-html: true
+                      title: Past Matches
+                      cache: *short-cache
+                      headers:
+                        x-glimpse-output: glance
+                      parameters:
+                        limit: 100
+                        language: en-us # ar-ae, de-de, en-gb, en-sg, en-us, es-es, es-mx, fr-fr, id-id, it-it, ja-jp, ko-kr, ms-my, pl-pl, pt-br, ru-ru, th-th, tr-tr, vi-vn, zh-tw
+                        leagues: # msi, lta_n, lta_c, lta_s, lec, lck, lpl, lcp, nacl, emea, fs, worlds, ljl, tcl, nlc, llf, rol, lp, lit, rl, sl, pl, hm, ebl, hll, al, lck_c, cd, pcs, lrn, lrs, tft
+                          - worlds
+                          - msi
+                          - lck
+                          - lec
+                          - lcp
+                          - lpl
+                          - lta_n
+                        states:
+                          - completed
+
+                - type: group
+                  widgets:
+
+                    - type: extension
+                      url: ${GLIMPSE_URL}/riot/news
+                      allow-potentially-dangerous-html: true
+                      cache: *short-cache
+                      headers:
+                        x-glimpse-output: glance
+                      parameters:
+                        game: leagueoflegends
+                        limit: 20
+                        collapseAfter: 5
+
+                - <<: *reddit-simple
+                  subreddit: SummonerSchool
+                  collapse-after: 10
+
+            - <<: *videos-grid
+              title: Videos
+              channels:
+                - UC0aFOAetT4Hur0qmOnmmbBA #@Polypuff
+                - UChwh1KpZf0Y5KsmaCCMSt6A #@AloisNL
+                - UCu7ODDeIZ4x1rJwM1LCVL8w #@Thebausffs
+                - UCiUHGAbtjCrLO3ZPrTfle3Q #@Necrit
+                - UCOFiUtKui6-x4T-J7_DgCag #@Caedrel
+                - UCP9q8DRbsTDPhU4E0R3-1rA #@PekinWoof
+                - UCmy0tPEqRcU486RVLiAWhGg #@archelauslol
+                - UCyTc5CL7MnmK5LeBvbqIOvw #@LolElekktro
+                - UCehQZaeGhmNzlEyPhpdvDLQ #@ElayjaLol
+                - UCFPMHqnYZTvmth1f7opzxKw #@Elayjagaming

@@ -1,0 +1,74 @@
+<div class="x-app" style="max-height: 500px">
+  <div class="x-app-body">
+    <div style="padding: var(--widget-content-padding)">
+      {{ $Containers := .JSON.Array "" }}
+
+      {{- define "ContainerCard" -}}
+        {{ $Container := . }}
+        {{ $Children :=  $Container.Array "Children" }}
+        {{ $State := $Container.String "State" }}
+        {{ $Name := replaceAll "/" "" ($Container.String "Names.0") }}
+        {{ $Icon := $Container.String "Icon" }}
+        {{ $GlanceName := $Container.String "Labels.glance.name" }}
+        {{ $GlanceIcon := $Container.String "Labels.glance.icon" }}
+        {{ $GlanceURL := $Container.String "Labels.glance.url" }}
+        {{ $GlanceCategory := $Container.String "Labels.glance.category" }}
+
+        {{ $statusColor := "color-text-base" }}
+        {{- if eq $State "running" -}}
+          {{ $statusColor = "color-positive" }}
+        {{- else if eq $State "exited" -}}
+          {{ $statusColor = "color-negative" }}
+        {{- end -}}
+
+        {{ $Container.String "Labels.traefik.http.routers.$1.url" }}
+
+
+        <div class="flex gap-7 items-center">
+          <div class="icon-container" style="display:non">
+            <img
+              class="icon square-18"
+              src="https://i.${HOST_NAME}/{{ $Icon }}"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+          {{- if $GlanceURL -}}
+            <a
+              href="{{ $GlanceURL }}"
+              class="color-highlight size-h4"
+              target="_blank"
+              rel="noreferrer"
+              >{{ $Name }}</a
+            >
+          {{- else -}}
+            <div class="size-h4">{{ $Name }}</div>
+          {{- end -}}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            fill="currentColor"
+            stroke="currentColor"
+            class="dot {{ $statusColor }}"
+            class="shrink-0"
+            style="width: 0.8rem;height: 0.8rem;margin-top: 1px;"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+        </div>
+      {{- end -}}
+
+
+      <div class="glimpse-cards-grid">
+        {{- range $i, $Container := $Containers -}}
+          {{ template "ContainerCard" $Container }}
+        {{- end -}}
+      </div>
+    </div>
+  </div>
+</div>

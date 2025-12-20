@@ -1,0 +1,11 @@
+- &jellyfin-base
+  type: custom-api
+  title: Jellyfin Recently Added
+  cache: *no-cache
+  url: ${JELLYFIN_URL}/emby/Users/${JELLYFIN_USER}/Items/Latest
+  #doc: https://api.jellyfin.org/#tag/Items/operation/GetItems
+  options:
+    collapse-after-rows: 1
+  headers:
+    Accept: application/json
+    X-Emby-Token: ${JELLYFIN_KEY}

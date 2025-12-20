@@ -1,0 +1,4 @@
+- &components-cards
+  type: html
+  source: |
+    $include: cards.html

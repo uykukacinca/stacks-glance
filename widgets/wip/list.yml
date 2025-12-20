@@ -1,0 +1,8 @@
+- &components-list
+  type: custom-api
+  cache: *no-cache
+  url: http://kaiten:3000/docker/list
+  frameless: true
+  allow-insecure: true
+  template: | #html
+    $include: list.gohtml

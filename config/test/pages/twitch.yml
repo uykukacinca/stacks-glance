@@ -1,0 +1,128 @@
+- name: "*twitch"
+  slug: twitch
+  show-in-navigation: false
+  width: wide
+
+  columns:
+
+    - size: full
+      widgets:
+
+        - <<: *twitch-channels
+          options:
+            collapse-after-rows: 2
+          body:
+            query: |
+              query {
+                users(logins: ["asmongold","zackrawrr"]) {
+                  login
+                  displayName
+                  profileImageURL(width: 70)
+                  stream {
+                    title
+                    viewersCount
+                    createdAt
+                    previewImageURL(width: 440, height: 248)
+                    game {
+                      name
+                    }
+                  }
+                }
+              }
+
+        - <<: *twitch-streams
+          title: Twitch Top Streams [EN, TR]
+          options:
+            collapse-after-rows: 1
+          body:
+            query: |
+              query {
+                streams(first: 30, options: { languages: [EN, TR] }) {
+                  edges {
+                    node {
+                        id
+                        createdAt
+                        previewImageURL(width: 440, height: 248)
+                        type
+                        viewersCount
+                        broadcaster {
+                          login
+                          displayName
+                          profileImageURL(width: 300)
+                          broadcastSettings {
+                            title
+                          }
+                        }
+                        game {
+                          displayName
+                        }
+                    }
+                  }
+                }
+              }
+
+        - <<: *twitch-category
+          title: Twitch Just Chatting [EN, TR]
+          options:
+            collapse-after-rows: 1
+          body:
+            query: |
+              query {
+                game(id: "509658") {
+                  streams(first: 30, options: { languages: ["EN", "TR"] }) {
+                    edges {
+                      node {
+                        id
+                        createdAt
+                        previewImageURL(width: 440, height: 248)
+                        type
+                        viewersCount
+                        broadcaster {
+                          login
+                          displayName
+                          profileImageURL(width: 300)
+                          broadcastSettings {
+                            title
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+        - <<: *twitch-clips
+          title: Popular Clips - Week
+          options:
+            collapse-after-rows: 2
+          body:
+            query: |
+              query {
+                game(name: "Just Chatting") {
+                  clips(first: 30, criteria: { languages: [], period: LAST_WEEK }) {
+                    edges {
+                      node {
+                        url
+                        title
+                        durationSeconds
+                        createdAt
+                        thumbnailURL(width: 440, height: 248)
+                        viewCount
+                        game {
+                          displayName
+                        }
+                        curator {
+                          login
+                          displayName
+                          profileImageURL(width: 50)
+                        }
+                        broadcaster {
+                          login
+                          displayName
+                          profileImageURL(width: 50)
+                        }
+                      }
+                    }
+                  }
+                }
+              }

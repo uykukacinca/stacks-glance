@@ -2,7 +2,7 @@ definitions:
   - &reddit-base
     type: reddit
     cache: *default-cache
-    comments-url-template: *reddit
+    #comments-url-template: *reddit
 
   - &reddit-top-week
     cache: *deep-cache
@@ -134,12 +134,20 @@ definitions:
   - &docker-containers
     type: docker-containers
     cache: *no-cache
-    css-class: widget-containers-custom
+    css-class: widget-containers-grid widget-containers-custom
     hide-by-default: false
 
   - &containers
     type: docker-containers
     cache: *no-cache
-    css-class: widget-containers-custom hide-running
+    css-class: widget-containers-grid widget-containers-custom hide-running
     hide-by-default: false
     #running-only: true
+
+  - &containers-small
+    <<: *containers
+    css-class: widget-containers-grid widget-containers-custom hide-running containers-small
+
+  - &containers-small2
+    <<: *containers
+    css-class: widget-containers-grid hide-running containers-small

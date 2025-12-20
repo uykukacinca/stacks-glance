@@ -1,0 +1,104 @@
+{{ $Categories := .JSON.Array "" }}
+
+{{- define "ContainerCard" -}}
+  {{ $Container := . }}
+  {{ $Children :=  $Container.Array "Children" }}
+  {{ $State := $Container.String "State" }}
+  {{ $Name := replaceAll "/" "" ($Container.String "Names.0") }}
+  {{ $GlanceName := $Container.String "Labels.glance.name" }}
+  {{ $GlanceIcon := $Container.String "Labels.glance.icon" }}
+  {{ $GlanceURL := $Container.String "Labels.glance.url" }}
+  {{ $URL0 := $Container.String "Labels.urls.0" }}
+  {{ $GlanceCategory := $Container.String "Labels.glance.category" }}
+
+  {{ $statusColor := "color-text-base" }}
+  {{- if eq $State "running" -}}
+    {{ $statusColor = "color-positive" }}
+  {{- else if eq $State "exited" -}}
+    {{ $statusColor = "color-negative" }}
+  {{- end -}}
+
+
+  <div class="grid items-center gap-10 icon-parent aa-parent">
+    <div class="flex gap-7 items-center div1">
+      <div class="icon-container">
+        {{- if $GlanceIcon -}}
+          <img
+            class="icon square-18"
+            src="{{ $GlanceIcon }}"
+            alt=""
+            loading="lazy"
+          />
+        {{- else -}}
+          <div class="square-18"></div>
+        {{- end -}}
+      </div>
+      {{- if $URL0 -}}
+        <a
+          href="{{ $URL0 }}"
+          class="color-highlight size-h4"
+          target="_blank"
+          rel="noreferrer"
+          >{{ $Name }}</a
+        >
+      {{- else -}}
+        <div class="size-h4">{{ $Name }}</div>
+      {{- end -}}
+
+    </div>
+
+    <div class="div2">
+      {{ $GlanceCategory }}
+    </div>
+    <div class="flex gap-7 items-center text-truncate div3">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        fill="currentColor"
+        stroke="currentColor"
+        class="dot {{ $statusColor }}"
+        class="shrink-0"
+        style="width: 1rem;height: 1rem;margin-top: -1px;"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+        /></svg
+      >{{ $Container.String "Status" }}
+    </div>
+    <div class="text-truncate div4">{{ $Container.String "Image" }}</div>
+  </div>
+  {{- if gt (len $Children) 0 -}}
+    <ul class="list list-grouped list-gap-4">
+      {{- range $Container := $Children -}}
+        <li>
+          {{ template "ContainerCard" $Container }}
+        </li>
+      {{- end -}}
+
+    </ul>
+  {{- end -}}
+{{- end -}}
+
+
+<ul class="list list-grouped list-gap-4">
+  {{- range $i, $Category := $Categories -}}
+
+    <li>
+      {{ $CategoryId :=  $Category.String "Id" }}
+      {{ $Containers :=  $Category.Array "Children" }}
+
+
+      <ul class="list list-grouped list-gap-4">
+        {{- range $Container := $Containers -}}
+          <li>
+            {{ template "ContainerCard" $Container }}
+          </li>
+        {{- end -}}
+
+      </ul>
+    </li>
+  {{- end -}}
+</ul>

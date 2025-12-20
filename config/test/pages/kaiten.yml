@@ -1,0 +1,15 @@
+- name: "Kaiten"
+  slug: kaiten
+  width: wide
+  # hide-desktop-navigation: true
+  center-vertically: true
+  columns:
+    - size: full
+      widgets:
+
+        - <<: *kaiten-docker-glance
+
+    - size: full
+      widgets:
+
+        - <<: *kaiten-docker-list

@@ -1,0 +1,20 @@
+- &jellyfin-movies
+  <<: *jellyfin-base
+  title: Jellyfin Recent Movies
+  frameless: true
+  parameters:
+    SortBy: DateCreated,SortName,ProductionYear
+    SortOrder: Descending
+    GroupItems: false
+    Recursive: false
+    IncludeItemTypes: Movie
+    Fields: Genres,ExternalUrls,ProviderIds
+    StartIndex: 0
+    ParentId: f137a2dd21bbc1b99aa5c0f6bf02a805
+    Limit: 15
+    #Filters: IsUnPlayed
+  template: |
+    {{ $items := .JSON.Array `#.{"id":Id,"title":Name,"url":{"fn":!"replace","val":Id,"href":!"${JELLYFIN_URL}/web/#/details?id={val}"},"header":[{"tpl":!"Title","class":!"color-highlight x-grayscale text-truncate"}],"image":{"fn":!"replace","val":Id,"src":!"${JELLYFIN_URL}/Items/{val}/Images/Thumb","overlays":[{"tpl":!"PlayIcon","class":!"x-br-t x-center x-play"},{"tpl":!"TemplateArray","val":[{"tpl":!"Rating","val":CommunityRating,"class":!"x-blur x-blur-title"}],"class":!"x-ps-ss x-margin-gap x-gap-small"},{"tpl":!"ProgressBar","val":UserData.PlayedPercentage,"class":!"x-as-e"}]},"footer":[{"tpl":!"Text","val":ProductionYear,"class":!"shrink-0"},{"tpl":!"Text","val":GenreItems.0.Name,"class":!"block text-truncate"}]}` }}
+    $include: /components/templates.gohtml
+    $include: /components/media.gohtml
+    $include: /components/media-container.gohtml

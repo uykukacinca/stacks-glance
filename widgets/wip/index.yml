@@ -1,0 +1,5 @@
+new:
+  - $include: app.yml
+  - $include: cards.yml
+  - $include: gallery.yml
+  - $include: list.yml

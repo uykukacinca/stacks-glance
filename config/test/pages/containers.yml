@@ -1,0 +1,11 @@
+- name: "Containers"
+  slug: containers
+  # width: wide
+  # hide-desktop-navigation: true
+  center-vertically: true
+  columns:
+
+    - size: full
+      widgets:
+
+        - <<: *docker-containers

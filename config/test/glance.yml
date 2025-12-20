@@ -1,0 +1,23 @@
+server:
+  assets-path: /assets
+
+branding:
+  logo-text: ⋈
+  favicon-url: /assets/favicon.ico
+  app-name: "Glance Test"
+
+$include: /shared/index.yml
+
+pages:
+  - $include: pages/startpage.yml
+  - $include: pages/kaiten.yml
+  - $include: pages/containers.yml
+  - $include: pages/eksisozluk.yml
+  - $include: pages/new.yml
+  - $include: pages/test.yml
+  - $include: pages/gallery.yml
+  - $include: pages/kick.yml
+  - $include: pages/twitch.yml
+  - $include: pages/youtube.yml
+  - $include: pages/media.yml
+  - $include: pages/jellyfin.yml

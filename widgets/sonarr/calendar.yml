@@ -1,0 +1,13 @@
+- &sonarr-calendar
+  type: custom-api
+  title: Sonarr Calendar
+  cache: 3s
+  options:
+    api-base-url: ${SONARR_URL}
+    api-key: ${SONARR_API_KEY}
+    #start-day: 1                # optional, days offset from today to start the calendar, default 0
+    #end-day: 14                 # optional, days from today to include, default 30
+    #show-unmonitored: true      # optional, default false
+    #collapse-after: 10          # optional, default 5
+  template: |
+    $include: calendar.gohtml

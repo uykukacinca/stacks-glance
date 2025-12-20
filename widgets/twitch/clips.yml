@@ -1,0 +1,10 @@
+- &twitch-clips
+  <<: *twitch-base
+  title: Twitch Popular Clips - Last Week
+  options:
+    collapse-after-rows: 8
+  template: |
+    {{ $items := .JSON.Array `data.game.clips.edges.#.{"id":node.broadcaster.login,"title":node.title,"url":{"href":node.url},"header":[{"tpl":!"TextJoin","val":[!"Clip by @",node.curator.displayName],"class":!"block text-truncate"},{"tpl":!"Title","class":!"color-highlight x-grayscale text-truncate-2-lines"}],"image":{"src":node.thumbnailURL,"overlays":[{"tpl":!"PlayIcon","class":!"x-br-t x-center x-play"},{"tpl":!"TemplateArray","val":[{"tpl":!"ApproxNumber","val":node.viewCount,"class":!"x-blur x-blur-title"}],"class":!"x-ps-ee x-margin-gap"}]},"footer":[{"tpl":!"RelativeTime","val":node.createdAt},{"tpl":!"Link","val":{"title":node.broadcaster.displayName,"link":{"fn":!"replace","val":node.broadcaster.login,"href":!"https://twitch.tv/{val}"}}}]}` }}
+    $include: /components/templates.gohtml
+    $include: /components/media.gohtml
+    $include: /components/media-container.gohtml
