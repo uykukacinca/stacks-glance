@@ -21,3 +21,4 @@ pages:
   - $include: pages/youtube.yml
   - $include: pages/media.yml
   - $include: pages/jellyfin.yml
+  - $include: pages/google.yml

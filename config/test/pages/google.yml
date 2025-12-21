@@ -1,0 +1,9 @@
+- name: "*google"
+  slug: google
+  show-in-navigation: false
+  width: wide
+
+  columns:
+
+    - size: full
+      widgets:
