@@ -1,11 +1,11 @@
 services:
-  glance-test:
-    container_name: glance-test
+  hub:
+    container_name: glance-hub
     env_file: .env
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/localtime:/etc/localtime:ro
-      - ./-test:/app/config
+      - ./config/hub:/app/config
       - ./shared:/shared
       - ./assets:/assets
       - ./components:/components
@@ -14,6 +14,54 @@ services:
       - proxy
     ports:
       - 8080:8080
+    restart: always
+    healthcheck:
+      test: wget --spider -q http://127.0.0.1:8080/api/healthz
+      interval: 30s
+      retries: "5"
+      start_period: 10s
+      timeout: 10s
+    image: glanceapp/glance
+
+  dev:
+    container_name: glance-dev
+    env_file: .env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+      - ./config/dev:/app/config
+      - ./shared:/shared
+      - ./assets:/assets
+      - ./components:/components
+      - ./widgets:/widgets
+    networks:
+      - proxy
+    ports:
+      - 8082:8080
+    restart: always
+    healthcheck:
+      test: wget --spider -q http://127.0.0.1:8080/api/healthz
+      interval: 30s
+      retries: "5"
+      start_period: 10s
+      timeout: 10s
+    image: glanceapp/glance
+
+  test:
+    container_name: glance-test
+    env_file: .env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+      - ./config/test:/app/config
+      - ./shared:/shared
+      - ./assets:/assets
+      - ./components:/components
+      - ./widgets:/widgets
+    networks:
+      - proxy
+    ports:
+      - 8084:8080
     restart: always
     healthcheck:
       test: wget --spider -q http://127.0.0.1:8080/api/healthz

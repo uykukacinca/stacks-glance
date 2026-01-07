@@ -15,8 +15,15 @@
       {{- range $gallery := $items -}}
         {{ $id := $gallery.String "id" }}
         {{ $title := $gallery.String "title" }}
-        {{ $url := concat "https://www.reddit.com/r/pics/comments/" $id }}
-        {{ $imageUrl := $gallery.String "image" }}
+        {{ $url := $gallery.String "url.href" }}
+        {{ if eq ($gallery.String "url.fn") "replace" }}
+          {{ $url = replaceAll "{val}" ($gallery.String "url.val") ($gallery.String "url.href") }}
+        {{ end }}
+        {{ $image := $gallery.String "image.src" }}
+        {{ if eq ($gallery.String "image.fn") "replace" }}
+          {{ $image = replaceAll "{val}" ($gallery.String "image.val") ($gallery.String "image.src") }}
+        {{ end }}
+        {{ $imageUrl := $gallery.String "image.src" }}
         {{- if ne $imageProxy "" -}}
           {{ $imageUrl = replaceAll "https://i.redd.it/" $imageProxy $imageUrl }}
         {{- end -}}

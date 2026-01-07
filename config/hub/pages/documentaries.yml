@@ -19,14 +19,10 @@
     - size: full
       widgets:
 
-        - <<: *videos-grid
-          channels:
-            - UCbWcXB0PoqOsAvAdfzWMf0w # FredrikKnudsen
-            - UCyNtlmLB73-7gtlBz00XOQQ # FoldingIdeas
-            - UCO5QSoES5yn2Dw7YixDYT5Q # ApertureThinking
-            - UCRcgy6GzDeccI7dkbbBna3Q # LEMMiNO
-            - UCN5xN8gIljvWYnsj06V8WbQ # Pyrocynical
-            - UC3cpN6gcJQqcCM6mxRUo_dA # Wendigoon
-            - UCwpHKudUkP5tNgmMdexB3ow # MentourPilot
-            - UCODHrzPMGbNv67e84WDZhQQ # fern
-            - UCn8zNIfYAQNdrFRrr8oibKw #@VICE
+        - <<: *backube-latest
+          options:
+            collapse-after-rows: 6
+          parameters:
+            <<: *backube-video-parameters
+            perPage: 70
+            filter: (channel.tags.name?="documentaries" && channel.space.code!="ggwp")

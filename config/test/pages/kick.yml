@@ -23,8 +23,8 @@
             #limit: 7
 
         - <<: *kick-category
-          title: GTA
+          title: Kick Just Chatting
           options:
             collapse-after-rows: 1
           parameters:
-            category: 8
+            category_id: 15

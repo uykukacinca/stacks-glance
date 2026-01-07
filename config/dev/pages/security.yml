@@ -4,18 +4,16 @@
 
   head-widgets:
 
-    - type: videos
-      hide-header: true
-      style: horizontal-cards
-      # css-class: hide-details
-      channels:
-        - UC6biysICWOJ-C3P4Tyeggzg # Low Level Learning
-        - UCVeW9qkBjo3zosnqUbG7CFw # _JohnHammond
-        - UCKGe7fZ_S788Jaspxg-_5Sg # @pcsecuritychannel
-        - UCJ2U9Dq9NckqHMbcUupgF0A # BlackHillsInformationSecurity
-        - UCP7WmQ_U4GB3K51Od9QvM0w # @davidbombal
-      playlists:
-        - PLtN43kak3fFEEDNo0ks9QVKYfQpT2yUEo # Darknet Diaries
+    - <<: *backube-xml
+      parameters:
+        channel:
+          - UC6biysICWOJ-C3P4Tyeggzg # Low Level Learning
+          - UCVeW9qkBjo3zosnqUbG7CFw # _JohnHammond
+          - UCKGe7fZ_S788Jaspxg-_5Sg # @pcsecuritychannel
+          - UCJ2U9Dq9NckqHMbcUupgF0A # BlackHillsInformationSecurity
+          - UCP7WmQ_U4GB3K51Od9QvM0w # @davidbombal
+        playlist:
+          - PLtN43kak3fFEEDNo0ks9QVKYfQpT2yUEo # Darknet Diaries
 
   columns:
 

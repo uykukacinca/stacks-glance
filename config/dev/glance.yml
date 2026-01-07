@@ -18,6 +18,7 @@ pages:
   - $include: pages/vue.yml
   - $include: pages/react.yml
   - $include: pages/svelte.yml
+  - $include: pages/go.yml
   - $include: pages/frontend.yml
   - $include: pages/backend.yml
   - $include: pages/database.yml

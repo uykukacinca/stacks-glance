@@ -12,7 +12,7 @@
     Accept: application/json
     X-Api-Key: ${RADARR_API_KEY}
   template: |
-    {{ $items := .JSON.Array `records.#.{"id":movie.titleSlug,"title":movie.title,"url":{"fn":!"replace","val":movie.titleSlug,"href":!"${RADARR_URL}/movie/{val}"},"image":{"src":movie.images.0.remoteUrl,"class":!"x-ar-3x4"},"header":[{"tpl":!"Text","val":movie.year,"class":!"shrink-0"},{"tpl":!"Text","val":movie.genres.0,"class":!"block text-truncate"}],"footer":[{"tpl":!"Duration","val":movie.runtime},{"tpl":!"Rating","val":movie.ratings.imdb.value}]}` }}
+    {{ $items := .JSON.Array `records.#.{"id":movie.titleSlug,"title":movie.title,"url":{"fn":!"replace","val":movie.titleSlug,"href":!"${RADARR_URL}/movie/{val}"},"image":{"src":movie.images.0.remoteUrl,"class":!"x-ar-3x4"},"header":[{"tpl":!"Text","val":movie.year,"class":!"shrink-0"},{"tpl":!"Text","val":movie.genres.0,"class":!"block text-truncate"}],"footer":[{"tpl":!"Duration","val":movie.runtime,"class":!"flex shrink-0"},{"tpl":!"Rating","val":movie.ratings.imdb.value}]}` }}
     $include: /components/templates.gohtml
     $include: /components/list.gohtml
     $include: /components/list-container.gohtml

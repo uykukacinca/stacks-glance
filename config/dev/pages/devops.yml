@@ -1,6 +1,23 @@
 - name: "DevOps" # 🛠️
   slug: devops
   width: wide
+
+  head-widgets:
+
+    - <<: *backube-base
+      hide-header: true
+      title: "DevOps Videos"
+      options:
+        collapse-after-rows: 1
+      parameters:
+        perPage: 32
+        channel:
+          - UCYeiozh-4QwuC1sjgCmB92w #@devopstoolbox
+        keyword:
+          - devops
+          - docker
+          - podman
+
   columns:
 
     - size: small

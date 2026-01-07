@@ -1,3 +1,194 @@
+:root {
+  --color-text-highlight: hsl(from var(--x-c-foreground) h s calc(l + 70));
+  --color-text-paragraph: hsl(from var(--x-c-foreground) h s calc(l + 50));
+  --color-text-base: hsl(from var(--x-c-foreground) h s calc(l + 40));
+  --color-text-base-muted: hsl(from var(--x-c-foreground) h s calc(l + 30));
+  --color-text-subdue: hsl(from var(--x-c-foreground) h s calc(l + 20));
+
+  --color-widget-content-border: transparent !important;
+}
+
+:root[data-theme^="N-"] {
+  --box-shadow: 0px 3px 0px 0px
+    hsl(from var(--color-background) h s calc(l - 0.3));
+
+  --color-widget-background: hsl(from var(--color-background) h s calc(l + 4));
+  --color-widget-background-hover: hsl(
+    from var(--color-widget-background) h s calc(l + 3)
+  );
+  --color-widget-content-border: hsl(
+    from var(--color-widget-background) h s calc(l + 10) / 0.75
+  );
+
+  --color-separator: hsl(
+    from var(--color-widget-background) h s calc(l + 8) / 0.75
+  );
+
+  --color-graph-gridlines: hsl(
+    from var(--color-widget-background) h s calc(l + 4) / 0.75
+  );
+
+  --color-popover-background: hsl(
+    from var(--color-widget-background) h calc(s + 4) calc(l + 4)
+  );
+  --color-popover-border: hsl(
+    from var(--color-widget-background) h calc(s + 4) calc(l + 8)
+  );
+}
+
+:root[data-theme^="N-"] {
+  .widget-content:not(.widget-content-frameless),
+  .widget-content-frame {
+    border: none;
+    box-shadow: var(--box-shadow);
+  }
+
+  --border-radius: 10px;
+
+  .twitch-channel-avatar-container,
+  .progress-bar,
+  .dns-stats-graph-columns,
+  .twitch-category-thumbnail,
+  .forum-post-list-thumbnail,
+  .twitch-stream-preview {
+    --border-radius: 5px;
+  }
+}
+
+:root[data-theme^="N-"] {
+  .glimpse-app-header,
+  .glimpse-app-footer {
+    background-color: hsl(
+      var(--bghs),
+      calc(var(--scheme) var(--bgl) + 3%)
+    ) !important;
+  }
+  .glimpse-widget > .glimpse-content,
+  .glimpse-app {
+    box-shadow: var(--box-shadow);
+  }
+}
+
+/*****************************************************************************/
+.logo {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--x-c-foreground-lighter);
+  margin: 10px 0;
+  height: auto;
+  line-height: unset;
+}
+
+.header a.nav-item {
+  display: flex;
+  gap: 6px;
+}
+
+a.nav-item::before {
+  margin-top: 1px;
+}
+
+a.nav-item[href="/space"]::before {
+  content: "⬡";
+  color: #f7df1e;
+}
+
+a.nav-item-current[href="/space"]::before {
+  content: "⬢";
+}
+
+a.nav-item-current[href="/space"] {
+  border-bottom-color: #f7df1e;
+}
+
+a.nav-item[href="/gaming"]::before {
+  content: "◇";
+  color: #12fff4;
+}
+
+a.nav-item-current[href="/gaming"]::before {
+  content: "◆";
+}
+
+a.nav-item-current[href="/gaming"] {
+  border-bottom-color: #12fff4;
+}
+
+a.nav-item[href="/live"]::before {
+  content: "●";
+  color: #ef4343;
+}
+
+a.nav-item-current[href="/live"] {
+  border-bottom-color: #ef4343;
+}
+
+a.nav-item[href="/selfhost"]::before {
+  content: "✪";
+  color: #eb844e;
+}
+
+a.nav-item-current[href="/selfhost"] {
+  border-bottom-color: #eb844e;
+}
+
+a.nav-item[href="/nulsec"]::before {
+  content: "⊟";
+  color: #4bdd61;
+}
+
+a.nav-item-current[href="/nulsec"] {
+  border-bottom-color: #4bdd61;
+}
+
+a.nav-item[href="/javascript"]::before,
+a.nav-item[href="/vue"]::before,
+a.nav-item[href="/react"]::before,
+a.nav-item[href="/svelte"]::before {
+  content: "◯";
+}
+
+a.nav-item-current[href="/javascript"]::before,
+a.nav-item-current[href="/vue"]::before,
+a.nav-item-current[href="/react"]::before,
+a.nav-item-current[href="/svelte"]::before {
+  content: "●";
+}
+
+a.nav-item[href="/javascript"]::before {
+  color: #f7df1e;
+}
+
+a.nav-item-current[href="/javascript"] {
+  border-bottom-color: #f7df1e;
+}
+
+a.nav-item[href="/svelte"]::before {
+  color: #ff3e00;
+}
+
+a.nav-item-current[href="/svelte"] {
+  border-bottom-color: #ff3e00;
+}
+
+a.nav-item[href="/vue"]::before {
+  color: #4fc08d;
+}
+
+a.nav-item-current[href="/vue"] {
+  border-bottom-color: #4fc08d;
+}
+
+a.nav-item[href="/react"]::before {
+  color: #61dafb;
+}
+
+a.nav-item-current[href="/react"] {
+  border-bottom-color: #61dafb;
+}
+
+/*****************************************************************************/
+
 .x-m10 {
   margin: var(--widget-content-vertical-padding);
   background-color: var(--color-background);

@@ -2,12 +2,6 @@
   slug: news
   width: wide
 
-  head-widgets:
-
-    - <<: *reddit-base
-      subreddit: popular
-      style: horizontal-cards
-
   columns:
 
     - size: full
@@ -17,35 +11,32 @@
           max-columns: 3
           widgets:
 
-            - type: group
-              widgets:
+            - <<: *reddit-cover
+              subreddit: worldnews
+              show-flairs: true
+              collapse-after: 10
 
-                - <<: *reddit-cover
-                  subreddit: worldnews
-                  show-flairs: true
+            - <<: *reddit-cover
+              subreddit: geopolitics
+              show-flairs: true
+              collapse-after: 10
 
-                - <<: *reddit-cover-top-week
-                  title: Top This Week
-                  subreddit: worldnews
+            - <<: *reddit-cover
+              subreddit: News
+              show-flairs: true
+              collapse-after: 10
 
-            - type: group
-              widgets:
+            - <<: *reddit-cover-top-week
+              title: r/worldnews Top This Week
+              subreddit: worldnews
+              collapse-after: 10
 
-                - <<: *reddit-cover
-                  subreddit: geopolitics
-                  show-flairs: true
+            - <<: *reddit-cover-top-week
+              title: r/geopolitics Top This Week
+              subreddit: geopolitics
+              collapse-after: 10
 
-                - <<: *reddit-cover-top-week
-                  title: Top This Week
-                  subreddit: geopolitics
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-cover
-                  subreddit: News
-                  show-flairs: true
-
-                - <<: *reddit-cover-top-week
-                  title: Top This Week
-                  subreddit: News
+            - <<: *reddit-cover-top-week
+              title: r/News Top This Week
+              subreddit: News
+              collapse-after: 10

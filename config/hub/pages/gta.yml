@@ -41,6 +41,9 @@
 
         - <<: *kick-category
           title: Kick Streams
+          options:
+            collapse-after-rows: 1
+            min-card-width-px: 200
           parameters:
             category: 8
 

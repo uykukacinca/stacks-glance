@@ -4,12 +4,14 @@
 
   head-widgets:
 
-    - type: videos
+    - <<: *backube-latest
+      title: "@Theo"
       hide-header: true
-      style: horizontal-cards
-      # css-class: hide-details
-      channels:
-        - UCbRP3c757lWg9M-U7TyEkXA # Theo
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: channel="UCbRP3c757lWg9M-U7TyEkXA"
 
   columns:
 
@@ -17,26 +19,15 @@
       widgets:
 
         - type: split-column
-          max-columns: 4
+          max-columns: 3
           widgets:
 
-            - type: split-column
-              max-columns: 1
-              widgets:
+            - type: hacker-news
+              cache: *default-cache
+              limit: 20
+              collapse-after: 10
 
-                - type: hacker-news
-                  cache: *default-cache
-                  limit: 20
-                  collapse-after: 10
-
-                - type: lobsters
-                  cache: *default-cache
-                  sort-by: hot
-                  limit: 20
-                  collapse-after: 10
-
-            - type: split-column
-              max-columns: 1
+            - type: group
               widgets:
 
                 - <<: *reddit-simple
@@ -44,32 +35,32 @@
                   collapse-after: 10
 
                 - <<: *reddit-simple-top-week
-                  title: r/programming This Week
+                  title: Top This Week
                   subreddit: programming
                   collapse-after: 10
 
-            - type: split-column
-              max-columns: 1
+            - <<: *backube-latest
+              title: dev
+              options:
+                collapse-after-rows: 6
+              parameters:
+                <<: *backube-video-parameters
+                filter: (channel.space.code="dev" && channel!="UCbRP3c757lWg9M-U7TyEkXA")
+
+            - type: lobsters
+              cache: *default-cache
+              sort-by: hot
+              limit: 20
+              collapse-after: 10
+
+            - type: group
               widgets:
 
                 - <<: *reddit-simple
                   subreddit: technology
-                  collapse-after: 8
+                  collapse-after: 10
 
                 - <<: *reddit-simple-top-week
-                  title: r/technology This Week
+                  title: Top This Week
                   subreddit: technology
-                  collapse-after: 8
-
-            - <<: *videos-grid
-              channels:
-                - UC6biysICWOJ-C3P4Tyeggzg # Low Level Learning
-                - UCsBjURrPoezykLs9EqgamOA # Fireship
-                #- UCUyeluBRhGPCW4rPe_UvBZQ # ThePrimeTime
-                # - UCsUalyRg43M8D60mtHe6YcA # CultRepo (formerly Honeypot)
-                - UCyU5wkjgQYGRB0hIHMwm2Sg # @syntaxfm
-                # - UC4MZ7zUHb5eAxU75Dc_nqdQ # @TiffInTech
-                #- UCl2mFZoRqjw_ELax4Yisf6w # rossmanngroup
-                - UCXzw-OdotBUcNA9yhuYQBwA # @awesome-coding
-                # - UCVeW9qkBjo3zosnqUbG7CFw # _JohnHammond
-                - UCGpoeEhUBQBaaKZ_a8HB67Q # @Coding2GO
+                  collapse-after: 10

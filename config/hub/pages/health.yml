@@ -10,35 +10,25 @@
           max-columns: 3
           widgets:
 
-            - type: group
-              widgets:
+            - <<: *reddit-cover
+              subreddit: Health
+              collapse-after: 10
 
-                - <<: *reddit-cover
-                  subreddit: Health
-                  show-flairs: true
+            - <<: *reddit-cover
+              subreddit: psychology
+              show-flairs: true
+              collapse-after: 10
 
-                - <<: *reddit-cover-top-week
-                  title: Top This Week
-                  subreddit: Health
+            - <<: *reddit-cover
+              subreddit: Coronavirus
+              collapse-after: 10
 
-            - type: group
-              widgets:
+            - <<: *reddit-cover-top-week
+              title: r/Health Top This Week
+              subreddit: Health
+              collapse-after: 10
 
-                - <<: *reddit-cover
-                  subreddit: psychology
-                  show-flairs: true
-
-                - <<: *reddit-cover-top-week
-                  title: Top This Week
-                  subreddit: psychology
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-cover
-                  subreddit: Coronavirus
-                  show-flairs: true
-
-                - <<: *reddit-cover-top-week
-                  title: Top This Week
-                  subreddit: Coronavirus
+            - <<: *reddit-cover-top-week
+              title: r/psychology Top This Week
+              subreddit: psychology
+              collapse-after: 10

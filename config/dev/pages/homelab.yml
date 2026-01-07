@@ -97,17 +97,24 @@
                   subreddit: HomeServer
                   collapse-after: *widget-half-collapse-after
 
-            - <<: *videos-grid
-              title: Hardware
-              channels:
-                - UCgdTVe88YVSrOZ9qKumhULQ # Hardware Haven
-                - UC9evhW4JB_UdXSLeZGy8lGw # Raid Owl
-                - UCHkYOD-3fZbuGhwsADBd9ZQ # Lawrence Systems
-                - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
-                - UCbiGcwDWZjz05njNPrJU7jA # ExplainingComputers
-                - UCsnGwSIHyoYN0kiINAGUKxg # Wolfgang's Channel
-                - UCBUGoNsdqLA7gyAB2zSa0rQ # Robtech
-                - UC1733iBvNpXIscZk4QnfYBw # WunderTechTutorials
+            - <<: *backube-base
+              title: "Videos"
+              options:
+                collapse-after-rows: 8
+              parameters:
+                channel:
+                  - UC9x0AN7BWHpCDHSm9NiJFJQ # NetworkChuck
+                  - UCgdTVe88YVSrOZ9qKumhULQ # Hardware Haven
+                  - UC9evhW4JB_UdXSLeZGy8lGw # Raid Owl
+                  - UCHkYOD-3fZbuGhwsADBd9ZQ # Lawrence Systems
+                  - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
+                  - UCbiGcwDWZjz05njNPrJU7jA # ExplainingComputers
+                  - UCsnGwSIHyoYN0kiINAGUKxg # Wolfgang's Channel
+                  - UCBUGoNsdqLA7gyAB2zSa0rQ # Robtech
+                  - UC1733iBvNpXIscZk4QnfYBw # WunderTechTutorials
+                keyword:
+                  - homelab
+                  - proxmox
 
             - type: group
               widgets:

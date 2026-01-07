@@ -1,17 +1,16 @@
 {{- define "MediaItem" -}}
   {{ $item := . }}
-
   {{ $url := $item.String "url.href" }}
-  {{- if eq ($item.String "url.fn") "replace" -}}
+  {{ if eq ($item.String "url.fn") "replace" }}
     {{ $url = replaceAll "{val}" ($item.String "url.val") ($item.String "url.href") }}
-  {{- end -}}
-
+  {{ end }}
   {{ $title := $item.String "title" }}
-
   {{ $image := $item.String "image.src" }}
-  {{- if eq ($item.String "image.fn") "replace" -}}
+  {{ if eq ($item.String "image.fn") "replace" }}
     {{ $image = replaceAll "{val}" ($item.String "image.val") ($item.String "image.src") }}
-  {{- end -}}
+  {{ end }}
+  {{ $header := $item.Array "header" }}
+  {{ $footer := $item.Array "footer" }}
   <div class="x-media x-thumb-parent">
     <a class="x-stack x-overlay" href="{{ $url }}" target="_blank">
       <img
@@ -19,14 +18,12 @@
         src="{{ $image }}"
         loading="lazy"
       />
-
       {{- range $el := $item.Array "image.overlays" -}}
         {{ template "TemplateArray" $el }}
       {{- end -}}
     </a>
-
     <div class="x-media-header x-grid x-gap-small">
-      {{- range $el := $item.Array "header" -}}
+      {{- range $el := $header -}}
         {{ $tpl := $el.String "tpl" }}
         {{- if eq $tpl "Title" -}}
           <a
@@ -40,13 +37,14 @@
         {{- end -}}
       {{- end -}}
     </div>
-
+    {{ if gt ($footer | len) 0 }}
     <div class="x-media-content">
-      <div class="list-horizontal-text flex-nowrap">
-        {{- range $el := $item.Array "footer" -}}
+      <div class="list-horizontal-text flex-nowrap text-compact">
+        {{- range $el := $footer -}}
           {{ template "TemplateArray" $el }}
         {{- end -}}
       </div>
     </div>
+    {{- end -}}
   </div>
 {{- end -}}

@@ -4,11 +4,19 @@
 
   head-widgets:
 
-    - type: videos
+    - <<: *backube-base
       hide-header: true
-      style: horizontal-cards
-      channels:
-        - UCswG6FSbgZjbWtdf_hMLaow #@mattpocockuk
+      title: "Javascript Videos"
+      options:
+        collapse-after-rows: 1
+      parameters:
+        perPage: 32
+        channel:
+          - UCswG6FSbgZjbWtdf_hMLaow #@mattpocockuk
+          - UCmXmlB4-HJytD7wek0Uo97A #JavaScript Mastery
+        keyword:
+          - javascript
+          - typescript
 
   columns:
 

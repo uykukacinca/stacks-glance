@@ -4,14 +4,17 @@
 
   head-widgets:
 
-    - type: videos
+    - <<: *backube-xml
       hide-header: true
-      style: horizontal-cards
-      channels:
-        - UCt_oFAUph4_8P3N_Xs-FGHg #@ScamboliReviews
-        - UCtGoikgbxP4F3rgI9PldI9g #@supereyepatchwolf0
-        - UCUCn-bkupQ9SMI6005R684A #@Stevem
-        - UC7dF9qfBMXrSlaaFFDvV_Yg #@gigguk
+      title: "Videos"
+      options:
+        collapse-after-rows: 1
+      parameters:
+        channel:
+          - UCt_oFAUph4_8P3N_Xs-FGHg #@ScamboliReviews
+          - UCtGoikgbxP4F3rgI9PldI9g #@supereyepatchwolf0
+          - UCUCn-bkupQ9SMI6005R684A #@Stevem
+          - UC7dF9qfBMXrSlaaFFDvV_Yg #@gigguk
 
   columns:
 
@@ -40,7 +43,7 @@
               headers:
                 x-glimpse-output: glance
               parameters:
-                limit: 13
+                limit: 20
 
             - type: split-column
               max-columns: 1
@@ -94,6 +97,6 @@
               widgets:
 
                 - <<: *components-gallery
-                  url: https://www.reddit.com/r/AnimeART/hot.json
+                  url: https://www.reddit.com/r/AnimeART+animewallpaper/top.json?limit=25&t=week
                   options:
                     columns: 2

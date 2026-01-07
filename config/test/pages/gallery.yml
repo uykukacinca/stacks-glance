@@ -32,8 +32,3 @@
               title: x-Gallery space
               options:
                 columns: 4
-            - <<: *components-gallery
-              url: http://localhost:8080/assets/r/cat/top.json
-              title: x-Gallery cat
-              options:
-                columns: 4

@@ -19,12 +19,16 @@
     - size: full
       widgets:
 
-        - <<: *videos-grid
-          channels:
-            - UCJWKjrrUh2KL1d3zXQW79cQ # ExploreWithUs
-            - UCYwVxWpjeKFWwu8TML-Te9A # JCS - Criminal Psychology
-            - UCFXad0mx4WxY1fXdbvtg0CQ # Fascinating Horror
-            - UCCKwTsUwBvMDNlhxf0evJag # deathdoor4687
-            - UCFkFUrV28yy4kpg9b6LNhuQ #@TrueCrimeCentral
-            - UC0JJtK3m8pwy6rVgnBz47Rw #@rottenmangopod
-            - UCAa4yNsAyP-O5j-qNSpVQ_g #@AmerikaliAynasiz
+        - <<: *backube-xml
+          title: "Videos"
+          options:
+            collapse-after-rows: 6
+          parameters:
+            channel:
+              - UCJWKjrrUh2KL1d3zXQW79cQ # ExploreWithUs
+              - UCYwVxWpjeKFWwu8TML-Te9A # JCS - Criminal Psychology
+              - UCFXad0mx4WxY1fXdbvtg0CQ # Fascinating Horror
+              - UCCKwTsUwBvMDNlhxf0evJag # deathdoor4687
+              - UCFkFUrV28yy4kpg9b6LNhuQ #@TrueCrimeCentral
+              - UC0JJtK3m8pwy6rVgnBz47Rw #@rottenmangopod
+              - UCAa4yNsAyP-O5j-qNSpVQ_g #@AmerikaliAynasiz

@@ -627,17 +627,16 @@ class RelativeTime {
 
 class YoutubeProgress {
   static #config = {
-    api: `https://pb.${HOST_NAME}/api/collections/{collection}/records`,
-    records: `https://pb.${HOST_NAME}/youtube-progress`,
+    api: `https://bt.${HOST_NAME}/api/progress`,
     collection: "youtube",
     selectors: {
-      videos: ".widget-type-videos a",
-      progressBar: ".xxx-progress-bar",
+      videos: ".x-backube .x-media > a.x-overlay",
+      progressBar: "x-as-e x-progress-bar",
     },
   };
 
   static get api() {
-    return this.#config.api.replace("{collection}", this.#config.collection);
+    return this.#config.api;
   }
 
   static async init() {
@@ -646,7 +645,6 @@ class YoutubeProgress {
 
     videos.forEach((video) => Utils.markAsObserved(video));
     await this.#processVideos(videos);
-    this.#setupProgressListener();
   }
 
   static #getUnobservedVideos() {
@@ -665,7 +663,8 @@ class YoutubeProgress {
 
     const ids = videoData.map((v) => v.id);
     if (ids.length > 0) {
-      const url = new URL(this.#config.records);
+      const url = new URL(this.api);
+      url.searchParams.set("user", "xg7dmorzanfosbo");
 
       try {
         const response = await fetch(url, {
@@ -673,13 +672,13 @@ class YoutubeProgress {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ ids }),
+          body: JSON.stringify(ids),
         });
         if (response.ok) {
           const data = await response.json();
           const recordsMap = new Map();
           data.forEach((record) => {
-            recordsMap.set(record.id, record);
+            recordsMap.set(record.video, record);
           });
           for (const { element, id } of videoData) {
             const record = recordsMap.get(id);
@@ -707,41 +706,10 @@ class YoutubeProgress {
   }
 
   static #renderProgressBar(element, progress) {
-    const container = document.createElement("div");
-    container.className =
-      this.#config.selectors.progressBar.replace(".", "") + "-container";
-
     const bar = document.createElement("div");
-    bar.className = this.#config.selectors.progressBar.replace(".", "");
-    bar.style.width = `${progress}%`;
-
-    container.appendChild(bar);
-    element.insertAdjacentElement("beforebegin", container);
-  }
-
-  static #setupProgressListener() {
-    window.addEventListener("message", (event) => {
-      if (event.data?.type === "youtube-progress-update") {
-        const { videoId, progress } = event.data;
-        this.#updateProgress(videoId, progress);
-      }
-    });
-  }
-
-  static #updateProgress(videoId, progress) {
-    document
-      .querySelectorAll(
-        `${this.#config.selectors.videos}[href*="?v=${videoId}"]`,
-      )
-      .forEach((element) => {
-        const container = element.previousElementSibling;
-        const bar = container?.querySelector(
-          this.#config.selectors.progressBar,
-        );
-        if (bar) {
-          bar.style.width = `${progress}%`;
-        }
-      });
+    bar.className = this.#config.selectors.progressBar;
+    bar.style = `--width: ${progress}%`;
+    element.insertAdjacentElement("beforeend", bar);
   }
 }
 

@@ -39,10 +39,14 @@
                 }
               }
 
-        - <<: *videos-horizontal
-          title: Official Videos
-          channels:
-            - UCd0ZomI5mPkrV735wul5kiw #@wildrift
+        - <<: *backube-xml
+          title: "Official Wild Rift Videos"
+          options:
+            collapse-after-rows: 1
+            min-card-width-px: 200
+          parameters:
+            channel:
+              - UCd0ZomI5mPkrV735wul5kiw #@wildrift
 
   columns:
 
@@ -104,19 +108,21 @@
             - type: group
               widgets:
 
-                - <<: *videos-grid
-                  title: Videos
-                  channels:
-                    - UC3ofqT9q3pDxTd2UlNgSN0Q #@KanbaruWR
-                    - UChcxXq9PudkG6K6gpFl1M-Q #@BrokenSupport
-                    - UCowkr3QJ-TvX5siY3piQ2Xw #@RoyalWildRift
-                    - UC-QXKllezN9OxLh6S-F8B9g #@OUTSIDERYT
-                    - UCvASVZzW0X3ma8aYsFhVDJw #@RiftGuidesWildRift
+                - <<: *backube-latest
+                  title: "Videos"
+                  options:
+                    collapse-after-rows: 6
+                  parameters:
+                    <<: *backube-video-parameters
+                    filter: channel.tags.name?="wild rift"
 
-                - <<: *videos-grid
-                  title: Skin Spotlights
-                  channels:
-                    - UCr8PQGDXXqC7fV-3aj8e5kA #@SkinSpotlightsWildRift
+                - <<: *backube-xml
+                  title: "Skin Spotlights"
+                  options:
+                    collapse-after-rows: 4
+                  parameters:
+                    channel:
+                      - UCr8PQGDXXqC7fV-3aj8e5kA #@SkinSpotlightsWildRift
 
             - type: extension
               url: ${GLIMPSE_URL}/riot/news

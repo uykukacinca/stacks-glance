@@ -1,0 +1,79 @@
+- name: "*backube"
+  slug: backube
+  show-in-navigation: false
+  width: wide
+
+  columns:
+
+    - size: full
+      widgets:
+
+        - <<: *backube-latest
+          options:
+            collapse-after-rows: 4
+          parameters:
+            <<: *backube-video-parameters
+            perPage: 70
+
+        - <<: *backube-channels
+          options:
+            collapse-after-rows: 4
+          parameters:
+            perPage: 999
+            sort: -video_count
+
+        - <<: *backube-latest
+          title: dev
+          options:
+            collapse-after-rows: 1
+          parameters:
+            <<: *backube-video-parameters
+            filter: channel.space.code="dev"
+
+        - <<: *backube-latest
+          title: lab
+          options:
+            collapse-after-rows: 1
+          parameters:
+            <<: *backube-video-parameters
+            filter: channel.space.code="lab"
+
+        - <<: *backube-latest
+          title: hub
+          options:
+            collapse-after-rows: 1
+          parameters:
+            <<: *backube-video-parameters
+            filter: channel.space.code="hub"
+
+        - <<: *backube-latest
+          title: sci
+          options:
+            collapse-after-rows: 1
+          parameters:
+            <<: *backube-video-parameters
+            filter: channel.space.code="sci"
+
+        - <<: *backube-latest
+          title: tech
+          options:
+            collapse-after-rows: 1
+          parameters:
+            <<: *backube-video-parameters
+            filter: channel.space.code="tech"
+
+        - <<: *backube-latest
+          title: ggwp
+          options:
+            collapse-after-rows: 1
+          parameters:
+            <<: *backube-video-parameters
+            filter: channel.space.code="ggwp"
+
+        - <<: *backube-latest
+          title: türkçe
+          options:
+            collapse-after-rows: 1
+          parameters:
+            <<: *backube-video-parameters
+            filter: channel.language.name="türkçe"

@@ -1,9 +1,10 @@
 - &kick-category
   <<: *kick-base
   url: https://api.kick.com/public/v1/livestreams
+  #doc: https://docs.kick.com/apis/livestreams
   title: Kick Category
   template: |
-    {{ $items := .JSON.Array `data.#.{"id":slug,"title":stream_title,"url":{"fn":!"replace","val":slug,"href":!"https://kick.com/{val}"},"header":[{"tpl":!"Title","class":!"color-highlight x-grayscale text-truncate-2-lines"}],"image":{"src":thumbnail,"overlays":[{"tpl":!"PlayIcon","class":!"x-br-t x-center x-play"},{"tpl":!"TemplateArray","val":[{"tpl":!"LiveCount","val":viewer_count,"class":!"x-blur x-blur-title"}],"class":!"x-ps-ee x-margin-gap"}]},"footer":[{"tpl":!"RelativeTime","val":started_at},{"tpl":!"Link","val":{"title":slug,"link":{"fn":!"replace","val":slug,"href":!"https://kick.com/{val}"}}}]}` }}
+    {{ $items := .JSON.Array `data.#.{"id":slug,"title":stream_title,"url":{"fn":!"replace","val":slug,"href":!"https://kick.com/{val}"},"header":[{"tpl":!"Title","class":!"color-highlight x-gray text-truncate-2-lines"}],"image":{"src":thumbnail,"overlays":[{"tpl":!"PlayIcon","class":!"x-br-t x-center x-play"},{"tpl":!"TemplateArray","val":[{"tpl":!"LiveCount","val":viewer_count,"class":!"x-blur x-blur-title"}],"class":!"x-ps-ee x-margin-gap"}]},"footer":[{"tpl":!"RelativeTime","val":started_at},{"tpl":!"Link","val":{"title":slug,"link":{"fn":!"replace","val":slug,"href":!"https://kick.com/{val}"}}}]}` }}
     $include: /components/templates.gohtml
     $include: /components/media.gohtml
     $include: /components/media-container.gohtml

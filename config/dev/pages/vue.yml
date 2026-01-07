@@ -85,14 +85,21 @@
                   title: Month
                   subreddit: vuejs
               
-            - <<: *videos-grid
-              channels:
-                - UCgmcPHueYRarnCkihtNIRlw # LearnVue
-                - UCVJ5qp8Vw8gXQ9RkuNdYWMw # TheAlexLichter
-                - UCa1zuotKU4Weuw_fLRnPv0A # vuemastery
-                - UCshZ3rdoCLjDYuTR_RBubzw # programwitherik
-                - UCJ9jj5YMzo-HsyM6WG9Q_Lg # NuxtLabs
-                - UCr0D7PVNOHqB3Td7lVl_LKw # JohnKomarnicki
+            - <<: *backube-base
+              title: "Vue Videos"
+              options:
+                collapse-after-rows: 8
+              parameters:
+                channel:
+                  - UCgmcPHueYRarnCkihtNIRlw # LearnVue
+                  - UCVJ5qp8Vw8gXQ9RkuNdYWMw # TheAlexLichter
+                  - UCa1zuotKU4Weuw_fLRnPv0A # vuemastery
+                  - UCshZ3rdoCLjDYuTR_RBubzw # programwitherik
+                  - UCJ9jj5YMzo-HsyM6WG9Q_Lg # NuxtLabs
+                  - UCr0D7PVNOHqB3Td7lVl_LKw # JohnKomarnicki
+                keyword:
+                  - nuxt
+                  - vue
 
             - type: group
               widgets:

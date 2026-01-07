@@ -105,7 +105,7 @@
       {{- end -}}
 
       {{/* nextup */}}
-      {{- if eq "nextup" $display -}}
+      {{- if eq "nextup-qqqq" $display -}}
 
         {{/* https://api.jellyfin.org/#tag/TvShows/operation/GetNextUp */}}
         {{ $res := newRequest (concat $BaseURL "/Shows/NextUp")
@@ -130,145 +130,23 @@
         {{- end -}}
       {{- end -}}
 
-      {{- if ne "latestmedia" $display -}}
-        {{- if gt (len $widgetItems) 0 -}}
-          <div class="widget widget-jellyfin">
-            {{ template "WidgetHeader" $widgetTitle }}
-            {{- if and (len $widgetItems | eq 0) ($widgetMessage | ne "") -}}
-              {{ template "WidgetContent" $widgetMessage }}
-            {{- else if $widgetItems -}}
-              <div
-                class="glimpse-cards-grid x-collapsible jellyfin-cards jellyfin-cards-{{ $widgetStyle }}"
-                data-collapse-after-rows="1"
-                display="{{ $display }}"
-              >
-                {{- range $n, $item := $widgetItems -}}
-                  {{- if eq $widgetStyle "thumb" -}}
-                    {{ template "card-thumb" $item }}
-                  {{- else if eq $widgetStyle "cover" -}}
-                    {{ template "card-cover" $item }}
-                  {{- else if eq $widgetStyle "poster" -}}
-                    {{ template "card-cover" $item }}
-                  {{- end -}}
-                {{- end -}}
-              </div>
-            {{- end -}}
-          </div>
-        {{- end -}}
-      {{- end -}}
-
-      {{/* latestmedia */}}
-      {{- if eq "latestmedia" $display -}}
-
-        {{- range $i, $libray := $UserViews.JSON.Array "Items" -}}
-
-          {{ $librayName := $libray.String "Name" }}
-          {{ $librayID := $libray.String "Id" }}
-
-          {{ $isExcluded := len ($User.JSON.Array (concat "Configuration.LatestItemsExcludes.#(==" $librayID ")#")) }}
-
-          {{- if $isExcluded -}}
-            {{ continue }}
-          {{- end -}}
-
-          {{ $librayEndpoint := "/Items/Latest" }}
-          {{ $libraySlug := "" }}
-          {{ $itemsKey := "" }}
-          {{ $widgetStyle := "poster" }}
-          {{ $GroupItems := "true" }}
-          {{ $Fields := "ExternalUrls,ExtraIds,Genres,PrimaryImageAspectRatio,Path" }}
-          {{ $collectionType := $libray.String "CollectionType" }}
-          {{ $collectionTab := "" }}
-
-          {{- if eq $collectionType "tvshows" -}}
-            {{ $libraySlug = "tv" }}
-            {{ $librayName = concat "Recently Added in " $librayName }}
-            {{ $collectionTab = "1" }}
-          {{- else if eq $collectionType "movies" -}}
-            {{ $libraySlug = "movies" }}
-            {{ $librayName = concat "Recently Added in " $librayName }}
-            {{ $collectionTab = "1" }}
-          {{- else if eq $collectionType "books" -}}
-            {{ $libraySlug = "list" }}
-            {{ $librayName = concat "Recently Added in " $librayName }}
-            {{ $Fields = concat "People," $Fields }}
-          {{- else if eq $collectionType "playlists" -}}
-            {{ $librayEndpoint = "/Items" }}
-            {{ $libraySlug = "list" }}
-            {{ $itemsKey = "Items" }}
-            {{ $widgetStyle = "cover" }}
-          {{- else if eq $collectionType "music" -}}
-            {{ $libraySlug = "music" }}
-            {{ $widgetStyle = "cover" }}
-            {{ $librayName = concat "Recently Added in " $librayName }}
-            {{/* $GroupItems = "false" */}}
-            {{ $collectionTab = "1" }}
-          {{- else if eq $collectionType "livetv" -}}
-            {{ continue }}
-            {{ $libraySlug = "livetv" }}
-            {{ $widgetStyle = "cover" }}
-          {{- else if eq $collectionType "musicvideos" -}}
-            {{ $libraySlug = "list" }}
-            {{ $widgetStyle = "thumb" }}
-          {{- else -}}
-            {{ continue }}
-          {{- end -}}
-
-          {{/* https://api.jellyfin.org/#tag/UserLibrary/operation/GetLatestMedia */}}
-
-          {{ $res := newRequest (concat $BaseURL "/Users/" $UserId $librayEndpoint)
-            | withParameter "ParentId" $librayID
-            | withParameter "Limit" $LimitsRecentlyAdded
-            | withParameter "GroupItems" $GroupItems
-            | withParameter "ImageTypeLimit" "1"
-            | withParameter "EnableImageTypes" "Primary,Thumb"
-            | withParameter "SortBy" "DateCreated,SortName"
-            | withParameter "SortOrder" "Descending"
-            | withParameter "Fields" $Fields
-            | withHeader $AuthHeader $ApiKey
-            | getResponse
-          }}
-
-          {{ $librayItems := $res.JSON.Array $itemsKey }}
-          {{- if gt (len $librayItems) 0 -}}
-            {{ $collectionType = concat "&collectionType=" $collectionType }}
-            {{- if ne $collectionTab "" -}}
-              {{ $collectionTab = concat "&tab=" $collectionTab }}
-            {{- end -}}
-            {{ $titleURL := concat $BaseURL "/web/index.html#/" $libraySlug "?topParentId=" $librayID $collectionType $collectionTab }}
+      {{- if gt (len $widgetItems) 0 -}}
+        <div class="widget widget-jellyfin">
+          {{ template "WidgetHeader" $widgetTitle }}
+          {{- if and (len $widgetItems | eq 0) ($widgetMessage | ne "") -}}
+            {{ template "WidgetContent" $widgetMessage }}
+          {{- else if $widgetItems -}}
             <div
-              class="widget widget-jellyfin"
-              style="--order: {{ add $order $i }}"
+              class="glimpse-cards-grid x-collapsible jellyfin-cards jellyfin-cards-{{ $widgetStyle }}"
+              data-collapse-after-rows="1"
+              display="{{ $display }}"
             >
-              <div class="widget-header">
-                <h2>
-                  <a
-                    href="{{ $titleURL }}"
-                    target="_blank"
-                    rel="noreferrer"
-                    class="uppercase"
-                    >{{ $librayName }}</a
-                  >
-                </h2>
-              </div>
-              {{- if and (eq (len $librayItems) 0) -}}
-                {{ template "WidgetContent" "No Latest" }}
-              {{- else if $librayItems -}}
-                <div
-                  class="glimpse-cards-grid x-collapsible jellyfin-cards jellyfin-cards-{{ $widgetStyle }}"
-                  data-collapse-after-rows="1"
-                  display="{{ $display }}"
-                >
-                  {{- range $n, $item := $librayItems -}}
-                    {{ template "card-cover" $item }}
-                  {{- end -}}
-                </div>
+              {{ $widgetItems }}
+              {{- range $n, $item := $widgetItems -}}
               {{- end -}}
             </div>
           {{- end -}}
-
-        {{- end -}}
-
+        </div>
       {{- end -}}
 
     {{- end -}}

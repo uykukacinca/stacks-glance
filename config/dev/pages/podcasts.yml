@@ -7,17 +7,23 @@
       widgets:
 
         - <<: *videos-grid
+          collapse-after-rows: 1
           playlists:
             - PLLnpHn493BHHNUfHN5lDf11UD8jQ5Bpzl # Syntax - Tasty Web Development Treats
             - PL2Fq-K0QdOQiJpufsnhEd1z3xOv2JMHuk # ThePrimeTime - The Standup
             - PL2Fq-K0QdOQhLEX54hNhsTRvKnCSQrzyn # ThePrimeTime - TopShelf
             - PLX6ivsCcfHDOzMIUioOofyF-h-niZL6Qj # Beyond Coding Podcast
             - PLWKjhJtqVAbm04DK8TSUCRheRjW2P9TR7 # @freecodecamp
-          channels:
-            # - UCktI_HQAkbr-tJbdWnQ_osw # @LogRocket
-            - UCFe2Kq8Hg15UomoVYdmRg_Q # Socially Inept
-            - UCamLstJyCa-t5gfZegxsFMw # Colin and Samir
-            - UCSHZKyawb77ixDdsGog4iWA # Lex Fridma
-            - UClWTCPVi-AU9TeCN6FkGARg # @eoglobal
-            - UCJXa3_WNNmIpewOtCHf3B0g # lauriewired
-            - UC9H0HzpKf5JlazkADWnW1Jw # @bashbunni
+
+        - <<: *backube-base
+          title: "Videos"
+          options:
+            collapse-after-rows: 3
+          parameters:
+            channel:
+              - UCFe2Kq8Hg15UomoVYdmRg_Q # Socially Inept
+              - UCamLstJyCa-t5gfZegxsFMw # Colin and Samir
+              - UCSHZKyawb77ixDdsGog4iWA # Lex Fridma
+              - UClWTCPVi-AU9TeCN6FkGARg # @eoglobal
+              - UCJXa3_WNNmIpewOtCHf3B0g # lauriewired
+              - UC9H0HzpKf5JlazkADWnW1Jw # @bashbunni

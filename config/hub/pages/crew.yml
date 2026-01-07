@@ -123,13 +123,11 @@
     - size: full
       widgets:
 
-        - <<: *videos-grid
-          title: Gaming
-          limit: 96
-          channels:
-            - UCeePGrzBN3B2GurSkd_bwPQ # BlackPanthaa
-            - UC7eUpRaHFzksP1XEsTbrh4Q # MilitiaGamingCommunity
-            - UCUUiwdeFUVRPqfVuLtfMXKA # SidWaj
-            - UC4lGf3Jn2331jdjMlsJyj5Q # Goosiest
-          playlists:
-            - PLBnrd5k2F2IM49k5Zo_TvMDu0KyCA0hsS
+        - <<: *backube-latest
+          title: "Videos"
+          options:
+            collapse-after-rows: 6
+          parameters:
+            <<: *backube-video-parameters
+            perPage: 56
+            filter: (channel.tags.name?="racing" && channel.space.code="ggwp")

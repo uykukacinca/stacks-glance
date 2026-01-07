@@ -1,0 +1,18 @@
+- &backube-channels
+  type: custom-api
+  title: Youtube Channels
+  cache: *no-cache
+  frameless: true
+  url: https://bt.${HOST_NAME}/api/collections/channels/records
+  css-class: x-backube
+  parameters:
+    perPage: 32
+    skipTotal: 1
+    sort: -subscriber_count
+  options:
+    collapse-after-rows: 10
+  template: |
+    {{ $items := .JSON.Array `items.#.{"id":id,"title":title,"url":{"fn":!"replace","val":id,"href":!"https://www.youtube.com/channel/{val}/videos"},"image":{"src":thumbnail,"class":!"x-ar-1x1 x-round"},"header":[{"tpl":!"ApproxNumber","val":subscriber_count,"label":!"Subscribers","class":!"shrink-0"}],"footer":[{"tpl":!"ApproxNumber","val":video_count,"label":!"Videos","class":!"shrink-0"}]}` }}
+    $include: /components/templates.gohtml
+    $include: /components/list.gohtml
+    $include: /components/list-container.gohtml

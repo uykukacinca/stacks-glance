@@ -6,16 +6,20 @@
     - size: full
       widgets:
 
-        - <<: *videos-grid
-          limit: 96
-          channels:
-            - UCsXVk37bltHxD1rDPwtNM8Q # Kurzgesagt
-            - UCvG04Y09q0HExnIjdgaqcDQ #@becausescience
-            - UCHnyfMqiRRG1u-2MsSQLbXA # veritasium
-            - UCY1kMZp36IQSyNx_9h4mpCg #@MarkRober
-            - UCR1IuLEqb6UEA_zQ81kwXfg #@RealEngineering
-            - UCUQo7nzH1sXVpzL92VesANw #@DIYPerks
-            - UCGudGqToOw9hWGR88W9Jutg #@Howtown
-            - UCMOqf8ab-42UUQIdVoKwjlQ #@PracticalEngineeringChannel
-            - UCJ_2hNMxOzNjviJBiLWHMqg #@DamiLeeArch
-            - UCjtUS7-SZTi6pXjUbzGHQCg #@UndecidedMF
+        - <<: *backube-xml
+          title: "Videos"
+          options:
+            collapse-after-rows: 4
+          parameters:
+            limit: 60
+            channel:
+              - UCsXVk37bltHxD1rDPwtNM8Q # Kurzgesagt
+              - UCvG04Y09q0HExnIjdgaqcDQ #@becausescience
+              - UCHnyfMqiRRG1u-2MsSQLbXA # veritasium
+              - UCY1kMZp36IQSyNx_9h4mpCg #@MarkRober
+              - UCR1IuLEqb6UEA_zQ81kwXfg #@RealEngineering
+              - UCUQo7nzH1sXVpzL92VesANw #@DIYPerks
+              - UCGudGqToOw9hWGR88W9Jutg #@Howtown
+              - UCMOqf8ab-42UUQIdVoKwjlQ #@PracticalEngineeringChannel
+              - UCJ_2hNMxOzNjviJBiLWHMqg #@DamiLeeArch
+              - UCjtUS7-SZTi6pXjUbzGHQCg #@UndecidedMF

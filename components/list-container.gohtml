@@ -1,15 +1,14 @@
-{{ $collapseAfter := .Options.IntOr "collapse-after" 5 }}
+{{ $collapseAfterRows := .Options.IntOr "collapse-after-rows" 5 }}
 
 {{- if $items | len | eq 0 -}}
   <div class="widget-content ">
     <p>Empty</p>
   </div>
 {{- else -}}
-  <div
-    class="x-container">
+  <div class="x-container x-content-padding">
     <div
-      class="x-list x-collapsible"
-      data-collapse-after-rows="{{ $collapseAfter }}"
+      class="x-grid x-collapsible"
+      data-collapse-after-rows="{{ $collapseAfterRows }}"
     >
       {{- range $item := $items -}}
         {{- if or (eq ($item.String "title") "") (not ($item.Exists "title")) -}}

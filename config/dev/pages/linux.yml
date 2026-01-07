@@ -54,8 +54,17 @@
                   collapse-after: *widget-half-collapse-after
                   subreddit: ubuntu
 
-            - <<: *videos-grid
-              channels:
-                - UC5UAwBUum7CPN5buc-_N1Fw # TheLinuxEXP
-                - UCxQKHvKbmSzGMvUrVtJYnUA # LearnLinuxTV
-                - UCg6gPGh8HU2U01vaFCAsvmQ # Chris Titus Tech
+            - <<: *backube-base
+              title: "Videos"
+              options:
+                collapse-after-rows: 8
+              parameters:
+                channel:
+                  - UC5UAwBUum7CPN5buc-_N1Fw # TheLinuxEXP
+                  - UCxQKHvKbmSzGMvUrVtJYnUA # LearnLinuxTV
+                  - UCg6gPGh8HU2U01vaFCAsvmQ # Chris Titus Tech
+                keyword:
+                  - linux
+                  - ubuntu
+                  - fedora
+                  - debian

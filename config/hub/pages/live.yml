@@ -4,35 +4,50 @@
 
   head-widgets:
 
-    - <<: *twitch-category
-      title: Twitch Just Chatting [EN, TR]
-      options:
-        collapse-after-rows: 1
-      body:
-        query: |
-          query {
-            game(id: "509658") {
-              streams(first: 30, options: { languages: ["EN", "TR"] }) {
-                edges {
-                  node {
-                    id
-                    createdAt
-                    previewImageURL(width: 440, height: 248)
-                    type
-                    viewersCount
-                    broadcaster {
-                      login
-                      displayName
-                      profileImageURL(width: 300)
-                      broadcastSettings {
-                        title
+    - type: split-column
+      max-columns: 2
+      widgets:
+
+        - <<: *twitch-category
+          title: Twitch Just Chatting [EN, TR]
+          options:
+            collapse-after-rows: 1
+            min-card-width-px: 200
+          body:
+            query: |
+              query {
+                game(id: "509658") {
+                  streams(first: 4, options: { languages: ["EN", "TR"]}) {
+                    edges {
+                      node {
+                        id
+                        createdAt
+                        previewImageURL(width: 440, height: 248)
+                        type
+                        viewersCount
+                        broadcaster {
+                          login
+                          displayName
+                          profileImageURL(width: 300)
+                          broadcastSettings {
+                            title
+                          }
+                        }
                       }
                     }
                   }
                 }
               }
-            }
-          }
+
+        - <<: *kick-category
+          title: Kick Just Chatting [EN]
+          options:
+            collapse-after-rows: 1
+            min-card-width-px: 200
+          parameters:
+            category: 5
+            limit: 4
+            language: en
 
   columns:
 
@@ -158,14 +173,11 @@
             - type: group
               widgets:
 
-                - <<: *videos-grid
-                  limit: 24
-                  channels:
-                    - UCQeRaTukNYft1_6AZPACnog # AsmonTV
-                    - UCkAsdQZolgJdKmZ3T3zn-dA # steakandeggspod
-
-                - <<: *videos-grid
-                  title: Clips
-                  limit: 24
-                  channels:
-                    - UCMwJJL5FJFuTRT55ksbQ4GQ #@AsmongoldClips
+                - <<: *backube-latest
+                  title: "Videos"
+                  options:
+                    collapse-after-rows: 6
+                  parameters:
+                    <<: *backube-video-parameters
+                    #filter: (channel="UCQeRaTukNYft1_6AZPACnog" || channel="UCkAsdQZolgJdKmZ3T3zn-dA")
+                    filter: channel.tags.name?="one true king"

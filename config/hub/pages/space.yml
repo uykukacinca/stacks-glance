@@ -10,28 +10,30 @@
           max-columns: 4
           widgets:
 
-            - <<: *components-gallery
-              title: Space & Astronomy
-              url: https://www.reddit.com/r/space+spaceporn+Astronomy/hot.json
-              options:
-                columns: 2
+            - <<: *reddit-cover
+              title: NASA
+              subreddit: nasa
 
             - <<: *reddit-cover
-              title: NASA & SpaceX
-              subreddit: nasa+spacex
+              title: SpaceX
+              subreddit: spacex
 
             - <<: *reddit-cover
               title: UFOs
               subreddit: UFOs
 
-            - <<: *videos-grid
-              title: Podcasts & Stuff
-              channels:
-                - UCqoAEDirJPjEUFcF2FklnBA # StarTalk
-                - UCEszlI8-W79IsU8LSAiRbDg # JohnMichaelGodier
-                - UC-9b7aDP6ZN0coj9-xFnrtw # astrumspace
-                - UC7_gcs09iThXybpVgjHZ_7g # pbsspacetime
-                - UCrMePiHCWG4Vwqv3t7W9EFg # scishowspace
-                - UCtRFmSyL4fSLQkn-wMqlmdA # HistoryoftheUniverse
-                - UCIBaDdAbGlFDeS33shmlD0A # European Space Agency, ESA
-                - UCLA_DiR1FfKNvjuUpBHmylQ # NASA
+            - <<: *backube-xml
+              title: "Videos"
+              options:
+                collapse-after-rows: 8
+                min-card-width-px: 240
+              parameters:
+                channel:
+                  - UCqoAEDirJPjEUFcF2FklnBA # StarTalk
+                  - UCEszlI8-W79IsU8LSAiRbDg # JohnMichaelGodier
+                  - UC-9b7aDP6ZN0coj9-xFnrtw # astrumspace
+                  - UC7_gcs09iThXybpVgjHZ_7g # pbsspacetime
+                  - UCrMePiHCWG4Vwqv3t7W9EFg # scishowspace
+                  - UCtRFmSyL4fSLQkn-wMqlmdA # HistoryoftheUniverse
+                  - UCIBaDdAbGlFDeS33shmlD0A # European Space Agency, ESA
+                  - UCLA_DiR1FfKNvjuUpBHmylQ # NASA

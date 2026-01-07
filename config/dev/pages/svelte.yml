@@ -70,9 +70,16 @@
                   title: Month
                   subreddit: sveltejs
 
-            - <<: *videos-grid
-              channels:
-                - UCFvPgPdb_emE_bpMZq6hmJQ #@bmdavis419
+            - <<: *backube-base
+              title: "Videos"
+              options:
+                collapse-after-rows: 8
+              parameters:
+                #channel:
+                #  - UCFvPgPdb_emE_bpMZq6hmJQ #@bmdavis419
+                keyword:
+                  - svelte
+                  - sveltekit
 
             - type: group
               widgets:

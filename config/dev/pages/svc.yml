@@ -34,8 +34,14 @@
                   url: https://github.com/refined-github/refined-github
                 - title: SponsorBlock
                   url: https://github.com/ajayyy/SponsorBlock
+                - title: uBlock Origin
+                  url: https://github.com/gorhill/uBlock
                 - title: Enhancer for YouTube™
                   url: https://www.mrfdev.com/enhancer-for-youtube
+
+        - <<: *github-releases
+          repositories:
+            - afkarxyz/SpotiFLAC
 
 
     - size: full

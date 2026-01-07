@@ -37,6 +37,10 @@
   <span {{ .String "val" | parseRelativeTime "rfc3339" }}></span>
 {{- end -}}
 
+{{- define "WeirdTime" -}}
+  <span {{ .String "val" | replaceAll " " "T" | parseRelativeTime "rfc3339" }}></span>
+{{- end -}}
+
 {{- define "LiveCount" -}}
   {{ $val := formatApproxNumber (.Int "val") }}
   <div class="flex x-gap-small items-center">
@@ -48,7 +52,7 @@
 {{- define "ApproxNumber" -}}
   {{ $val := formatApproxNumber (.Int "val") }}
   <div>
-    {{ $val }}
+    {{ $val }} {{ .String "label" }}
   </div>
 {{- end -}}
 
@@ -136,6 +140,8 @@
     {{- if $class -}}<div class="{{ $class }}">{{- end -}}
       {{- if eq $tpl "RelativeTime" -}}
         {{ template "RelativeTime" $item }}
+      {{- else if eq $tpl "WeirdTime" -}}
+        {{ template "WeirdTime" $item }}
       {{- else if eq $tpl "Duration" -}}
         {{ template "Duration" $item }}
       {{- else if eq $tpl "Link" -}}
@@ -167,11 +173,32 @@
     {{- end -}}
 {{- end -}}
 
+{{- define "WidgetHeader" -}}
+  <div class="widget-header">
+    <h2 class="uppercase">{{ . }}</h2>
+  </div>
+{{- end -}}
+
+{{- define "WidgetContent" -}}
+  <div class="widget-content">
+    {{ . }}
+  </div>
+{{- end -}}
+
+
+{{- define "WidgetError" -}}
+  <div class="widget-content">
+    <div class="widget-error-header">
+      <div class="color-negative size-h3">ERROR</div>
+    </div>
+    <p class="break-all">{{ . }}</p>
+  </div>
+{{- end -}}
+
 {{- define "ErrorMessage" -}}
   <div class="widget-content">
     <div class="widget-error-header">
       <div class="color-negative size-h3">ERROR</div>
-      {{ template "ErrorIcon" }}
     </div>
     <p class="break-all">{{ . }}</p>
   </div>

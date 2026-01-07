@@ -5,6 +5,6 @@
   url: https://www.reddit.com/r/pics/hot.json
   frameless: true
   template: |
-    {{ $items := .JSON.Array `data.children.#(data.domain=="i.redd.it")#.{"id":data.name,"title":data.title,"image":data.url_overridden_by_dest}` }}
+    {{ $items := .JSON.Array `data.children.#(data.domain=="i.redd.it")#.{"id":data.name,"title":data.title,"url":{"fn":!"replace","val":data.permalink,"href":!"https://reddit.com{val}"},"image":{"src":data.url_overridden_by_dest}}` }}
     $include: /components/templates.gohtml
     $include: /components/gallery.gohtml

@@ -1,6 +1,22 @@
-- name: "#frontend" # 
+- name: "#frontend" #
   slug: frontend
   width: wide
+
+  head-widgets:
+
+    - <<: *backube-base
+      hide-header: true
+      title: "DevOps Videos"
+      options:
+        collapse-after-rows: 1
+      parameters:
+        channel:
+          - UCJZv4d5rbIKd4QHMPkcABCw
+        keyword:
+          - frontend
+          - webdev
+          - css
+          - tailwind
 
   columns:
 
@@ -79,12 +95,6 @@
 
     - size: full
       widgets:
-
-        - type: videos
-          hide-header: true
-          style: horizontal-cards
-          channels:
-            - UCFbNIlppjAuEX4znoulh0Cw #@WebDevSimplified
 
         - type: split-column
           max-columns: 3

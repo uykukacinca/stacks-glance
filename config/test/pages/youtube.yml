@@ -5,23 +5,22 @@
 
   columns:
 
+    - size: small
+      widgets:
+
+        - <<: *backube-channels
+          options:
+            collapse-after-rows: 4
+
     - size: full
       widgets:
 
-        - <<: *youtube-base
-          title: "@Theo"
-          options:
-            collapse-after-rows: 1
+        - <<: *backube-xml
           parameters:
-            part: "snippet"
-            playlistId: UUbRP3c757lWg9M-U7TyEkXA
-            maxResults: 20
-
-        - <<: *youtube-base
-          title: "@Syntax"
-          options:
-            collapse-after-rows: 1
-          parameters:
-            part: "snippet"
-            playlistId: UUyU5wkjgQYGRB0hIHMwm2Sg
-            maxResults: 20
+            channel:
+              - UC6biysICWOJ-C3P4Tyeggzg # Low Level Learning
+              - UCVeW9qkBjo3zosnqUbG7CFw # _JohnHammond
+              - UCKGe7fZ_S788Jaspxg-_5Sg # @pcsecuritychannel
+              - UCJ2U9Dq9NckqHMbcUupgF0A # BlackHillsInformationSecurity
+              - UCP7WmQ_U4GB3K51Od9QvM0w # @davidbombal
+              - UCMIqrmh2lMdzhlCPK5ahsAg # Darknet Diaries

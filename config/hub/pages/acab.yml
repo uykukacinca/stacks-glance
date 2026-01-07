@@ -19,9 +19,13 @@
     - size: full
       widgets:
 
-        - <<: *videos-grid
-          channels:
-            - UCcth5uVYORmu5Cu15ZjpzuQ #@thecivilrightslawyer
-            - UCfDO_4-o9H0hLHW00zWTVYQ #@X-Cop
-            - UCc-0YpRpqgA5lPTpSQ5uo-Q #@AuditTheAudit
-            - UCXMYxKMh3prxnM_4kYZuB3g #@PoliceActivity
+        - <<: *backube-xml
+          title: "Videos"
+          options:
+            collapse-after-rows: 6
+          parameters:
+            channel:
+              - UCcth5uVYORmu5Cu15ZjpzuQ #@thecivilrightslawyer
+              - UCfDO_4-o9H0hLHW00zWTVYQ #@X-Cop
+              - UCc-0YpRpqgA5lPTpSQ5uo-Q #@AuditTheAudit
+              - UCXMYxKMh3prxnM_4kYZuB3g #@PoliceActivity

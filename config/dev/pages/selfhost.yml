@@ -80,34 +80,38 @@
             - traefik/traefik
             - AdguardTeam/AdGuardHome
             - moghtech/komodo
-            # - authelia/authelia
             - pocket-id/pocket-id
-            # - qdm12/gluetun
-            # - fosrl/pangolin
             - rustmailer/bichon
             - nicotsx/zerobyte
             - immich-app/immich
-            # - caddyserver/caddy
             - jellyfin/jellyfin
             - Sonarr/Sonarr
             - radarr/radarr
-            - prowlarr/prowlarr
+            - glanceapp/glance
+            - umami-software/umami
+            - amir20/dozzle
+            - binwiederhier/ntfy
+            - henrygd/beszel
+            - advplyr/audiobookshelf
+            - autobrr/qui
+            - dokploy/dokploy
+            - steveiliop56/tinyauth
+            - thomiceli/opengist
+            # - open-webui/open-webui
+            # - authelia/authelia
+            # - qdm12/gluetun
+            # - fosrl/pangolin
+            # - caddyserver/caddy
+            # - prowlarr/prowlarr
             # - Readarr/Readarr
             # - Lidarr/Lidarr
             # - flaresolverr/flaresolverr
-            - glanceapp/glance
-            - umami-software/umami
             # - iv-org/invidious
             # - docmost/docmost
             # - home-assistant/core
-            - amir20/dozzle
             # - sharevb/it-tools
-            - binwiederhier/ntfy
-            - henrygd/beszel
             # - kieraneglin/pinchflat
             # - codeberg:forgejo/forgejo
-            - advplyr/audiobookshelf
-            # - RostislavDugin/postgresus
 
         #  - type: rss
         #    cache: *long-cache
@@ -139,27 +143,29 @@
           max-columns: 3
           widgets:
 
-            - type: group
+            - type: split-column
+              max-columns: 1
               widgets:
 
-                - <<: *reddit-simple-full
-                  subreddit: selfhosted
+                - type: group
+                  widgets:
 
-                - <<: *reddit-simple-top-week
-                  collapse-after: 30
-                  title: New
-                  sort-by: new
-                  subreddit: selfhosted
+                    - <<: *reddit-simple-full
+                      collapse-after: 15
+                      subreddit: selfhosted
 
-                - <<: *reddit-simple-top-week
-                  collapse-after: 30
-                  title: Top This Week
-                  subreddit: selfhosted
+                - type: group
+                  widgets:
 
-                - <<: *reddit-simple-top-month
-                  collapse-after: 30
-                  title: Month
-                  subreddit: selfhosted
+                    - <<: *reddit-simple-top-week
+                      collapse-after: 10
+                      title: Top This Week
+                      subreddit: selfhosted
+
+                    - <<: *reddit-simple-top-month
+                      collapse-after: 10
+                      title: Month
+                      subreddit: selfhosted
 
             - type: split-column
               max-columns: 1
@@ -205,13 +211,28 @@
                       subreddit: podman
                       collapse-after: 5
 
-            - <<: *videos-grid
-              channels:
-                - UC9x0AN7BWHpCDHSm9NiJFJQ # NetworkChuck
-                - UCOk-gHyjcWZNj3Br4oxwh0A # Techno Tim
-                - UCZNhwA1B5YqiY1nLzmM0ZRg # Christian Lempa
-                - UCVy16RS5eEDh8anP8j94G2A # DB Tech
-                - UCUUTdohVElFLSP4NBnlPEwA # Jim's Garage
-                - UCh66aXZ_hqiT7au6Nwb8p3Q # KTZ Systems
-                - UCHkYOD-3fZbuGhwsADBd9ZQ # Lawrence Systems
-                - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
+            - type: group
+              widgets:
+
+                - <<: *backube-base
+                  title: "Videos"
+                  options:
+                    collapse-after-rows: 8
+                  parameters:
+                    channel:
+                      - UCOk-gHyjcWZNj3Br4oxwh0A # Techno Tim
+                      - UCZNhwA1B5YqiY1nLzmM0ZRg # Christian Lempa
+                      - UCVy16RS5eEDh8anP8j94G2A # DB Tech
+                      - UCUUTdohVElFLSP4NBnlPEwA # Jim's Garage
+                      - UCh66aXZ_hqiT7au6Nwb8p3Q # KTZ Systems
+                    keyword:
+                      - selfhost
+                      - self host
+
+                - <<: *backube-base
+                  title: "Docker"
+                  options:
+                    collapse-after-rows: 8
+                  parameters:
+                    keyword:
+                      - docker

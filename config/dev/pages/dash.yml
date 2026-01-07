@@ -54,7 +54,7 @@
                   icon: auto-invert ${ICONS_URL}/custom/backblaze.svg
                   url: https://secure.backblaze.com/b2_buckets.htm
                 - title: Google Cloud Console
-                  color: 214.1 89.8 46.1
+                  color: 214.1 89.8 36.1
                   icon: auto-invert ${ICONS_URL}/google-cloud-dark
                   url: https://console.cloud.google.com/home/dashboard
             # - title: Hosting
@@ -119,26 +119,28 @@
 
             - <<: *jellyfin-movies-list
               options:
-                collapse-after: 3
+                collapse-after-rows: 4
 
             - <<: *jellyfin-episodes-list
               options:
-                collapse-after: 3
+                collapse-after-rows: 4
 
             # - <<: *radarr-recently-added
             #   options:
-            #     collapse-after: 3
+            #     collapse-after-rows: 4
 
             # - <<: *sonarr-recently-added
             #   options:
-            #     collapse-after: 3
+            #     collapse-after-rows: 4
 
             - <<: *audiobookshelf-recent-podcasts
               options:
-                collapse-after: 3
+                collapse-after-rows: 4
 
             - <<: *audiobookshelf-recent-audiobooks
               options:
-                collapse-after: 3
+                collapse-after-rows: 4
 
             - <<: *sonarr-calendar
+
+            - type: to-do

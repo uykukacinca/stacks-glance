@@ -76,12 +76,22 @@
                   title: Month
                   subreddit: reactjs
 
-            - <<: *videos-grid
-              channels:
-                - UCf6AGqO98eGk11nfazociVQ # ByteGrad
-                - UCZMli3czZnd1uoc1ShTouQw # leerob
-                - UCsrVDPJBYeXItETFHG0qzyw # WebDevCody
-                - UCvGwM5woTl13I-qThI4YMCg # joshtriedcoding
+            - <<: *backube-base
+              title: "React Videos"
+              options:
+                collapse-after-rows: 8
+              parameters:
+                channel:
+                  - UCf6AGqO98eGk11nfazociVQ # ByteGrad
+                  - UCZMli3czZnd1uoc1ShTouQw # leerob
+                  - UCsrVDPJBYeXItETFHG0qzyw # WebDevCody
+                  - UCvGwM5woTl13I-qThI4YMCg # joshtriedcoding
+                  - UC80PWRj_ZU8Zu0HSMNVwKWw # Codevolution
+                  - UC6vRUjYqDuoUsYsku86Lrsw # Jack Herrington
+                  - UCrL69sErRwEyr7_p0qVCkOQ # Cosden Solutions
+                keyword:
+                  - reactjs
+                  - nextjs
 
             - type: group
               widgets:

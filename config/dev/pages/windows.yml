@@ -86,8 +86,15 @@
                 - url: https://www.windowscentral.com/rss.xml
                   title: Windows Central
 
-            - <<: *videos-grid
-              channels:
-                - UCL-fHOdarou-CR2XUmK48Og # shanselman
-                - UCNzszbnvQeFzObW0ghk0Ckw # DavesGarage
-                - UCsMica-v34Irf9KVTh6xx-g # MicrosoftDeveloper
+            - <<: *backube-base
+              title: "Videos"
+              options:
+                collapse-after-rows: 8
+              parameters:
+                channel:
+                  - UCL-fHOdarou-CR2XUmK48Og # shanselman
+                  - UCNzszbnvQeFzObW0ghk0Ckw # DavesGarage
+                  - UCsMica-v34Irf9KVTh6xx-g # MicrosoftDeveloper
+                keywords:
+                  - windows
+                  - microsoft

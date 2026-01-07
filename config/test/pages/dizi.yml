@@ -1,0 +1,40 @@
+- name: "*dizi"
+  slug: dizi
+  show-in-navigation: false
+  width: wide
+
+  columns:
+
+    - size: full
+      widgets:
+
+        - <<: *backube-xml
+          title: "Diziler"
+          options:
+            collapse-after-rows: 2
+          parameters:
+            playlist:
+              - PLkowzc1JKWSj-LXZoBKue22W-RIPiIPiW #@tasacakbudeniztrt
+              - PLvFvMVi8gPxDZEY9Kaj-uaTrJC6TbBusr #@KiskanmakDizisi
+
+        - type: split-column
+          max-columns: 4
+          widgets:
+
+            - type: extension
+              url: ${GLIMPSE_URL}/eksisozluk/thread/kiskanmak-dizi--8027188
+              allow-potentially-dangerous-html: true
+              cache: 5s
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                filter: popular
+
+            - type: extension
+              url: ${GLIMPSE_URL}/eksisozluk/thread/tasacak-bu-deniz--8020457
+              allow-potentially-dangerous-html: true
+              cache: 5s
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                filter: popular

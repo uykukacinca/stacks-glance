@@ -24,7 +24,6 @@ pages:
   - $include: pages/live.yml
   - $include: pages/tr.yml
   - $include: pages/vlogs.yml
-  - $include: pages/outdoor.yml
   - $include: pages/documentaries.yml
   - $include: pages/crime.yml
   - $include: pages/acab.yml

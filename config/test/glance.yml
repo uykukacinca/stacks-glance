@@ -18,7 +18,9 @@ pages:
   - $include: pages/gallery.yml
   - $include: pages/kick.yml
   - $include: pages/twitch.yml
+  - $include: pages/backube.yml
   - $include: pages/youtube.yml
   - $include: pages/media.yml
+  - $include: pages/dizi.yml
   - $include: pages/jellyfin.yml
   - $include: pages/google.yml

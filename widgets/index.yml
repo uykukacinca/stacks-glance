@@ -19,6 +19,10 @@ widgets:
   - $include: twitch/streams.yml
 
   - $include: youtube/base.yml
+  - $include: backube/base.yml
+  - $include: backube/xml.yml
+  - $include: backube/latest.yml
+  - $include: backube/channels.yml
 
   - $include: audiobookshelf/podcasts.yml
   - $include: audiobookshelf/audiobooks.yml

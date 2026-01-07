@@ -22,6 +22,7 @@ Access at `http://localhost:8080`
 ## Configuration
 
 Each dashboard environment (`dev/`, `hub/`, `test/`) has:
+
 - `glance.yml` - Main configuration
 - `pages/` - Individual page definitions
 

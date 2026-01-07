@@ -16,23 +16,24 @@
 
   --x-c-foreground: hsl(from var(--color-background) h s calc(l + 4));
   --x-c-foreground-light: hsl(from var(--x-c-foreground) h s calc(l + 3));
+  --x-c-foreground-lighter: hsl(from var(--x-c-foreground) h s calc(l + 10));
 
   --x-t-speed: 0.2s;
+
+  --animate-spin: spin 1s linear infinite;
+  --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-bounce: bounce 1s infinite;
 }
 
-:root {
-  --color-text-highlight: hsl(from var(--x-c-foreground) h s calc(l + 70));
-  --color-text-paragraph: hsl(from var(--x-c-foreground) h s calc(l + 50));
-  --color-text-base: hsl(from var(--x-c-foreground) h s calc(l + 40));
-  --color-text-base-muted: hsl(from var(--x-c-foreground) h s calc(l + 30));
-  --color-text-subdue: hsl(from var(--x-c-foreground) h s calc(l + 20));
-
-  --color-widget-content-border: transparent !important;
-}
+/*****************************************************************************/
 
 .x-container {
   border-radius: var(--x-br);
   background: var(--x-c-foreground);
+}
+
+.x-content-padding {
   padding: var(--widget-content-padding);
 }
 
@@ -55,13 +56,31 @@
   grid-area: footer;
 }
 
-/* */
+/**************************************************************************************************/
 
-.x-app {
-  border: 1px solid var(--color-widget-content-border);
-  border-radius: var(--border-radius);
-  background: var(--x-c-foreground);
+.x-grid {
+  --min-width: 250px;
+  --repeat: auto-fill;
+  --gap: var(--x-gap-medium);
+  display: grid;
+  grid-template-columns: repeat(var(--repeat), minmax(var(--min-width), 1fr));
+  gap: var(--gap);
 }
+
+/**************************************************************************************************/
+
+.x-stack {
+  display: grid;
+  grid-template-areas: "stack";
+}
+
+.x-stack > * {
+  display: grid;
+  grid-area: stack;
+  z-index: 1;
+}
+
+/**************************************************************************************************/
 
 .x-app-body {
   min-height: 100px;
@@ -70,7 +89,7 @@
 .x-app-header,
 .x-app-footer {
   padding: var(--widget-content-padding);
-  background-color: hsl(var(--bghs), calc(var(--scheme) var(--bgl) + 5%));
+  background-color: hsl(from var(--x-c-foreground) h s calc(l - 1));
 }
 
 .x-app > div:only-child {
@@ -86,7 +105,7 @@
 }
 
 .x-app > div + div {
-  border-top: 1px solid var(--color-widget-content-border);
+  border-top: 1px solid var(--x-c-foreground-light);
 }
 
 /**************************************************************************************************/
@@ -99,7 +118,7 @@
     opacity 0.2s;
   width: 100%;
   object-fit: cover;
-  border-radius: var(--x-br);
+  border-radius: var(--x-br-half);
 }
 
 .x-thumb-parent:hover .x-thumb {
@@ -109,23 +128,13 @@
 
 /**************************************************************************************************/
 
-.x-cards {
-  --min-width: 250px;
-  --repeat: auto-fill;
-  --gap: var(--x-gap-medium);
-  display: grid;
-  grid-template-columns: repeat(var(--repeat), minmax(var(--min-width), 1fr));
-  gap: var(--gap);
+.x-list .x-thumb {
+  height: 6.4rem;
 }
 
-.x-cards .x-thumb {
-  border-radius: var(--x-br-t);
-}
-
-/* */
+/**************************************************************************************************/
 
 .x-card {
-  border: 1px solid var(--color-widget-content-border);
   border-radius: var(--x-br);
   background: var(--x-c-foreground);
   padding: var(--widget-content-padding);
@@ -133,33 +142,21 @@
 
 /**************************************************************************************************/
 
-.x-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--x-gap-medium);
-}
-
-.x-list .x-thumb {
-  height: 6.3rem;
-  border-radius: var(--x-br-half);
-}
-
-/**************************************************************************************************/
-
 .x-media {
   display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 3;
   gap: var(--x-gap-medium);
-}
-
-/* */
-
-.x-media {
-  -border: 1px solid var(--color-widget-content-border);
   border-radius: var(--x-br);
   background: var(--x-c-foreground);
   transition: background var(--x-t-speed);
+}
+
+.x-grid .x-media {
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+}
+
+.x-grid .x-media .x-thumb {
+  border-radius: var(--x-br-t);
 }
 
 .x-media:hover {
@@ -169,24 +166,13 @@
 .x-media-header,
 .x-media-content {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   padding: 0 var(--widget-content-vertical-padding);
 }
 
 .x-media-content {
   margin-bottom: var(--widget-content-vertical-padding);
-}
-
-/**************************************************************************************************/
-
-.x-stack {
-  display: grid;
-  grid-template-areas: "stack";
-}
-
-.x-stack > * {
-  display: grid;
-  grid-area: stack;
-  z-index: 1;
 }
 
 /**************************************************************************************************/
@@ -205,6 +191,10 @@
   filter: drop-shadow(0px 0px 20px var(--color-background));
 }
 
+.x-overlay > .x-play {
+  border-radius: var(--x-br-t);
+}
+
 .x-overlay:hover > .x-play {
   background: hsl(from var(--x-c-foreground-light) h s l / 0.75);
 }
@@ -217,7 +207,7 @@
 
 .x-gallery {
   --columns: 3;
-  --gap: var(--x-gap-large);
+  --gap: var(--x-gap-medium);
   columns: var(--columns) auto;
   gap: var(--gap);
 }

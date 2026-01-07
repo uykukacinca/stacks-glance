@@ -81,15 +81,22 @@
                     limit: 20
                     collapseAfter: 5
 
-                - <<: *videos-grid
-                  title: Videos
-                  channels:
-                    - UCiVO_mThS9B3tNc_kzpn-3g #@playtft
+                - <<: *backube-xml
+                  title: "Videos"
+                  options:
+                    collapse-after-rows: 6
+                  parameters:
+                    channel:
+                      - UCiVO_mThS9B3tNc_kzpn-3g #@playtft
 
-            - <<: *videos-grid
-              title: Videos
-              channels:
-                - UC-hfguFmPqh81ZfFuIq0X1A #@MortdogTFT
-                - UC6eg6Lb8-bNv45wMRhpw-Rg #@Frodan2
-                - UCSetBEle1YCRi_irSxruARA #@RapidTFT
-                - UC7CFFsofSY3zHJlBEP-X2ww #@sunhideTFT
+
+            - <<: *backube-xml
+              title: "Videos"
+              options:
+                collapse-after-rows: 8
+              parameters:
+                channel:
+                  - UC-hfguFmPqh81ZfFuIq0X1A #@MortdogTFT
+                  - UC6eg6Lb8-bNv45wMRhpw-Rg #@Frodan2
+                  - UCSetBEle1YCRi_irSxruARA #@RapidTFT
+                  - UC7CFFsofSY3zHJlBEP-X2ww #@sunhideTFT

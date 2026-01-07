@@ -1,0 +1,26 @@
+- &backube-xml
+  type: custom-api
+  title: Youtube Videos
+  cache: *no-cache
+  frameless: true
+  url: https://bt.${HOST_NAME}/api/xml
+  css-class: x-backube
+  options:
+    collapse-after-rows: 4
+  parameters:
+    limit: 32
+  template: |
+    {{ $items := .JSON.Array `#.{"id":id,"title":Title,"url":{"href":Url},"header":[{"tpl":!"Title"}],"image":{"src":ThumbnailUrl,"overlays":[{"class":!"x-center x-play","tpl":!"PlayIcon"}]},"footer":[{"tpl":!"WeirdTime","val":TimePosted},{"tpl":!"Link","val":{"title":Author,"link":{"url":AuthorUrl}}}]}`
+    }}
+    $include: /components/templates.gohtml
+    $include: /components/media.gohtml
+    $include: /components/media-container.gohtml
+
+- &backube-simple
+  <<: *backube-xml
+  template: |
+    {{ $items := .JSON.Array `#.{"id":id,"title":Title,"url":{"href":Url},"header":[{"tpl":!"Title"}],"image":{"src":ThumbnailUrl,"overlays":[{"class":!"x-center x-play","tpl":!"PlayIcon"}]}}`
+    }}
+    $include: /components/templates.gohtml
+    $include: /components/media.gohtml
+    $include: /components/media-container.gohtml

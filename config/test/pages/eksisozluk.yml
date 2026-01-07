@@ -73,13 +73,6 @@
                 query: depremi
 
             - type: extension
-              url: ${GLIMPSE_URL}/eksisozluk/profile/shattafakap
-              allow-potentially-dangerous-html: true
-              cache: 5m
-              headers:
-                x-glimpse-output: glance
-
-            - type: extension
               url: ${GLIMPSE_URL}/eksisozluk/thread/anin-fotografi--6459985
               allow-potentially-dangerous-html: true
               cache: 5s

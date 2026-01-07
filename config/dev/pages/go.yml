@@ -1,0 +1,101 @@
+- name: "Go" # 🟢
+  slug: go
+  width: wide
+  columns:
+
+    - size: small
+      widgets:
+
+        - type: search
+          search-engine: ${REDDIT_URL}/r/golang/search?q={QUERY}&restrict_sr=on&sort=new&t=all
+          new-tab: true
+          bangs:
+            - title: YouTube
+              shortcut: "!y"
+              url: ${YOUTUBE_URL}/results?search_query=golang+{QUERY}
+            - title: Reddit
+              shortcut: "!r"
+              url: ${REDDIT_URL}/r/golang/search?q={QUERY}&restrict_sr=on&sort=new&t=all
+
+        - type: bookmarks
+          groups:
+            - hide-arrow: true
+              links:
+                - title: Documentation
+                  icon: auto-invert ${ICONS_URL}/golang-dark
+                  url: https://go.dev/doc/
+                - title: Standard library
+                  url: https://pkg.go.dev/std
+                - title: Packages
+                  url: https://pkg.go.dev/
+                - title: How to Write Go Code
+                  url: https://go.dev/doc/code#Introduction
+
+        - type: bookmarks
+          groups:
+            - links:
+                - title: awesome-go
+                  url: https://github.com/avelino/awesome-go
+                - title: go-standards
+                  url: https://github.com/golang-standards/project-layout
+                - title: go-patterns
+                  url: https://github.com/tmrts/go-patterns
+                - title: go-datastructures
+                  url: https://github.com/Workiva/go-datastructures
+                - title: gofiber
+                  url: https://github.com/gofiber/fiber
+
+        - <<: *github-releases
+          repositories:
+            - hibiken/asynq
+            - pocketbase/pocketbase
+
+        - <<: *github-releases
+          repositories:
+            - go-gorm/gorm
+            - wailsapp/wails
+            - gocolly/colly
+            - uber-go/zap
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 3
+          widgets:
+
+            - type: split-column
+              max-columns: 1
+              widgets:
+
+                - <<: *reddit-simple-full
+                  title: golang
+                  subreddit: golang
+                  collapse-after: 12
+
+                - <<: *reddit-simple-top-week
+                  title: Top This Week
+                  subreddit: golang
+                  collapse-after: 15
+
+            - type: split-column
+              max-columns: 1
+              widgets:
+
+                - <<: *github-repository
+                  repository: golang/go
+
+                - <<: *reddit-simple-top-month
+                  title: Top This Month
+                  subreddit: golang
+                  collapse-after: 22
+
+            - <<: *backube-base
+              title: "Videos"
+              options:
+                collapse-after-rows: 8
+              parameters:
+                channel:
+                  - UCZwW2PXNovXy_xUIhmYv7cg
+                keyword:
+                  - golang

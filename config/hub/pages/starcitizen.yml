@@ -113,12 +113,10 @@
               title: Top This Week
               subreddit: starcitizen
 
-            - <<: *videos-grid
-              title: Videos
-              channels:
-                - UCTeLqJq1mXUX5WWoNXLmOIA #@RobertsSpaceInd
-                - UCiPdjrLoUsyJh3XS7Aw7rzg #@Morphologis
-                - UC7W5LTUy7DJYpx0cpVKJe0g #@BoredGamerUK
-                - UCOblfLLbNni0_VUeGWhiKDw #@SaltEMike
-                - UCiPdjrLoUsyJh3XS7Aw7rzg #@BoredGamerUK
-                - UCiPdjrLoUsyJh3XS7Aw7rzg #@BoredGamerUK
+            - <<: *backube-latest
+              title: "Videos"
+              options:
+                collapse-after-rows: 6
+              parameters:
+                <<: *backube-video-parameters
+                filter: channel.tags.name?="star citizen"

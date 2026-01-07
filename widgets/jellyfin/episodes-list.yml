@@ -1,7 +1,7 @@
 - &jellyfin-episodes-list
   <<: *jellyfin-episodes
   template: |
-    {{ $items := .JSON.Array `#.{"id":Id,"title":Name,"url":{"fn":!"replace","val":Id,"href":!"${JELLYFIN_URL}/web/#/details?id={val}"},"image":{"fn":!"replace","val":SeasonId,"src":!"${JELLYFIN_URL}/Items/{val}/Images/Primary","class":!"x-ar-3x4"},"header":[{"tpl":!"Episode","val":{"season":ParentIndexNumber,"episode":IndexNumber},"class":!"shrink-0"},{"tpl":!"Text","val":SeriesName,"class":!"block text-truncate"}],"footer":[{"tpl":!"Duration","units":!"ticks","val":RunTimeTicks},{"tpl":!"Rating","val":CommunityRating}]}` }}
+    {{ $items := .JSON.Array `#.{"id":Id,"title":Name,"url":{"fn":!"replace","val":Id,"href":!"${JELLYFIN_URL}/web/#/details?id={val}"},"image":{"fn":!"replace","val":SeasonId,"src":!"${JELLYFIN_URL}/Items/{val}/Images/Primary","class":!"x-ar-3x4"},"header":[{"tpl":!"Episode","val":{"season":ParentIndexNumber,"episode":IndexNumber},"class":!"shrink-0"},{"tpl":!"Text","val":SeriesName,"class":!"block text-truncate"}],"footer":[{"tpl":!"Duration","units":!"ticks","val":RunTimeTicks,"class":!"flex shrink-0"},{"tpl":!"Rating","val":CommunityRating}]}` }}
     $include: /components/templates.gohtml
     $include: /components/list.gohtml
     $include: /components/list-container.gohtml

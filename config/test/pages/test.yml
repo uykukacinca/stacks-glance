@@ -7,7 +7,7 @@
     - size: small
       widgets:
 
-        - <<: *sonarr-calendar
+        - <<: *components-app
 
         - type: html
           title: Sonarr Calendar
@@ -95,14 +95,8 @@
     - size: full
       widgets:
 
-        - type: group
-          widgets:
-
-
         - <<: *jellyfin-next-up
-
           template: |
-
-            <div class="widget-content ">
-              <pre class="break-alll">{{ .JSON.Array `Items|@pretty` }}</pre>
+            <div class="widget-content">
+              <pre class="break-all">{{ .JSON.Array `Items.0|@pretty` }}</pre>
             </div>

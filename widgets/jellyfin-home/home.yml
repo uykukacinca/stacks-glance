@@ -10,11 +10,6 @@
     LimitsNextUpResume: "14"
     LimitsRecentlyAdded: "30"
   template: |
-    $include: utils.gohtml
-    {{- define "OpenInMpv" -}}
-      <a href="mpv-handler://play/{{ . }}">mpv</a>
-    {{- end -}}
-    $include: card-cover.gohtml
-    $include: card-thumb.gohtml
+    $include: /components/templates.gohtml
+    $include: /components/media.gohtml
     $include: home.gohtml
-  #  $include: now.gohtml
