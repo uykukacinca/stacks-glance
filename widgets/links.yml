@@ -1,7 +1,7 @@
 - &links-local
   color: 129 68 58
   links:
-    - title: Archer VR300
+    - title: Archer AX3000 #VR300
       icon: auto-invert ${ICONS_URL}/tp-link-dark
       url: http://192.168.1.1
     - title: Archer C50

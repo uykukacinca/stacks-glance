@@ -1,11 +1,11 @@
 const NTFY = {
   topics: ["komodo", "zerobyte"],
-  hostname: `ntfy.${HOST_NAME}`,
+  hostname: NTFY_URL,
   wsReconnectDelay: 3000,
   maxReconnectAttempts: 5,
 
   get messagesURL() {
-    return `https://${this.hostname}/${this.topics}/json?poll=1&since=24h`;
+    return `${this.hostname}/${this.topics}/json?poll=1&since=24h`;
   },
 
   get subscribeURL() {
@@ -14,7 +14,7 @@ const NTFY = {
 
   renderMessage: (item) => `<div class="flex items-center gap-10 glimpse-user">
   <div class="glimpse-user-avatar shrink-0">
-    <img class="glimpse-image avatar" src="https://i.${HOST_NAME}/${item.topic}" alt="">
+    <img class="glimpse-image avatar" src="${ICONS_URL}/${item.topic}" alt="">
   </div>
   <div class="glimpse-user-card">
     <div class="flex items-center gap-7">${item.title}</div>

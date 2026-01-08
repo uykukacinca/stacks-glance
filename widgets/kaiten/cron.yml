@@ -1,10 +1,10 @@
 - &kaiten-cron
   type: custom-api
   cache: *no-cache
-  #url: http://192.168.0.100:3000/docker/list
-  url: http://kaiten:3000/cron/jobs
+  #url: http://kaiten:3000/cron/jobs
+  url: ${KAITEN_URL}/cron/jobs
   allow-insecure: true
   title: Cron Jobs
-  title-url: https://gd.${HOST_NAME}/openapi
+  title-url: ${KAITEN_URL}/openapi
   template: | #html
     $include: cron.gohtml

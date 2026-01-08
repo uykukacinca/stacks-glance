@@ -23,4 +23,4 @@ pages:
   - $include: pages/media.yml
   - $include: pages/dizi.yml
   - $include: pages/jellyfin.yml
-  - $include: pages/google.yml
+  #- $include: pages/google.yml

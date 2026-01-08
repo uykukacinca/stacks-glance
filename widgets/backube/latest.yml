@@ -10,7 +10,7 @@
   title: Youtube Latest Videos
   cache: *no-cache
   frameless: true
-  url: https://bt.${HOST_NAME}/api/collections/videos/records
+  url: ${BACKUBE_URL}/api/collections/videos/records
   css-class: x-backube
   options:
     collapse-after-rows: 4

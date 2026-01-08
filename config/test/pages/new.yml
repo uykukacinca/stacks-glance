@@ -810,7 +810,7 @@
         - type: torrents
           allow-insecure: true
           title: Win qBit
-          url: https://q.${HOST_NAME}
+          url: ${QBIT_URL}
           username: ${QBIT_USER}
           password: ${QBIT_PASS}
 

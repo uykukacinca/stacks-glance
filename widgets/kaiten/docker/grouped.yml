@@ -1,8 +1,8 @@
 - &kaiten-docker-grouped
   type: custom-api
   cache: *no-cache
-  #url: http://192.168.0.100:3000/docker/grouped
-  url: http://kaiten:3000/docker/grouped
+  #url: http://kaiten:3000/docker/grouped
+  url: ${KAITEN_URL}/docker/grouped
   allow-insecure: true
   template: | #html
     $include: grouped.gohtml

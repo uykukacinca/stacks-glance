@@ -9,6 +9,7 @@
     <div
       class="x-grid x-collapsible"
       data-collapse-after-rows="{{ $collapseAfterRows }}"
+      style="--gap:var(--x-gap-large);"
     >
       {{- range $item := $items -}}
         {{- if or (eq ($item.String "title") "") (not ($item.Exists "title")) -}}

@@ -17,11 +17,11 @@ services:
     restart: always
     healthcheck:
       test: wget --spider -q http://127.0.0.1:8080/api/healthz
-      interval: 30s
+      interval: 60s
       retries: "5"
       start_period: 10s
-      timeout: 10s
-    image: glanceapp/glance
+      timeout: 15s
+    image: glance:dev
 
   dev:
     container_name: glance-dev
@@ -41,11 +41,11 @@ services:
     restart: always
     healthcheck:
       test: wget --spider -q http://127.0.0.1:8080/api/healthz
-      interval: 30s
+      interval: 60s
       retries: "5"
       start_period: 10s
-      timeout: 10s
-    image: glanceapp/glance
+      timeout: 15s
+    image: glance:dev
 
   test:
     container_name: glance-test
@@ -65,11 +65,11 @@ services:
     restart: always
     healthcheck:
       test: wget --spider -q http://127.0.0.1:8080/api/healthz
-      interval: 30s
+      interval: 60s
       retries: "5"
       start_period: 10s
-      timeout: 10s
-    image: glanceapp/glance
+      timeout: 15s
+    image: glance:dev
 networks:
   proxy:
     external: true

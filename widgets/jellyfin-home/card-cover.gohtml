@@ -36,12 +36,12 @@
     {{ $ChildCount = $item.Int "ChildCount" }}
   {{- end -}}
 
-  {{ $linkURL := print "https://tv.${HOST_NAME}" "/web/#/details?id=" $itemID $serverQuery }}
+  {{ $linkURL := print "${JELLYFIN_URL}" "/web/#/details?id=" $itemID $serverQuery }}
 
-  {{ $thumbURL :=print "https://tv.${HOST_NAME}" "/Items/" $itemID "/Images/Primary" }}
+  {{ $thumbURL :=print "${JELLYFIN_URL}" "/Items/" $itemID "/Images/Primary" }}
   {{- if eq $mediaType "Episode" -}}
-    {{/* $thumbURL = print "https://tv.${HOST_NAME}" "/Items/" ($item.String "ParentThumbItemId") "/Images/Primary?tag=" ($item.String "ImageTags.Primary") */}}
-    {{ $thumbURL = print "https://tv.${HOST_NAME}" "/Items/" ($item.String "SeriesId") "/Images/Primary?tag=" ($item.String "SeriesPrimaryImageTag") }}
+    {{/* $thumbURL = print "${JELLYFIN_URL}" "/Items/" ($item.String "ParentThumbItemId") "/Images/Primary?tag=" ($item.String "ImageTags.Primary") */}}
+    {{ $thumbURL = print "${JELLYFIN_URL}" "/Items/" ($item.String "SeriesId") "/Images/Primary?tag=" ($item.String "SeriesPrimaryImageTag") }}
   {{- end -}}
 
   {{- if $item.Exists "UserData.PlayedPercentage" -}}
@@ -176,7 +176,7 @@
         <div class="text-truncate ">
           {{- if eq $mediaType "MusicAlbum" -}}
             {{- range $artist := $item.Array "AlbumArtists" -}}
-              {{ $artistURL := print "https://tv.${HOST_NAME}" "/web/#/details?id=" ($artist.String "Id") $serverQuery }}
+              {{ $artistURL := print "${JELLYFIN_URL}" "/web/#/details?id=" ($artist.String "Id") $serverQuery }}
               {{ $artistName := $artist.String "Name" }}
               <a
                 href="{{ $artistURL }}"
@@ -202,7 +202,7 @@
             {{ $ProductionYear }}
           {{- else if eq $mediaType "Book" -}}
             {{- range $person := $item.Array "People" -}}
-              {{ $personURL := print "https://tv.${HOST_NAME}" "/web/#/details?id=" ($person.String "Id") $serverQuery }}
+              {{ $personURL := print "${JELLYFIN_URL}" "/web/#/details?id=" ($person.String "Id") $serverQuery }}
               {{ $personName := $person.String "Name" }}
               <a
                 href="{{ $personURL }}"

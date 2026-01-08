@@ -1,8 +1,8 @@
 - &kaiten-docker-list
   type: custom-api
   cache: *no-cache
-  #url: http://192.168.0.100:3000/docker/list
-  url: http://kaiten:3000/docker/list
+  #url: http://kaiten:3000/docker/list
+  url: ${KAITEN_URL}/docker/list
   allow-insecure: true
   template: | #html
     $include: list.gohtml

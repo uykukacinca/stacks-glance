@@ -3,7 +3,7 @@
   title: Youtube Videos
   cache: *no-cache
   frameless: true
-  url: https://bt.${HOST_NAME}/api/feed
+  url: ${BACKUBE_URL}/api/feed
   css-class: x-backube
   options:
     collapse-after-rows: 4

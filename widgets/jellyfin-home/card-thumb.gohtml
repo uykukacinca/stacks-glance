@@ -32,12 +32,12 @@
     {{ $artist = $item.String "AlbumArtist" }}
   {{- end -}}
 
-  {{ $linkURL := print "https://tv.${HOST_NAME}" "/web/#/details?id=" $itemID $serverQuery }}
+  {{ $linkURL := print "${JELLYFIN_URL}" "/web/#/details?id=" $itemID $serverQuery }}
 
-  {{ $thumbURL := print "https://tv.${HOST_NAME}" "/Items/" $itemID "/Images/Thumb" }}
+  {{ $thumbURL := print "${JELLYFIN_URL}" "/Items/" $itemID "/Images/Thumb" }}
   {{- if eq $mediaType "Episode" -}}
-    {{/* $thumbURL = print "https://tv.${HOST_NAME}" "/Items/" ($item.String "ParentThumbItemId") "/Images/Thumb?tag=" ($item.String "ParentThumbImageTag") */}}
-    {{ $thumbURL = print "https://tv.${HOST_NAME}" "/Items/" ($item.String "SeriesId") "/Images/Thumb?tag=" ($item.String "SeriesPrimaryImageTag") }}
+    {{/* $thumbURL = print "${JELLYFIN_URL}" "/Items/" ($item.String "ParentThumbItemId") "/Images/Thumb?tag=" ($item.String "ParentThumbImageTag") */}}
+    {{ $thumbURL = print "${JELLYFIN_URL}" "/Items/" ($item.String "SeriesId") "/Images/Thumb?tag=" ($item.String "SeriesPrimaryImageTag") }}
   {{- end -}}
 
   {{- if $item.Exists "UserData.PlayedPercentage" -}}

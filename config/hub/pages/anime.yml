@@ -71,7 +71,7 @@
                       links:
                         - title: Crunchyroll
                           icon: auto-invert ${ICONS_URL}/crunchyroll-dark
-                          url: http://www.crunchyroll.com
+                          url: https://www.crunchyroll.com
                         - title: AniList
                           icon: auto-invert ${ICONS_URL}/custom/anilist.svg
                           url: https://anilist.co/search/anime/trending

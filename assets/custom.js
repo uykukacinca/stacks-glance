@@ -627,7 +627,7 @@ class RelativeTime {
 
 class YoutubeProgress {
   static #config = {
-    api: `https://bt.${HOST_NAME}/api/progress`,
+    api: `${BACKUBE_URL}/api/progress`,
     collection: "youtube",
     selectors: {
       videos: ".x-backube .x-media > a.x-overlay",

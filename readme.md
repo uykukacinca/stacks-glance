@@ -9,7 +9,9 @@ cp example.env .env
 docker-compose up -d
 ```
 
-Access at `http://localhost:8080`
+Access hub at `http://localhost:8080`
+Access dev at `http://localhost:8082`
+Access test at `http://localhost:8084`
 
 ## Directory Structure
 

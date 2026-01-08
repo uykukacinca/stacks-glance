@@ -66,7 +66,7 @@
     <div class="flex items-center gap-7">
       <span
         id="{{ $name }}_trigger"
-        onclick="this.classList.toggle('loading'); fetch(`https://gd.${HOST_NAME}/cron/{{ $name }}/trigger`,{method:'POST'}).then(r => r.ok ? (this.classList.toggle('color-positive'), setTimeout(()=>{this.classList.toggle('loading');this.classList.toggle('color-positive')},2000)) : '');"
+        onclick="this.classList.toggle('loading'); fetch(`${KAITEN_URL}/cron/{{ $name }}/trigger`,{method:'POST'}).then(r => r.ok ? (this.classList.toggle('color-positive'), setTimeout(()=>{this.classList.toggle('loading');this.classList.toggle('color-positive')},2000)) : '');"
         class="pointer opacity"
       >
         <svg
@@ -85,7 +85,7 @@
 
       <span
         id="{{ $name }}_pause"
-        onclick="this.classList.toggle('loading'); fetch(`https://gd.${HOST_NAME}/cron/{{ $name }}/pause`,{method:'POST'}).then(r => (this.classList.toggle('loading'), r.ok ? (this.setAttribute('hidden',''), this.nextElementSibling.removeAttribute('hidden'), this.parentElement.previousElementSibling.children.item('.dot').classList.toggle('color-positive')) : ''));"
+        onclick="this.classList.toggle('loading'); fetch(`${KAITEN_URL}/cron/{{ $name }}/pause`,{method:'POST'}).then(r => (this.classList.toggle('loading'), r.ok ? (this.setAttribute('hidden',''), this.nextElementSibling.removeAttribute('hidden'), this.parentElement.previousElementSibling.children.item('.dot').classList.toggle('color-positive')) : ''));"
         class="pointer opacity"
         {{- if not $isRunning -}}hidden{{- end -}}
       >
@@ -103,7 +103,7 @@
 
       <span
         id="{{ $name }}_resume"
-        onclick="this.classList.toggle('loading'); fetch(`https://gd.${HOST_NAME}/cron/{{ $name }}/resume`,{method:'POST'}).then(r => (this.classList.toggle('loading'), r.ok ? (this.setAttribute('hidden',''), this.previousElementSibling.removeAttribute('hidden'), this.parentElement.previousElementSibling.children.item('.dot').classList.toggle('color-positive')) : ''));"
+        onclick="this.classList.toggle('loading'); fetch(`${KAITEN_URL}/cron/{{ $name }}/resume`,{method:'POST'}).then(r => (this.classList.toggle('loading'), r.ok ? (this.setAttribute('hidden',''), this.previousElementSibling.removeAttribute('hidden'), this.parentElement.previousElementSibling.children.item('.dot').classList.toggle('color-positive')) : ''));"
         class="pointer opacity"
         {{- if $isRunning -}}hidden{{- end -}}
       >
