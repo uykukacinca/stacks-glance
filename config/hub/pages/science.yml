@@ -19,14 +19,11 @@
             - <<: *reddit-cover
               subreddit: EverythingScience
 
-            - <<: *backube-xml
-              title: "Videos"
+            - <<: *backube-latest
+              title: Videos
               options:
                 collapse-after-rows: 8
                 min-card-width-px: 240
               parameters:
-                channel:
-                  - UC1yNl2E66ZzKApQdRuTQ4tw # SabineHossenfelder
-                  - UCciQ8wFcVoIIMi-lfu8-cjQ # Anton Petrov
-                  - UCGHZpIpAWJQ-Jy_CeCdXhMA # CoolWorldsLab
-                  - UCFbtcTaMFnOAP0pFO1L8hVw # Kyle Hill
+                <<: *backube-video-parameters
+                filter: (channel.tags.name?="science"&&channel.category.code?="sci")

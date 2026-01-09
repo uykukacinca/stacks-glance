@@ -6,16 +6,11 @@
     - size: full
       widgets:
 
-        - <<: *backube-xml
-          title: "Videos"
+        - <<: *backube-latest
+          title: Videos
           options:
             collapse-after-rows: 4
           parameters:
-            channel:
-              - UCxpbaAGBv4zrRJx_AjGdVLA # bigtimebigtimebigtime
-              - UCIB5XXHNAWWzTOw6guIMYCg # harrysgarage
-              - UCPFrbCgmpkvdkjTxJq6amlQ # ShopCheckpoint
-              - UCZGkMJEmCR1IqUduqt1uFUw # noriyaro
-              - UCT-2OPZT6P8j4nEKW3DXpOA # LegitStreetCars
-              - UCyXiDU5qjfOPxgOPeFWGwKw # ThrottleHouse
-              - UCDjuge3znPZOc7W2-AsY3Xg # @magnacars
+            <<: *backube-video-parameters
+            perPage: 70
+            filter: (channel.tags.name?="cars"&&channel.category.code?="ent")

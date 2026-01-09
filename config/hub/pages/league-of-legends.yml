@@ -183,9 +183,13 @@
                         limit: 20
                         collapseAfter: 5
 
+                - <<: *reddit-cover
+                  subreddit: TeamfightTactics
+                  collapse-after: 5
+
                 - <<: *reddit-simple
                   subreddit: SummonerSchool
-                  collapse-after: 10
+                  collapse-after: 5
 
             - <<: *backube-latest
               title: "Videos"

@@ -2,52 +2,6 @@
   slug: wr
   width: wide
 
-  head-widgets:
-
-    - type: split-column
-      max-columns: 2
-      widgets:
-
-        - <<: *twitch-category
-          title: Twitch Wildrift Streams [EN, TR]
-          options:
-            collapse-after-rows: 1
-            min-card-width-px: 200
-          body:
-            query: |
-              query {
-                game(id: "514858") {
-                  streams(first: 30, options: { languages: ["EN", "TR"] }) {
-                    edges {
-                      node {
-                        id
-                        createdAt
-                        previewImageURL(width: 440, height: 248)
-                        type
-                        viewersCount
-                        broadcaster {
-                          login
-                          displayName
-                          profileImageURL(width: 300)
-                          broadcastSettings {
-                            title
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-
-        - <<: *backube-xml
-          title: "Official Wild Rift Videos"
-          options:
-            collapse-after-rows: 1
-            min-card-width-px: 200
-          parameters:
-            channel:
-              - UCd0ZomI5mPkrV735wul5kiw #@wildrift
-
   columns:
 
     - size: small
@@ -87,6 +41,14 @@
                 - title: WR Meta
                   url: https://wr-meta.com
 
+        - <<: *backube-latest
+          title: "Official Wild Rift Videos"
+          options:
+            collapse-after-rows: 4
+          parameters:
+            <<: *backube-video-parameters
+            filter: channel="UCd0ZomI5mPkrV735wul5kiw" #@wildrift
+
     - size: full
       widgets:
 
@@ -94,16 +56,18 @@
           max-columns: 3
           widgets:
 
-            - type: group
+            - type: split-column
+              max-columns: 1
               widgets:
 
                 - <<: *reddit-cover
                   subreddit: wildrift
+                  collapse-after: 10
 
                 - <<: *reddit-cover-top-week
                   title: Top This Week
                   subreddit: wildrift
-
+                  collapse-after: 10
 
             - type: group
               widgets:
@@ -116,21 +80,55 @@
                     <<: *backube-video-parameters
                     filter: channel.tags.name?="wild rift"
 
-                - <<: *backube-xml
+                - <<: *backube-latest
                   title: "Skin Spotlights"
                   options:
-                    collapse-after-rows: 4
+                    collapse-after-rows: 6
                   parameters:
-                    channel:
-                      - UCr8PQGDXXqC7fV-3aj8e5kA #@SkinSpotlightsWildRift
+                    <<: *backube-video-parameters
+                    filter: channel="UCr8PQGDXXqC7fV-3aj8e5kA" #@SkinSpotlightsWildRift
 
-            - type: extension
-              url: ${GLIMPSE_URL}/riot/news
-              allow-potentially-dangerous-html: true
-              cache: *short-cache
-              headers:
-                x-glimpse-output: glance
-              parameters:
-                game: wildrift
-                limit: 20
-                collapseAfter: 10
+            - type: split-column
+              max-columns: 1
+              widgets:
+
+                - type: extension
+                  url: ${GLIMPSE_URL}/riot/news
+                  allow-potentially-dangerous-html: true
+                  cache: *short-cache
+                  headers:
+                    x-glimpse-output: glance
+                  parameters:
+                    game: wildrift
+                    limit: 20
+                    collapseAfter: 5
+
+                - <<: *twitch-category
+                  title: Twitch Wildrift Streams [EN, TR]
+                  options:
+                    collapse-after-rows: 4
+                  body:
+                    query: |
+                      query {
+                        game(id: "514858") {
+                          streams(first: 30, options: { languages: ["EN", "TR"] }) {
+                            edges {
+                              node {
+                                id
+                                createdAt
+                                previewImageURL(width: 440, height: 248)
+                                type
+                                viewersCount
+                                broadcaster {
+                                  login
+                                  displayName
+                                  profileImageURL(width: 300)
+                                  broadcastSettings {
+                                    title
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }

@@ -13,18 +13,11 @@
     - size: full
       widgets:
 
-        - <<: *backube-xml
-          title: "Videos"
+        - <<: *backube-latest
+          title: Videos
           options:
             collapse-after-rows: 4
           parameters:
-            limit: 60
-            channel:
-              - UCXuqSBlHAE6Xw-yeJA0Tunw # LinusTechTips
-              - UCBJycsmduvYEL83R_U4JriQ # mkbhd
-              - UCMiJRAwDNSNzuYeN2uWa0pA # Mrwhosetheboss
-              - UChIs72whgZI9w6d6FhwGGHA # GamersNexus
-              - UCRYOj4DmyxhBVrdvbsUwmAA # optimumtech
-              - UCvcRA2Hva1lULVf4GCouH8w # DawidDoesTechStuff
-              - UC4QZ_LsYcvcq7qOsOhpAX4A #@ColdFusion
-              - UCsTcErHg8oDvUnTzoqsYeNw #@unboxtherapy
+            <<: *backube-video-parameters
+            perPage: 70
+            filter: channel.category.code?="tech"

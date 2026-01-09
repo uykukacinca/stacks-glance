@@ -11,24 +11,25 @@
           widgets:
 
             - <<: *reddit-cover
+              collapse-after: 10
               subreddit: Crime
 
             - <<: *reddit-cover
+              collapse-after: 20
+              subreddit: acab+Bad_Cop_No_Donut
+
+            - <<: *reddit-cover
+              collapse-after: 10
               subreddit: WithoutATrace
 
     - size: full
       widgets:
 
-        - <<: *backube-xml
-          title: "Videos"
+        - <<: *backube-latest
+          title: Videos
           options:
-            collapse-after-rows: 6
+            collapse-after-rows: 8
           parameters:
-            channel:
-              - UCJWKjrrUh2KL1d3zXQW79cQ # ExploreWithUs
-              - UCYwVxWpjeKFWwu8TML-Te9A # JCS - Criminal Psychology
-              - UCFXad0mx4WxY1fXdbvtg0CQ # Fascinating Horror
-              - UCCKwTsUwBvMDNlhxf0evJag # deathdoor4687
-              - UCFkFUrV28yy4kpg9b6LNhuQ #@TrueCrimeCentral
-              - UC0JJtK3m8pwy6rVgnBz47Rw #@rottenmangopod
-              - UCAa4yNsAyP-O5j-qNSpVQ_g #@AmerikaliAynasiz
+            <<: *backube-video-parameters
+            perPage: 70
+            filter: (channel.tags.name?="crime"&&channel.category.code?="ent")

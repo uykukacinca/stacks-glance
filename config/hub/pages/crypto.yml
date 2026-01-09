@@ -4,19 +4,15 @@
 
   head-widgets:
 
-    - <<: *backube-xml
+    - <<: *backube-latest
       hide-header: true
-      title: "Videos"
+      title: Videos
       options:
         collapse-after-rows: 1
       parameters:
-        channel:
-          - UCFQMnBA3CS502aghlcr0_aw #@Coffeezilla
-        keyword:
-          - crypto
-          - bitcoin
-          - ethereum
-          - blockchain
+        <<: *backube-video-parameters
+        filter: channel="UCFQMnBA3CS502aghlcr0_aw"
+
   columns:
 
     - size: small

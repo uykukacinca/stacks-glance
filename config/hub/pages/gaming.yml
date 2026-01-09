@@ -145,14 +145,11 @@
                   title: Watch
                   css-class:
 
-            - <<: *backube-xml
-              title: "Videos"
+            - <<: *backube-latest
+              title: Videos
               options:
                 collapse-after-rows: 8
               parameters:
-                channel:
-                  - UCNvzD7Z-g64bPXxGzaQaa4g # gameranx
-                  - UCZ7AeeVbyslLM_8-nVy2B8Q # Skill Up
-                  - UC9PBzalIcEQCsiIkq36PyUA # Digital Foundry
-                  - UCsvn_Po0SmunchJYOWpOxMg # videogamedunkey
-                  - UC0fDG3byEcMtbOqPMymDNbw # /noclip
+                <<: *backube-video-parameters
+                perPage: 70
+                filter: (channel.category.code?="ggwp"&&(channel.tags.name?="news"||channel.tags.name?="reviews"||channel.tags.name?="video essays"))

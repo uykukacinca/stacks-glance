@@ -130,4 +130,4 @@
           parameters:
             <<: *backube-video-parameters
             perPage: 56
-            filter: (channel.tags.name?="racing" && channel.space.code="ggwp")
+            filter: (channel.tags.name?="racing" && channel.category.code="ggwp")

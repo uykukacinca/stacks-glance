@@ -7,15 +7,6 @@
       widgets:
 
         - <<: *backube-latest
-          title: Vlogs
-          options:
-            collapse-after-rows: 1
-          parameters:
-            <<: *backube-video-parameters
-            perPage: 70
-            filter: (channel.tags.name?="vlogs" && channel.language.name!="türkçe")
-
-        - <<: *backube-latest
           title: Travel
           options:
             collapse-after-rows: 1
@@ -32,3 +23,29 @@
             <<: *backube-video-parameters
             perPage: 70
             filter: channel.tags.name?="outdoor"
+
+        - <<: *backube-latest
+          title: Camping
+          options:
+            collapse-after-rows: 1
+          parameters:
+            <<: *backube-video-parameters
+            perPage: 70
+            filter: channel.tags.name?="camping"
+
+        - <<: *backube-latest
+          title: day in life
+          options:
+            collapse-after-rows: 1
+          parameters:
+            <<: *backube-video-parameters
+            perPage: 70
+            filter: channel.tags.name?="day in life"
+
+        - <<: *backube-latest
+          title: Chess
+          options:
+            collapse-after-rows: 1
+          parameters:
+            <<: *backube-video-parameters
+            filter: channel.tags.name?="chess"

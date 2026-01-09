@@ -4,16 +4,14 @@
 
   head-widgets:
 
-    - <<: *backube-xml
+    - <<: *backube-latest
+      hide-header: true
+      title: Videos
+      options:
+        collapse-after-rows: 1
       parameters:
-        channel:
-          - UC6biysICWOJ-C3P4Tyeggzg # Low Level Learning
-          - UCVeW9qkBjo3zosnqUbG7CFw # _JohnHammond
-          - UCKGe7fZ_S788Jaspxg-_5Sg # @pcsecuritychannel
-          - UCJ2U9Dq9NckqHMbcUupgF0A # BlackHillsInformationSecurity
-          - UCP7WmQ_U4GB3K51Od9QvM0w # @davidbombal
-        playlist:
-          - PLtN43kak3fFEEDNo0ks9QVKYfQpT2yUEo # Darknet Diaries
+        <<: *backube-video-parameters
+        filter: channel.tags.name?="cybersecurity"
 
   columns:
 

@@ -28,15 +28,23 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.space.code="dev"
+            filter: channel.category.code="dev"
 
         - <<: *backube-latest
-          title: lab
+          title: entertainment
           options:
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.space.code="lab"
+            filter: channel.category.code="ent"
+
+        - <<: *backube-latest
+          title: vlogs
+          options:
+            collapse-after-rows: 1
+          parameters:
+            <<: *backube-video-parameters
+            filter: channel.category.code="vlogs"
 
         - <<: *backube-latest
           title: hub
@@ -44,7 +52,7 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.space.code="hub"
+            filter: channel.category.code="hub"
 
         - <<: *backube-latest
           title: sci
@@ -52,7 +60,7 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.space.code="sci"
+            filter: channel.category.code="sci"
 
         - <<: *backube-latest
           title: tech
@@ -60,7 +68,7 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.space.code="tech"
+            filter: channel.category.code="tech"
 
         - <<: *backube-latest
           title: ggwp
@@ -68,7 +76,7 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.space.code="ggwp"
+            filter: channel.category.code="ggwp"
 
         - <<: *backube-latest
           title: türkçe

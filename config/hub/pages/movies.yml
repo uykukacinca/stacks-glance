@@ -115,17 +115,10 @@
                   subreddit: BoxOffice
                   collapse-after: 6
 
-
-            - <<: *backube-xml
-              title: "Videos"
+            - <<: *backube-latest
+              title: Videos
               options:
                 collapse-after-rows: 8
               parameters:
-                channel:
-                  - UC7v3-2K1N84V67IF-WTRG-Q # Jeremy Jahns
-                  - UCCqEeDAUf4Mg0GgEN658tkA # The Chris Stuckmans
-                  - UCbiOAho0h23IMInURiESx1w # Dan Murrell
-                  - UCrTNhL_yO3tPTdQ5XgmmWjA # RedLetterMedia
-                  - UCUyvQV2JsICeLZP4c_h40kA # Thomas Flight
-                  - UCSJPFQdZwrOutnmSFYtbstA # TheCriticalDrinker
-                  - UCtu6CSE-BvaZUUGqW4tuEJA # Just One More Thing
+                <<: *backube-video-parameters
+                filter: channel.tags.name?="movies"

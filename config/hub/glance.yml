@@ -26,9 +26,7 @@ pages:
   - $include: pages/vlogs.yml
   - $include: pages/documentaries.yml
   - $include: pages/crime.yml
-  - $include: pages/acab.yml
   - $include: pages/league-of-legends.yml
-  - $include: pages/teamfight-tactics.yml
   - $include: pages/wildrift.yml
   - $include: pages/crew.yml
   - $include: pages/gta.yml

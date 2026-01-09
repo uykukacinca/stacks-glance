@@ -45,7 +45,7 @@
                 collapse-after-rows: 6
               parameters:
                 <<: *backube-video-parameters
-                filter: (channel.space.code="dev" && channel!="UCbRP3c757lWg9M-U7TyEkXA")
+                filter: (channel.category.code="dev" && channel!="UCbRP3c757lWg9M-U7TyEkXA")
 
             - type: lobsters
               cache: *default-cache

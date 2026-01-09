@@ -22,4 +22,4 @@
           parameters:
             <<: *backube-video-parameters
             perPage: 70
-            filter: (channel.language.name="türkçe" && channel.space.code!="ggwp")
+            filter: (channel.language.name="türkçe" && channel.category.code!="ggwp")

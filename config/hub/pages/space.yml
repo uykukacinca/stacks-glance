@@ -22,18 +22,11 @@
               title: UFOs
               subreddit: UFOs
 
-            - <<: *backube-xml
-              title: "Videos"
+            - <<: *backube-latest
+              title: Videos
               options:
                 collapse-after-rows: 8
                 min-card-width-px: 240
               parameters:
-                channel:
-                  - UCqoAEDirJPjEUFcF2FklnBA # StarTalk
-                  - UCEszlI8-W79IsU8LSAiRbDg # JohnMichaelGodier
-                  - UC-9b7aDP6ZN0coj9-xFnrtw # astrumspace
-                  - UC7_gcs09iThXybpVgjHZ_7g # pbsspacetime
-                  - UCrMePiHCWG4Vwqv3t7W9EFg # scishowspace
-                  - UCtRFmSyL4fSLQkn-wMqlmdA # HistoryoftheUniverse
-                  - UCIBaDdAbGlFDeS33shmlD0A # European Space Agency, ESA
-                  - UCLA_DiR1FfKNvjuUpBHmylQ # NASA
+                <<: *backube-video-parameters
+                filter: (channel.tags.name?="space"&&channel.category.code?="sci")
