@@ -20,4 +20,4 @@
           parameters:
             <<: *backube-video-parameters
             perPage: 70
-            filter: channel.category.code?="tech"
+            filter: channel.category.code="tech"

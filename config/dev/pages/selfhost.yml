@@ -96,7 +96,8 @@
             - autobrr/qui
             - dokploy/dokploy
             - steveiliop56/tinyauth
-            - thomiceli/opengist
+            - thomiceli/opengist-
+            - dani-garcia/vaultwarden
             # - open-webui/open-webui
             # - authelia/authelia
             # - qdm12/gluetun
@@ -214,25 +215,18 @@
             - type: group
               widgets:
 
-                - <<: *backube-base
-                  title: "Videos"
+                - <<: *backube-latest
+                  title: Videos
                   options:
                     collapse-after-rows: 8
                   parameters:
-                    channel:
-                      - UCOk-gHyjcWZNj3Br4oxwh0A # Techno Tim
-                      - UCZNhwA1B5YqiY1nLzmM0ZRg # Christian Lempa
-                      - UCVy16RS5eEDh8anP8j94G2A # DB Tech
-                      - UCUUTdohVElFLSP4NBnlPEwA # Jim's Garage
-                      - UCh66aXZ_hqiT7au6Nwb8p3Q # KTZ Systems
-                    keyword:
-                      - selfhost
-                      - self host
+                    <<: *backube-video-parameters
+                    filter: channel.category.code="dev"&&(channel.tags.name?="selfhost"||title~"selfhost")
 
-                - <<: *backube-base
-                  title: "Docker"
+                - <<: *backube-latest
+                  title: Docker
                   options:
                     collapse-after-rows: 8
                   parameters:
-                    keyword:
-                      - docker
+                    <<: *backube-video-parameters
+                    filter: channel.category.code="dev"&&title~"docker"

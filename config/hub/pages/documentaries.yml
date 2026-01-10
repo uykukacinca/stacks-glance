@@ -25,4 +25,4 @@
           parameters:
             <<: *backube-video-parameters
             perPage: 70
-            filter: ((channel.tags.name?="documentaries"||channel.tags.name?="stories") && channel.category.code!="ggwp")
+            filter: channel.category.code!="ggwp"&&(channel.tags.name?="documentaries"||channel.tags.name?="stories")

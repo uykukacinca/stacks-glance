@@ -23,7 +23,7 @@ pages:
   - $include: pages/anime.yml
   - $include: pages/live.yml
   - $include: pages/tr.yml
-  - $include: pages/vlogs.yml
+  - $include: pages/daily.yml
   - $include: pages/documentaries.yml
   - $include: pages/crime.yml
   - $include: pages/league-of-legends.yml

@@ -90,12 +90,10 @@
                   subreddit: golang
                   collapse-after: 22
 
-            - <<: *backube-base
-              title: "Videos"
+            - <<: *backube-latest
+              title: Videos
               options:
                 collapse-after-rows: 8
               parameters:
-                channel:
-                  - UCZwW2PXNovXy_xUIhmYv7cg
-                keyword:
-                  - golang
+                <<: *backube-video-parameters
+                filter: channel.category.code="dev"&&(channel.tags.name?="golang"||title~"golang")

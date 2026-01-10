@@ -29,4 +29,4 @@
                 min-card-width-px: 240
               parameters:
                 <<: *backube-video-parameters
-                filter: (channel.tags.name?="space"&&channel.category.code?="sci")
+                filter: channel.tags.name?="space"&&channel.category.code="sci"

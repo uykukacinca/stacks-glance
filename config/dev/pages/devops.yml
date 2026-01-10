@@ -4,19 +4,13 @@
 
   head-widgets:
 
-    - <<: *backube-base
-      hide-header: true
-      title: "DevOps Videos"
+    - <<: *backube-latest
+      title: DevOps Videos
       options:
         collapse-after-rows: 1
       parameters:
-        perPage: 32
-        channel:
-          - UCYeiozh-4QwuC1sjgCmB92w #@devopstoolbox
-        keyword:
-          - devops
-          - docker
-          - podman
+        <<: *backube-video-parameters
+        filter: channel.category.code="dev"&&(channel.tags.name?="devops"||title~"devops")
 
   columns:
 

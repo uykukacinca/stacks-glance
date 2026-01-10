@@ -54,17 +54,10 @@
                   collapse-after: *widget-half-collapse-after
                   subreddit: ubuntu
 
-            - <<: *backube-base
-              title: "Videos"
+            - <<: *backube-latest
+              title: Videos
               options:
                 collapse-after-rows: 8
               parameters:
-                channel:
-                  - UC5UAwBUum7CPN5buc-_N1Fw # TheLinuxEXP
-                  - UCxQKHvKbmSzGMvUrVtJYnUA # LearnLinuxTV
-                  - UCg6gPGh8HU2U01vaFCAsvmQ # Chris Titus Tech
-                keyword:
-                  - linux
-                  - ubuntu
-                  - fedora
-                  - debian
+                <<: *backube-video-parameters
+                filter: channel.category.code="dev"&&(channel.tags.name?="linux"||title~"linux")

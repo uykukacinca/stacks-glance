@@ -76,22 +76,13 @@
                   title: Month
                   subreddit: reactjs
 
-            - <<: *backube-base
-              title: "React Videos"
+            - <<: *backube-latest
+              title: Videos
               options:
                 collapse-after-rows: 8
               parameters:
-                channel:
-                  - UCf6AGqO98eGk11nfazociVQ # ByteGrad
-                  - UCZMli3czZnd1uoc1ShTouQw # leerob
-                  - UCsrVDPJBYeXItETFHG0qzyw # WebDevCody
-                  - UCvGwM5woTl13I-qThI4YMCg # joshtriedcoding
-                  - UC80PWRj_ZU8Zu0HSMNVwKWw # Codevolution
-                  - UC6vRUjYqDuoUsYsku86Lrsw # Jack Herrington
-                  - UCrL69sErRwEyr7_p0qVCkOQ # Cosden Solutions
-                keyword:
-                  - reactjs
-                  - nextjs
+                <<: *backube-video-parameters
+                filter: channel.category.code="dev"&&(channel.tags.name?="reactjs"||channel.tags.name?="nextjs"||title~"reactjs"||title~"nextjs")
 
             - type: group
               widgets:

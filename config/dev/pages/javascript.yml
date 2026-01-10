@@ -4,19 +4,13 @@
 
   head-widgets:
 
-    - <<: *backube-base
-      hide-header: true
-      title: "Javascript Videos"
+    - <<: *backube-latest
+      title: Javascript Videos
       options:
         collapse-after-rows: 1
       parameters:
-        perPage: 32
-        channel:
-          - UCswG6FSbgZjbWtdf_hMLaow #@mattpocockuk
-          - UCmXmlB4-HJytD7wek0Uo97A #JavaScript Mastery
-        keyword:
-          - javascript
-          - typescript
+        <<: *backube-video-parameters
+        filter: channel.category.code="dev"&&(channel.tags.name?="javascript"||title~"javascript"||channel.tags.name?="typescript"||title~"typescript")
 
   columns:
 

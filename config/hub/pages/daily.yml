@@ -1,87 +1,86 @@
-- name: "*backube"
-  slug: backube
-  show-in-navigation: false
+- name: "Daily"
+  slug: daily
   width: wide
-
   columns:
 
     - size: full
       widgets:
 
         - <<: *backube-latest
+          title: Social
           options:
-            collapse-after-rows: 4
+            collapse-after-rows: 1
+            min-card-width-px: 240
+          parameters:
+            <<: *backube-video-parameters
+            filter: channel.tags.name?="social"
+
+        - <<: *backube-latest
+          title: Pranks
+          options:
+            collapse-after-rows: 1
+            min-card-width-px: 240
+          parameters:
+            <<: *backube-video-parameters
+            filter: channel.tags.name?="pranks"
+
+        - <<: *backube-latest
+          title: Interviews
+          options:
+            collapse-after-rows: 1
+            min-card-width-px: 240
+          parameters:
+            <<: *backube-video-parameters
+            filter: channel.tags.name?="interviews"
+
+        - <<: *backube-latest
+          title: day in life
+          options:
+            collapse-after-rows: 1
+            min-card-width-px: 240
           parameters:
             <<: *backube-video-parameters
             perPage: 70
+            filter: channel.tags.name?="day in life"
 
-        - <<: *backube-channels
-          options:
-            collapse-after-rows: 4
-          parameters:
-            perPage: 999
-            sort: -video_count
+    - size: full
+      widgets:
 
         - <<: *backube-latest
-          title: dev
+          title: Travel
           options:
             collapse-after-rows: 1
+            min-card-width-px: 240
           parameters:
             <<: *backube-video-parameters
-            filter: channel.category.code="dev"
+            perPage: 70
+            filter: channel.tags.name?="travel"
 
         - <<: *backube-latest
-          title: entertainment
+          title: Outdoor
           options:
             collapse-after-rows: 1
+            min-card-width-px: 240
           parameters:
             <<: *backube-video-parameters
-            filter: channel.category.code="ent"
+            perPage: 70
+            filter: channel.tags.name?="outdoor"
 
         - <<: *backube-latest
-          title: vlogs
+          title: Camping
           options:
             collapse-after-rows: 1
+            min-card-width-px: 240
           parameters:
             <<: *backube-video-parameters
-            filter: channel.tags.name?="vlogs"
+            perPage: 70
+            filter: channel.tags.name?="camping"
 
         - <<: *backube-latest
-          title: hub
+          title: Chess
           options:
             collapse-after-rows: 1
+            min-card-width-px: 240
           parameters:
             <<: *backube-video-parameters
-            filter: channel.category.code="hub"
-
-        - <<: *backube-latest
-          title: sci
-          options:
-            collapse-after-rows: 1
-          parameters:
-            <<: *backube-video-parameters
-            filter: channel.category.code="sci"
-
-        - <<: *backube-latest
-          title: tech
-          options:
-            collapse-after-rows: 1
-          parameters:
-            <<: *backube-video-parameters
-            filter: channel.category.code="tech"
-
-        - <<: *backube-latest
-          title: ggwp
-          options:
-            collapse-after-rows: 1
-          parameters:
-            <<: *backube-video-parameters
-            filter: channel.category.code="ggwp"
-
-        - <<: *backube-latest
-          title: türkçe
-          options:
-            collapse-after-rows: 1
-          parameters:
-            <<: *backube-video-parameters
-            filter: channel.language.name="türkçe"
+            filter: channel.tags.name?="chess"

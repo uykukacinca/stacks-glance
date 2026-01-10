@@ -22,7 +22,7 @@
         {{ template "TemplateArray" $el }}
       {{- end -}}
     </a>
-    <div class="x-media-header x-grid x-gap-small">
+    <div class="x-media-header x-gap-small">
       {{- range $el := $header -}}
         {{ $tpl := $el.String "tpl" }}
         {{- if eq $tpl "Title" -}}

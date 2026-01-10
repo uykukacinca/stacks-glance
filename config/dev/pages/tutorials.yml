@@ -6,13 +6,10 @@
     - size: full
       widgets:
 
-        - <<: *backube-base
-          title: "Tutorials"
+        - <<: *backube-latest
+          title: Videos
+          options:
+            collapse-after-rows: 8
           parameters:
-            perPage: 100
-            channel:
-              - UC0NErq0RhP51iXx64ZmyVfg # BretFisher
-              - UC5xzsnp1l8mqchmfqR1nFPQ # Engineering with Morris
-              - UCdngmbVKX1Tgre699-XLlUA # TechWorld with Nana
-              - UC8butISFwT-Wl7EV0hUK0BQ # freecodecamp
-              - UC29ju8bIPH5as8OGnQzwJyA # Traversy Media
+            <<: *backube-video-parameters
+            filter: channel.category.code="dev"&&(channel.tags.name?="tutorials"||title~"tutorial")

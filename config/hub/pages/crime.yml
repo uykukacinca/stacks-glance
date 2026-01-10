@@ -32,4 +32,4 @@
           parameters:
             <<: *backube-video-parameters
             perPage: 70
-            filter: (channel.tags.name?="crime"&&channel.category.code?="ent")
+            filter: channel.tags.name?="crime"&&channel.category.code="ent"

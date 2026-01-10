@@ -86,15 +86,10 @@
                 - url: https://www.windowscentral.com/rss.xml
                   title: Windows Central
 
-            - <<: *backube-base
-              title: "Videos"
+            - <<: *backube-latest
+              title: Videos
               options:
                 collapse-after-rows: 8
               parameters:
-                channel:
-                  - UCL-fHOdarou-CR2XUmK48Og # shanselman
-                  - UCNzszbnvQeFzObW0ghk0Ckw # DavesGarage
-                  - UCsMica-v34Irf9KVTh6xx-g # MicrosoftDeveloper
-                keywords:
-                  - windows
-                  - microsoft
+                <<: *backube-video-parameters
+                filter: channel.category.code="dev"&&(channel.tags.name?="windows"||title~"microsoft"||title~"windows")

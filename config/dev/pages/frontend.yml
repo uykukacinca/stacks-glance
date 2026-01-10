@@ -4,19 +4,13 @@
 
   head-widgets:
 
-    - <<: *backube-base
-      hide-header: true
-      title: "DevOps Videos"
+    - <<: *backube-latest
+      title: Videos
       options:
         collapse-after-rows: 1
       parameters:
-        channel:
-          - UCJZv4d5rbIKd4QHMPkcABCw
-        keyword:
-          - frontend
-          - webdev
-          - css
-          - tailwind
+        <<: *backube-video-parameters
+        filter: channel.category.code="dev"&&(channel.tags.name?="css"||channel.tags.name?="frontend"||title~"tailwind"||title~"shadcn")
 
   columns:
 

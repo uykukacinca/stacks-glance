@@ -15,15 +15,10 @@
             - PLX6ivsCcfHDOzMIUioOofyF-h-niZL6Qj # Beyond Coding Podcast
             - PLWKjhJtqVAbm04DK8TSUCRheRjW2P9TR7 # @freecodecamp
 
-        - <<: *backube-base
-          title: "Videos"
+        - <<: *backube-latest
+          title: Videos
           options:
             collapse-after-rows: 3
           parameters:
-            channel:
-              - UCFe2Kq8Hg15UomoVYdmRg_Q # Socially Inept
-              - UCamLstJyCa-t5gfZegxsFMw # Colin and Samir
-              - UCSHZKyawb77ixDdsGog4iWA # Lex Fridma
-              - UClWTCPVi-AU9TeCN6FkGARg # @eoglobal
-              - UCJXa3_WNNmIpewOtCHf3B0g # lauriewired
-              - UC9H0HzpKf5JlazkADWnW1Jw # @bashbunni
+            <<: *backube-video-parameters
+            filter: channel.category.code="dev"&&channel.tags.name?="podcasts"

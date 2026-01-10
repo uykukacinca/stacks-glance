@@ -68,25 +68,25 @@ theme:
       negative-color: 351 74 59
 
     N-Bio:
-      background-color: 212 18.5 11
+      background-color: 212 18.5 10
       primary-color: 52.6 55 76.1
       positive-color: 157 47 65
       negative-color: 358.8 100 69.6
 
     N-Hub:
-      background-color: 223.6 13.3 11
+      background-color: 223.6 13.3 10
       primary-color: 52.6 55 76.1
       positive-color: 168.9 56.1 67.8
       negative-color: 349.9 100 70.8
 
     N-Dev:
-      background-color: 212 18.5 11
+      background-color: 212 18.5 10
       primary-color: 164 51 60
       positive-color: 164 61 70
       negative-color: 0 70 70
 
     N-Astra:
-      background-color: 230 30 17
+      background-color: 230 30 16
       primary-color: 207.2 86.5 68
 
     N-Frappe:
@@ -96,25 +96,25 @@ theme:
       negative-color: 359 68 57
 
     N-Macchiato:
-      background-color: 231 23 15
+      background-color: 231 23 14
       primary-color: 164 51 60
       positive-color: 164 61 70
       negative-color: 351 74 59
 
     N-Mocha:
-      background-color: 240 21 12
+      background-color: 240 21 11
       primary-color: 265 89 78
       positive-color: 115 43 55
       negative-color: 343 65 54
 
     N-Monlight:
-      background-color: 234 23 14
+      background-color: 234 23 13
       primary-color: 234 90 80
       positive-color: 174 66 49
       negative-color: 356 100 66
 
     N-Sky:
-      background-color: 214 30 11
+      background-color: 214 30 10
       primary-color: 195 51 60
       positive-color: 164 61 70
       negative-color: 351 74 59
