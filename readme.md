@@ -2,37 +2,49 @@
 
 A customizable personal dashboard built with Go templates and YAML configuration.
 
-## Quick Start
+## Getting Started
 
 ```bash
 cp example.env .env
 docker-compose up -d
 ```
 
-Access hub at `http://localhost:8080`
-Access dev at `http://localhost:8082`
-Access test at `http://localhost:8084`
+- **Hub**: http://localhost:8080
+- **Dev**: http://localhost:8082
+- **Test**: http://localhost:8084
 
-## Directory Structure
+## Project Structure
 
-- `config/` - Dashboard configurations (dev, hub, test)
-- `shared/` - Global theme, variables, and definitions
-- `widgets/` - Widget implementations and templates
-- `components/` - Reusable Go templates
-- `assets/` - CSS, JavaScript, and media files
+| Directory | Purpose |
+|-----------|---------|
+| `config/` | Dashboard environments (dev, hub, test) with pages |
+| `widgets/` | Widget implementations (audiobookshelf, jellyfin, twitch, youtube, etc.) |
+| `shared/` | Global theme, variables, definitions, index |
+| `components/` | Reusable Go templates (list, media, gallery, etc.) |
+| `assets/` | Styles (CSS), scripts (JS), images, favicons |
 
 ## Configuration
 
-Each dashboard environment (`dev/`, `hub/`, `test/`) has:
-
-- `glance.yml` - Main configuration
+Each environment (`dev/`, `hub/`, `test/`) contains:
+- `glance.yml` - Main dashboard configuration
 - `pages/` - Individual page definitions
 
-Edit `shared/theme.yml` to customize colors and appearance globally.
+Global settings:
+- `shared/theme.yml` - Colors and appearance
+- `shared/variables.yml` - Reusable variables
+- `shared/definitions.yml` - Widget definitions
 
 ## Customization
 
-- Add new pages in `config/{env}/pages/`
-- Create widgets in `widgets/` with `.yml` and `.gohtml` files
-- Override styles in `assets/custom.css`
-- Add scripts in `assets/custom.js`
+- **Add pages**: Create YAML files in `config/{env}/pages/`
+- **Create widgets**: Add `.yml` + `.gohtml` files in `widgets/`
+- **Override styles**: Edit `assets/custom.css`
+- **Add scripts**: Edit `assets/custom.js`
+
+## Screenshots
+
+![config/dev/pages/dash.yml](assets/images/dash.png)
+![config/dev/pages/selfhost.yml](assets/images/selfhost.png)
+![config/dev/pages/news.yml](assets/images/news.png)
+![config/hub/pages/gaming.yml](assets/images/gaming.png)
+![config/hub/pages/league-of-legends.yml](assets/images/league-of-legends.png)
