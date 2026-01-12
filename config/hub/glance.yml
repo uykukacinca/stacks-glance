@@ -12,24 +12,25 @@ pages:
   # - $include: pages/home.yml
   - $include: pages/gundem.yml
   - $include: pages/news.yml
-  - $include: pages/health.yml
+  - $include: pages/finance.yml
+  - $include: pages/stem-plus.yml
   - $include: pages/science.yml
   - $include: pages/space.yml
-  - $include: pages/think.yml
-  - $include: pages/tech.yml
-  - $include: pages/gaming.yml
+  - $include: pages/health.yml
+  - $include: pages/entertainment.yml
   - $include: pages/movies.yml
   - $include: pages/shows.yml
   - $include: pages/anime.yml
-  - $include: pages/live.yml
-  - $include: pages/tr.yml
-  - $include: pages/daily.yml
   - $include: pages/documentaries.yml
   - $include: pages/crime.yml
+  - $include: pages/vlogs.yml
+  - $include: pages/live.yml
+  - $include: pages/tr.yml
+  - $include: pages/gaming.yml
+  - $include: pages/hardware.yml
   - $include: pages/league-of-legends.yml
   - $include: pages/wildrift.yml
   - $include: pages/crew.yml
   - $include: pages/gta.yml
   - $include: pages/starcitizen.yml
   # - $include: pages/cars.yml
-  - $include: pages/crypto.yml

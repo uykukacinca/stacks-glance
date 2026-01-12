@@ -12,6 +12,14 @@
       title-url: https://dataview.raspberryshake.org/#/AM/RF9F7/00/EHZ?streaming=on
       source: https://dataview.raspberryshake.org/#/embed/AM/RF9F7/00/EHZ
 
+    - <<: *backube-latest
+      title: Videos
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: channel.category.code="world"&&channel.language.code="tr"
+
   columns:
 
     - size: small
@@ -148,11 +156,6 @@
                     x-glimpse-output: glance
                   parameters:
                     filter: popular
-
-                - <<: *reddit-simple
-                  subreddit: veYakinEvren
-                  cache: *long-cache
-                  collapse-after: 5
 
             - type: split-column
               max-columns: 1

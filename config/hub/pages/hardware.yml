@@ -1,5 +1,5 @@
-- name: "Science" # 🔬
-  slug: science
+- name: "Hardware" # 🤖
+  slug: hardware
   width: wide
   head-widgets:
 
@@ -9,7 +9,7 @@
         collapse-after-rows: 2
       parameters:
         <<: *backube-video-parameters
-        filter: channel.tags.name?="science"&&channel.category.code="stem"
+        filter: channel.category.code="tech"
 
   columns:
 
@@ -21,10 +21,10 @@
           widgets:
 
             - <<: *reddit-cover
-              subreddit: science
+              subreddit: hardware
 
             - <<: *reddit-cover
-              subreddit: askscience
+              subreddit: gadgets
 
             - <<: *reddit-cover
-              subreddit: EverythingScience
+              subreddit: LinusTechTips

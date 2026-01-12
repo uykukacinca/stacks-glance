@@ -1,5 +1,5 @@
-- name: "Learn" # 🔷
-  slug: tutorials
+- name: "STEM+" # 🚀
+  slug: stem-plus
   width: wide
   columns:
 
@@ -9,7 +9,8 @@
         - <<: *backube-latest
           title: Videos
           options:
-            collapse-after-rows: 8
+            collapse-after-rows: 4
           parameters:
             <<: *backube-video-parameters
-            filter: channel.category.code="dev"&&(channel.tags.name?="tutorials"||title~"tutorial")
+            perPage: 70
+            filter: channel.category.code="stem"

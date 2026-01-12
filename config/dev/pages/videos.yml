@@ -1,13 +1,6 @@
-- name: "Tech" # 🤖
-  slug: tech
+- name: "Videos" # 🔷
+  slug: videos
   width: wide
-
-  head-widgets:
-
-    - <<: *reddit-base
-      subreddit: Hardware+technology
-      style: horizontal-cards
-
   columns:
 
     - size: full
@@ -20,4 +13,4 @@
           parameters:
             <<: *backube-video-parameters
             perPage: 70
-            filter: channel.category.code="tech"
+            filter: channel.category.code="dev"

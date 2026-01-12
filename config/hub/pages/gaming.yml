@@ -152,4 +152,4 @@
               parameters:
                 <<: *backube-video-parameters
                 perPage: 70
-                filter: channel.category.code="ggwp"&&(channel.tags.name!~"gameplay"&&channel.tags.name!~"games")
+                filter: channel.category.code="ggwp"&&(channel.tags.name?="news"||channel.tags.name?="essays"||channel.tags.name?="reviews"||channel.tags.name?="documentaries")

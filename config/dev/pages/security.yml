@@ -5,7 +5,6 @@
   head-widgets:
 
     - <<: *backube-latest
-      hide-header: true
       title: Videos
       options:
         collapse-after-rows: 1

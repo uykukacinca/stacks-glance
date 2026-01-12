@@ -1,17 +1,16 @@
-- name: "#crypto" # 🪙
-  slug: crypto
+- name: "Finance" # 🪙
+  slug: finance
   width: wide
 
   head-widgets:
 
     - <<: *backube-latest
-      hide-header: true
       title: Videos
       options:
         collapse-after-rows: 1
       parameters:
         <<: *backube-video-parameters
-        filter: channel="UCFQMnBA3CS502aghlcr0_aw"
+        filter: channel.category.code="world"&&channel.tags.name?="economy"
 
   columns:
 
@@ -56,27 +55,39 @@
     - size: full
       widgets:
 
-        - type: group
+        - type: split-column
+          max-columns: 3
           widgets:
 
-            - <<: *reddit-cover
-              subreddit: CryptoCurrency+Bitcoin
-              show-flairs: true
+            - type: group
+              widgets:
 
-            - <<: *reddit-cover-top-week
-              title: Top This Week
-              subreddit: CryptoCurrency+Bitcoin
+                - <<: *reddit-cover
+                  subreddit: economy+finance
+                  show-flairs: true
 
-    - size: full
-      widgets:
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: economy+finance
 
-        - type: group
-          widgets:
+            - type: group
+              widgets:
 
-            - <<: *reddit-cover
-              subreddit: wallstreetbets
-              show-flairs: true
+                - <<: *reddit-cover
+                  subreddit: CryptoCurrency+Bitcoin
+                  show-flairs: true
 
-            - <<: *reddit-cover-top-week
-              title: Top This Week
-              subreddit: wallstreetbets
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: CryptoCurrency+Bitcoin
+
+            - type: group
+              widgets:
+
+                - <<: *reddit-cover
+                  subreddit: investing+wallstreetbets
+                  show-flairs: true
+
+                - <<: *reddit-cover-top-week
+                  title: Top This Week
+                  subreddit: investing+wallstreetbets

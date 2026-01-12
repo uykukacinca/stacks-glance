@@ -6,7 +6,6 @@
 
     - <<: *backube-latest
       title: "@Theo"
-      hide-header: true
       options:
         collapse-after-rows: 1
       parameters:
@@ -40,7 +39,7 @@
                   collapse-after: 10
 
             - <<: *backube-latest
-              title: dev
+              title: Videos
               options:
                 collapse-after-rows: 6
               parameters:

@@ -3,6 +3,21 @@
   {{ $url := $item.String "url.href" }}
   {{ if eq ($item.String "url.fn") "replace" }}
     {{ $url = replaceAll "{val}" ($item.String "url.val") ($item.String "url.href") }}
+  {{ else if eq ($item.String "url.fn") "params" }}
+    {{ $paramString := "?" }}
+    {{- range $i, $param := $item.Array "url.val" -}}
+      {{ $key := $param.String "key" }}
+      {{ $val := $param.String "val" }}
+
+      {{ if ne $val "" }}
+        {{ if gt $i 0 }}
+          {{ $paramString = concat $paramString "&" }}
+        {{ end }}
+
+        {{ $paramString = concat $paramString $key "=" $val }}
+      {{ end }}
+    {{- end -}}
+    {{ $url = concat ($item.String "url.href") $paramString }}
   {{ end }}
   {{ $title := $item.String "title" }}
   {{ $image := $item.String "image.src" }}

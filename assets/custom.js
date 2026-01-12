@@ -1183,7 +1183,7 @@ document.addEventListener(
         CollapsibleGrids.setupCollapsibleGrids();
         ModalManager.setupModalTriggers();
         ImageLoader.init();
-        YoutubeProgress.init();
+        //YoutubeProgress.init();
       }
     });
 

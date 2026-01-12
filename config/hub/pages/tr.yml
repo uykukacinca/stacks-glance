@@ -1,4 +1,4 @@
-- name: "Tv+" #❇️
+- name: "Muhit" #❇️
   slug: tr
   width: wide
 
@@ -13,13 +13,21 @@
 
   columns:
 
+    - size: small
+      widgets:
+
+        - <<: *reddit-simple
+          subreddit: veYakinEvren
+          cache: *long-cache
+          collapse-after: 10
+
     - size: full
       widgets:
 
         - <<: *backube-latest
           options:
-            collapse-after-rows: 3
+            collapse-after-rows: 4
           parameters:
             <<: *backube-video-parameters
             perPage: 70
-            filter: channel.language.name="türkçe"&&channel.category.code!="ggwp"
+            filter: channel.language.code="tr"&&channel.category.code!="ggwp"&&channel.category.code!="world"

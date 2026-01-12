@@ -1,6 +1,15 @@
 - name: "News" # 🌏
   slug: news
   width: wide
+  head-widgets:
+
+    - <<: *backube-latest
+      title: Videos
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: channel.language.code="en"&&channel.category.code="world"&&(channel.tags.name?="news"||channel.tags.name?="opinion")
 
   columns:
 

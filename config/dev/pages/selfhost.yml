@@ -96,7 +96,7 @@
             - autobrr/qui
             - dokploy/dokploy
             - steveiliop56/tinyauth
-            - thomiceli/opengist-
+            - thomiceli/opengist
             - dani-garcia/vaultwarden
             # - open-webui/open-webui
             # - authelia/authelia
@@ -221,7 +221,7 @@
                     collapse-after-rows: 8
                   parameters:
                     <<: *backube-video-parameters
-                    filter: channel.category.code="dev"&&(channel.tags.name?="selfhost"||title~"selfhost")
+                    filter: channel.category.code="dev"&&(channel.tags.name?="selfhost"||title~"selfhost"||title~"self host")
 
                 - <<: *backube-latest
                   title: Docker

@@ -1,5 +1,5 @@
-- name: "Think" # 🚀
-  slug: think
+- name: "Entertainment" # 🤖
+  slug: entertainment
   width: wide
   columns:
 
@@ -13,4 +13,4 @@
           parameters:
             <<: *backube-video-parameters
             perPage: 70
-            filter: channel.category.code="sci"&&(channel.tags.name?="curiosity"||channel.tags.name?="education")
+            filter: channel.category.code="ent"

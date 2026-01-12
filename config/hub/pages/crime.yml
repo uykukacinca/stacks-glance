@@ -1,35 +1,30 @@
 - name: "Crime" # 💀
   slug: crime
   width: wide
+  head-widgets:
+
+    - <<: *backube-latest
+      title: Videos
+      options:
+        collapse-after-rows: 2
+      parameters:
+        <<: *backube-video-parameters
+        filter: channel.tags.name?="crime"&&channel.category.code="ent"
+
   columns:
 
     - size: full
       widgets:
 
         - type: split-column
-          max-columns: 2
+          max-columns: 3
           widgets:
 
             - <<: *reddit-cover
-              collapse-after: 10
               subreddit: Crime
 
             - <<: *reddit-cover
-              collapse-after: 20
               subreddit: acab+Bad_Cop_No_Donut
 
             - <<: *reddit-cover
-              collapse-after: 10
               subreddit: WithoutATrace
-
-    - size: full
-      widgets:
-
-        - <<: *backube-latest
-          title: Videos
-          options:
-            collapse-after-rows: 8
-          parameters:
-            <<: *backube-video-parameters
-            perPage: 70
-            filter: channel.tags.name?="crime"&&channel.category.code="ent"

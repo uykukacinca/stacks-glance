@@ -88,17 +88,30 @@ a.nav-item::before {
   margin-top: 1px;
 }
 
-a.nav-item[href="/space"]::before {
+a.nav-item[href="/stem-plus"]::before {
   content: "⬡";
   color: #f7df1e;
 }
 
-a.nav-item-current[href="/space"]::before {
+a.nav-item-current[href="/stem-plus"]::before {
   content: "⬢";
 }
 
-a.nav-item-current[href="/space"] {
+a.nav-item-current[href="/stem-plus"] {
   border-bottom-color: #f7df1e;
+}
+
+a.nav-item[href="/entertainment"]::before {
+  content: "◇";
+  color: #4bdd61;
+}
+
+a.nav-item-current[href="/entertainment"]::before {
+  content: "◆";
+}
+
+a.nav-item-current[href="/entertainment"] {
+  border-bottom-color: #4bdd61;
 }
 
 a.nav-item[href="/gaming"]::before {

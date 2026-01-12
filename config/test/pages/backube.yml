@@ -9,6 +9,7 @@
       widgets:
 
         - <<: *backube-latest
+          title: Latest Imported Videos
           options:
             collapse-after-rows: 4
           parameters:
@@ -16,14 +17,15 @@
             perPage: 70
 
         - <<: *backube-channels
+          title: Latest Synced Channels
           options:
             collapse-after-rows: 4
           parameters:
-            perPage: 999
-            sort: -video_count
+            perPage: 28
+            sort: -updated
 
         - <<: *backube-latest
-          title: dev
+          title: "category: dev"
           options:
             collapse-after-rows: 1
           parameters:
@@ -31,7 +33,7 @@
             filter: channel.category.code="dev"
 
         - <<: *backube-latest
-          title: entertainment
+          title: "category: ent"
           options:
             collapse-after-rows: 1
           parameters:
@@ -39,7 +41,7 @@
             filter: channel.category.code="ent"
 
         - <<: *backube-latest
-          title: vlogs
+          title: "tag: vlogs"
           options:
             collapse-after-rows: 1
           parameters:
@@ -47,7 +49,7 @@
             filter: channel.tags.name?="vlogs"
 
         - <<: *backube-latest
-          title: hub
+          title: "category: hub"
           options:
             collapse-after-rows: 1
           parameters:
@@ -55,15 +57,15 @@
             filter: channel.category.code="hub"
 
         - <<: *backube-latest
-          title: sci
+          title: "category: sci"
           options:
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.category.code="sci"
+            filter: channel.category.code="stem"
 
         - <<: *backube-latest
-          title: tech
+          title: "category: tech"
           options:
             collapse-after-rows: 1
           parameters:
@@ -71,7 +73,7 @@
             filter: channel.category.code="tech"
 
         - <<: *backube-latest
-          title: ggwp
+          title: "category: ggwp"
           options:
             collapse-after-rows: 1
           parameters:
@@ -79,9 +81,9 @@
             filter: channel.category.code="ggwp"
 
         - <<: *backube-latest
-          title: türkçe
+          title: "language: tr"
           options:
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.language.name="türkçe"
+            filter: channel.language.code="tr"

@@ -5,7 +5,6 @@
   head-widgets:
 
     - <<: *backube-latest
-      hide-header: true
       title: Videos
       options:
         collapse-after-rows: 1
@@ -40,7 +39,7 @@
               headers:
                 x-glimpse-output: glance
               parameters:
-                limit: 20
+                limit: 15
 
             - type: split-column
               max-columns: 1
