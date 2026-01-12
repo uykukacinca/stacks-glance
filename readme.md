@@ -43,8 +43,24 @@ Global settings:
 
 ## Screenshots
 
-![config/dev/pages/dash.yml](assets/images/dash.png)
-![config/dev/pages/selfhost.yml](assets/images/selfhost.png)
-![config/dev/pages/news.yml](assets/images/news.png)
-![config/hub/pages/gaming.yml](assets/images/gaming.png)
-![config/hub/pages/league-of-legends.yml](assets/images/league-of-legends.png)
+[config/dev/pages/dash.yml](config/dev/pages/dash.yml)
+![dev-dash.png](assets/images/dev-dash.png)
+
+[config/dev/pages/selfhost.yml](config/dev/pages/selfhost.yml)
+![dev-selfhost.png](assets/images/dev-selfhost.png)
+
+[config/dev/pages/news.yml](config/dev/pages/news.yml)
+![dev-news.png](assets/images/dev-news.png)
+
+[config/hub/pages/gaming.yml](config/hub/pages/gaming.yml)
+![hub-gaming.png](assets/images/hub-gaming.png)
+
+[config/hub/pages/anime.yml](config/hub/pages/anime.yml)
+![hub-anime.png](assets/images/hub-anime.png)
+
+[config/hub/pages/vlogs.yml](config/hub/pages/vlogs.yml)
+![hub-vlogs.png](assets/images/hub-vlogs.png)
+
+[config/hub/pages/gundem.yml](config/hub/pages/gundem.yml)
+![config/hub/pages/gundem.yml](assets/images/hub-gundem.png)
+![hub-gundem-w-modal.png](assets/images/hub-gundem-w-modal.png)

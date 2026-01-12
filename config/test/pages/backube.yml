@@ -11,10 +11,21 @@
         - <<: *backube-latest
           title: Latest Imported Videos
           options:
-            collapse-after-rows: 4
+            collapse-after-rows: 2
           parameters:
             <<: *backube-video-parameters
-            perPage: 70
+            perPage: 35
+
+        - <<: *backube-latest
+          title: "@random travel,outdoor,camping"
+          cache: *long-cache
+          options:
+            collapse-after-rows: 2
+          parameters:
+            <<: *backube-video-parameters
+            perPage: 14
+            sort: "@random"
+            filter: channel.tags.name?="travel"||channel.tags.name?="outdoor"||channel.tags.name?="camping"
 
         - <<: *backube-channels
           title: Latest Synced Channels

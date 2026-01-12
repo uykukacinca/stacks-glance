@@ -42,7 +42,7 @@
   {{ $GlanceCategory := $Container.String "Labels.glance.category" }}
 
 
-  <div class="x-card flex items-center gap-15 icon-parent">
+  <div class="x -card flex items-center gap-15 icon-parent">
     <div
       data-popover-type="html"
       data-popover-position="above"
@@ -109,7 +109,7 @@
       <h2 class="uppercase">{{ $CategoryId }}</h2>
     </div>
 
-    <div class="widget-content-frameless">
+    <div class="widget-content -frameless">
       <div class="x-grid" style="--columns: auto-fit;--min-width: 230px;">
         {{- range $Container := $Containers -}}
 

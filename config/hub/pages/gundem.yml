@@ -18,6 +18,7 @@
         collapse-after-rows: 1
       parameters:
         <<: *backube-video-parameters
+        perPage: 7
         filter: channel.category.code="world"&&channel.language.code="tr"
 
   columns:
