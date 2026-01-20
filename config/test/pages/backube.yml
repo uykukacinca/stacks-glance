@@ -8,6 +8,25 @@
     - size: full
       widgets:
 
+        - type: split-column
+          max-columns: 2
+          widgets:
+
+            - <<: *backube-sync-channels
+              title: Latest Synced Channels
+              options:
+                collapse-after-rows: 2
+
+            - <<: *backube-channels
+              title: Most Watched Channels
+              options:
+                collapse-after-rows: 2
+
+        - <<: *backube-favorites
+          title: Favorite Videos
+          options:
+            collapse-after-rows: 1
+
         - <<: *backube-latest
           title: Latest Imported Videos
           options:
@@ -20,20 +39,12 @@
           title: "@random travel,outdoor,camping"
           cache: *long-cache
           options:
-            collapse-after-rows: 2
+            collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
             perPage: 14
             sort: "@random"
             filter: channel.tags.name?="travel"||channel.tags.name?="outdoor"||channel.tags.name?="camping"
-
-        - <<: *backube-channels
-          title: Latest Synced Channels
-          options:
-            collapse-after-rows: 4
-          parameters:
-            perPage: 28
-            sort: -updated
 
         - <<: *backube-latest
           title: "category: dev"

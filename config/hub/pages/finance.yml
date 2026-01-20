@@ -10,7 +10,7 @@
         collapse-after-rows: 1
       parameters:
         <<: *backube-video-parameters
-        filter: channel.category.code="world"&&channel.tags.name?="economy"
+        filter: channel.tags.name?="economy"||channel.tags.name?="money"
 
   columns:
 

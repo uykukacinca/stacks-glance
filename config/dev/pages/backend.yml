@@ -11,6 +11,15 @@
           new-tab: true
           placeholder: Search in r/backend
 
+        - type: bookmarks
+          groups:
+            - title: Dev Containers
+              links:
+                - title: Templates
+                  url: https://containers.dev/templates
+                - title: Features
+                  url: https://containers.dev/features
+
         - <<: *github-releases
           title: Headless CMS
           repositories:

@@ -9,6 +9,7 @@
         collapse-after-rows: 2
       parameters:
         <<: *backube-video-parameters
+        perPage: 70
         filter: channel.tags.name?="science"&&channel.category.code="stem"
 
   columns:

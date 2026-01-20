@@ -76,7 +76,7 @@
                 collapse-after-rows: 8
               parameters:
                 <<: *backube-video-parameters
-                filter: channel.category.code="dev"&&(channel.tags.name?="sveltejs"||title~"sveltejs")
+                filter: channel.category.code="dev"&&(channel.tags.name?="sveltejs"||title~"svelte")
 
             - type: group
               widgets:

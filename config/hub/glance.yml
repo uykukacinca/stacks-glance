@@ -16,7 +16,7 @@ pages:
   - $include: pages/stem-plus.yml
   - $include: pages/science.yml
   - $include: pages/space.yml
-  - $include: pages/health.yml
+  - $include: pages/psychology.yml
   - $include: pages/entertainment.yml
   - $include: pages/movies.yml
   - $include: pages/shows.yml

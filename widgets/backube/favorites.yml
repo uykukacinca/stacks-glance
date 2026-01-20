@@ -1,0 +1,26 @@
+- &backube-favorites-parameters
+  perPage: 28
+  skipTotal: 1
+  sort: -created
+  expand: video,video.channel
+  fields: expand.video.id,expand.video.title,expand.video.published,expand.video.expand.channel.id,expand.video.expand.channel.title,expand.video.user_progress
+
+- &backube-favorites
+  type: custom-api
+  title: Favorite Videos
+  cache: *no-cache
+  frameless: true
+  url: ${BACKUBE_URL}/api/collections/favorites/records
+  css-class: x-backube
+  headers:
+    Authorization: Bearer ${BACKUBE_TOKEN}
+  options:
+    collapse-after-rows: 4
+  parameters:
+    <<: *backube-favorites-parameters
+  template: |
+    {{ $items := .JSON.Array `items.#.{"id":expand.video.id,"title":expand.video.title,"url":{"fn":!"params","val":[{"key":!"v","val":expand.video.id},{"key":!"t","val":expand.video.user_progress.current_time}],"href":!"https://www.youtube.com/watch"},"header":[{"tpl":!"Title"}],"image":{"fn":!"replace","val":expand.video.id,"src":!"https://i.ytimg.com/vi/{val}/hqdefault.jpg","overlays":[{"class":!"x-center x-play","tpl":!"PlayIcon"},{"tpl":!"ProgressBar","val":expand.video.user_progress.progress,"class":!"x-as-e"}]},"footer":[{"class":!"","tpl":!"WeirdTime","val":expand.video.published},{"class":!"","tpl":!"Link","val":{"title":expand.video.expand.channel.title,"link":{"fn":!"replace","val":expand.video.expand.channel.id,"href":!"https://www.youtube.com/channel/{val}/videos" }}}]}`
+    }}
+    $include: /components/templates.gohtml
+    $include: /components/media.gohtml
+    $include: /components/media-container.gohtml

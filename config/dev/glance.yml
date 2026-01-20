@@ -15,6 +15,7 @@ pages:
   - $include: pages/selfhost.yml
   - $include: pages/homelab.yml
   - $include: pages/devops.yml
+  - $include: pages/env.yml
   - $include: pages/javascript.yml
   - $include: pages/vue.yml
   - $include: pages/react.yml

@@ -19,7 +19,7 @@ docker-compose up -d
 |-----------|---------|
 | `config/` | Dashboard environments (dev, hub, test) with pages |
 | `widgets/` | Widget implementations (audiobookshelf, jellyfin, twitch, youtube, etc.) |
-| `shared/` | Global theme, variables, definitions, index |
+| `shared/` | Global theme, variables, definitions |
 | `components/` | Reusable Go templates (list, media, gallery, etc.) |
 | `assets/` | Styles (CSS), scripts (JS), images, favicons |
 
@@ -30,9 +30,9 @@ Each environment (`dev/`, `hub/`, `test/`) contains:
 - `pages/` - Individual page definitions
 
 Global settings:
-- `shared/theme.yml` - Colors and appearance
-- `shared/variables.yml` - Reusable variables
-- `shared/definitions.yml` - Widget definitions
+- `shared/theme.yml` - Themes
+- `shared/variables.yml` - Variables
+- `shared/definitions.yml` - Pre-defined yaml anchors
 
 ## Customization
 
@@ -49,8 +49,8 @@ Global settings:
 [config/dev/pages/selfhost.yml](config/dev/pages/selfhost.yml)
 ![dev-selfhost.png](assets/images/dev-selfhost.png)
 
-[config/dev/pages/news.yml](config/dev/pages/news.yml)
-![dev-news.png](assets/images/dev-news.png)
+[config/dev/pages/finance.yml](config/hub/pages/finance.yml)
+![hub-finance.png](assets/images/hub-finance.png)
 
 [config/hub/pages/gaming.yml](config/hub/pages/gaming.yml)
 ![hub-gaming.png](assets/images/hub-gaming.png)
@@ -58,8 +58,8 @@ Global settings:
 [config/hub/pages/anime.yml](config/hub/pages/anime.yml)
 ![hub-anime.png](assets/images/hub-anime.png)
 
-[config/hub/pages/vlogs.yml](config/hub/pages/vlogs.yml)
-![hub-vlogs.png](assets/images/hub-vlogs.png)
+[config/hub/pages/league-of-legends.yml](config/hub/pages/league-of-legends.yml)
+![hub-league.png](assets/images/hub-league.png)
 
 [config/hub/pages/gundem.yml](config/hub/pages/gundem.yml)
 ![config/hub/pages/gundem.yml](assets/images/hub-gundem.png)

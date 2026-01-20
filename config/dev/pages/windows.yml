@@ -42,6 +42,8 @@
                   url: https://schneegans.de/windows/unattend-generator
                 - title: Unattended Winstall
                   url: https://github.com/memstechtips/UnattendedWinstall
+                - title: Ungoogled Chromium
+                  url: https://ungoogled-software.github.io/ungoogled-chromium-binaries/releases/windows/64bit/
             - title: Developer Tools
               links:
                 - title: Package Manager

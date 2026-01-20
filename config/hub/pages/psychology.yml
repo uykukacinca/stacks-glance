@@ -1,0 +1,36 @@
+- name: "Mind" # ¿ ∞
+  slug: psychology
+  width: wide
+  head-widgets:
+
+    - <<: *backube-latest
+      title: Videos
+      options:
+        collapse-after-rows: 2
+      parameters:
+        <<: *backube-video-parameters
+        perPage: 70
+        filter: channel.category.code="stem"&&(channel.tags.name?="psychology"||channel.tags.name?="philosophy")
+
+  columns:
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 4
+          widgets:
+
+            - <<: *reddit-simple-top-week
+              subreddit: philosophy
+              show-flairs: true
+
+            - <<: *reddit-simple-top-week
+              subreddit: DeepThoughts+askphilosophy
+
+            - <<: *reddit-simple
+              subreddit: mentalhealth+depression+Anxiety
+              show-flairs: true
+
+            - <<: *reddit-simple-top-week
+              subreddit: psychology

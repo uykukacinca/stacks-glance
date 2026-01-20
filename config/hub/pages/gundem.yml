@@ -12,15 +12,6 @@
       title-url: https://dataview.raspberryshake.org/#/AM/RF9F7/00/EHZ?streaming=on
       source: https://dataview.raspberryshake.org/#/embed/AM/RF9F7/00/EHZ
 
-    - <<: *backube-latest
-      title: Videos
-      options:
-        collapse-after-rows: 1
-      parameters:
-        <<: *backube-video-parameters
-        perPage: 7
-        filter: channel.category.code="world"&&channel.language.code="tr"
-
   columns:
 
     - size: small

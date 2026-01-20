@@ -70,7 +70,8 @@
 }
 
 /*****************************************************************************/
-.logo {
+
+.header .logo {
   display: flex;
   align-items: center;
   border-right: 1px solid var(--x-c-foreground-lighter);
@@ -79,79 +80,85 @@
   line-height: unset;
 }
 
+.desktop-navigation .nav-item-text {
+  margin-top: 0px;
+}
+
+.mobile-navigation a.nav-item,
 .header a.nav-item {
   display: flex;
   gap: 6px;
 }
 
-a.nav-item::before {
-  margin-top: 1px;
+.header a.nav-item::before {
+  align-self: center;
 }
 
+a.nav-item {
+  --color: var(--color-primary);
+}
+
+a.nav-item::before {
+  color: var(--color);
+}
+
+a.nav-item.nav-item-current {
+  border-bottom-color: var(--color);
+}
+
+a.nav-item[href="/stem-plus"] {
+  --color: #f7df1e;
+}
 a.nav-item[href="/stem-plus"]::before {
   content: "⬡";
-  color: #f7df1e;
 }
-
 a.nav-item-current[href="/stem-plus"]::before {
   content: "⬢";
 }
 
-a.nav-item-current[href="/stem-plus"] {
-  border-bottom-color: #f7df1e;
+a.nav-item[href="/psychology"] {
+  --color: #b389ff;
+}
+a.nav-item[href="/psychology"]::before {
+  content: "◎";
 }
 
+a.nav-item[href="/entertainment"] {
+  --color: #4bdd61;
+}
+
+a.nav-item[href="/gaming"]::before,
 a.nav-item[href="/entertainment"]::before {
   content: "◇";
-  color: #4bdd61;
 }
-
+a.nav-item-current[href="/gaming"]::before,
 a.nav-item-current[href="/entertainment"]::before {
   content: "◆";
 }
 
-a.nav-item-current[href="/entertainment"] {
-  border-bottom-color: #4bdd61;
+a.nav-item[href="/gaming"] {
+  --color: #12fff4;
 }
 
-a.nav-item[href="/gaming"]::before {
-  content: "◇";
-  color: #12fff4;
+a.nav-item[href="/live"] {
+  --color: #ef4343;
 }
-
-a.nav-item-current[href="/gaming"]::before {
-  content: "◆";
-}
-
-a.nav-item-current[href="/gaming"] {
-  border-bottom-color: #12fff4;
-}
-
 a.nav-item[href="/live"]::before {
   content: "●";
-  color: #ef4343;
 }
 
-a.nav-item-current[href="/live"] {
-  border-bottom-color: #ef4343;
+a.nav-item[href="/selfhost"] {
+  --color: #eb844e;
 }
-
 a.nav-item[href="/selfhost"]::before {
   content: "✪";
-  color: #eb844e;
 }
 
-a.nav-item-current[href="/selfhost"] {
-  border-bottom-color: #eb844e;
+a.nav-item[href="/nulsec"] {
+  --color: #4bdd61;
 }
-
 a.nav-item[href="/nulsec"]::before {
   content: "⊟";
-  color: #4bdd61;
-}
-
-a.nav-item-current[href="/nulsec"] {
-  border-bottom-color: #4bdd61;
 }
 
 a.nav-item[href="/javascript"]::before,
@@ -168,48 +175,18 @@ a.nav-item-current[href="/svelte"]::before {
   content: "●";
 }
 
-a.nav-item[href="/javascript"]::before {
-  color: #f7df1e;
+a.nav-item[href="/javascript"] {
+  --color: #f7df1e;
 }
 
-a.nav-item-current[href="/javascript"] {
-  border-bottom-color: #f7df1e;
+a.nav-item[href="/svelte"] {
+  --color: #ff3e00;
 }
 
-a.nav-item[href="/svelte"]::before {
-  color: #ff3e00;
+a.nav-item[href="/vue"] {
+  --color: #4fc08d;
 }
 
-a.nav-item-current[href="/svelte"] {
-  border-bottom-color: #ff3e00;
-}
-
-a.nav-item[href="/vue"]::before {
-  color: #4fc08d;
-}
-
-a.nav-item-current[href="/vue"] {
-  border-bottom-color: #4fc08d;
-}
-
-a.nav-item[href="/react"]::before {
-  color: #61dafb;
-}
-
-a.nav-item-current[href="/react"] {
-  border-bottom-color: #61dafb;
-}
-
-/*****************************************************************************/
-
-.x-m10 {
-  margin: var(--widget-content-vertical-padding);
-  background-color: var(--color-background);
-  color: var(--color-text-highlight);
-  border-radius: 50%;
-  width: 2.2rem;
-  height: 2.2rem;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+a.nav-item[href="/react"] {
+  --color: #61dafb;
 }

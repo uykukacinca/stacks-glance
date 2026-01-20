@@ -3,7 +3,7 @@
   skipTotal: 1
   expand: channel
   sort: -published
-  fields: id,title,published,expand.channel.title,expand.channel.id,user_progress
+  fields: id,title,published,expand.channel.id,expand.channel.title,user_progress
 
 - &backube-latest
   type: custom-api

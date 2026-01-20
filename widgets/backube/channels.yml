@@ -3,12 +3,15 @@
   title: Youtube Channels
   cache: *no-cache
   frameless: true
-  url: ${BACKUBE_URL}/api/collections/channels/records
   css-class: x-backube
+  url: ${BACKUBE_URL}/api/collections/channels/records
+  headers:
+    Authorization: Bearer ${BACKUBE_TOKEN}
   parameters:
     perPage: 32
     skipTotal: 1
-    sort: -subscriber_count
+    fields: id,title,thumbnail,video_count,subscriber_count
+    sort: -view_count
   options:
     collapse-after-rows: 10
   template: |

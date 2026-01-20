@@ -1,4 +1,4 @@
-- name: "Entertainment" # 🤖
+- name: "Popcorn" # 🤖
   slug: entertainment
   width: wide
   columns:

@@ -16,6 +16,8 @@
               links:
                 - title: Anna’s Archive
                   url: https://annas-archive.org/
+                - title: Project Gutenberg
+                  url: https://www.gutenberg.org/ebooks/
             - links:
                 - title: Megathread
                   url: ${REDDIT_URL}/r/Piracy/wiki/megathread/movies_and_tv#wiki_.1F4D1_.279C_streaming
@@ -36,6 +38,8 @@
                   url: https://github.com/ajayyy/SponsorBlock
                 - title: uBlock Origin
                   url: https://github.com/gorhill/uBlock
+                - title: CanvasBlocker
+                  url: https://github.com/kkapsner/CanvasBlocker
                 - title: Enhancer for YouTube™
                   url: https://www.mrfdev.com/enhancer-for-youtube
 

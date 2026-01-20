@@ -9,7 +9,7 @@
         collapse-after-rows: 1
       parameters:
         <<: *backube-video-parameters
-        filter: channel.language.code="en"&&channel.category.code="world"&&(channel.tags.name?="news"||channel.tags.name?="opinion")
+        filter: channel.language.code="en"&&channel.tags.name?="politics"
 
   columns:
 

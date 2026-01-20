@@ -23,6 +23,8 @@ widgets:
   - $include: backube/xml.yml
   - $include: backube/latest.yml
   - $include: backube/channels.yml
+  - $include: backube/sync-channels.yml
+  - $include: backube/favorites.yml
 
   - $include: audiobookshelf/podcasts.yml
   - $include: audiobookshelf/audiobooks.yml

@@ -1,0 +1,22 @@
+- &backube-sync-channels
+  type: custom-api
+  title: Youtube Sync Channels
+  cache: *no-cache
+  frameless: true
+  css-class: x-backube
+  url: ${BACKUBE_URL}/api/collections/sync_channels/records
+  headers:
+    Authorization: Bearer ${BACKUBE_TOKEN}
+  parameters:
+    perPage: 32
+    skipTotal: 1
+    expand: channel
+    fields: expand.channel.id,expand.channel.title,expand.channel.thumbnail,expand.channel.video_count,expand.channel.subscriber_count
+    sort: -synced
+  options:
+    collapse-after-rows: 10
+  template: |
+    {{ $items := .JSON.Array `items.#.{"id":expand.channel.id,"title":expand.channel.title,"url":{"fn":!"replace","val":expand.channel.id,"href":!"https://www.youtube.com/channel/{val}/videos"},"image":{"src":expand.channel.thumbnail,"class":!"x-ar-1x1 x-round"},"header":[{"tpl":!"ApproxNumber","val":expand.channel.subscriber_count,"label":!"Subscribers","class":!"shrink-0"}],"footer":[{"tpl":!"ApproxNumber","val":expand.channel.video_count,"label":!"Videos","class":!"shrink-0"}]}` }}
+    $include: /components/templates.gohtml
+    $include: /components/list.gohtml
+    $include: /components/list-container.gohtml
