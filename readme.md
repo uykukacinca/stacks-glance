@@ -21,7 +21,7 @@ docker-compose up -d
 | `widgets/` | Widget implementations (audiobookshelf, jellyfin, twitch, youtube, etc.) |
 | `shared/` | Global theme, variables, definitions |
 | `components/` | Reusable Go templates (list, media, gallery, etc.) |
-| `assets/` | Styles (CSS), scripts (JS), images, favicons |
+| `assets/` | Styles (CSS), scripts (JS), images |
 
 ## Configuration
 
