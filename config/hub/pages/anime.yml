@@ -1,7 +1,6 @@
 - name: "Anime" # 💥
   slug: anime
   width: wide
-
   head-widgets:
 
     - <<: *backube-latest
@@ -10,89 +9,63 @@
         collapse-after-rows: 1
       parameters:
         <<: *backube-video-parameters
-        filter: channel.tags.name?="anime"
+        filter: kind="video"&&channel.tags?~"jotp0srffpdszxe"
 
   columns:
 
+    - size: small
+      widgets:
+
+        - type: search
+          search-engine: https://myanimelist.net/anime.php?q={QUERY}&cat=anime
+          new-tab: true
+          placeholder: Search on MAL
+          bangs:
+            - title: IMDb
+              shortcut: "!i"
+              url: https://www.imdb.com/find/?s=tt&q={QUERY}
+            - title: Reddit
+              shortcut: "!r"
+              url: ${REDDIT_URL}/r/anime/search?q={QUERY}&restrict_sr=on&sort=new&t=all
+            - title: YouTube
+              shortcut: "!y"
+              url: ${YOUTUBE_URL}/results?search_query={QUERY}
+
+        - type: bookmarks
+          css-class: page-anime
+          groups:
+            - hide-arrow: true
+              links:
+                - title: Crunchyroll
+                  icon: auto-invert ${ICONS_URL}/crunchyroll-dark
+                  url: https://www.crunchyroll.com
+                - title: AniList
+                  icon: auto-invert ${ICONS_URL}/custom/anilist.svg
+                  url: https://anilist.co/search/anime/trending
+                - title: MyAnimeList
+                  icon: auto-invert ${ICONS_URL}/custom/myanimelist.svg
+                  url: https://myanimelist.net/topanime.php
+            - links:
+                - title: Anime Schedule
+                  url: https://animeschedule.net
+                - title: Anime Scene Search
+                  url: https://trace.moe
+
+        - type: extension
+          url: ${GLIMPSE_URL}/anime/popular
+          allow-potentially-dangerous-html: true
+          cache: *short-cache
+          headers:
+            x-glimpse-output: glance
+          parameters:
+            limit: 15
+            collapse-after: 10
 
     - size: full
       widgets:
 
-        - type: split-column
-          max-columns: 4
-          widgets:
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-cover
-                  subreddit: anime
-
-                - <<: *reddit-cover-top-week
-                  title: Top This Week
-                  subreddit: anime
-
-            - type: extension
-              url: ${GLIMPSE_URL}/anime/popular
-              allow-potentially-dangerous-html: true
-              cache: *short-cache
-              headers:
-                x-glimpse-output: glance
-              parameters:
-                limit: 15
-
-            - type: split-column
-              max-columns: 1
-              widgets:
-
-                - type: search
-                  search-engine: https://myanimelist.net/anime.php?q={QUERY}&cat=anime
-                  new-tab: true
-                  placeholder: Search on MAL
-                  bangs:
-                    - title: IMDb
-                      shortcut: "!i"
-                      url: https://www.imdb.com/find/?s=tt&q={QUERY}
-                    - title: Reddit
-                      shortcut: "!r"
-                      url: ${REDDIT_URL}/r/anime/search?q={QUERY}&restrict_sr=on&sort=new&t=all
-                    - title: YouTube
-                      shortcut: "!y"
-                      url: ${YOUTUBE_URL}/results?search_query={QUERY}
-
-                - type: bookmarks
-                  css-class: page-anime
-                  groups:
-                    - hide-arrow: true
-                      links:
-                        - title: Crunchyroll
-                          icon: auto-invert ${ICONS_URL}/crunchyroll-dark
-                          url: https://www.crunchyroll.com
-                        - title: AniList
-                          icon: auto-invert ${ICONS_URL}/custom/anilist.svg
-                          url: https://anilist.co/search/anime/trending
-                        - title: MyAnimeList
-                          icon: auto-invert ${ICONS_URL}/custom/myanimelist.svg
-                          url: https://myanimelist.net/topanime.php
-                    - links:
-                        - title: Anime Schedule
-                          url: https://animeschedule.net
-                        - title: Anime Scene Search
-                          url: https://trace.moe
-
-                - <<: *reddit-simple
-                  subreddit: Animesuggest
-                  collapse-after: 8
-
-                - <<: *reddit-simple
-                  subreddit: OnePiece
-                  collapse-after: 8
-
-            - type: split-column
-              max-columns: 1
-              widgets:
-
-                - <<: *components-gallery
-                  url: https://www.reddit.com/r/AnimeART+animewallpaper/top.json?limit=25&t=week
-                  options:
-                    columns: 2
+        - <<: *xeddit-waterfall
+          title: reddit communities
+          options:
+            subreddit: anime+Animesuggest+AnimeReccomendations+anime_irl+AnimeART+animewallpaper+animegifs+AnimeFunny+animemes+crunchyroll+animenews+animefigures+OnePiece+berserk+cowboybebop
+            limit: 50

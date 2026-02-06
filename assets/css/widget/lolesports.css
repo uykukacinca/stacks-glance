@@ -1,0 +1,47 @@
+#glimpse-lolesports .event > div {
+  background-color: hsl(from var(--x-c-foreground-light) h s l);
+  border: 1px solid var(--x-c-border);
+  padding: 1rem;
+  border-radius: var(--x-br-half);
+}
+
+#glimpse-lolesports .event + .label {
+  margin-top: 1.6rem;
+}
+
+#glimpse-lolesports .event.inProgress > div {
+  border-color: var(--color-positive);
+}
+
+#glimpse-lolesports .event .badge {
+  background: var(--color-primary);
+  color: var(--color-widget-background);
+  font-size: var(--font-size-h6);
+  border-radius: var(--x-br-half);
+  padding-inline: 0.3rem;
+}
+
+#glimpse-lolesports .event.inProgress .badge {
+  background: var(--color-positive);
+}
+
+#glimpse-lolesports .team.win .code {
+  color: var(--color-positive);
+}
+
+#glimpse-lolesports .team.lose .code {
+  color: var(--color-negative);
+}
+
+#glimpse-lolesports .team-grid {
+  padding: 0 2rem;
+}
+
+#glimpse-lolesports .team-grid .item-0 {
+  place-content: end;
+}
+
+#glimpse-lolesports .team-grid .item-1 {
+  flex-direction: row-reverse;
+  place-content: start;
+}

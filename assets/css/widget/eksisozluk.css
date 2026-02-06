@@ -1,0 +1,32 @@
+.eksisozluk-profile > div:first-child {
+  border-bottom: 1px solid var(--x-c-border);
+}
+
+.eksisozluk-profile .eksisozluk-nav {
+  padding: var(--widget-content-horizontal-padding)
+    var(--widget-content-horizontal-padding) 0;
+}
+
+.eksisozluk-badge {
+  padding: 5px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--color-popover-border);
+}
+
+.eksisozluk-badge:hover {
+  background: var(--color-separator);
+}
+
+.eksisozluk-badge img {
+  height: 4rem;
+  aspect-ratio: 1/1;
+}
+
+.eksisozluk-entry.blocked {
+  border-left: 1px solid var(--color-negative);
+}
+
+.eksisozluk-entry.blocked > details:open > summary {
+  margin-bottom: 1rem;
+}

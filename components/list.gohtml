@@ -11,7 +11,9 @@
   {{ end }}
   {{ $header := $item.Array "header" }}
   {{ $footer := $item.Array "footer" }}
-  <div class="x-list flex gap-10 items-center row-reverse-on-mobile thumbnail-parent">
+  <div
+    class="x-list flex gap-10 items-center row-reverse-on-mobile thumbnail-parent"
+  >
     <div class="shrink-0">
       <img
         class="x-thumb {{ or ($item.String "image.class") "x-ar-16x9" }}"
@@ -28,18 +30,18 @@
         >{{ $title }}</a
       >
       {{ if gt ($header | len) 0 }}
-      <div class="list-horizontal-text flex-nowrap">
-        {{- range $el := $header -}}
-          {{ template "TemplateArray" $el }}
-        {{- end -}}
-      </div>
+        <div class="list-horizontal-text flex-nowrap">
+          {{- range $el := $header -}}
+            {{ template "TemplateArray" $el }}
+          {{- end -}}
+        </div>
       {{- end -}}
       {{ if gt ($footer | len) 0 }}
-      <div class="list-horizontal-text flex-nowrap text-compact color-subdue">
-        {{- range $el := $footer -}}
-          {{ template "TemplateArray" $el }}
-        {{- end -}}
-      </div>
+        <div class="list-horizontal-text flex-nowrap text-compact color-subdue">
+          {{- range $el := $footer -}}
+            {{ template "TemplateArray" $el }}
+          {{- end -}}
+        </div>
       {{- end -}}
     </div>
   </div>

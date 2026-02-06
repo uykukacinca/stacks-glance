@@ -1,0 +1,66 @@
+.widget-glimpse-proxmox .widget-content {
+  padding: 0;
+}
+
+.widget-glimpse-proxmox table .proxmox-pad {
+  padding-left: var(--glimpse-spacing-2x);
+}
+
+.proxmox-item {
+  color: var(--color-text-subdue);
+}
+
+.proxmox-item .status {
+  width: 8px;
+  height: 8px;
+  background: var(--color-text-base);
+  border-radius: 100%;
+}
+
+.proxmox-item.proxmox-node {
+  background: var(--color-background);
+}
+
+.proxmox-item.online .status {
+  background: var(--color-positive);
+}
+
+.proxmox-item.offline .status {
+  background: var(--color-negative);
+  opacity: 0.75;
+}
+
+.proxmox-item.offline:hover .status {
+  opacity: 1;
+}
+
+.proxmox-item.online .name {
+  color: var(--color-text-highlight);
+}
+
+.proxmox-item.offline:hover .name,
+.proxmox-item.online .id,
+.proxmox-item.online .uptime,
+.proxmox-item.online .cores .value,
+.proxmox-item.online .current .value,
+.proxmox-item.online .total .value,
+.proxmox-item.online .network .value,
+.proxmox-item.online [data-status="low"] .usage .value {
+  color: var(--color-text-base);
+}
+
+.proxmox-item.online [data-status="high"] .usage .value {
+  color: var(--color-text-highlight);
+}
+
+.proxmox-item.online [data-status="max"] .usage .value {
+  color: var(--color-negative);
+}
+
+.proxmox-item .unit {
+  text-transform: lowercase;
+}
+
+.proxmox-item .usage {
+  min-width: 32px;
+}

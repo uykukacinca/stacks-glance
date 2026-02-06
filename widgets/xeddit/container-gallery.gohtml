@@ -1,0 +1,7 @@
+{{- if eq $error "" -}}
+<div class="x-grid x-waterfall" style="--min-width: {{ $columnWidth }}px;">
+  {{- range $items -}}
+    {{ template "RedditMedia" . }}
+  {{- end -}}
+</div>
+{{- end -}}

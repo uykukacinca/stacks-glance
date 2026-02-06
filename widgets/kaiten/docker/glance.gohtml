@@ -29,7 +29,7 @@
 
 {{- define "ContainerCard" -}}
   {{ $Container := . }}
-  {{ $Children :=  $Container.Array "Children" }}
+  {{ $Children := $Container.Array "Children" }}
   {{ $State := $Container.String "State" }}
   {{ $Status := $Container.String "Status" }}
   {{ $Image := $Container.String "Image" }}
@@ -95,15 +95,14 @@
       </div>
 
       <div class="text-truncate">{{ $GlanceDescription }}</div>
-
     </div>
   </div>
 {{- end -}}
 
 {{- range $i, $Category := $Categories -}}
 
-  {{ $CategoryId :=  $Category.String "Id" }}
-  {{ $Containers :=  $Category.Array "Children" }}
+  {{ $CategoryId := $Category.String "Id" }}
+  {{ $Containers := $Category.Array "Children" }}
   <div class="widget widget-x">
     <div class="widget-header">
       <h2 class="uppercase">{{ $CategoryId }}</h2>

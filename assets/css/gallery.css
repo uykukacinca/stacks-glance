@@ -1,0 +1,44 @@
+.x-masonry,
+.x-masonry > .masonry-column {
+  gap: var(--x-gap-medium);
+}
+
+.x-masonry .x-container {
+  overflow: hidden;
+}
+
+.x-photo-title {
+  opacity: 0;
+  transition:
+    opacity var(--x-t-speed),
+    transform var(--x-t-speed);
+  color: var(--color-text-highlight);
+  padding: 10px 15px;
+  border-radius: var(--x-br-half);
+  transform: translateY(100%);
+}
+
+.x-container:hover .x-photo-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.x-photo-enlarge {
+  opacity: 0;
+  transform: translateX(100%);
+  transition:
+    opacity var(--x-t-speed),
+    transform var(--x-t-speed);
+  color: var(--color-text-highlight);
+  padding: 8px;
+  border-radius: var(--x-br-half);
+}
+
+.x-container:hover .x-photo-enlarge {
+  opacity: 0.8;
+  transform: translateX(0);
+}
+
+.x-photo-enlarge:hover {
+  opacity: 1 !important;
+}

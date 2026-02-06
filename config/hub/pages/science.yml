@@ -10,22 +10,16 @@
       parameters:
         <<: *backube-video-parameters
         perPage: 70
-        filter: channel.tags.name?="science"&&channel.category.code="stem"
+        filter: kind="video"&&channel.tags?~"cort70lkmsvxyfa"&&channel.category="esmafhdlbw3esk7"
 
   columns:
 
     - size: full
       widgets:
 
-        - type: split-column
-          max-columns: 3
-          widgets:
-
-            - <<: *reddit-cover
-              subreddit: science
-
-            - <<: *reddit-cover
-              subreddit: askscience
-
-            - <<: *reddit-cover
-              subreddit: EverythingScience
+        - <<: *xeddit-waterfall
+          title: reddit communities
+          options:
+            subreddit: science+askscience+EverythingScience
+            min-column-width: 420
+            limit: 50

@@ -1,6 +1,0 @@
-- name: "Hardware" # 📟
-  slug: hardware
-  width: wide
-  columns:
-    - size: full
-      widgets:

@@ -5,7 +5,7 @@
 
       {{- define "ContainerCard" -}}
         {{ $Container := . }}
-        {{ $Children :=  $Container.Array "Children" }}
+        {{ $Children := $Container.Array "Children" }}
         {{ $State := $Container.String "State" }}
         {{ $Name := replaceAll "/" "" ($Container.String "Names.0") }}
         {{ $Icon := $Container.String "Icon" }}

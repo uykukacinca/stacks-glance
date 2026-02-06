@@ -18,10 +18,14 @@ widgets:
   - $include: twitch/clips.yml
   - $include: twitch/streams.yml
 
+  - $include: xeddit/base.yml
+
   - $include: youtube/base.yml
   - $include: backube/base.yml
   - $include: backube/xml.yml
   - $include: backube/latest.yml
+  - $include: backube/latest-streams.yml
+  - $include: backube/latest-shorts.yml
   - $include: backube/channels.yml
   - $include: backube/sync-channels.yml
   - $include: backube/favorites.yml

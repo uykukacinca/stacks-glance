@@ -94,4 +94,4 @@
                 collapse-after-rows: 8
               parameters:
                 <<: *backube-video-parameters
-                filter: channel.category.code="dev"&&(channel.tags.name?="windows"||title~"microsoft"||title~"windows")
+                filter: kind="video"&&channel.category="avd23828y2jcz8j"&&(title~"microsoft"||title~"windows")

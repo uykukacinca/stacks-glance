@@ -1,0 +1,14 @@
+- &backube-latest-shorts
+  <<: *backube-latest
+  options:
+    collapse-after-rows: 1
+    min-card-width-px: 200
+  parameters:
+    <<: *backube-video-parameters
+    filter: kind="short"
+  template: |
+    {{ $items := .JSON.Array `items.#.{"id":id,"title":title,"url":{"fn":!"replace","val":id,"href":!"https://www.youtube.com/shorts/{val}"},"header":[{"tpl":!"Title"}],"image":{"fn":!"replace","val":id,"src":!"https://i.ytimg.com/vi/{val}/oar2.jpg","class":!"x-ar-3x4","overlays":[{"class":!"x-center x-play","tpl":!"PlayIcon"},{"tpl":!"ProgressBar","val":user_progress.progress,"class":!"x-as-e"}]},"footer":[{"class":!"","tpl":!"WeirdTime","val":published},{"class":!"","tpl":!"Link","val":{"title":expand.channel.title,"link":{"fn":!"replace","val":expand.channel.id,"href":!"https://www.youtube.com/channel/{val}/videos"},"class":!"x-grow nodot"}},{"tpl":!"KindIcon","val":kind,"class":!"x-wh-12 color-negative"}]}`
+    }}
+    $include: /components/templates.gohtml
+    $include: /components/media.gohtml
+    $include: /components/media-container.gohtml

@@ -2,7 +2,7 @@
 
 {{- define "ContainerCard" -}}
   {{ $Container := . }}
-  {{ $Children :=  $Container.Array "Children" }}
+  {{ $Children := $Container.Array "Children" }}
   {{ $State := $Container.String "State" }}
   {{ $Name := replaceAll "/" "" ($Container.String "Names.0") }}
   {{ $GlanceName := $Container.String "Labels.glance.name" }}
@@ -87,8 +87,8 @@
   {{- range $i, $Category := $Categories -}}
 
     <li>
-      {{ $CategoryId :=  $Category.String "Id" }}
-      {{ $Containers :=  $Category.Array "Children" }}
+      {{ $CategoryId := $Category.String "Id" }}
+      {{ $Containers := $Category.Array "Children" }}
 
 
       <ul class="list list-grouped list-gap-4">

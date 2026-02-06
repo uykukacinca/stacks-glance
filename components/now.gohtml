@@ -1,0 +1,24 @@
+{{- define "Now" -}}
+  {{ $now := now }}
+  <div style="margin-top: var(--widget-gap);">
+    {{ $now }} --- cached
+    <span
+      class="color-highlight"
+      {{ $now | toRelativeTime }}
+      data-units="2"
+      data-relative
+    ></span>
+    <span
+      class="color-highlight"
+      data-glimpse-dynamic-relative-time="{{ $now | formatTime "unix" }}"
+    ></span>
+  </div>
+{{- end -}}
+
+{{ template "Now" }}
+
+<div>
+  {{ $version := mod now.Second 10 }}
+  {{ $agent := print "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:13" $version ".0) Gecko/20100101 Firefox/13" $version ".0" }}
+  Random User-Agent: {{ $agent }}
+</div>

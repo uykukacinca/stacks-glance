@@ -1,6 +1,17 @@
 - name: "Selfhost" # ☢️
   slug: selfhost
   width: wide
+
+  head-widgets:
+
+    - <<: *backube-latest
+      title: Videos
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: kind="video"&&channel.category="avd23828y2jcz8j"&&(channel.tags?~"r1745qxplz6e05w"||title~"selfhost"||title~"self host"||title~"docker"||title~"proxmox")
+
   columns:
 
     - size: small
@@ -45,7 +56,7 @@
                   url: https://github.com/docker/awesome-compose
                 - title: Compose Examples
                   url: https://github.com/Haxxnet/Compose-Examples/tree/main/examples
-                - title:  Self Hosting Guide
+                - title: Self Hosting Guide
                   url: https://github.com/mikeroyal/Self-Hosting-Guide
                 - title: Trash Guides
                   url: https://trash-guides.info
@@ -140,93 +151,8 @@
     - size: full
       widgets:
 
-        - type: split-column
-          max-columns: 3
-          widgets:
-
-            - type: split-column
-              max-columns: 1
-              widgets:
-
-                - type: group
-                  widgets:
-
-                    - <<: *reddit-simple-full
-                      collapse-after: 15
-                      subreddit: selfhosted
-
-                - type: group
-                  widgets:
-
-                    - <<: *reddit-simple-top-week
-                      collapse-after: 10
-                      title: Top This Week
-                      subreddit: selfhosted
-
-                    - <<: *reddit-simple-top-month
-                      collapse-after: 10
-                      title: Month
-                      subreddit: selfhosted
-
-            - type: split-column
-              max-columns: 1
-              widgets:
-
-                - <<: *github-repository
-                  title: Glance Repository
-                  repository: glanceapp/glance
-
-                - type: group
-                  widgets:
-
-                    - <<: *reddit-simple
-                      collapse-after: 5
-                      subreddit: docker
-
-                    - <<: *reddit-simple-top-week
-                      collapse-after: 5
-                      title: Top This Week
-                      subreddit: docker
-
-                - type: group
-                  widgets:
-
-                    - <<: *reddit-simple
-                      subreddit: Proxmox
-                      collapse-after: 5
-
-                    - <<: *reddit-simple-top-week
-                      title: Top This Week
-                      subreddit: Proxmox
-                      collapse-after: 5
-
-                - type: group
-                  widgets:
-
-                    - <<: *reddit-simple
-                      subreddit: podman
-                      collapse-after: 5
-
-                    - <<: *reddit-simple-top-week
-                      title: Top This Week
-                      subreddit: podman
-                      collapse-after: 5
-
-            - type: group
-              widgets:
-
-                - <<: *backube-latest
-                  title: Videos
-                  options:
-                    collapse-after-rows: 8
-                  parameters:
-                    <<: *backube-video-parameters
-                    filter: channel.category.code="dev"&&(channel.tags.name?="selfhost"||title~"selfhost"||title~"self host")
-
-                - <<: *backube-latest
-                  title: Docker
-                  options:
-                    collapse-after-rows: 8
-                  parameters:
-                    <<: *backube-video-parameters
-                    filter: channel.category.code="dev"&&title~"docker"
+        - <<: *xeddit-waterfall
+          title: reddit communities
+          options:
+            subreddit: selfhosted+docker+Proxmox
+            limit: 50

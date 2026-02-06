@@ -1,0 +1,205 @@
+{{- define "RedditPost" -}}
+  {{ $post := . }}
+  {{ $type := "post" }}
+
+  {{/* VARS */}}
+    {{ $id := $post.String "id" }}
+    {{ $subreddit := $post.String "data.subreddit" }}
+    {{ $domain := $post.String "data.domain" }}
+    {{ $author := $post.String "data.author" }}
+    {{ $title := $post.String "data.title" }}
+    {{ $selftext := $post.String "data.selftext" }}
+    {{ $created := $post.String "data.created" }}
+    {{ $permalink := $post.String "data.permalink" }}
+    {{ $comments := $post.Int "data.num_comments" }}
+    {{ $score := $post.Int "data.score" }}
+    {{ $is_stickied := $post.Bool "data.stickied" }}
+    {{ $is_nsfw := $post.Bool "data.over_18" }}
+    {{ $is_gallery := $post.Bool "data.is_gallery" }}
+    {{ $is_video := $post.Bool "data.is_video" }}
+    {{ $is_removed := or ($post.String "data.removed_by") ($post.String "data.removed_by_category") }}
+    {{ $url_overridden_by_dest := $post.String "data.url_overridden_by_dest" }}
+    {{ $media_type := $post.String "data.media.type" }}
+    {{ $media_metadata := $post.Array "data.media_metadata|@values" }}
+    {{ $link_flair_text := $post.String "data.link_flair_text" }}
+
+    {{ $image := $post.Get `data.preview.images.0` }}
+    {{ $video := $post.Get `data.media.reddit_video` }}
+
+  {{/* GIF? */}}
+    {{ if and (eq $domain "i.redd.it") (findMatch ".gif" $url_overridden_by_dest) }}
+      {{ $image = $post.Get "data.preview.images.0.variants.gif" }}
+    {{ end }}
+
+  {{ $preview := $image }}
+
+  {{/* NSFW? */}}
+    {{ $show_nsfw := and $is_nsfw ($post.Bool "show_nsfw" | not) }}
+    {{ if $show_nsfw }}
+      {{ $preview = $post.Get "data.preview.images.0.variants.nsfw" }}
+    {{ end }}
+
+  {{/* CROSSPOST? */}}
+    {{ if gt ($post.Array "data.crosspost_parent_list" | len) 0 }}
+      {{ $crosspost := $post.Get "data.crosspost_parent_list.0" }}
+      {{ $is_gallery = $crosspost.Bool "is_gallery" }}
+      {{ $is_video = $crosspost.Bool "is_video" }}
+      {{ $domain = $crosspost.String "domain" }}
+      {{ $media_type = $crosspost.String "media.type" }}
+      {{ $media_metadata = $crosspost.Array "media_metadata|@values" }}
+      {{ $url_overridden_by_dest = $crosspost.String "url_overridden_by_dest" }}
+      {{ $is_removed = or ($crosspost.String "removed_by") ($crosspost.String "removed_by_category") }}
+
+      {{ $image = $crosspost.Get `preview.images.0` }}
+      {{ $preview = $image }}
+      {{ $video = $crosspost.Get `media.reddit_video` }}
+    {{ end }}
+
+  {{/* REDGIF? */}}
+    {{ if eq $domain "redgifs.com" }}
+      {{ $video = $post.Get `data.preview.reddit_video_preview` }}
+    {{ end }}
+
+  {{/* ! */}}
+
+    {{ $title = $title | trimSpace }}
+    {{ $selftext = $selftext | trimSpace }}
+
+    {{ $image_url := $image.String "source.url" | replaceAll "amp;" "" }}
+
+    {{ $thumbnail := or ($preview.Get `resolutions.2`) ($preview.Get `resolutions.@reverse.0`) }}
+    {{ $thumb_url := $thumbnail.String "url" | replaceAll "amp;" "" }}
+
+    {{ $has_thumb := ne $thumb_url "" }}
+    {{ $thumb_width := or ($thumbnail.Int "width") 0 }}
+    {{ $thumb_height := or ($thumbnail.Int "height") 0 }}
+
+    {{ $thumbnail = or ($image.Get `resolutions.2`) ($image.Get `resolutions.@reverse.0`) }}
+    {{ $not_censored := $thumbnail.String "url" | replaceAll "amp;" "" }}
+
+    {{ $hls_url := $video.String "hls_url" | replaceAll "amp;" "" }}
+    {{ $video_width := or ($video.Int "width") 0 }}
+    {{ $video_height := or ($video.Int "height") 0 }}
+    {{ $video_duration := or ($video.Int "duration") 0 }}
+    {{ $is_portrait := lt $video_width $video_height }}
+
+  {{ $is_reddit := findMatch "redd.it|reddit.com|self." $domain }}
+  {{ $embedded := or $is_reddit (findMatch "youtube.com|youtu.be|twitch.tv|imgur.com|redgifs.com" $domain) }}
+
+  {{ if $is_gallery }} {{ $type = "gallery" }}
+  {{ else if $is_video }} {{ $type = "video" }}
+  {{ else if eq $media_type "redgifs.com" }} {{ $type = "video" }}
+  {{ else if eq $media_type "youtube.com" }} {{ $type = "youtube" }}
+  {{ else if eq $media_type "twitch.tv" }} {{ $type = "twitch" }}
+  {{ else if and $embedded $has_thumb }} {{ $type = "image" }}
+  {{ end }}
+
+  {{/* --------------------------- */}}
+
+  <div class="x-container x-card x-parent-hover">
+      <div class="x-content-padding{{ if $is_stickied }} x-lg-positive{{ end }}{{ if $is_removed }} x-lg-negative{{ end }} x-br">
+        <div class="flex flex-column gap-10">
+
+          <div>
+            <ul class="list-horizontal-text flex-wrap text-compact">
+              <li><a href="https://www.reddit.com/r/{{ $subreddit }}" class="color-highlight" target="_blank" rel="noreferrer"><span class="color-subdue">r/</span>{{ $subreddit }}</a></li>
+              <li><a href="https://www.reddit.com/u/{{ $author }}" class="color-base" target="_blank" rel="noreferrer"><span class="color-subdue">u/</span>{{ $author }}</a></li>
+            </ul>
+            <ul class="list-horizontal-text flex-wrap text-compact color-subdue">
+              <li><span data-dynamic-relative-time="{{ $created }}"></span></li>
+              <li>{{ $score | formatApproxNumber }} points</li>
+              <li>{{ $comments | formatApproxNumber }} comments</li>
+            </ul>
+          </div>
+
+          <div class="x-flow-root">
+            {{- if and (not $embedded ) $has_thumb -}}
+            <div class="x-f-left">
+              <img class="x-image x-blend x-of-cover x-ar-16x9 x-w-120 x-h-fit zoom-in" src="{{ $thumb_url }}" loading="lazy" onclick="this.nextElementSibling.showModal()" />
+              <dialog id="{{ $id }}" class="x-dialog" closedby="any">
+                <img src="{{ $image_url }}" loading="lazy" />
+              </dialog>
+            </div>
+            {{- end -}}
+            <a href="https://www.reddit.com{{ $permalink }}" class="size-title-dynamic color-primary-if-not-visited" target="_blank" rel="noreferrer">{{ $title }}</a>
+          </div>
+
+          {{- if eq $type "gallery" -}}
+
+            <div class="x-grid" style="--min-width: 10rem;">
+            {{- range $i, $val := $media_metadata -}}
+              <div{{ if $show_nsfw }} class="x-nsfw"{{ end }}>
+                <img class="x-image x-blend x-ar-1x1 x-of-cover zoom-in x" src="{{ or ($val.String "p.1.u") ($val.String "p.0.u") | replaceAll "amp;" "" }}" loading="lazy" onclick="this.nextElementSibling.showModal()" />
+                <dialog id="{{ $val.String "id" }}" class="x-dialog" closedby="any">
+                  <img src="{{ $val.String "s.u" | replaceAll "amp;" "" }}" loading="lazy" />
+                </dialog>
+              </div>
+            {{- end -}}
+            </div>
+
+          {{- else if eq $type "video" -}}
+
+            <div {{ if $is_portrait }}class="-x-cqw-70"{{ end }}>
+              <div role="button" tabindex="0" class="x-stack x-overlay pointer x-fn-hls" data-hls-url="{{ $hls_url }}">
+                <img class="x-image x-blend x-wh-auto x-w-f x-pe-none" src="{{ $thumb_url }}" width="{{ $video_width }}" height="{{ $video_height }}" loading="lazy">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="x-ps-cc color-highlight x-h-64 x-pe-none"><path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd"></path></svg>
+                <div class="x-ps-ee x-margin-gap x-blur">
+                  {{ (now | startOfDay).Add ($video_duration = print $video_duration "s" | duration) | formatTime "4:05" }}
+                </div>
+              </div>
+              <video class="x-wh-f x-br-half x-blend" poster="{{ $image_url }}" width="{{ $video_width }}" height="{{ $video_height }}"  controls hidden>
+                <source src="{{ $hls_url }}" type="video/mp4">
+              </video>
+            </div>
+
+          {{- else if eq $type "youtube" -}}
+
+            {{ $yid := findMatch "[=/]([a-zA-Z0-9_-]{11})" $url_overridden_by_dest | replaceAll "=" "" | replaceAll "/" "" }}
+            <iframe src="https://www.youtube.com/embed/{{ $yid }}?&amp;autoplay=0" class="x-ar-16x9 x-br-half" frameborder="0"></iframe>
+
+          {{- else if eq $type "twitch" -}}
+
+            {{ $tid := findMatch "clip/(.*)" $url_overridden_by_dest | replaceAll "clip/" "" }}
+            <iframe src="https://clips.twitch.tv/embed?clip={{ $tid }}&parent=${DOMAIN}" class="x-ar-16x9 x-br-half" frameborder="0"></iframe>
+
+          {{- else if eq $type "image" -}}
+
+            <div class="x-cqw-70">
+              {{- if $show_nsfw -}}
+                <img class="x-image x-blend x-wh-f grab" src="{{ $thumb_url }}" width="{{ $thumb_width }}" height="{{ $thumb_height }}" loading="lazy" onclick="this.nextElementSibling.removeAttribute('hidden');this.remove()" />
+                <img class="x-image x-blend x-wh-f zoom-in" src="{{ $not_censored }}" width="{{ $thumb_width }}" height="{{ $thumb_height }}" onclick="this.nextElementSibling.showModal()" hidden/>
+              {{- else -}}
+                <img class="x-image x-blend x-wh-f zoom-in" src="{{ $thumb_url }}" width="{{ $thumb_width }}" height="{{ $thumb_height }}" loading="lazy" onclick="this.nextElementSibling.showModal()" />
+              {{- end -}}
+              <dialog id="{{ $id }}" class="x-dialog" closedby="any">
+                <img src="{{ $image_url }}" loading="lazy" />
+              </dialog>
+            </div>
+
+          {{- end -}}
+
+          {{- if not $embedded -}}
+
+            <a href="{{ $url_overridden_by_dest }}" class="x-external size-h5" target="_blank" rel="noreferrer">
+              <img src="https://www.google.com/s2/favicons?sz=32&domain={{ $domain }}" loading="lazy" />
+              {{ $domain }}
+            </a>
+
+          {{- end -}}
+
+          {{- if $selftext -}}
+
+            {{- if gt (len $selftext) 200 -}}
+            <div class="x-html x-preview"><div class="x-show-more" onclick="this.parentElement.classList.toggle('x-preview')">show more</div>
+            {{- else -}}
+            <div class="x-html">
+            {{- end -}}
+            {{ $selftext }}
+            </div>
+
+          {{- end -}}
+
+        </div>
+      </div>
+  </div>
+{{- end -}}

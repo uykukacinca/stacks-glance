@@ -94,7 +94,7 @@
     <div
       class="margin-top-10 margin-bottom-widget flex flex-column grow padding-inline-widget"
     >
-      {{- if or (eq $mediaType "Episode") (eq $mediaType "Movie")  (eq $mediaType "Series") -}}
+      {{- if or (eq $mediaType "Episode") (eq $mediaType "Movie") (eq $mediaType "Series") -}}
         <ul class="list-horizontal-text flex-nowrap margin-bottom-7" hidden>
           {{- if ne $episodeFull "" -}}
             <li class="shrink-0">{{ $episodeFull }}</li>

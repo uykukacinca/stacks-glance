@@ -7,12 +7,22 @@
       widgets:
 
         - <<: *backube-latest
-          title: daily
+          title: Videos
+          options:
+            collapse-after-rows: 4
+          parameters:
+            <<: *backube-video-parameters
+            perPage: 70
+            filter: kind="video"&&channel.category="k516tjizxpadzda"
+
+        - <<: *backube-latest
+          title: vlogs
           options:
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.tags.name?="daily"
+            perPage: 7
+            filter: kind="video"&&channel.tags?~"euqffttmgr6qssb"
 
         - <<: *backube-latest
           title: Travel
@@ -20,7 +30,8 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.tags.name?="travel"
+            perPage: 7
+            filter: kind="video"&&channel.tags?~"hstxsacj27uw82c"
 
         - <<: *backube-latest
           title: Outdoor
@@ -28,7 +39,8 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.tags.name?="outdoor"
+            perPage: 7
+            filter: kind="video"&&channel.tags?~"in6sgckqwvbe1tg"
 
         - <<: *backube-latest
           title: Camping
@@ -36,20 +48,14 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.tags.name?="camping"
+            perPage: 7
+            filter: kind="video"&&channel.tags?~"6tyvuf4b04jbk2j"
 
         - <<: *backube-latest
-          title: Social
+          title: off-grid
           options:
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.tags.name?="social"
-
-        - <<: *backube-latest
-          title: Pranks
-          options:
-            collapse-after-rows: 1
-          parameters:
-            <<: *backube-video-parameters
-            filter: channel.tags.name?="pranks"
+            perPage: 7
+            filter: kind="video"&&channel.tags?~"il3ysp4xqg5kmbz"

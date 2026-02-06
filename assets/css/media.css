@@ -1,0 +1,30 @@
+.x-media {
+  display: grid;
+  gap: var(--x-gap-medium);
+  transition: background var(--x-t-speed);
+}
+
+.x-grid .x-media {
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+}
+
+.x-grid .x-media .x-thumb {
+  border-radius: var(--x-br-t);
+}
+
+.x-media:hover {
+  background: var(--x-c-foreground-light);
+}
+
+.x-media-header,
+.x-media-content {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--widget-content-vertical-padding);
+}
+
+.x-media-content {
+  margin-bottom: var(--widget-content-vertical-padding);
+}

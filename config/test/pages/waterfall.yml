@@ -1,0 +1,45 @@
+- name: "*waterfall"
+  slug: waterfall
+  show-in-navigation: false
+  width: wide
+
+  columns:
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 2
+          widgets:
+
+            - <<: *xeddit-waterfall
+              cache: *no-cache
+              title: popular
+              # css-class: "x-h-100vh"
+              options:
+                subreddit: popular
+                period: day
+                sort: hot
+                min-column-width: 320
+                test: true
+
+            - <<: *xeddit-masonry
+              cache: *no-cache
+              title: popular
+              # css-class: "x-h-100vh"
+              options:
+                subreddit: popular
+                period: day
+                sort: hot
+                min-column-width: 320
+                test: true
+
+        - <<: *xeddit-masonry
+          title: reddit communities
+          options:
+            subreddit: anime
+            top-period: day
+            sort-by: hot
+            #show-nsfw: true
+            max-columns: 5
+            test: true

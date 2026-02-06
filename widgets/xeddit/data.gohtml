@@ -1,0 +1,49 @@
+{{ $subreddit := .Options.StringOr "subreddit" "" }}
+{{ $period := .Options.StringOr "top-period" "day" }}
+{{ $sort := .Options.StringOr "sort-by" "hot" }}
+{{ $limit := .Options.IntOr "limit" 25 }}
+{{ $show_nsfw := .Options.BoolOr "show-nsfw" false }}
+{{ $columns := .Options.IntOr "max-columns" 5 }}
+{{ $columnWidth := .Options.IntOr "min-column-width" 360 }}
+{{ $test := .Options.BoolOr "test" false }}
+
+{{ $url := print "https://reddit.com/r/" $subreddit "/" $sort ".json?t=" $period "&limit=" $limit }}
+{{ if $test }}
+{{ $url = concat "http://localhost:8080/assets/r/" $subreddit ".json" }}
+{{ end }}
+
+{{ $version := mod now.Second 10 }}
+{{ $agent := print "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:13" $version ".0) Gecko/20100101 Firefox/13" $version ".0" }}
+
+{{ $data := newRequest $url
+  | withHeader "User-Agent" $agent
+  | getResponse
+  }}
+
+{{ $items := "" }}
+{{ if $show_nsfw }}
+{{ $items = $data.JSON.Array `data.children.#.{"show_nsfw":!true,"data":data}` | sortByInt "data.stickied" "desc" }}
+{{ else }}
+{{ $items = $data.JSON.Array `data.children.#.{"show_nsfw":!false,"data":data}` | sortByInt "data.stickied" "desc" }}
+{{ end }}
+
+{{ $error := "" }}
+{{ if eq $subreddit "" }}
+{{ $error = "Invalid 'subreddit' value" }}{{ end }}
+{{ if not (findMatch "^(hot|new|top|rising)$" $sort) }}
+{{ $error = "Invalid 'sort-by' value. Possible values are hot, new, top and rising" }}{{ end }}
+{{ if not (findMatch "^(hour|day|week|month|year|all)$" $period) }}
+{{ $error = "Invalid 'top-period' value. Possible values are hour, day, week, month, year and all" }}{{ end }}
+{{ if ne $data.Response.StatusCode 200 }}
+{{ $error = $data.Response.Status }}{{ end -}}
+{{ if eq (len $items) 0 }}
+{{ $error = "Nothing found or something went wrong" }}{{ end -}}
+
+{{ if ne $error "" }}
+  <div class="widget-content">
+    <div class="widget-error-header">
+      <div class="color-negative size-h3">ERROR</div>
+    </div>
+    <p class="break-all">{{ $error }}</p>
+  </div>
+{{ end }}

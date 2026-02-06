@@ -3,7 +3,8 @@
   skipTotal: 1
   expand: channel
   sort: -published
-  fields: id,title,published,expand.channel.id,expand.channel.title,user_progress
+  fields: id,title,published,kind,expand.channel.id,expand.channel.title,user_progress
+  filter: kind="video"
 
 - &backube-latest
   type: custom-api
@@ -19,7 +20,15 @@
   parameters:
     <<: *backube-video-parameters
   template: |
-    {{ $items := .JSON.Array `items.#.{"id":id,"title":title,"url":{"fn":!"params","val":[{"key":!"v","val":id},{"key":!"t","val":user_progress.current_time}],"href":!"https://www.youtube.com/watch"},"header":[{"tpl":!"Title"}],"image":{"fn":!"replace","val":id,"src":!"https://i.ytimg.com/vi/{val}/hqdefault.jpg","overlays":[{"class":!"x-center x-play","tpl":!"PlayIcon"},{"tpl":!"ProgressBar","val":user_progress.progress,"class":!"x-as-e"}]},"footer":[{"class":!"","tpl":!"WeirdTime","val":published},{"class":!"","tpl":!"Link","val":{"title":expand.channel.title,"link":{"fn":!"replace","val":expand.channel.id,"href":!"https://www.youtube.com/channel/{val}/videos" }}}]}`
+    {{ $items := .JSON.Array `items.#.{"id":id,"title":title,"url":{"fn":!"params","val":[{"key":!"v","val":id},{"key":!"t","val":user_progress.current_time}],"href":!"https://www.youtube.com/watch"},"header":[{"tpl":!"Title"}],"image":{"fn":!"replace","val":id,"src":!"https://i.ytimg.com/vi/{val}/hqdefault.jpg","overlays":[{"class":!"x-center x-play","tpl":!"PlayIcon"},{"tpl":!"ProgressBar","val":user_progress.progress,"class":!"x-as-e"}]},"footer":[{"class":!"","tpl":!"WeirdTime","val":published},{"class":!"","tpl":!"Link","val":{"title":expand.channel.title,"link":{"fn":!"replace","val":expand.channel.id,"href":!"https://www.youtube.com/channel/{val}/videos"}}}]}`
+    }}
+    $include: /components/templates.gohtml
+    $include: /components/media.gohtml
+    $include: /components/media-container.gohtml
+
+- &backube-x
+  template: |
+    {{ $items := .JSON.Array `items.#.{"id":id,"title":title,"url":{"fn":!"params","val":[{"key":!"v","val":id},{"key":!"t","val":user_progress.current_time}],"href":!"https://www.youtube.com/watch"},"header":[{"tpl":!"Title"}],"image":{"fn":!"replace","val":id,"src":!"https://i.ytimg.com/vi/{val}/hqdefault.jpg","overlays":[{"class":!"x-center x-play","tpl":!"PlayIcon"},{"tpl":!"ProgressBar","val":user_progress.progress,"class":!"x-as-e"}]},"footer":[{"class":!"","tpl":!"WeirdTime","val":published},{"class":!"","tpl":!"Link","val":{"title":expand.channel.title,"link":{"fn":!"replace","val":expand.channel.id,"href":!"https://www.youtube.com/channel/{val}/videos"},"class":!"x-grow nodot"}},{"tpl":!"KindIcon","val":kind,"class":!"x-wh-12 color-negative"}]}`
     }}
     $include: /components/templates.gohtml
     $include: /components/media.gohtml

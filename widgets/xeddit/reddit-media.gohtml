@@ -1,0 +1,37 @@
+{{- define "RedditMedia" -}}
+  {{- if (.Bool "data.is_gallery") -}}
+    {{- range .Array "data.media_metadata|@values" -}}
+      {{ $photo := .Get `{"id":id,"source":s.u,"thumb":p.2.u,"width":p.2.y,"height":p.2.x}` }}
+      {{- template "Photo" $photo -}}
+    {{- end -}}
+  {{- else if eq (.String "data.post_hint") "image" -}}
+    {{ $photo := .Get `{"id":data.id,"title":data.title,"link":data.permalink,"source":data.preview.images.0.source.url,"thumb":data.preview.images.0.resolutions.2.url,"width":data.preview.images.0.resolutions.2.width,"height":data.preview.images.0.resolutions.2.height}` }}
+    {{- template "Photo" $photo -}}
+  {{- else if eq (.String "data.post_hint") "hosted:video" -}}
+    {{ $video := .Get `{"source":data.media.reddit_video.hls_url,"preview":data.preview.reddit_video_preview.hls_url,"poster":data.preview.images.0.source.url}` }}
+    {{- template "Video" $video -}}
+  {{- end -}}
+{{- end -}}
+
+{{- define "Photo" -}}
+  <div class="x-container">
+    <div class="x-stack">
+      <img class="x-image x-blend x-wh-f zoom-in" src="{{ replaceAll "amp;" "" (.String "thumb") }}" width="{{ .Int "width" }}" height="{{ .Int "height" }}" loading="lazy" onclick="this.nextElementSibling.showModal()" />
+      <dialog id="{{ .String "id" }}" class="x-dialog" closedby="any">
+        <img src="{{ replaceAll "amp;" "" (.String "source") }}" loading="lazy" />
+      </dialog>
+      {{- if ne (.String "link") "" -}}
+      <div class="x-ps-es x-wb-bw x-m-small">
+        <a href="https://www.reddit.com{{ .String "link" }}" class="size-title-dynamic x-blur x-photo-title" target="_blank" rel="noreferrer">{{ .String "title" }}</a>
+      </div>
+      {{- end -}}
+    </div>
+  </div>
+{{- end -}}
+
+{{- define "Video" -}}
+  {{ $src := or (.String "source") (.String "preview") }}
+  <video class="x-br-half x-blend" poster="{{ replaceAll "amp;" "" (.String "poster") }}" controls>
+    <source src="{{ replaceAll "amp;" "" $src }}" type="video/mp4">
+  </video>
+{{- end -}}

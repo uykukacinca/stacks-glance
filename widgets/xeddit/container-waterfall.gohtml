@@ -1,0 +1,10 @@
+{{- if eq $error "" -}}
+<div class="x-grid x-waterfall" style="--min-width: {{ $columnWidth }}px;">
+  {{- range $items -}}
+    {{ if and (.Bool "data.stickied") (lt (.Int "data.created") (offsetNow "-72h").Unix) }}
+      {{ continue }}
+    {{ end }}
+    {{ template "RedditPost" . }}
+  {{- end -}}
+</div>
+{{- end -}}

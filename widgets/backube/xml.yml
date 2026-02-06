@@ -4,13 +4,15 @@
   cache: *no-cache
   frameless: true
   url: ${BACKUBE_URL}/api/xml
+  headers:
+    Authorization: Bearer ${BACKUBE_TOKEN}
   css-class: x-backube
   options:
     collapse-after-rows: 4
   parameters:
     limit: 32
   template: |
-    {{ $items := .JSON.Array `#.{"id":id,"title":Title,"url":{"href":Url},"header":[{"tpl":!"Title"}],"image":{"src":ThumbnailUrl,"overlays":[{"class":!"x-center x-play","tpl":!"PlayIcon"}]},"footer":[{"tpl":!"WeirdTime","val":TimePosted},{"tpl":!"Link","val":{"title":Author,"link":{"url":AuthorUrl}}}]}`
+    {{ $items := .JSON.Array `#.{"id":id,"title":title,"url":{"fn":!"params","val":[{"key":!"v","val":id},{"key":!"t","val":user_progress.current_time}],"href":!"https://www.youtube.com/watch"},"header":[{"tpl":!"Title"}],"image":{"fn":!"replace","val":id,"src":!"https://i.ytimg.com/vi/{val}/hqdefault.jpg","overlays":[{"class":!"x-center x-play","tpl":!"PlayIcon"},{"tpl":!"ProgressBar","val":user_progress.progress,"class":!"x-as-e"}]},"footer":[{"class":!"","tpl":!"WeirdTime","val":published},{"class":!"","tpl":!"Link","val":{"title":expand.channel.title,"link":{"fn":!"replace","val":expand.channel.id,"href":!"https://www.youtube.com/channel/{val}/videos"}}}]}`
     }}
     $include: /components/templates.gohtml
     $include: /components/media.gohtml
@@ -21,6 +23,7 @@
   template: |
     {{ $items := .JSON.Array `#.{"id":id,"title":Title,"url":{"href":Url},"header":[{"tpl":!"Title"}],"image":{"src":ThumbnailUrl,"overlays":[{"class":!"x-center x-play","tpl":!"PlayIcon"}]}}`
     }}
+
     $include: /components/templates.gohtml
     $include: /components/media.gohtml
     $include: /components/media-container.gohtml

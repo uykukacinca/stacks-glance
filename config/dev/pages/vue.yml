@@ -1,6 +1,17 @@
 - name: "Vue" # 🟢
   slug: vue
   width: wide
+
+  head-widgets:
+
+    - <<: *backube-latest
+      title: Videos
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: kind="video"&&channel.category="avd23828y2jcz8j"&&(channel.tags?~"byfw2x4lpn7dy0g"||channel.tags?~"cl6ei9ysqzm107w"||title~"vuejs"||title~"nuxtjs")
+
   columns:
 
     - size: small
@@ -70,40 +81,23 @@
             - <<: *github-repository
               repository: nuxt/nuxt
 
-            - type: group
-              widgets:
+            - <<: *reddit-simple
+              subreddit: vuejs
+              collapse-after: 10
 
-                - <<: *reddit-simple-full
-                  title: Vue
-                  subreddit: vuejs
+            - <<: *reddit-simple
+              subreddit: nuxt
+              collapse-after: 10
 
-                - <<: *reddit-simple-top-week
-                  title: Top This Week
-                  subreddit: vuejs
+            - <<: *github-repository
+              repository: vuejs/core
 
-                - <<: *reddit-simple-top-month
-                  title: Month
-                  subreddit: vuejs
+            - <<: *reddit-simple-top-week
+              title: r/vuejs Top This Week
+              subreddit: vuejs
+              collapse-after: 10
 
-            - <<: *backube-latest
-              title: Videos
-              options:
-                collapse-after-rows: 8
-              parameters:
-                <<: *backube-video-parameters
-                filter: channel.category.code="dev"&&(channel.tags.name?="vuejs"||channel.tags.name?="nuxtjs"||title~"vuejs"||title~"nuxtjs")
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-simple-full
-                  title: Nuxt
-                  subreddit: nuxt
-
-                - <<: *reddit-simple-top-week
-                  title: Top This Week
-                  subreddit: nuxt
-
-                - <<: *reddit-simple-top-month
-                  title: Month
-                  subreddit: nuxt
+            - <<: *reddit-simple-top-week
+              title: r/nuxt Top This Week
+              subreddit: nuxt
+              collapse-after: 10

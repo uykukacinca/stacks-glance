@@ -1,51 +1,125 @@
-- name: "News" # 🌏
+- name: "News"
   slug: news
   width: wide
+
   head-widgets:
 
-    - <<: *backube-latest
-      title: Videos
-      options:
-        collapse-after-rows: 1
-      parameters:
-        <<: *backube-video-parameters
-        filter: channel.language.code="en"&&channel.tags.name?="politics"
+    - type: iframe
+      # hide-header: true
+      title: Shake RF9F7
+      css-class: xxx-rounded xxx-RF9F7
+      height: 70
+      title-url: https://dataview.raspberryshake.org/#/AM/RF9F7/00/EHZ?streaming=on
+      source: https://dataview.raspberryshake.org/#/embed/AM/RF9F7/00/EHZ
 
   columns:
+
+    - size: small
+      widgets:
+
+        - <<: *markets-base
+          markets:
+            - symbol: TRY=X
+            - symbol: EURTRY=X
+            - symbol: BTC-USD
+              name: Bitcoin
+
+        - type: iframe
+          css-class: xxx-rounded xxx-youtube-iframe
+          title: Sözcü TV
+          source: https://www.youtube.com/embed/ztmY_cCtUl0?si=-9A8OM7vLep1ipse&amp;controls=0&autoplay=0
+
+        - type: extension
+          url: ${GLIMPSE_URL}/usgs/earthquakes
+          title-url: https://earthquake.usgs.gov/earthquakes/search/
+          allow-potentially-dangerous-html: true
+          cache: *short-cache
+          headers:
+            x-glimpse-output: glance
+          parameters:
+            minlatitude: 36
+            minlongitude: 25
+            maxlatitude: 42
+            maxlongitude: 40
+            minmagnitude: 2.5
+
+        - type: extension
+          url: ${GLIMPSE_URL}/eksisozluk/search
+          allow-potentially-dangerous-html: true
+          css-class: x-mh-400
+          cache: *short-cache
+          hide-header: true
+          title: Search
+          headers:
+            x-glimpse-output: glance
+          parameters:
+            collapseAfter: 10
+            query: depremi
+
+        - type: bookmarks
+          title: Deprem
+          groups:
+            - links:
+                - title: X Deprem
+                  url: https://x.com/i/lists/1915151387949973738
+                - title: USGS Magnitude 2.5+ 24h
+                  url: https://earthquake.usgs.gov/earthquakes/map/?extent=40.0954,26.86393&extent=41.41234,29.63249&listOnlyShown=true
+                - title: Shake Station 3.0+ 48h
+                  url: https://stationview.raspberryshake.org/#/?lat=40.86170&lon=28.40830&zoom=10.592
+                - title: RaspberryShake RF9F7
+                  url: https://dataview.raspberryshake.org/#/AM/RF9F7/00/EHZ?streaming=on
+                - title: KOERİ Son Depremler
+                  url: http://www.koeri.boun.edu.tr/scripts/lst2.asp
+                - title: KOERİ Deprem Haritası
+                  url: http://udim.koeri.boun.edu.tr/zeqmap/hgmmap.asp
 
     - size: full
       widgets:
 
-        - type: split-column
-          max-columns: 3
-          widgets:
+        - <<: *xeddit-waterfall
+          title: r/Global news & politics
+          css-class: "x-h-100vh"
+          options:
+            subreddit: Turkey+news+worldnews+geopolitics+GlobalTalk+PoliticalDiscussion+europe
 
-            - <<: *reddit-cover
-              subreddit: worldnews
-              show-flairs: true
-              collapse-after: 10
+    - size: small
+      widgets:
 
-            - <<: *reddit-cover
-              subreddit: geopolitics
-              show-flairs: true
-              collapse-after: 10
+        - type: search
+          search-engine: https://eksisozluk.com/basliklar/ara?SearchForm.Keywords={QUERY}&SearchForm.SortOrder=Date
+          new-tab: true
+          placeholder: Search on Ekşi
 
-            - <<: *reddit-cover
-              subreddit: News
-              show-flairs: true
-              collapse-after: 10
+        - type: extension
+          url: ${GLIMPSE_URL}/eksisozluk/channel/gundem
+          allow-potentially-dangerous-html: true
+          cache: *short-cache
+          title: Ekşi Popular
+          headers:
+            x-glimpse-output: glance
+          parameters:
+            limit: 30
+            filters: siyaset
+            collapseAfter: 10
 
-            - <<: *reddit-cover-top-week
-              title: r/worldnews Top This Week
-              subreddit: worldnews
-              collapse-after: 10
+        - type: extension
+          url: ${GLIMPSE_URL}/eksisozluk/thread/ekrem-imamoglu--2577439
+          allow-potentially-dangerous-html: true
+          css-class: x-mh-500
+          cache: *short-cache
+          title: Threads
+          headers:
+            x-glimpse-output: glance
+          parameters:
+            filter: popular
 
-            - <<: *reddit-cover-top-week
-              title: r/geopolitics Top This Week
-              subreddit: geopolitics
-              collapse-after: 10
-
-            - <<: *reddit-cover-top-week
-              title: r/News Top This Week
-              subreddit: News
-              collapse-after: 10
+        - type: extension
+          url: ${GLIMPSE_URL}/eksisozluk/thread/jeffrey-epstein--5967292
+          allow-potentially-dangerous-html: true
+          css-class: x-mh-500
+          cache: *short-cache
+          hide-header: true
+          headers:
+            x-glimpse-output: glance
+          parameters:
+            filter: popular

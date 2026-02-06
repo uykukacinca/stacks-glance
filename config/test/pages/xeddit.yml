@@ -1,0 +1,71 @@
+- name: "*xeddit"
+  slug: xeddit
+  show-in-navigation: false
+  width: wide
+
+  columns:
+
+    - size: full
+      widgets:
+
+        - <<: *xeddit-help
+
+        - type: custom-api
+          frameless: true
+          hide-header: true
+          cache: 3s
+          template: |
+            $include: /components/now.gohtml
+
+        - type: split-column
+          max-columns: 4
+          widgets:
+
+            - <<: *xeddit-waterfall
+              cache: *no-cache
+              title: popular
+              # css-class: "x-h-100vh"
+              options:
+                subreddit: popular
+                period: day
+                sort: hot
+                min-column-width: 440
+                test: true
+
+            - <<: *xeddit-waterfall
+              cache: *no-cache
+              title: conspiracy+Wikileaks+NSALeaks+EndlessWar+Declassified
+              # css-class: "x-h-100vh"
+              options:
+                subreddit: conspiracy+Wikileaks+NSALeaks+EndlessWar+Declassified
+                period: day
+                sort: hot
+                min-column-width: 440
+                test: true
+
+            # - type: html
+            #   css-class: "x-h-100vh"
+            #   source: |
+            #     <div class="x-app"></div>
+
+            - <<: *xeddit-waterfall
+              cache: *no-cache
+              title: movies
+              # css-class: "x-h-100vh"
+              options:
+                subreddit: movies
+                period: day
+                sort: hot
+                min-column-width: 440
+                test: true
+
+            - <<: *xeddit-waterfall
+              cache: *no-cache
+              title: Turkey
+              # css-class: "x-h-100vh"
+              options:
+                subreddit: Turkey
+                period: day
+                sort: hot
+                min-column-width: 440
+                test: true

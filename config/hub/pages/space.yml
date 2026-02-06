@@ -10,25 +10,16 @@
       parameters:
         <<: *backube-video-parameters
         perPage: 70
-        filter: channel.tags.name?="space"&&channel.category.code="stem"
+        filter: kind="video"&&channel.tags?~"yyy3fhxeftt8fao"&&channel.category="esmafhdlbw3esk7"
 
   columns:
 
     - size: full
       widgets:
 
-        - type: split-column
-          max-columns: 3
-          widgets:
-
-            - <<: *reddit-cover
-              title: NASA
-              subreddit: nasa
-
-            - <<: *reddit-cover
-              title: SpaceX
-              subreddit: spacex
-
-            - <<: *reddit-cover
-              title: UFOs
-              subreddit: UFOs
+        - <<: *xeddit-waterfall
+          title: reddit communities
+          options:
+            subreddit: space+nasa+spacex+UFOs+aliens
+            min-column-width: 420
+            limit: 50

@@ -2,6 +2,7 @@ definitions:
   - &reddit-base
     type: reddit
     cache: *default-cache
+    show-flairs: true
     #comments-url-template: *reddit
 
   - &reddit-top-week

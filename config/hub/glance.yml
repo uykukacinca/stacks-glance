@@ -3,15 +3,17 @@ server:
 
 branding:
   logo-text: ⋈
-  favicon-url: /assets/favicon-hub.ico
-  app-name: "Glance Hub"
+  favicon-url: /assets/hub.ico
+  app-name: "Hub"
+  app-icon-url: /assets/hub.png
 
 $include: /shared/index.yml
 
 pages:
   # - $include: pages/home.yml
-  - $include: pages/gundem.yml
   - $include: pages/news.yml
+  - $include: pages/tr.yml
+  - $include: pages/paradise.yml
   - $include: pages/finance.yml
   - $include: pages/stem-plus.yml
   - $include: pages/science.yml
@@ -22,15 +24,13 @@ pages:
   - $include: pages/shows.yml
   - $include: pages/anime.yml
   - $include: pages/documentaries.yml
-  - $include: pages/crime.yml
   - $include: pages/vlogs.yml
   - $include: pages/live.yml
-  - $include: pages/tr.yml
-  - $include: pages/gaming.yml
   - $include: pages/hardware.yml
-  - $include: pages/league-of-legends.yml
-  - $include: pages/wildrift.yml
-  - $include: pages/crew.yml
-  - $include: pages/gta.yml
-  - $include: pages/starcitizen.yml
+  - $include: pages/gaming/games.yml
+  - $include: pages/gaming/league-of-legends.yml
+  - $include: pages/gaming/wildrift.yml
+  - $include: pages/gaming/crew.yml
+  - $include: pages/gaming/gta.yml
+  - $include: pages/gaming/starcitizen.yml
   # - $include: pages/cars.yml

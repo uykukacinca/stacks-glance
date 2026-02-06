@@ -13,4 +13,4 @@
           parameters:
             <<: *backube-video-parameters
             perPage: 70
-            filter: channel.category.code="stem"
+            filter: kind="video"&&channel.category="esmafhdlbw3esk7"

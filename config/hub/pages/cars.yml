@@ -13,4 +13,4 @@
           parameters:
             <<: *backube-video-parameters
             perPage: 70
-            filter: channel.tags.name?="cars"&&channel.category.code="ent"
+            filter: kind="video"&&channel.tags?~"4nhdxhpy2ytu5ms"&&channel.category="d6rzqzfpcfpvh7w"

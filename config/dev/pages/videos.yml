@@ -9,8 +9,16 @@
         - <<: *backube-latest
           title: Videos
           options:
-            collapse-after-rows: 4
+            collapse-after-rows: 2
           parameters:
             <<: *backube-video-parameters
             perPage: 70
-            filter: channel.category.code="dev"
+            filter: kind="video"&&channel.category="avd23828y2jcz8j"&&channel.tags?!="jgrdrbreozr8xp4"
+
+        - <<: *backube-latest
+          title: Podcasts
+          options:
+            collapse-after-rows: 2
+          parameters:
+            <<: *backube-video-parameters
+            filter: kind="video"&&channel.category="avd23828y2jcz8j"&&channel.tags?~"jgrdrbreozr8xp4"

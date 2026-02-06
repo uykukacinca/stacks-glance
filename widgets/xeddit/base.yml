@@ -1,0 +1,58 @@
+- &xeddit-base
+  type: custom-api
+  title: Reddit
+  cache: *default-cache
+  frameless: true
+  options:
+    subreddit: "popular"
+    top-period: "day"
+    sort-by: "hot"
+    limit: 25
+    show-nsfw: true
+    max-columns: 5
+    min-column-width: 380
+
+- &xeddit-list
+  <<: *xeddit-base
+  title: Reddit list
+  template: |
+    $include: data.gohtml
+    $include: reddit-post.gohtml
+    $include: container-list.gohtml
+
+- &xeddit-gallery
+  <<: *xeddit-base
+  title: Reddit gallery
+  template: |
+    $include: data.gohtml
+    $include: reddit-media.gohtml
+    $include: container-gallery.gohtml
+
+- &xeddit-waterfall
+  <<: *xeddit-base
+  title: Reddit waterfall
+  template: |
+    $include: data.gohtml
+    $include: reddit-post.gohtml
+    $include: container-waterfall.gohtml
+
+- &xeddit-masonry
+  <<: *xeddit-base
+  title: Reddit wall
+  template: |
+    $include: data.gohtml
+    $include: reddit-post.gohtml
+    $include: container-masonry.gohtml
+
+- &xeddit-help
+  type: html
+  title: Xeddit
+  source: |
+    <p><a href="chrome://flags/#css-masonry-layout">chrome://flags/#css-masonry-layout</a></p>
+    <p><a href="about:config">about:config</a> layout.css.grid-template-masonry-value.enabled</p>
+    <p>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout/Masonry_layout">https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout/Masonry_layout</a>
+    </p>
+    <p>
+      <a href="https://webkit.org/demos/grid3/photos/">https://webkit.org/demos/grid3/photos/</a>
+    </p>

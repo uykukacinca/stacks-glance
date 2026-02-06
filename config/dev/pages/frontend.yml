@@ -10,7 +10,7 @@
         collapse-after-rows: 1
       parameters:
         <<: *backube-video-parameters
-        filter: channel.category.code="dev"&&(channel.tags.name?="css"||channel.tags.name?="frontend"||title~"tailwind"||title~"shadcn")
+        filter: kind="video"&&channel.category="avd23828y2jcz8j"&&(channel.tags?~"j9tjrier6cjm0uq"||title~"tailwind"||title~"shadcn")
 
   columns:
 

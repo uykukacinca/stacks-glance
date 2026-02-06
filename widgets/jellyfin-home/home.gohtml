@@ -49,7 +49,7 @@
 
     {{ $LatestItemsExcludes := $User.JSON.Array "Configuration.LatestItemsExcludes" }}
 
-    {{ $order :=  100 }}
+    {{ $order := 100 }}
 
     {{- range $Sections -}}
 
@@ -74,18 +74,18 @@
 
         {{ $widgetTitle = "Continue Watching" }}
         {{ $widgetStyle = "thumb" }}
-        {{ $widgetMessage =  "No videos to resume, start watching something!" }}
+        {{ $widgetMessage = "No videos to resume, start watching something!" }}
         {{ $queryMediaTypes := "Video" }}
         {{- if eq "resume" $display -}}
         {{- else if eq "resumeaudio" $display -}}
           {{ $widgetTitle = "Continue Listening" }}
           {{ $widgetStyle = "cover" }}
-          {{ $widgetMessage =  "No audio to resume, start listening something!" }}
+          {{ $widgetMessage = "No audio to resume, start listening something!" }}
           {{ $queryMediaTypes = "Audio" }}
         {{- else if eq "resumebook" $display -}}
           {{ $widgetTitle = "Continue Reading" }}
           {{ $widgetStyle = "poster" }}
-          {{ $widgetMessage =  "No books to resume, start reading something!" }}
+          {{ $widgetMessage = "No books to resume, start reading something!" }}
           {{ $queryMediaTypes = "Book" }}
         {{- else -}}
           {{ continue }}
@@ -126,7 +126,7 @@
         {{ $widgetStyle = "thumb" }}
         {{ $widgetItems = $res.JSON.Array "Items" }}
         {{- if eq (len $widgetItems) 0 -}}
-          {{ $widgetMessage =  "No videos to resume, start watching something!" }}
+          {{ $widgetMessage = "No videos to resume, start watching something!" }}
         {{- end -}}
       {{- end -}}
 

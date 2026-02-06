@@ -60,4 +60,4 @@
                 collapse-after-rows: 8
               parameters:
                 <<: *backube-video-parameters
-                filter: channel.category.code="dev"&&(channel.tags.name?="linux"||title~"linux")
+                filter: kind="video"&&channel.category="avd23828y2jcz8j"&&(channel.tags?~"2yjgcq6k0gcoelx"||title~"linux")

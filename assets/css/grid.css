@@ -1,0 +1,47 @@
+.x-grid {
+  --min-width: 250px;
+  --repeat: auto-fill;
+  --gap: var(--x-gap-medium);
+  display: grid;
+  grid-template-columns: repeat(var(--repeat), minmax(var(--min-width), 1fr));
+  gap: var(--gap);
+}
+
+/* chrome */
+@supports (display: grid-lanes) {
+  .x-grid.x-waterfall {
+    display: grid-lanes;
+  }
+}
+
+/* firefox */
+@supports (grid-template-rows: masonry) {
+  .x-grid.x-waterfall {
+    grid-template-rows: masonry;
+  }
+}
+
+/**************************************************************************************************/
+
+.x-stack {
+  display: grid;
+  grid-template-areas: "stack";
+}
+
+.x-stack > * {
+  display: grid;
+  grid-area: stack;
+  z-index: 1;
+}
+
+/**************************************************************************************************/
+
+.x-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.x-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}

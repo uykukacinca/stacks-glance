@@ -1,0 +1,15 @@
+.glimpse-wall .x-image {
+  object-fit: cover;
+  max-height: 180px;
+  border-radius: var(--x-br-half);
+}
+
+.glimpse-wall .x-image[data-glimpse-src] {
+  aspect-ratio: 0.75/1;
+  height: 180px;
+  opacity: 0;
+}
+
+.x-link:hover .x-image {
+  opacity: 1;
+}

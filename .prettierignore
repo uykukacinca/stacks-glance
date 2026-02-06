@@ -1,3 +1,7 @@
 # Ignore artifacts:
 build
 coverage
+*.yml
+*.gohtml
+pnpm-lock.yaml
+assets/js/*min.js

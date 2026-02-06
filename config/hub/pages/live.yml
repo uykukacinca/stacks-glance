@@ -4,15 +4,33 @@
 
   head-widgets:
 
-    - type: split-column
-      max-columns: 2
+    - <<: *backube-latest
+      title: "Videos"
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: kind!="short"&&channel.tags?~"8eskm8v85t341ty"&&channel.tags!~"gmi87of1hdn9rym"
+
+  columns:
+
+    - size: small
       widgets:
+
+        - type: twitch-channels
+          channels: ["asmongold","zackrawrr","robcdee","EsfandTV","emiru","bonnie","kitboga","ej_sa","CriticalRole","ariathome","sweet_anita","agendafreetv"]
+          collapse-after: 3
+
+        - <<: *kick-channels
+          title: Kick Following
+          parameters:
+            slug:
+              - asmongold
 
         - <<: *twitch-category
           title: Twitch Just Chatting [EN, TR]
           options:
-            collapse-after-rows: 1
-            min-card-width-px: 200
+            collapse-after-rows: 3
           body:
             query: |
               query {
@@ -42,49 +60,47 @@
         - <<: *kick-category
           title: Kick Just Chatting [EN]
           options:
-            collapse-after-rows: 1
-            min-card-width-px: 200
+            collapse-after-rows: 3
           parameters:
             category: 5
             limit: 4
             language: en
 
-  columns:
-
-    - size: small
-      widgets:
-
-        - <<: *kick-channels
-          title: Kick Following
-          parameters:
-            slug:
-              - asmongold
-
-        - <<: *twitch-channels
+        - <<: *twitch-clips
+          title: Popular Clips - Week
           options:
             collapse-after-rows: 2
           body:
             query: |
               query {
-                users(logins: ["asmongold","zackrawrr"]) {
-                  login
-                  displayName
-                  profileImageURL(width: 70)
-                  stream {
-                    title
-                    viewersCount
-                    createdAt
-                    previewImageURL(width: 440, height: 248)
-                    game {
-                      name
+                game(name: "Just Chatting") {
+                  clips(first: 30, criteria: { languages: [], period: LAST_WEEK }) {
+                    edges {
+                      node {
+                        url
+                        title
+                        durationSeconds
+                        createdAt
+                        thumbnailURL(width: 440, height: 248)
+                        viewCount
+                        game {
+                          displayName
+                        }
+                        curator {
+                          login
+                          displayName
+                          profileImageURL(width: 50)
+                        }
+                        broadcaster {
+                          login
+                          displayName
+                          profileImageURL(width: 50)
+                        }
+                      }
                     }
                   }
                 }
               }
-
-        - type: twitch-channels
-          channels: ["lacy","zackrawrr","asmongold247","robcdee","EsfandTV","emiru","bonnie","kitboga","ej_sa","CriticalRole","ariathome","sweet_anita","agendafreetv"]
-          title: Streamers
 
         - type: bookmarks
           groups:
@@ -110,74 +126,7 @@
     - size: full
       widgets:
 
-        - type: split-column
-          max-columns: 3
-          widgets:
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-cover
-                  subreddit: LivestreamFail
-
-                - <<: *reddit-cover-top-week
-                  title: Top This Week
-                  subreddit: LivestreamFail
-
-                - <<: *twitch-clips
-                  title: Popular Clips - Week
-                  options:
-                    collapse-after-rows: 8
-                  body:
-                    query: |
-                      query {
-                        game(name: "Just Chatting") {
-                          clips(first: 30, criteria: { languages: [], period: LAST_WEEK }) {
-                            edges {
-                              node {
-                                url
-                                title
-                                durationSeconds
-                                createdAt
-                                thumbnailURL(width: 440, height: 248)
-                                viewCount
-                                game {
-                                  displayName
-                                }
-                                curator {
-                                  login
-                                  displayName
-                                  profileImageURL(width: 50)
-                                }
-                                broadcaster {
-                                  login
-                                  displayName
-                                  profileImageURL(width: 50)
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-cover
-                  subreddit: Asmongold
-
-                - <<: *reddit-cover-top-week
-                  title: Top This Week
-                  subreddit: Asmongold
-
-            - type: group
-              widgets:
-
-                - <<: *backube-latest
-                  title: "Videos"
-                  options:
-                    collapse-after-rows: 6
-                  parameters:
-                    <<: *backube-video-parameters
-                    #filter: (channel="UCQeRaTukNYft1_6AZPACnog" || channel="UCkAsdQZolgJdKmZ3T3zn-dA")
-                    filter: channel.tags.name?="one true king"
+        - <<: *xeddit-waterfall
+          title: r/LivestreamFail
+          options:
+            subreddit: LivestreamFail+Asmongold+youtubedrama

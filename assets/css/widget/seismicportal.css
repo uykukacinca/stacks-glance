@@ -1,0 +1,50 @@
+.glimpse-seismicportal .grid-table {
+  display: grid;
+  grid-template-columns: repeat(3, auto) 1fr;
+  margin: var(--widget-content-vertical-padding-reverse)
+    var(--widget-content-horizontal-padding-reverse);
+}
+
+.glimpse-seismicportal .grid-table > div {
+  padding: 7px 15px;
+}
+
+.glimpse-seismicportal .grid-table > div + div:not(:nth-child(-n + 5)) {
+  border-top: 1px solid var(--color-separator);
+}
+
+@container widget (max-width: 320px) {
+  .glimpse-seismicportal .grid-table > div:nth-child(5n) {
+    display: none;
+  }
+}
+
+@container widget (min-width: 321px) {
+  .glimpse-seismicportal .grid-table {
+    grid-template-columns: repeat(4, auto) 1fr;
+  }
+}
+
+.mag {
+  position: relative;
+  padding: 0.2rem 0.7rem;
+  min-width: 4rem;
+  text-align: center;
+}
+
+.mag:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-text-base);
+  opacity: 0.03;
+  border-radius: 5px;
+}
+
+.mag.color-positive:before {
+  background: var(--color-positive);
+}
+
+.mag.color-negative:before {
+  background: var(--color-negative);
+}

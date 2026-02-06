@@ -1,6 +1,5 @@
 document:
   head: |
-    <script defer src="${UMAMI_URL}/script.js" data-website-id="${UMAMI_ID}"></script>
     <script>
       const GLIMPSE_URL = "${GLIMPSE_URL}";
       const HOST_NAME = "${HOST_NAME}";
@@ -8,11 +7,11 @@ document:
       const NTFY_URL = "${NTFY_URL}";
       const BACKUBE_URL = "${BACKUBE_URL}";
     </script>
-    <script src="/assets/custom.js"></script>
-    <link rel="stylesheet" href="/assets/css/glimpse/main.css">
+    <script src="/assets/js/hls.js"></script>
+    <script src="/assets/js/custom.js"></script>
+    <script src="/assets/js/xeddit.js"></script>
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/utils.css">
-    <link rel="stylesheet" href="/assets/css/override.css">
+    <script src="${UMAMI_URL}/script.js" data-website-id="${UMAMI_ID}"></script>
 
 $include: theme.yml
 

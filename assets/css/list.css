@@ -1,0 +1,28 @@
+.x-list-item:hover {
+  background-color: var(--x-c-foreground-light);
+}
+
+.x-list-item + .x-list-item > * {
+  border-top: 1px solid var(--x-c-border);
+}
+
+.x-list-item > .x-container {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.x-list + .expand-toggle-button {
+  padding: calc(var(--widget-content-horizontal-padding) / 2)
+    var(--widget-content-horizontal-padding);
+  border-top: 1px solid var(--x-c-border);
+  border-radius: 0 0 5px 5px;
+}
+
+.x-list.with-hover .x-list-item:hover,
+.x-list + .expand-toggle-button:hover {
+  background-color: hsl(var(--bghs), calc(var(--bgl) + 3%));
+}
+
+.x-list .x-thumb {
+  height: 6.4rem;
+}

@@ -10,17 +10,18 @@ $include: /shared/index.yml
 
 pages:
   - $include: pages/startpage.yml
-  - $include: pages/kaiten.yml
-  - $include: pages/containers.yml
-  - $include: pages/eksisozluk.yml
   - $include: pages/new.yml
+  - $include: pages/containers.yml
   - $include: pages/test.yml
-  - $include: pages/gallery.yml
+  - $include: pages/kaiten.yml
+  - $include: pages/glimpse.yml
   - $include: pages/kick.yml
   - $include: pages/twitch.yml
   - $include: pages/backube.yml
   - $include: pages/youtube.yml
   - $include: pages/media.yml
   - $include: pages/dizi.yml
-  - $include: pages/jellyfin.yml
-  #- $include: pages/google.yml
+
+  - $include: pages/xeddit.yml
+  - $include: pages/gallery.yml
+  - $include: pages/waterfall.yml

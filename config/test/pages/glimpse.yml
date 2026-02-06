@@ -1,0 +1,179 @@
+- name: "*glimpse"
+  slug: glimpse
+  show-in-navigation: false
+  width: wide
+
+  columns:
+
+
+    - size: full
+      widgets:
+
+        - type: split-column
+          max-columns: 4
+          widgets:
+
+            - type: extension
+              url: ${GLIMPSE_URL}/eksisozluk/profile/insansizbeyin
+              title: /eksisozluk/profile/insansizbeyin
+              allow-potentially-dangerous-html: true
+              css-class: x-mh-500
+              cache: *no-cache
+              headers:
+                x-glimpse-output: glance
+
+            - type: extension
+              url: ${GLIMPSE_URL}/eksisozluk/thread/ekrem-imamoglu--2577439
+              title: /eksisozluk/thread/ekrem-imamoglu--2577439
+              allow-potentially-dangerous-html: true
+              css-class: x-mh-500
+              cache: *no-cache
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                filter: popular
+
+            - type: extension
+              url: ${GLIMPSE_URL}/eksisozluk/thread/anin-fotografi--6459985
+              title: /eksisozluk/thread/anin-fotografi--6459985
+              allow-potentially-dangerous-html: true
+              css-class: x-mh-500
+              cache: *no-cache
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                filter: today
+
+            - type: extension
+              url: ${GLIMPSE_URL}/eksisozluk/channel/gundem
+              title: /eksisozluk/channel/gundem
+              allow-potentially-dangerous-html: true
+              css-class: x-mh-500
+              cache: *no-cache
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                filters:
+                  - siyaset
+                  - anket
+                  - iliskiler
+                  - eksisozluk
+                  - yetiskin
+                limit: 50
+                collapseAfter: 10
+
+            - type: extension
+              url: ${GLIMPSE_URL}/riot/esports
+              title: /riot/esports Upcoming Matches
+              allow-potentially-dangerous-html: true
+              cache: *no-cache
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                limit: 40
+                language: en-us # ar-ae, de-de, en-gb, en-sg, en-us, es-es, es-mx, fr-fr, id-id, it-it, ja-jp, ko-kr, ms-my, pl-pl, pt-br, ru-ru, th-th, tr-tr, vi-vn, zh-tw
+                leagues: # msi, lta_n, lta_c, lta_s, lec, lck, lpl, lcp, nacl, emea, fs, worlds, ljl, tcl, nlc, llf, rol, lp, lit, rl, sl, pl, hm, ebl, hll, al, lck_c, cd, pcs, lrn, lrs, tft
+                  - worlds
+                  - msi
+                  - lck
+                  - lec
+                  - lcp
+                  - lpl
+                  - lta_n
+                  - emea
+                states:
+                  - inProgress
+                  - unstarted
+
+            - type: extension
+              url: ${GLIMPSE_URL}/riot/esports
+              title: /riot/esports Past Matches
+              allow-potentially-dangerous-html: true
+              cache: *no-cache
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                limit: 100
+                language: en-us # ar-ae, de-de, en-gb, en-sg, en-us, es-es, es-mx, fr-fr, id-id, it-it, ja-jp, ko-kr, ms-my, pl-pl, pt-br, ru-ru, th-th, tr-tr, vi-vn, zh-tw
+                leagues: # msi, lta_n, lta_c, lta_s, lec, lck, lpl, lcp, nacl, emea, fs, worlds, ljl, tcl, nlc, llf, rol, lp, lit, rl, sl, pl, hm, ebl, hll, al, lck_c, cd, pcs, lrn, lrs, tft
+                  - worlds
+                  - msi
+                  - lck
+                  - lec
+                  - lcp
+                  - lpl
+                  - lta_n
+                states:
+                  - completed
+
+            - type: extension
+              url: ${GLIMPSE_URL}/riot/news
+              title: /riot/news
+              allow-potentially-dangerous-html: true
+              cache: *no-cache
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                game: leagueoflegends
+                limit: 20
+                collapseAfter: 5
+
+            - type: extension
+              url: ${GLIMPSE_URL}/anime/popular
+              title: /anime/popular
+              allow-potentially-dangerous-html: true
+              cache: *no-cache
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                limit: 5
+
+
+            - type: extension
+              url: ${GLIMPSE_URL}/eksisozluk/search
+              title: /eksisozluk/search
+              allow-potentially-dangerous-html: true
+              css-class: x-mh-500
+              cache: *no-cache
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                collapseAfter: 10
+                query: depremi
+
+            - type: extension
+              url: ${GLIMPSE_URL}/usgs/earthquakes
+              title: /usgs/earthquakes
+              title-url: https://earthquake.usgs.gov/earthquakes/search/
+              allow-potentially-dangerous-html: true
+              cache: *no-cache
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                minlatitude: 36
+                minlongitude: 25
+                maxlatitude: 42
+                maxlongitude: 40
+                minmagnitude: 2.5
+
+            - type: extension
+              url: ${GLIMPSE_URL}/xbox/gamepass
+              allow-potentially-dangerous-html: true
+              cache: *no-cache
+              title: /xbox/gamepass Rcently Added
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                catalog: pc-recently-added
+                collapseAfter: 3
+
+            - type: extension
+              url: ${GLIMPSE_URL}/xbox/gamepass
+              allow-potentially-dangerous-html: true
+              cache: *no-cache
+              title: /xbox/gamepass Coming soon
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                catalog: pc-coming-soon
+                collapseAfter: 3

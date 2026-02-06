@@ -4,7 +4,7 @@
 {{- if or (eq $apiBaseUrl "") (eq $apiKey "") -}}
   Some required options are not set
 {{- else -}}
-  {{ $collapseAfter := .Options.IntOr "collapse-after" 4 }}
+  {{ $collapseAfter := .Options.IntOr "collapse-after" 5 }}
   {{ $showUnmonitored := .Options.BoolOr "show-unmonitored" false }}
   {{ $startDay := .Options.IntOr "start-day" 0 | mul 24 }}
   {{ $endDay := .Options.IntOr "end-day" 30 | mul 24 }}

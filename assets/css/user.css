@@ -1,0 +1,11 @@
+.x-user-avatar img.avatar {
+  height: 4.4rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--color-separator);
+}
+
+.x-user-avatar img.avatar.x2 {
+  height: 8.8rem;
+}

@@ -1,0 +1,130 @@
+.header .logo {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--x-c-foreground-lighter);
+  margin: 10px 0;
+  height: auto;
+  line-height: unset;
+}
+
+.desktop-navigation .nav-item-text {
+  margin-top: 0px;
+}
+
+.mobile-navigation a.nav-item,
+.header a.nav-item {
+  display: flex;
+  gap: 6px;
+}
+
+.header a.nav-item::before {
+  align-self: center;
+}
+
+a.nav-item {
+  --color: var(--color-primary);
+}
+
+a.nav-item::before {
+  color: var(--color);
+}
+
+a.nav-item.nav-item-current {
+  border-bottom-color: var(--color);
+}
+
+a.nav-item[href="/stem-plus"] {
+  --color: #f7df1e;
+}
+
+a.nav-item[href="/stem-plus"]::before {
+  content: "⬡";
+}
+
+a.nav-item-current[href="/stem-plus"]::before {
+  content: "⬢";
+}
+
+a.nav-item[href="/psychology"] {
+  --color: #b389ff;
+}
+
+a.nav-item[href="/psychology"]::before {
+  content: "◎";
+}
+
+a.nav-item[href="/entertainment"] {
+  --color: #4bdd61;
+}
+
+a.nav-item[href="/games"]::before,
+a.nav-item[href="/entertainment"]::before {
+  content: "◇";
+}
+
+a.nav-item-current[href="/games"]::before,
+a.nav-item-current[href="/entertainment"]::before {
+  content: "◆";
+}
+
+a.nav-item[href="/games"] {
+  --color: #12fff4;
+}
+
+a.nav-item[href="/live"] {
+  --color: #ef4343;
+}
+
+a.nav-item[href="/live"]::before {
+  content: "●";
+}
+
+a.nav-item[href="/selfhost"] {
+  --color: #eb844e;
+}
+
+a.nav-item[href="/selfhost"]::before {
+  content: "✪";
+}
+
+a.nav-item[href="/nulsec"] {
+  --color: #4bdd61;
+}
+
+a.nav-item[href="/nulsec"]::before {
+  content: "⊟";
+}
+
+a.nav-item[href="/paradise"]::before {
+  content: "†";
+}
+
+a.nav-item[href="/javascript"]::before,
+a.nav-item[href="/vue"]::before,
+a.nav-item[href="/react"]::before,
+a.nav-item[href="/svelte"]::before {
+  content: "◯";
+}
+
+a.nav-item-current[href="/javascript"]::before,
+a.nav-item-current[href="/vue"]::before,
+a.nav-item-current[href="/react"]::before,
+a.nav-item-current[href="/svelte"]::before {
+  content: "●";
+}
+
+a.nav-item[href="/javascript"] {
+  --color: #f7df1e;
+}
+
+a.nav-item[href="/svelte"] {
+  --color: #ff3e00;
+}
+
+a.nav-item[href="/vue"] {
+  --color: #4fc08d;
+}
+
+a.nav-item[href="/react"] {
+  --color: #61dafb;
+}

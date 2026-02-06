@@ -1,7 +1,6 @@
 - name: "Shows" # 📺
   slug: shows
   width: wide
-
   columns:
 
     - size: small
@@ -55,46 +54,8 @@
     - size: full
       widgets:
 
-        - type: split-column
-          max-columns: 3
-          widgets:
-
-            - type: split-column
-              max-columns: 1
-              widgets:
-
-                - <<: *reddit-cover
-                  subreddit: television
-                  collapse-after: 8
-
-                - <<: *reddit-cover-top-week
-                  title: Top This Week
-                  subreddit: television
-                  collapse-after: 8
-
-            - type: split-column
-              max-columns: 1
-              widgets:
-
-                - <<: *reddit-simple
-                  subreddit: television
-                  title: Episode Discussions
-                  search: episode discussion flair:Premiere author:NicholasCajun
-                  sort-by: new
-                  collapse-after: 12
-                  css-class: xxx-replace-text
-
-                - <<: *reddit-simple
-                  subreddit: television
-                  title: Series Premiere Discussions
-                  search: series premiere discussion flair:Premiere author:NicholasCajun
-                  sort-by: new
-                  collapse-after: 12
-                  css-class: xxx-replace-text
-
-            - type: split-column
-              max-columns: 1
-              widgets:
-
-                - <<: *reddit-cover
-                  subreddit: TVDetails
+        - <<: *xeddit-waterfall
+          title: r/ television & series & suggestions
+          options:
+            subreddit: television+TVDetails+televisionsuggestions+series
+            limit: 50

@@ -1,0 +1,151 @@
+:root {
+  --glimpse-modal-height: 70vh;
+  --glimpse-spacing: var(--widget-content-horizontal-padding);
+  --glimpse-spacing-2x: calc(var(--glimpse-spacing) * 2);
+  --glimpse-spacing-half: calc(var(--glimpse-spacing) / 2);
+  --glimpse-bg-light: hsl(var(--bghs), calc(var(--bgl) + 3%));
+  --glimpse-bg-lighter: hsl(var(--bghs), calc(var(--bgl) + 5%));
+  --glimpse-color-yellow: hsl(60, 50%, 75%);
+}
+
+.glimpse-modal .hide-on-modal,
+.widget-content .hide-on-widget {
+  display: none;
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.blur-0 {
+  filter: none;
+}
+
+.hover-opacity-full:hover {
+  opacity: 100;
+}
+
+.glimpse-modal a *,
+.glimpse-modal button *,
+.glimpse-app a *,
+.glimpse-app button * {
+  pointer-events: none;
+}
+
+details.spoiler > summary {
+  border-radius: 5px;
+  border: 1px solid var(--color-widget-content-border);
+  padding: 1rem var(--widget-content-horizontal-padding);
+}
+
+details.spoiler {
+  background-color: var(--glimpse-bg-light);
+}
+
+details.spoiler:open > summary {
+  border-radius: 5px 5px 0 0;
+}
+
+details.spoiler > p {
+  border-radius: 0 0 5px 5px;
+  border: 1px solid var(--color-widget-content-border);
+  border-top: none;
+  padding: 1rem var(--widget-content-horizontal-padding);
+}
+
+details > summary {
+  cursor: pointer;
+}
+
+details.blocked:open > summary {
+  margin-bottom: 1rem;
+}
+
+/******/
+
+@container widget (max-width: 300px) {
+  .autohide-300 {
+    display: none;
+  }
+}
+
+/******/
+
+.glimpse-inline-link {
+  display: inline-flex;
+  place-items: baseline;
+  gap: 7px;
+}
+
+.glimpse-inline-link.image svg {
+  place-self: center;
+}
+
+.glimpse-icon {
+  width: auto;
+  height: 1.6rem;
+  opacity: 0.8;
+}
+
+.glimpse-loading-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-separator);
+  border-radius: 5px;
+  inset: 0;
+}
+
+.glimpse-content {
+  container-name: glimpse;
+  container-type: inline-size;
+}
+
+.glimpse-content-reverse-padding {
+  margin: -15px -17px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+/******/
+
+.glimpse-thumb {
+  width: 6rem;
+  display: block;
+  height: fit-content;
+  aspect-ratio: 16 / 9;
+  flex-shrink: 0;
+  border-radius: 5px;
+  object-fit: cover;
+  border: 1px solid var(--color-separator);
+  margin-top: 0.1rem;
+}
+
+.glimpse-thumb-large {
+  width: 12rem;
+}
+
+.glimpse-grid-center {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.glimpse-grid-center .item-0 {
+  place-content: end;
+}
+
+.glimpse-grid-center .item-1 {
+  flex-direction: row-reverse;
+  place-content: start;
+}
+
+.glimpse-grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.35rem;
+}

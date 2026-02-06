@@ -1,6 +1,17 @@
 - name: "Svelte" # 🟠
   slug: svelte
   width: wide
+
+  head-widgets:
+
+    - <<: *backube-latest
+      title: Videos
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: kind="video"&&channel.category="avd23828y2jcz8j"&&(channel.tags?~"lis8hl5ka8ngbyo"||title~"svelte")
+
   columns:
 
     - size: small
@@ -56,38 +67,16 @@
             - <<: *github-repository
               repository: sveltejs/svelte
 
-            - type: group
-              widgets:
+            - <<: *reddit-simple
+              subreddit: sveltejs
+              collapse-after: 22
 
-                - <<: *reddit-simple-full
-                  subreddit: sveltejs
+            - <<: *reddit-simple-top-month
+              title: r/sveltejs Top This Month
+              subreddit: sveltejs
+              collapse-after: 22
 
-                - <<: *reddit-simple-top-week
-                  title: Top This Week
-                  subreddit: sveltejs
-
-                - <<: *reddit-simple-top-month
-                  title: Month
-                  subreddit: sveltejs
-
-            - <<: *backube-latest
-              title: Videos
-              options:
-                collapse-after-rows: 8
-              parameters:
-                <<: *backube-video-parameters
-                filter: channel.category.code="dev"&&(channel.tags.name?="sveltejs"||title~"svelte")
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-simple-full
-                  subreddit: SvelteKit
-
-                - <<: *reddit-simple-top-week
-                  title: Top This Week
-                  subreddit: SvelteKit
-
-                - <<: *reddit-simple-top-month
-                  title: Month
-                  subreddit: SvelteKit
+            - <<: *reddit-simple-top-week
+              title: r/sveltejs Top This Week
+              subreddit: sveltejs
+              collapse-after: 15

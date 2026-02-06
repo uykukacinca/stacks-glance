@@ -3,8 +3,9 @@ server:
 
 branding:
   logo-text: ⋈
-  favicon-url: /assets/favicon-dev.ico
-  app-name: "Glance Dev"
+  favicon-url: /assets/dev.ico
+  app-name: "Dev"
+  app-icon-url: /assets/dev.png
 
 $include: /shared/index.yml
 
@@ -28,6 +29,5 @@ pages:
   - $include: pages/linux.yml
   - $include: pages/windows.yml
   - $include: pages/cms.yml
-  - $include: pages/oss.yml
   - $include: pages/svc.yml
   #- $include: pages/hardware.yml

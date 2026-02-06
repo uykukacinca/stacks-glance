@@ -1,3 +1,24 @@
+@import url("app.css");
+@import url("grid.css");
+@import url("gallery.css");
+@import url("dialog.css");
+@import url("media.css");
+@import url("list.css");
+@import url("user.css");
+@import url("modal.css");
+@import url("nav.css");
+@import url("wall.css");
+@import url("refactor.css");
+
+@import url("widget/animekarmalist.css");
+@import url("widget/eksisozluk.css");
+@import url("widget/lolesports.css");
+@import url("widget/proxmox.css");
+@import url("widget/seismicportal.css");
+
+@import url("override.css");
+@import url("utils.css");
+
 :root {
   --x-blur: 8px;
 
@@ -14,9 +35,17 @@
 
   --x-c-warn: hsl(50, 100%, 64%);
 
-  --x-c-foreground: hsl(from var(--color-background) h s calc(l + 4));
+  --x-c-foreground: hsl(from var(--color-background) h s calc(l + 5));
   --x-c-foreground-light: hsl(from var(--x-c-foreground) h s calc(l + 3));
-  --x-c-foreground-lighter: hsl(from var(--x-c-foreground) h s calc(l + 10));
+  --x-c-foreground-lighter: hsl(
+    from var(--x-c-foreground-light) h s calc(l + 5)
+  );
+  --x-c-foreground-shiny: hsl(
+    from var(--x-c-foreground-lighter) h s calc(l + 8)
+  );
+  --x-c-foreground-alpha: hsl(from var(--x-c-foreground-lighter) h s l / 0.75);
+
+  --x-c-border: hsl(from var(--x-c-foreground-light) h s calc(l + 3));
 
   --x-t-speed: 0.2s;
 
@@ -24,100 +53,38 @@
   --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-bounce: bounce 1s infinite;
-}
 
-/*****************************************************************************/
+  --glimpse-modal-height: 70vh;
+  --glimpse-spacing: var(--widget-content-horizontal-padding);
+  --glimpse-spacing-2x: calc(var(--glimpse-spacing) * 2);
+  --glimpse-spacing-half: calc(var(--glimpse-spacing) / 2);
+  --glimpse-bg-light: hsl(var(--bghs), calc(var(--bgl) + 3%));
+  --glimpse-bg-lighter: hsl(var(--bghs), calc(var(--bgl) + 5%));
+  --glimpse-color-yellow: hsl(60, 50%, 75%);
 
-.x-container {
-  border-radius: var(--x-br);
-  background: var(--x-c-foreground);
-}
-
-.x-content-padding {
-  padding: var(--widget-content-padding);
-}
-
-.x-app {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas: "header" "body" "footer";
-}
-
-.x-app-header {
-  grid-area: header;
-}
-
-.x-app-body {
-  overflow-y: auto;
-  grid-area: body;
-}
-
-.x-app-footer {
-  grid-area: footer;
-}
-
-/**************************************************************************************************/
-
-.x-grid {
-  --min-width: 250px;
-  --repeat: auto-fill;
-  --gap: var(--x-gap-medium);
-  display: grid;
-  grid-template-columns: repeat(var(--repeat), minmax(var(--min-width), 1fr));
-  gap: var(--gap);
-}
-
-/**************************************************************************************************/
-
-.x-stack {
-  display: grid;
-  grid-template-areas: "stack";
-}
-
-.x-stack > * {
-  display: grid;
-  grid-area: stack;
-  z-index: 1;
-}
-
-/**************************************************************************************************/
-
-.x-app-body {
-  min-height: 100px;
-}
-
-.x-app-header,
-.x-app-footer {
-  padding: var(--widget-content-padding);
-  background-color: hsl(from var(--x-c-foreground) h s calc(l - 1));
-}
-
-.x-app > div:only-child {
-  border-radius: var(--x-br);
-}
-
-.x-app > div:first-child:not(:only-child) {
-  border-radius: var(--x-br-t);
-}
-
-.x-app > div:last-child:not(:only-child) {
-  border-radius: var(--x-br-b);
-}
-
-.x-app > div + div {
-  border-top: 1px solid var(--x-c-foreground-light);
+  --2x-c-foreground: oklch(from var(--color-background) calc(l + 0.05) c h);
+  --2x-c-foreground-light: oklch(from var(--x-c-foreground) calc(l + 0.02) c h);
+  --2x-c-foreground-lighter: oklch(
+    from var(--x-c-foreground) calc(l + 0.08) c h
+  );
+  --2x-c-foreground-alpha: oklch(
+    from var(--x-c-foreground-lighter) l c h / 0.75
+  );
 }
 
 /**************************************************************************************************/
 
 .x-thumb {
   filter: grayscale(0.2) contrast(0.9);
-  opacity: 0.8;
+  opacity: 0.75;
   transition:
     filter 0.2s,
     opacity 0.2s;
   width: 100%;
   object-fit: cover;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
   border-radius: var(--x-br-half);
 }
 
@@ -128,57 +95,12 @@
 
 /**************************************************************************************************/
 
-.x-list .x-thumb {
-  height: 6.4rem;
-}
-
-/**************************************************************************************************/
-
-.x-card {
-  border-radius: var(--x-br);
-  background: var(--x-c-foreground);
-  padding: var(--widget-content-padding);
-}
-
-/**************************************************************************************************/
-
-.x-media {
-  display: grid;
-  gap: var(--x-gap-medium);
-  border-radius: var(--x-br);
-  background: var(--x-c-foreground);
-  transition: background var(--x-t-speed);
-}
-
-.x-grid .x-media {
-  grid-template-rows: subgrid;
-  grid-row: span 3;
-}
-
-.x-grid .x-media .x-thumb {
-  border-radius: var(--x-br-t);
-}
-
-.x-media:hover {
-  background: var(--x-c-foreground-light);
-}
-
-.x-media-header,
-.x-media-content {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  padding: 0 var(--widget-content-vertical-padding);
-}
-
-.x-media-content {
-  margin-bottom: var(--widget-content-vertical-padding);
-}
-
-/**************************************************************************************************/
-
 .x-play {
-  background: transparent;
+  background: linear-gradient(
+    to top,
+    hsl(from var(--x-c-foreground) h s l / 0.25) 25%,
+    transparent
+  );
   transition: background var(--x-t-speed);
 }
 
@@ -201,114 +123,4 @@
 
 .x-overlay:hover > .x-play svg {
   opacity: 1;
-}
-
-/**************************************************************************************************/
-
-.x-gallery {
-  --columns: 3;
-  --gap: var(--x-gap-medium);
-  columns: var(--columns) auto;
-  gap: var(--gap);
-}
-
-.x-gallery > .x-image {
-  margin-bottom: var(--gap);
-  border-radius: var(--x-br);
-  background: var(--x-c-foreground);
-  min-height: 100px;
-  overflow: hidden;
-}
-
-.x-gallery > .x-image .x-thumb {
-  border-radius: var(--x-br);
-}
-
-.x-gallery .x-image-title {
-  transition:
-    opacity var(--x-t-speed),
-    transform var(--x-t-speed);
-  color: var(--color-text-highlight);
-  padding: 8px 10px;
-  border-radius: var(--x-br-half);
-}
-
-.x-gallery .x-image:hover .x-image-title {
-  opacity: 0;
-  transform: translateY(100%);
-}
-
-.x-gallery .x-image-enlarge {
-  opacity: 0;
-  transform: translateX(100%);
-  transition:
-    opacity var(--x-t-speed),
-    transform var(--x-t-speed);
-  color: var(--color-text-highlight);
-  padding: 8px;
-  border-radius: var(--x-br-half);
-}
-
-.x-gallery .x-image:hover .x-image-enlarge {
-  opacity: 0.8;
-  transform: translateX(0);
-}
-
-.x-gallery .x-image-enlarge:hover {
-  opacity: 1 !important;
-}
-
-/**************************************************************************************************/
-
-.x-dialog:open {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.x-dialog {
-  border: 0;
-  align-self: center;
-  justify-self: center;
-  border-radius: var(--x-br);
-  color: var(--color-text-base);
-  background-color: transparent;
-
-  opacity: 0;
-  transform: scale(0);
-  transition:
-    opacity var(--x-t-speed) ease-out,
-    transform var(--x-t-speed) ease-out,
-    overlay var(--x-t-speed) ease-out allow-discrete,
-    display var(--x-t-speed) ease-out allow-discrete;
-}
-
-@starting-style {
-  .x-dialog:open {
-    opacity: 0;
-    transform: scale(0);
-  }
-}
-
-.x-dialog::backdrop {
-  background-color: transparent;
-  transition:
-    display var(--x-t-speed) allow-discrete,
-    overlay var(--x-t-speed) allow-discrete,
-    background-color var(--x-t-speed);
-}
-
-.x-dialog:open::backdrop {
-  background-color: rgb(0 0 0 / 90%);
-}
-
-@starting-style {
-  .x-dialog:open::backdrop {
-    background-color: transparent;
-  }
-}
-
-.x-dialog,
-.x-dialog img {
-  max-width: 90vh;
-  max-height: 90vh;
 }

@@ -10,7 +10,7 @@
         collapse-after-rows: 1
       parameters:
         <<: *backube-video-parameters
-        filter: channel.category.code="dev"&&(channel.tags.name?="devops"||title~"devops")
+        filter: kind="video"&&channel.category="avd23828y2jcz8j"&&(channel.tags?~"b4mmmayzbubp6q1"||title~"devops")
 
   columns:
 
@@ -72,7 +72,11 @@
 
             - <<: *reddit-simple
               collapse-after: *widget-half-collapse-after
-              subreddit: ansible
+              subreddit: sysadmin
+
+            - <<: *reddit-simple
+              collapse-after: *widget-half-collapse-after
+              subreddit: linuxadmin
 
             - <<: *reddit-simple
               collapse-after: *widget-half-collapse-after
@@ -88,8 +92,4 @@
 
             - <<: *reddit-simple
               collapse-after: *widget-half-collapse-after
-              subreddit: sysadmin
-
-            - <<: *reddit-simple
-              collapse-after: *widget-half-collapse-after
-              subreddit: linuxadmin
+              subreddit: ansible

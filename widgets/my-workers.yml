@@ -70,7 +70,7 @@
         <tr>
           <td><a class="size-h4 color-highlight domain" href="{{ .String "url" }}">{{ .String "id" }}</a></td>
           <td><span data-popover-type="html"><span data-popover-html="">Deployed at: <br/>{{ .String "modifiedDate" }}</span><span data-dynamic-relative-time="{{ .String "modifiedOn" }}" data-units="2" data-show-relative="true"></span></span></td>
-          {{- range .Array "links" -}}<td><a class="visited-indicator" href="{{ .String "url" }}">{{ .String "name" }}</a></td>  {{- end -}}
+          {{- range .Array "links" -}}<td><a class="visited-indicator" href="{{ .String "url" }}">{{ .String "name" }}</a></td>{{- end -}}
         </tr>
       {{- end -}}
       </tbody>

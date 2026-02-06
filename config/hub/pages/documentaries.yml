@@ -6,22 +6,18 @@
     - <<: *backube-latest
       title: Videos
       options:
-        collapse-after-rows: 2
+        collapse-after-rows: 1
       parameters:
         <<: *backube-video-parameters
-        filter: channel.category.code!="ggwp"&&(channel.tags.name?="documentaries"||channel.tags.name?="stories")
+        filter: kind="video"&&channel.category!="5doguxzor0eekxd"&&(channel.tags?~"d10itz88jw1gdj4"||channel.tags?~"erfn5fv3moup4gh")
 
   columns:
 
     - size: full
       widgets:
 
-        - type: split-column
-          max-columns: 3
-          widgets:
-
-            - <<: *reddit-cover-top-week
-              subreddit: documentaries
-
-            - <<: *reddit-cover-top-week
-              subreddit: 911archive
+        - <<: *xeddit-waterfall
+          title: r/documentaries
+          options:
+            subreddit: documentaries
+            min-column-width: 420

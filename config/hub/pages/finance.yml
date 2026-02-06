@@ -10,7 +10,7 @@
         collapse-after-rows: 1
       parameters:
         <<: *backube-video-parameters
-        filter: channel.tags.name?="economy"||channel.tags.name?="money"
+        filter: kind="video"&&channel.tags?~"3tstctouarex5k8"||channel.tags?~"94vozacbowjpuqx"
 
   columns:
 
@@ -41,53 +41,25 @@
               name: Ethereum
             - symbol: LTC-USD
               name: Litecoin
+            - symbol: XMR-USD
+              name: Monero
             - symbol: DOGE-USD
               name: Dogecoin
             - symbol: XLM-USD
               name: Stellar
-            #- symbol: XRP-USD
-            #  name: XRP
+            - symbol: XRP-USD
+              name: XRP
             - symbol: SOL-USD
               name: Solana
-            #- symbol: TRX-USD
-            #  name: TRON
+            - symbol: TRX-USD
+              name: TRON
 
     - size: full
       widgets:
 
-        - type: split-column
-          max-columns: 3
-          widgets:
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-cover
-                  subreddit: economy+finance
-                  show-flairs: true
-
-                - <<: *reddit-cover-top-week
-                  title: Top This Week
-                  subreddit: economy+finance
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-cover
-                  subreddit: CryptoCurrency+Bitcoin
-                  show-flairs: true
-
-                - <<: *reddit-cover-top-week
-                  title: Top This Week
-                  subreddit: CryptoCurrency+Bitcoin
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-cover
-                  subreddit: investing+wallstreetbets
-                  show-flairs: true
-
-                - <<: *reddit-cover-top-week
-                  title: Top This Week
-                  subreddit: investing+wallstreetbets
+        - <<: *xeddit-waterfall
+          title: r/ economy & finance & investing & crypto currency
+          options:
+            subreddit: economy+finance+investing+wallstreetbets+CryptoCurrency+Bitcoin+CryptoMarkets+Monero
+            min-column-width: 420
+            limit: 50

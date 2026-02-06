@@ -2,7 +2,7 @@
 
 {{- define "ContainerCard" -}}
   {{ $Container := . }}
-  {{ $Children :=  $Container.Array "Children" }}
+  {{ $Children := $Container.Array "Children" }}
   {{ $State := $Container.String "State" }}
   {{ $Name := replaceAll "/" "" ($Container.String "Names.0") }}
   {{ $Icon := $Container.String "Icon" }}
@@ -21,9 +21,7 @@
   {{ $Container.String "Labels.traefik.http.routers.$1.url" }}
 
 
-  <div
-    class="flex gap-7 items-center"
-  >
+  <div class="flex gap-7 items-center">
     <div class="icon-container" style="display:non">
       <img
         class="icon square-18"

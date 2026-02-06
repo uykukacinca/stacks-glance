@@ -1,0 +1,5 @@
+- &backube-latest-streams
+  <<: *backube-latest
+  parameters:
+    <<: *backube-video-parameters
+    filter: kind="stream"

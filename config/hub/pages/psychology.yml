@@ -10,27 +10,16 @@
       parameters:
         <<: *backube-video-parameters
         perPage: 70
-        filter: channel.category.code="stem"&&(channel.tags.name?="psychology"||channel.tags.name?="philosophy")
+        filter: kind="video"&&channel.category="esmafhdlbw3esk7"&&(channel.tags?~"xvl2y8gux9p45r6"||channel.tags?~"w9hvtlrba7nwdy8")
 
   columns:
 
     - size: full
       widgets:
 
-        - type: split-column
-          max-columns: 4
-          widgets:
-
-            - <<: *reddit-simple-top-week
-              subreddit: philosophy
-              show-flairs: true
-
-            - <<: *reddit-simple-top-week
-              subreddit: DeepThoughts+askphilosophy
-
-            - <<: *reddit-simple
-              subreddit: mentalhealth+depression+Anxiety
-              show-flairs: true
-
-            - <<: *reddit-simple-top-week
-              subreddit: psychology
+        - <<: *xeddit-waterfall
+          title: reddit communities
+          options:
+            subreddit: philosophy+DeepThoughts+askphilosophy+mentalhealth+depression+Anxiety+psychology
+            min-column-width: 420
+            limit: 50

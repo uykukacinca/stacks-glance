@@ -813,5 +813,3 @@
           url: ${QBIT_URL}
           username: ${QBIT_USER}
           password: ${QBIT_PASS}
-
--

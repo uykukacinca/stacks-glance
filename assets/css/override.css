@@ -1,32 +1,21 @@
-:root {
+:root[data-theme^="N-"] {
+  --box-shadow: 0px 3px 0px 0px
+    hsl(from var(--color-background) h s calc(l - 0.3));
+
   --color-text-highlight: hsl(from var(--x-c-foreground) h s calc(l + 70));
   --color-text-paragraph: hsl(from var(--x-c-foreground) h s calc(l + 50));
   --color-text-base: hsl(from var(--x-c-foreground) h s calc(l + 40));
   --color-text-base-muted: hsl(from var(--x-c-foreground) h s calc(l + 30));
   --color-text-subdue: hsl(from var(--x-c-foreground) h s calc(l + 20));
 
+  --color-widget-background: var(--x-c-foreground);
+  --color-widget-background-hover: var(--x-c-foreground-light);
+  --color-widget-content-border: var(--x-c-border);
   --color-widget-content-border: transparent !important;
-}
 
-:root[data-theme^="N-"] {
-  --box-shadow: 0px 3px 0px 0px
-    hsl(from var(--color-background) h s calc(l - 0.3));
+  --color-separator: var(--x-c-border);
 
-  --color-widget-background: hsl(from var(--color-background) h s calc(l + 5));
-  --color-widget-background-hover: hsl(
-    from var(--color-widget-background) h s calc(l + 3)
-  );
-  --color-widget-content-border: hsl(
-    from var(--color-widget-background) h s calc(l + 10) / 0.75
-  );
-
-  --color-separator: hsl(
-    from var(--color-widget-background) h s calc(l + 8) / 0.75
-  );
-
-  --color-graph-gridlines: hsl(
-    from var(--color-widget-background) h s calc(l + 4) / 0.75
-  );
+  --color-graph-gridlines: var(--x-c-foreground-lighter);
 
   --color-popover-background: hsl(
     from var(--color-widget-background) h calc(s + 4) calc(l + 4)
@@ -63,6 +52,7 @@
       calc(var(--scheme) var(--bgl) + 3%)
     ) !important;
   }
+
   .glimpse-widget > .glimpse-content,
   .glimpse-app {
     box-shadow: var(--box-shadow);
@@ -71,122 +61,25 @@
 
 /*****************************************************************************/
 
-.header .logo {
-  display: flex;
-  align-items: center;
-  border-right: 1px solid var(--x-c-foreground-lighter);
-  margin: 10px 0;
-  height: auto;
-  line-height: unset;
+.list-horizontal-text > .nodot::after {
+  content: " ";
 }
 
-.desktop-navigation .nav-item-text {
-  margin-top: 0px;
+/**************************************************************************************************/
+
+.x-collapsible:not(.container-expanded) > .collapsible-item {
+  display: none;
 }
 
-.mobile-navigation a.nav-item,
-.header a.nav-item {
-  display: flex;
-  gap: 6px;
+:not(.x-container) > .x-collapsible + .expand-toggle-button {
+  text-align: center;
+  margin-top: 0.5rem;
+  background-color: var(--color-background);
+  z-index: 99;
 }
 
-.header a.nav-item::before {
-  align-self: center;
-}
-
-a.nav-item {
-  --color: var(--color-primary);
-}
-
-a.nav-item::before {
-  color: var(--color);
-}
-
-a.nav-item.nav-item-current {
-  border-bottom-color: var(--color);
-}
-
-a.nav-item[href="/stem-plus"] {
-  --color: #f7df1e;
-}
-a.nav-item[href="/stem-plus"]::before {
-  content: "⬡";
-}
-a.nav-item-current[href="/stem-plus"]::before {
-  content: "⬢";
-}
-
-a.nav-item[href="/psychology"] {
-  --color: #b389ff;
-}
-a.nav-item[href="/psychology"]::before {
-  content: "◎";
-}
-
-a.nav-item[href="/entertainment"] {
-  --color: #4bdd61;
-}
-
-a.nav-item[href="/gaming"]::before,
-a.nav-item[href="/entertainment"]::before {
-  content: "◇";
-}
-a.nav-item-current[href="/gaming"]::before,
-a.nav-item-current[href="/entertainment"]::before {
-  content: "◆";
-}
-
-a.nav-item[href="/gaming"] {
-  --color: #12fff4;
-}
-
-a.nav-item[href="/live"] {
-  --color: #ef4343;
-}
-a.nav-item[href="/live"]::before {
-  content: "●";
-}
-
-a.nav-item[href="/selfhost"] {
-  --color: #eb844e;
-}
-a.nav-item[href="/selfhost"]::before {
-  content: "✪";
-}
-
-a.nav-item[href="/nulsec"] {
-  --color: #4bdd61;
-}
-a.nav-item[href="/nulsec"]::before {
-  content: "⊟";
-}
-
-a.nav-item[href="/javascript"]::before,
-a.nav-item[href="/vue"]::before,
-a.nav-item[href="/react"]::before,
-a.nav-item[href="/svelte"]::before {
-  content: "◯";
-}
-
-a.nav-item-current[href="/javascript"]::before,
-a.nav-item-current[href="/vue"]::before,
-a.nav-item-current[href="/react"]::before,
-a.nav-item-current[href="/svelte"]::before {
-  content: "●";
-}
-
-a.nav-item[href="/javascript"] {
-  --color: #f7df1e;
-}
-
-a.nav-item[href="/svelte"] {
-  --color: #ff3e00;
-}
-
-a.nav-item[href="/vue"] {
-  --color: #4fc08d;
-}
-
-a.nav-item[href="/react"] {
-  --color: #61dafb;
+/* REMOVE */
+.x-container > .expand-toggle-button {
+  margin-bottom: -15px;
+  background: var(--x-c-foreground);
 }

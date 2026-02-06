@@ -11,24 +11,42 @@
         - type: group
           widgets:
 
-            - <<: *components-gallery
-              url: http://localhost:8080/assets/r/art/top.json
-              title: x-Gallery art
+            - <<: *xeddit-gallery
+              cache: *no-cache
+              title: art
               options:
-                columns: 4
-            - <<: *components-gallery
-              url: http://localhost:8080/assets/r/earth/top.json
-              title: x-Gallery earth
-              options:
-                columns: 4
+                subreddit: art
+                period: day
+                sort: hot
+                test: true
+                min-column-width: 300
 
-    - size: full
-      widgets:
-
-        - type: group
-          widgets:
-            - <<: *components-gallery
-              url: http://localhost:8080/assets/r/space/top.json
-              title: x-Gallery space
+            - <<: *xeddit-gallery
+              cache: *no-cache
+              title: earth
               options:
-                columns: 4
+                subreddit: earth
+                period: day
+                sort: hot
+                test: true
+                min-column-width: 300
+
+            - <<: *xeddit-gallery
+              cache: *no-cache
+              title: space
+              options:
+                subreddit: space
+                period: day
+                sort: hot
+                test: true
+                min-column-width: 300
+
+            - <<: *xeddit-gallery
+              title: popular
+              options:
+                subreddit: popular
+                top-period: day
+                sort-by: top
+                show-nsfw: true
+                limit: 100
+                #ßtest: true

@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "format": "pnpm exec prettier . --write"
+    "format": "pnpm exec prettier . --write",
+    "log": "docker logs -f glance-test"
   },
   "devDependencies": {
     "prettier": "^3.7.4",

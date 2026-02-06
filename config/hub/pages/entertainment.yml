@@ -9,8 +9,14 @@
         - <<: *backube-latest
           title: Videos
           options:
-            collapse-after-rows: 4
+            collapse-after-rows: 2
           parameters:
             <<: *backube-video-parameters
             perPage: 70
-            filter: channel.category.code="ent"
+            filter: kind="video"&&channel.category="d6rzqzfpcfpvh7w"&&channel.tags!~"8eskm8v85t341ty"&&channel.language!="c3u5dojqveecd62"
+
+        - <<: *xeddit-waterfall
+          title: r/popular
+          options:
+            subreddit: funny+Showerthoughts+explainlikeimfive+mildlyinteresting+tifu+UpliftingNews+OldSchoolCool+bestof+interestingasfuck+confession+OutOfTheLoop+HistoryPorn+MurderedByWords+youseeingthisshit+YouShouldKnow+KidsAreFuckingStupid+entertainment+niceguys+AbandonedPorn+CatastrophicFailure+AmItheAsshole
+            limit: 50

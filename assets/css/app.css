@@ -1,0 +1,61 @@
+.x-app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: "header" "body" "footer";
+}
+
+.x-app-header {
+  grid-area: header;
+}
+
+.x-app-body {
+  grid-area: body;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.x-app-footer {
+  grid-area: footer;
+}
+
+/**************************************************************************************************/
+
+.x-mh-200 .x-app {
+  max-height: 200px;
+}
+
+.x-mh-300 .x-app {
+  max-height: 300px;
+}
+
+.x-mh-400 .x-app {
+  max-height: 400px;
+}
+
+.x-mh-500 .x-app {
+  max-height: 500px;
+}
+
+.x-h-100vh .x-app {
+  max-height: 100vh;
+}
+
+.x-app-body {
+  min-height: 100px;
+}
+
+.x-app > div:only-child {
+  border-radius: var(--x-br);
+}
+
+.x-app > div:first-child:not(:only-child) {
+  border-radius: var(--x-br-t);
+}
+
+.x-app > div:last-child:not(:only-child) {
+  border-radius: var(--x-br-b);
+}
+
+.x-app > div + div {
+  border-top: 1px solid var(--x-c-border);
+}

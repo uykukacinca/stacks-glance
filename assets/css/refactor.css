@@ -1,0 +1,191 @@
+.glimpse-modal {
+  overflow: visible;
+  border: 0;
+  align-self: center;
+  justify-self: center;
+  color: var(--color-text-base);
+  width: calc(100vw - 160px);
+  max-width: 1000px;
+  background-color: transparent;
+  height: var(--glimpse-modal-height);
+}
+
+.glimpse-modal::backdrop {
+  background-color: black;
+  opacity: 0.75;
+}
+
+.glimpse-modal .modal-content,
+.glimpse-modal .x-app {
+  position: relative;
+  max-height: var(--glimpse-modal-height);
+}
+
+.glimpse-modal .modal-content > .glimpse-loading-container {
+  font-size: 2rem;
+  background: transparent;
+}
+
+.glimpse-modal .modal-nav {
+  position: absolute;
+  left: -8rem;
+  top: -1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 2rem 3rem;
+}
+
+.glimpse-modal .modal-nav .glimpse-loading-container {
+  border-radius: 50%;
+  background: white;
+}
+
+.glimpse-modal .modal-nav button {
+  cursor: pointer;
+  height: 4rem;
+  width: 4rem;
+  background: white;
+  color: black;
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+[data-glimpse-modal-content] {
+  position: relative;
+}
+
+.glimpse-modal[aria-busy] {
+  cursor: wait;
+}
+
+.glimpse-modal[aria-busy] .modal-content * {
+  pointer-events: none;
+  user-select: none;
+}
+
+.glimpse-modal a *,
+.glimpse-modal button *,
+.x-app a *,
+.x-app button * {
+  pointer-events: none;
+}
+
+.glimpse-modal .hide-on-modal,
+.widget-content .hide-on-widget {
+  display: none;
+}
+
+/**************************************************************************************************/
+
+.padding-0 {
+  padding: 0;
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.blur-0 {
+  filter: none;
+}
+
+.hover-opacity-full:hover {
+  opacity: 100;
+}
+
+details.spoiler > summary {
+  border-radius: var(--x-br-half);
+  border: 1px solid var(--x-c-border);
+  padding: 1rem var(--widget-content-horizontal-padding);
+}
+
+details.spoiler {
+  background-color: var(--x-c-foreground-light);
+
+  border-radius: var(--x-br-half);
+}
+
+details.spoiler:open > summary {
+  border-radius: var(--x-br-half) var(--x-br-half) 0 0;
+}
+
+details.spoiler > p {
+  border-radius: 0 0 var(--x-br-half) var(--x-br-half);
+  border: 1px solid var(--x-c-border);
+  border-top: none;
+  padding: 1rem var(--widget-content-horizontal-padding);
+}
+
+details > summary {
+  cursor: pointer;
+}
+
+/******/
+
+@container widget (max-width: 300px) {
+  .autohide-300 {
+    display: none;
+  }
+}
+
+.glimpse-button {
+  opacity: 0.75;
+}
+
+.glimpse-button:hover {
+  opacity: 100;
+}
+.glimpse-icon {
+  width: auto;
+  height: 1.6rem;
+  opacity: 0.8;
+}
+
+.glimpse-loading-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-separator);
+  border-radius: 5px;
+  inset: 0;
+}
+
+.glimpse-content {
+  container-name: glimpse;
+  container-type: inline-size;
+}
+
+.glimpse-content-reverse-padding {
+  margin: -15px -17px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.glimpse-nav {
+  align-items: baseline;
+  display: flex;
+  min-width: fit-content;
+  gap: 1rem;
+}
+
+.glimpse-nav button {
+  cursor: auto;
+}
+
+.glimpse-nav button:not(.dots) {
+  border: 1px solid var(--color-popover-border);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+
+.glimpse-nav button:not(.dots, :disabled):hover {
+  cursor: pointer;
+  background: var(--color-separator);
+}
+
+.glimpse-nav button.active {
+  color: var(--color-text-highlight);
+  background: var(--color-separator);
+}

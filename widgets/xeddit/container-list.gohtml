@@ -1,0 +1,16 @@
+{{- if eq $error "" -}}
+<div class="x-app x-container">
+  <div class="x-app-body">
+    <ul class="x-list">
+      {{- range $items -}}
+        {{ if and (.Bool "data.stickied") (lt (.Int "data.created") (offsetNow "-72h").Unix) }}
+          {{ continue }}
+        {{ end }}
+        <li class="x-list-item">
+          {{ template "RedditPost" . }}
+        </li>
+      {{- end -}}
+      </ul>
+  </div>
+</div>
+{{- end -}}

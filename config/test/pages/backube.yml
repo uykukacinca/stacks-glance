@@ -8,6 +8,24 @@
     - size: full
       widgets:
 
+        - <<: *backube-favorites
+          title: Favorite Videos
+          options:
+            collapse-after-rows: 1
+
+        - <<: *backube-latest
+          title: Latest Imported Videos
+          options:
+            collapse-after-rows: 1
+
+        - <<: *backube-latest-streams
+          title: Latest Imported Stream VODs
+          options:
+            collapse-after-rows: 1
+
+        - <<: *backube-latest-shorts
+          title: Latest Imported Shorts
+
         - type: split-column
           max-columns: 2
           widgets:
@@ -22,37 +40,13 @@
               options:
                 collapse-after-rows: 2
 
-        - <<: *backube-favorites
-          title: Favorite Videos
-          options:
-            collapse-after-rows: 1
-
-        - <<: *backube-latest
-          title: Latest Imported Videos
-          options:
-            collapse-after-rows: 2
-          parameters:
-            <<: *backube-video-parameters
-            perPage: 35
-
-        - <<: *backube-latest
-          title: "@random travel,outdoor,camping"
-          cache: *long-cache
-          options:
-            collapse-after-rows: 1
-          parameters:
-            <<: *backube-video-parameters
-            perPage: 14
-            sort: "@random"
-            filter: channel.tags.name?="travel"||channel.tags.name?="outdoor"||channel.tags.name?="camping"
-
         - <<: *backube-latest
           title: "category: dev"
           options:
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.category.code="dev"
+            filter: kind="video"&&channel.category="avd23828y2jcz8j"
 
         - <<: *backube-latest
           title: "category: ent"
@@ -60,7 +54,7 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.category.code="ent"
+            filter: kind="video"&&channel.category="d6rzqzfpcfpvh7w"
 
         - <<: *backube-latest
           title: "tag: vlogs"
@@ -68,15 +62,7 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.tags.name?="vlogs"
-
-        - <<: *backube-latest
-          title: "category: hub"
-          options:
-            collapse-after-rows: 1
-          parameters:
-            <<: *backube-video-parameters
-            filter: channel.category.code="hub"
+            filter: kind="video"&&channel.tags?~"euqffttmgr6qssb"
 
         - <<: *backube-latest
           title: "category: sci"
@@ -84,7 +70,7 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.category.code="stem"
+            filter: kind="video"&&channel.category="esmafhdlbw3esk7"
 
         - <<: *backube-latest
           title: "category: tech"
@@ -92,7 +78,7 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.category.code="tech"
+            filter: kind="video"&&channel.category="59dtmnmo4sesehs"
 
         - <<: *backube-latest
           title: "category: ggwp"
@@ -100,7 +86,7 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.category.code="ggwp"
+            filter: kind="video"&&channel.category="5doguxzor0eekxd"
 
         - <<: *backube-latest
           title: "language: tr"
@@ -108,4 +94,4 @@
             collapse-after-rows: 1
           parameters:
             <<: *backube-video-parameters
-            filter: channel.language.code="tr"
+            filter: kind="video"&&channel.language="c3u5dojqveecd62"

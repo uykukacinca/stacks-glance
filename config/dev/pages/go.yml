@@ -1,6 +1,17 @@
 - name: "Go" # 🟢
   slug: go
   width: wide
+
+  head-widgets:
+
+    - <<: *backube-latest
+      title: Videos
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: kind="video"&&channel.category="avd23828y2jcz8j"&&(channel.tags?~"wnemweqicm5djst"||title~"golang")
+
   columns:
 
     - size: small
@@ -44,6 +55,11 @@
                   url: https://github.com/Workiva/go-datastructures
                 - title: gofiber
                   url: https://github.com/gofiber/fiber
+                - title: gjson
+                  url: https://github.com/tidwall/gjson
+            - links:
+                - title: gjson Playground
+                  url: https://gjson.dev/
 
         - <<: *github-releases
           repositories:
@@ -64,36 +80,19 @@
           max-columns: 3
           widgets:
 
-            - type: split-column
-              max-columns: 1
-              widgets:
+            - <<: *github-repository
+              repository: golang/go
 
-                - <<: *reddit-simple-full
-                  title: golang
-                  subreddit: golang
-                  collapse-after: 12
+            - <<: *reddit-simple
+              subreddit: golang
+              collapse-after: 22
 
-                - <<: *reddit-simple-top-week
-                  title: Top This Week
-                  subreddit: golang
-                  collapse-after: 15
+            - <<: *reddit-simple-top-month
+              title: r/golang Top This Month
+              subreddit: golang
+              collapse-after: 22
 
-            - type: split-column
-              max-columns: 1
-              widgets:
-
-                - <<: *github-repository
-                  repository: golang/go
-
-                - <<: *reddit-simple-top-month
-                  title: Top This Month
-                  subreddit: golang
-                  collapse-after: 22
-
-            - <<: *backube-latest
-              title: Videos
-              options:
-                collapse-after-rows: 8
-              parameters:
-                <<: *backube-video-parameters
-                filter: channel.category.code="dev"&&(channel.tags.name?="golang"||title~"golang")
+            - <<: *reddit-simple-top-week
+              title: r/golang Top This Week
+              subreddit: golang
+              collapse-after: 15

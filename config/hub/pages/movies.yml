@@ -1,6 +1,16 @@
 - name: "Movies" # 🍿
   slug: movies
   width: wide
+  head-widgets:
+
+    - <<: *backube-latest
+      title: Videos
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: kind="video"&&channel.tags?~"ko8e0zywbttpfa6"
+
   columns:
 
     - size: small
@@ -67,58 +77,8 @@
     - size: full
       widgets:
 
-        - type: split-column
-          max-columns: 3
-          widgets:
-
-            - type: split-column
-              max-columns: 1
-              widgets:
-
-                - type: group
-                  widgets:
-
-                    - <<: *reddit-cover
-                      subreddit: movies
-                      show-flairs: true
-                      collapse-after: *widget-half-collapse-after
-
-                    - <<: *reddit-cover-top-week
-                      title: Top This Week
-                      subreddit: movies
-                      collapse-after: *widget-half-collapse-after
-
-                - <<: *reddit-cover
-                  subreddit: movies
-                  title: Trailers
-                  search: flair:trailer
-                  sort-by: new
-                  collapse-after: *widget-half-collapse-after
-
-            - type: split-column
-              max-columns: 1
-              widgets:
-
-                - <<: *reddit-simple
-                  subreddit: movies
-                  title: Discussions
-                  search: flair:Discussion
-                  sort-by: new
-                  collapse-after: 6
-
-                - <<: *reddit-cover
-                  subreddit: Cinema
-                  show-flairs: true
-                  collapse-after: 6
-
-                - <<: *reddit-cover
-                  subreddit: BoxOffice
-                  collapse-after: 6
-
-            - <<: *backube-latest
-              title: Videos
-              options:
-                collapse-after-rows: 8
-              parameters:
-                <<: *backube-video-parameters
-                filter: channel.tags.name?="movies"
+        - <<: *xeddit-waterfall
+          title: r/ movies & Cinema & Box Office
+          options:
+            subreddit: movies+Cinema+BoxOffice+MovieSuggestions+TrueFilm+Filmmakers+MovieDetails+Oscars
+            limit: 50

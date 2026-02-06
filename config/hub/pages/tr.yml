@@ -1,33 +1,21 @@
-- name: "Muhit" #❇️
+- name: "Mahalle"
   slug: tr
   width: wide
-
-  head-widgets:
-
-    - <<: *kick-streams
-      title: Kick Top Streams [TR]
-      parameters:
-        language: tr
-      options:
-        collapse-after-rows: 1
-
   columns:
-
-    - size: small
-      widgets:
-
-        - <<: *reddit-simple
-          subreddit: veYakinEvren
-          cache: *long-cache
-          collapse-after: 10
 
     - size: full
       widgets:
 
         - <<: *backube-latest
           options:
-            collapse-after-rows: 4
+            collapse-after-rows: 2
           parameters:
             <<: *backube-video-parameters
             perPage: 70
-            filter: channel.language.code="tr"&&channel.category.code!="ggwp"
+            filter: kind="video"&&channel.language="c3u5dojqveecd62"&&channel.category!="5doguxzor0eekxd"
+
+        - <<: *xeddit-waterfall
+          title: Gündem
+          options:
+            subreddit: Turkey+AskTurkey+Hukuk+Yatirim+istanbul+Izmir+Antalya+veYakinEvren+vlandiya+TarihiSeyler+secilmiskitap
+            limit: 50

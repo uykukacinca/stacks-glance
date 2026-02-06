@@ -1,0 +1,123 @@
+- name: "Games" # 🎲
+  slug: games
+  width: wide
+  columns:
+
+    - size: small
+      widgets:
+
+        - <<: *docker-containers
+          category: gaming
+          title: Apps
+
+        - type: bookmarks
+          groups:
+            - hide-arrow: true
+              links:
+                - title: Steam Store
+                  icon: auto-invert ${ICONS_URL}/steam-dark
+                  url: https://store.steampowered.com
+                - title: Steam Database
+                  icon: auto-invert ${ICONS_URL}/custom/steamdb.svg
+                  url: https://steamdb.info
+                - title: Epic Games
+                  icon: auto-invert ${ICONS_URL}/epic-games-dark
+                  url: https://store.epicgames.com/en-US/free-games
+                # - title: Ubisoft Store
+                #   icon: auto-invert ${ICONS_URL}/custom/ubisoft.svg
+                #   url: https://store.ubisoft.com/tr/home
+                - title: Prime Gaming
+                  icon: auto-invert ${ICONS_URL}/amazon-prime-dark
+                  url: https://gaming.amazon.com/home
+                - title: GOG
+                  icon: auto-invert ${ICONS_URL}/custom/gogdotcom.svg
+                  url: https://www.gog.com/en/account
+                - title: Nexus Mods
+                  icon: auto-invert ${ICONS_URL}/custom/nexusmods.svg
+                  url: https://www.nexusmods.com
+            - color: 265 89 78
+              links:
+                - title: Gamepad Tester
+                  url: https://hardwaretester.com/gamepad
+
+        - type: bookmarks
+          title: Cloud
+          hide-header: true
+          groups:
+            - hide-arrow: true
+              links:
+                - title: Xbox Cloud
+                  icon: auto-invert ${ICONS_URL}/xbox-dark
+                  url: https://www.xbox.com/en-US/play
+                - title: GeForce Now
+                  icon: auto-invert ${ICONS_URL}/custom/nvidia.svg
+                  url: https://play.geforcenow.com/#/layout/games
+            - color: 16 100 50
+              links:
+                - title: r/xCloud
+                  url: https://reddit.com/r/xcloud
+                - title: r/GeForceNOW
+                  url: https://reddit.com/r/GeForceNOW
+
+        - type: twitch-top-games
+          cache: *long-cache
+          collapse-after: 5
+          exclude:
+            - just-chatting
+            - pools-hot-tubs-and-beaches
+            - music
+            - art
+            - asmr
+            - irl
+            - streamer-university
+            - special-events
+            - kings-league
+            - science-and-technology
+            - food-and-drink
+            - sports-1
+            - art
+
+        - <<: *steam-specials
+
+        - type: group
+          widgets:
+
+            - type: extension
+              url: ${GLIMPSE_URL}/xbox/gamepass
+              allow-potentially-dangerous-html: true
+              cache: *long-cache
+              title: Rcently Added
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                catalog: pc-recently-added
+                collapseAfter: 3
+
+            - type: extension
+              url: ${GLIMPSE_URL}/xbox/gamepass
+              allow-potentially-dangerous-html: true
+              cache: *long-cache
+              title: Coming soon
+              headers:
+                x-glimpse-output: glance
+              parameters:
+                catalog: pc-coming-soon
+                collapseAfter: 3
+
+    - size: full
+      widgets:
+
+        - <<: *backube-latest
+          title: Videos
+          options:
+            collapse-after-rows: 2
+          parameters:
+            <<: *backube-video-parameters
+            perPage: 70
+            filter: kind="video"&&channel.category="5doguxzor0eekxd"&&(channel.tags?~"3jjmo5koop3f60o"||channel.tags?~"r3j74wi07n50mxj"||channel.tags?~"9e0s6gngetnl801"||channel.tags?~"d10itz88jw1gdj4")
+
+        - <<: *xeddit-waterfall
+          title: r/popular
+          options:
+            subreddit: gaming+pcgaming+Games+GamingLeaksAndRumours+truegaming+gamernews+GameDeals+Steam+playstation+xbox
+            limit: 50

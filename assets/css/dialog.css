@@ -1,0 +1,52 @@
+.x-dialog:open {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.x-dialog {
+  border: 0;
+  align-self: center;
+  justify-self: center;
+  border-radius: var(--x-br);
+  color: var(--color-text-base);
+  background-color: transparent;
+
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    opacity var(--x-t-speed) ease-out,
+    transform var(--x-t-speed) ease-out,
+    overlay var(--x-t-speed) ease-out allow-discrete,
+    display var(--x-t-speed) ease-out allow-discrete;
+}
+
+@starting-style {
+  .x-dialog:open {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.x-dialog::backdrop {
+  background-color: transparent;
+  transition:
+    display var(--x-t-speed) allow-discrete,
+    overlay var(--x-t-speed) allow-discrete,
+    background-color var(--x-t-speed);
+}
+
+.x-dialog:open::backdrop {
+  background-color: rgb(0 0 0 / 90%);
+}
+
+@starting-style {
+  .x-dialog:open::backdrop {
+    background-color: transparent;
+  }
+}
+
+.x-dialog,
+.x-dialog img {
+  max-width: 90vh;
+  max-height: 90vh;
+}

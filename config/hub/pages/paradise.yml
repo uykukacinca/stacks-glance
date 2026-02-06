@@ -1,0 +1,25 @@
+- name: "Paradise" # 💀
+  slug: paradise
+  width: wide
+  head-widgets:
+
+    - <<: *backube-latest
+      title: Videos
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: kind="video"&&(title~"epstein"||title~"panama papers"||title~"conspiracy"||channel.tags?~"wobevqe9ylzt9qm")
+        # ||channel.tags?~"tuqbbvovi2ntlmf"||channel.tags?~"wobevqe9ylzt9qm"||channel.tags?~"rsj9hufw9atuphd")
+        # perPage: 7
+
+  columns:
+
+    - size: full
+      widgets:
+
+        - <<: *xeddit-waterfall
+          title: r/ conspiracy & crime & classified
+          options:
+            subreddit: conspiracy+conspiracytheories+skeptic+conspiracy_commons+Epstein+TheEpsteinFiles+JeffreyEpstein+PanamaPapers+Crime+acab+Bad_Cop_No_Donut+WithoutATrace+Missing411+Wikileaks+NSALeaks+Declassified+UnresolvedMysteries+conspiracyNOPOL
+            limit: 50

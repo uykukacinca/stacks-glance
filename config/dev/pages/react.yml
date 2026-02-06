@@ -1,6 +1,17 @@
 - name: "React" # 🔵
   slug: react
   width: wide
+
+  head-widgets:
+
+    - <<: *backube-latest
+      title: Videos
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: kind="video"&&channel.category="avd23828y2jcz8j"&&(channel.tags?~"fj7gz5mt3v8ulqg"||channel.tags?~"7x10j1704mx47g3"||title~"reactjs"||title~"nextjs")
+
   columns:
 
     - size: small
@@ -61,40 +72,23 @@
             - <<: *github-repository
               repository: vercel/next.js
 
-            - type: group
-              widgets:
+            - <<: *reddit-simple
+              subreddit: reactjs
+              collapse-after: 10
 
-                - <<: *reddit-simple-full
-                  title: React
-                  subreddit: reactjs
+            - <<: *reddit-simple
+              subreddit: nextjs
+              collapse-after: 10
 
-                - <<: *reddit-simple-top-week
-                  title: Top This Week
-                  subreddit: reactjs
+            - <<: *github-repository
+              repository: facebook/react
 
-                - <<: *reddit-simple-top-month
-                  title: Month
-                  subreddit: reactjs
+            - <<: *reddit-simple-top-week
+              title: r/reactjs Top This Week
+              subreddit: reactjs
+              collapse-after: 10
 
-            - <<: *backube-latest
-              title: Videos
-              options:
-                collapse-after-rows: 8
-              parameters:
-                <<: *backube-video-parameters
-                filter: channel.category.code="dev"&&(channel.tags.name?="reactjs"||channel.tags.name?="nextjs"||title~"reactjs"||title~"nextjs")
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-simple-full
-                  title: Next
-                  subreddit: nextjs
-
-                - <<: *reddit-simple-top-week
-                  title: Top This Week
-                  subreddit: nextjs
-
-                - <<: *reddit-simple-top-month
-                  title: Month
-                  subreddit: nextjs
+            - <<: *reddit-simple-top-week
+              title: r/nextjs Top This Week
+              subreddit: nextjs
+              collapse-after: 10

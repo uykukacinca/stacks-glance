@@ -10,7 +10,7 @@
         collapse-after-rows: 1
       parameters:
         <<: *backube-video-parameters
-        filter: channel.tags.name?="cybersecurity"
+        filter: kind="video"&&channel.tags?~"f35047wvf9vrlqk"
 
   columns:
 

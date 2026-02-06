@@ -1,6 +1,16 @@
 - name: "Homelab" # 🆘
   slug: homelab
   width: wide
+  head-widgets:
+
+    - <<: *backube-latest
+      title: Videos
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: kind="video"&&channel.category="avd23828y2jcz8j"&&(channel.tags?~"xjsygl5kvk6aoxd"||title~"homelab")
+
   columns:
 
     - size: small
@@ -68,68 +78,8 @@
     - size: full
       widgets:
 
-        - type: split-column
-          max-columns: 3
-          widgets:
-
-            - type: group
-              widgets:
-                - <<: *reddit-simple
-                  subreddit: homelab
-                  search: self:true
-                  collapse-after: *widget-half-collapse-after
-
-                - <<: *reddit-simple-top-week
-                  title: Top This Week
-                  subreddit: homelab
-                  # search: self:true
-                  collapse-after: *widget-half-collapse-after
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-simple
-                  subreddit: HomeServer
-                  collapse-after: *widget-half-collapse-after
-
-                - <<: *reddit-simple-top-week
-                  title: Top This Week
-                  subreddit: HomeServer
-                  collapse-after: *widget-half-collapse-after
-
-            - <<: *backube-latest
-              title: Videos
-              options:
-                collapse-after-rows: 8
-              parameters:
-                <<: *backube-video-parameters
-                filter: channel.category.code="dev"&&(channel.tags.name?="homelab"||title~"homelab")
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-simple
-                  subreddit: sysadmin
-                  collapse-after: *widget-half-collapse-after
-
-                - <<: *reddit-simple-top-week
-                  title: Top This Week
-                  subreddit: sysadmin
-                  collapse-after: *widget-half-collapse-after
-
-            - type: group
-              widgets:
-
-                - <<: *reddit-simple
-                  subreddit: Proxmox
-                  collapse-after: *widget-half-collapse-after
-
-                - <<: *reddit-simple-top-week
-                  title: Top This Week
-                  subreddit: Proxmox
-                  collapse-after: *widget-half-collapse-after
-
-                - <<: *reddit-simple-top-month
-                  title: Month
-                  subreddit: Proxmox
-                  collapse-after: *widget-half-collapse-after
+        - <<: *xeddit-waterfall
+          title: reddit communities
+          options:
+            subreddit: homelab+HomeServer+sysadmin+datahoarder+sysadmin+networking
+            limit: 50
