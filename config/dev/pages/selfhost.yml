@@ -151,8 +151,21 @@
     - size: full
       widgets:
 
-        - <<: *xeddit-waterfall
-          title: reddit communities
-          options:
-            subreddit: selfhosted+docker+Proxmox
-            limit: 50
+        - type: group
+          vars:
+            - &subreddits selfhosted+docker+Proxmox
+          widgets:
+
+            - <<: *xeddit-waterfall
+              title: reddit communities
+              options:
+                subreddit: *subreddits
+                limit: 50
+
+            - <<: *xeddit-waterfall
+              title: Top This Week
+              options:
+                subreddit: *subreddits
+                top-period: week
+                sort-by: top
+                limit: 50

@@ -12,6 +12,15 @@
           widgets:
 
             - <<: *xeddit-gallery
+              title: wallpapers
+              options:
+                subreddit: wallpaper+wallpapers+WidescreenWallpaper
+                top-period: month
+                sort-by: top
+                limit: 100
+                #ßtest: true
+
+            - <<: *xeddit-gallery
               cache: *no-cache
               title: art
               options:
@@ -40,13 +49,3 @@
                 sort: hot
                 test: true
                 min-column-width: 300
-
-            - <<: *xeddit-gallery
-              title: popular
-              options:
-                subreddit: popular
-                top-period: day
-                sort-by: top
-                show-nsfw: true
-                limit: 100
-                #ßtest: true

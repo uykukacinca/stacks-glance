@@ -58,6 +58,7 @@
               title: Videos
               options:
                 collapse-after-rows: 8
+                min-card-width-px: 240
               parameters:
                 <<: *backube-video-parameters
                 filter: kind="video"&&channel.category="avd23828y2jcz8j"&&(channel.tags?~"2yjgcq6k0gcoelx"||title~"linux")

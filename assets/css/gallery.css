@@ -1,3 +1,7 @@
+/* ========================================
+   GALLERY & MASONRY STYLES
+   ======================================== */
+
 .x-masonry,
 .x-masonry > .masonry-column {
   gap: var(--x-gap-medium);

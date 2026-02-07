@@ -11,7 +11,7 @@ $include: /shared/index.yml
 
 pages:
   - $include: pages/dash.yml
-  - $include: pages/news.yml
+  - $include: pages/inbox.yml
   - $include: pages/videos.yml
   - $include: pages/selfhost.yml
   - $include: pages/homelab.yml

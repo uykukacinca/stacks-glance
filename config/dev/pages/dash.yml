@@ -1,4 +1,4 @@
-- name: "Dashboard" #
+- name: "Dashboard"
   slug: dashboard
   width: wide
   columns:

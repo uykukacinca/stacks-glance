@@ -17,9 +17,7 @@
   <div class="x-container">
     <div class="x-stack">
       <img class="x-image x-blend x-wh-f zoom-in" src="{{ replaceAll "amp;" "" (.String "thumb") }}" width="{{ .Int "width" }}" height="{{ .Int "height" }}" loading="lazy" onclick="this.nextElementSibling.showModal()" />
-      <dialog id="{{ .String "id" }}" class="x-dialog" closedby="any">
-        <img src="{{ replaceAll "amp;" "" (.String "source") }}" loading="lazy" />
-      </dialog>
+      {{ template "ImageDialog" . }}
       {{- if ne (.String "link") "" -}}
       <div class="x-ps-es x-wb-bw x-m-small">
         <a href="https://www.reddit.com{{ .String "link" }}" class="size-title-dynamic x-blur x-photo-title" target="_blank" rel="noreferrer">{{ .String "title" }}</a>

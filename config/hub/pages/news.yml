@@ -1,125 +1,33 @@
-- name: "News"
+- name: News
   slug: news
   width: wide
-
-  head-widgets:
-
-    - type: iframe
-      # hide-header: true
-      title: Shake RF9F7
-      css-class: xxx-rounded xxx-RF9F7
-      height: 70
-      title-url: https://dataview.raspberryshake.org/#/AM/RF9F7/00/EHZ?streaming=on
-      source: https://dataview.raspberryshake.org/#/embed/AM/RF9F7/00/EHZ
-
   columns:
-
-    - size: small
-      widgets:
-
-        - <<: *markets-base
-          markets:
-            - symbol: TRY=X
-            - symbol: EURTRY=X
-            - symbol: BTC-USD
-              name: Bitcoin
-
-        - type: iframe
-          css-class: xxx-rounded xxx-youtube-iframe
-          title: Sözcü TV
-          source: https://www.youtube.com/embed/ztmY_cCtUl0?si=-9A8OM7vLep1ipse&amp;controls=0&autoplay=0
-
-        - type: extension
-          url: ${GLIMPSE_URL}/usgs/earthquakes
-          title-url: https://earthquake.usgs.gov/earthquakes/search/
-          allow-potentially-dangerous-html: true
-          cache: *short-cache
-          headers:
-            x-glimpse-output: glance
-          parameters:
-            minlatitude: 36
-            minlongitude: 25
-            maxlatitude: 42
-            maxlongitude: 40
-            minmagnitude: 2.5
-
-        - type: extension
-          url: ${GLIMPSE_URL}/eksisozluk/search
-          allow-potentially-dangerous-html: true
-          css-class: x-mh-400
-          cache: *short-cache
-          hide-header: true
-          title: Search
-          headers:
-            x-glimpse-output: glance
-          parameters:
-            collapseAfter: 10
-            query: depremi
-
-        - type: bookmarks
-          title: Deprem
-          groups:
-            - links:
-                - title: X Deprem
-                  url: https://x.com/i/lists/1915151387949973738
-                - title: USGS Magnitude 2.5+ 24h
-                  url: https://earthquake.usgs.gov/earthquakes/map/?extent=40.0954,26.86393&extent=41.41234,29.63249&listOnlyShown=true
-                - title: Shake Station 3.0+ 48h
-                  url: https://stationview.raspberryshake.org/#/?lat=40.86170&lon=28.40830&zoom=10.592
-                - title: RaspberryShake RF9F7
-                  url: https://dataview.raspberryshake.org/#/AM/RF9F7/00/EHZ?streaming=on
-                - title: KOERİ Son Depremler
-                  url: http://www.koeri.boun.edu.tr/scripts/lst2.asp
-                - title: KOERİ Deprem Haritası
-                  url: http://udim.koeri.boun.edu.tr/zeqmap/hgmmap.asp
 
     - size: full
       widgets:
 
-        - <<: *xeddit-waterfall
-          title: r/Global news & politics
-          css-class: "x-h-100vh"
+        - <<: *backube-latest
           options:
-            subreddit: Turkey+news+worldnews+geopolitics+GlobalTalk+PoliticalDiscussion+europe
-
-    - size: small
-      widgets:
-
-        - type: search
-          search-engine: https://eksisozluk.com/basliklar/ara?SearchForm.Keywords={QUERY}&SearchForm.SortOrder=Date
-          new-tab: true
-          placeholder: Search on Ekşi
-
-        - type: extension
-          url: ${GLIMPSE_URL}/eksisozluk/channel/gundem
-          allow-potentially-dangerous-html: true
-          cache: *short-cache
-          title: Ekşi Popular
-          headers:
-            x-glimpse-output: glance
+            collapse-after-rows: 2
           parameters:
-            limit: 30
-            filters: siyaset
-            collapseAfter: 10
+            <<: *backube-video-parameters
+            filter: kind="video"&&channel.tags?~"a1kphnyke2edl9f"
 
-        - type: extension
-          url: ${GLIMPSE_URL}/eksisozluk/thread/ekrem-imamoglu--2577439
-          allow-potentially-dangerous-html: true
-          css-class: x-mh-500
-          cache: *short-cache
-          title: Threads
-          headers:
-            x-glimpse-output: glance
-          parameters:
-            filter: popular
+        - type: group
+          vars:
+            - &subreddits news+worldnews+politics+geopolitics+WorldEvents+inthenews+business+Economics+environment+GlobalTalk+PoliticalDiscussion+europe
+          widgets:
 
-        - type: extension
-          url: ${GLIMPSE_URL}/eksisozluk/thread/jeffrey-epstein--5967292
-          allow-potentially-dangerous-html: true
-          css-class: x-mh-500
-          cache: *short-cache
-          hide-header: true
-          headers:
-            x-glimpse-output: glance
-          parameters:
-            filter: popular
+            - <<: *xeddit-waterfall
+              title: r/ global news & politics
+              options:
+                subreddit: *subreddits
+                limit: 50
+
+            - <<: *xeddit-waterfall
+              title: Top This Week
+              options:
+                subreddit: *subreddits
+                top-period: week
+                sort-by: top
+                limit: 50

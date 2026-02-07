@@ -1,4 +1,4 @@
-- name: "#cms" #
+- name: "#cms"
   slug: cms
   width: wide
   columns:
@@ -78,4 +78,3 @@
             #     - sveltia/sveltia-cms
             #     - TryGhost/Ghost
             #     - keystonejs/keystone
-

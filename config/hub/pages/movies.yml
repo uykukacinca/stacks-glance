@@ -77,8 +77,21 @@
     - size: full
       widgets:
 
-        - <<: *xeddit-waterfall
-          title: r/ movies & Cinema & Box Office
-          options:
-            subreddit: movies+Cinema+BoxOffice+MovieSuggestions+TrueFilm+Filmmakers+MovieDetails+Oscars
-            limit: 50
+        - type: group
+          vars:
+            - &subreddits movies+Cinema+BoxOffice+MovieSuggestions+TrueFilm+Filmmakers+MovieDetails+Oscars
+          widgets:
+
+            - <<: *xeddit-waterfall
+              title: r/ movies & Cinema & Box Office
+              options:
+                subreddit: *subreddits
+                limit: 50
+
+            - <<: *xeddit-waterfall
+              title: Top This Week
+              options:
+                subreddit: *subreddits
+                top-period: week
+                sort-by: top
+                limit: 50

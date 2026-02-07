@@ -47,3 +47,12 @@
     <p class="break-all">{{ $error }}</p>
   </div>
 {{ end }}
+
+{{- define "ImageDialog" -}}
+<dialog class="x-dialog" closedby="any">
+  <div class="x-stack">
+    <div class="x-center"><div class="loading-icon" aria-hidden="true"></div></div>
+    <img class="x-wh-auto" src="{{ .String "source" | replaceAll "amp;" "" }}" width="{{ .Int "width" }}" height="{{ .Int "height" }}" loading="lazy" onload="this.previousElementSibling.remove()" />
+  </div>
+</dialog>
+{{- end -}}

@@ -14,81 +14,64 @@
 
   columns:
 
-    - size: small
-      widgets:
-
-        - type: search
-          search-engine: google
-          new-tab: true
-          bangs:
-            - title: YouTube
-              shortcut: "!y"
-              url: ${YOUTUBE_URL}/results?search_query=nextjs+{QUERY}
-            - title: Reddit
-              shortcut: "!r"
-              url: ${REDDIT_URL}/r/nextjs/search?q={QUERY}&restrict_sr=on&sort=new&t=all
-            - title: Github
-              shortcut: "!g"
-              url: https://github.com/vercel/next.js/issues?q={QUERY}
-
-        - type: bookmarks
-          groups:
-            - links:
-                - title: TanStack
-                  url: https://tanstack.com/
-                - title: Awesome React
-                  url: https://github.com/enaqx/awesome-react#readme
-                - title: Awesome React Components
-                  url: https://github.com/brillout/awesome-react-components#readme
-
-        - type: bookmarks
-          title: Next
-          css-class: list-item-inline
-          groups:
-            - links:
-                - title: Docs
-                  url: https://nextjs.org/docs/app/getting-started/installation
-                - title: Examples
-                  url: https://nextjs.org/docs/app/examples
-                - title: Blog
-                  url: https://nextjs.org/blog
-                - title: API
-                  url: https://nextjs.org/docs/app/api-reference
-
-        - <<: *github-releases
-          title: React
-          repositories:
-            - vercel/next.js
-            - facebook/react
-            - TanStack/query
-
     - size: full
       widgets:
 
         - type: split-column
+          css-class: "gap-10"
           max-columns: 3
           widgets:
+
+            - type: search
+              search-engine: google
+              new-tab: true
+              bangs:
+                - title: YouTube
+                  shortcut: "!y"
+                  url: ${YOUTUBE_URL}/results?search_query=nextjs+{QUERY}
+                - title: Reddit
+                  shortcut: "!r"
+                  url: ${REDDIT_URL}/r/nextjs/search?q={QUERY}&restrict_sr=on&sort=new&t=all
+                - title: Github
+                  shortcut: "!g"
+                  url: https://github.com/vercel/next.js/issues?q={QUERY}
+
+            - type: bookmarks
+              css-class: list-item-inline
+              groups:
+                - links:
+                    - title: TanStack
+                      url: https://tanstack.com/
+                    - title: Awesome React
+                      url: https://github.com/enaqx/awesome-react#readme
+                    - title: Awesome Components
+                      url: https://github.com/brillout/awesome-react-components#readme
+
+            - type: bookmarks
+              title: Next.js
+              css-class: list-item-inline
+              groups:
+                - links:
+                    - title: Docs
+                      url: https://nextjs.org/docs/app/getting-started/installation
+                    - title: Examples
+                      url: https://nextjs.org/docs/app/examples
+                    - title: Blog
+                      url: https://nextjs.org/blog
+                    - title: API
+                      url: https://nextjs.org/docs/app/api-reference
 
             - <<: *github-repository
               repository: vercel/next.js
 
-            - <<: *reddit-simple
-              subreddit: reactjs
-              collapse-after: 10
-
-            - <<: *reddit-simple
-              subreddit: nextjs
-              collapse-after: 10
+            - <<: *github-repository
+              repository: TanStack/query
 
             - <<: *github-repository
               repository: facebook/react
 
-            - <<: *reddit-simple-top-week
-              title: r/reactjs Top This Week
-              subreddit: reactjs
-              collapse-after: 10
-
-            - <<: *reddit-simple-top-week
-              title: r/nextjs Top This Week
-              subreddit: nextjs
-              collapse-after: 10
+        - <<: *xeddit-waterfall
+          title: reddit communities
+          options:
+            subreddit: reactjs+nextjs
+            limit: 50

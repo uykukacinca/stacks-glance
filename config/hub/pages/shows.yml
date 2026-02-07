@@ -1,6 +1,10 @@
 - name: "Shows" # 📺
   slug: shows
   width: wide
+  head-widgets:
+
+    - <<: *jellyfin-next-up
+
   columns:
 
     - size: small
@@ -54,8 +58,21 @@
     - size: full
       widgets:
 
-        - <<: *xeddit-waterfall
-          title: r/ television & series & suggestions
-          options:
-            subreddit: television+TVDetails+televisionsuggestions+series
-            limit: 50
+        - type: group
+          vars:
+            - &subreddits television+TVDetails+televisionsuggestions+series
+          widgets:
+
+            - <<: *xeddit-waterfall
+              title: r/ television & series & suggestions
+              options:
+                subreddit: *subreddits
+                limit: 50
+
+            - <<: *xeddit-waterfall
+              title: Top This Week
+              options:
+                subreddit: *subreddits
+                top-period: week
+                sort-by: top
+                limit: 50

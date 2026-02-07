@@ -1,0 +1,147 @@
+/* ========================================
+   MODAL & DIALOG STYLES
+   ======================================== */
+
+.x-dialog:open {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.x-dialog:focus-visible {
+  outline: none;
+}
+
+.x-dialog {
+  border: 0;
+  align-self: center;
+  justify-self: center;
+  border-radius: var(--x-br);
+  color: var(--color-text-base);
+  background-color: transparent;
+
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    opacity var(--x-t-speed) ease-out,
+    transform var(--x-t-speed) ease-out,
+    overlay var(--x-t-speed) ease-out allow-discrete,
+    display var(--x-t-speed) ease-out allow-discrete;
+}
+
+@starting-style {
+  .x-dialog:open {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.x-dialog::backdrop {
+  background-color: transparent;
+  transition:
+    display var(--x-t-speed) allow-discrete,
+    overlay var(--x-t-speed) allow-discrete,
+    background-color var(--x-t-speed);
+}
+
+.x-dialog:open::backdrop {
+  background-color: rgb(0 0 0 / 90%);
+}
+
+@starting-style {
+  .x-dialog:open::backdrop {
+    background-color: transparent;
+  }
+}
+
+.x-dialog,
+.x-dialog img {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+}
+
+.x-dialog .loading-icon {
+  font-size: 2rem;
+}
+
+/* ========================================
+   GLIMPSE MODAL STYLES
+   ======================================== */
+
+.glimpse-modal {
+  overflow: visible;
+  border: 0;
+  align-self: center;
+  justify-self: center;
+  color: var(--color-text-base);
+  width: calc(100vw - 160px);
+  max-width: 1000px;
+  background-color: transparent;
+  height: var(--glimpse-modal-height);
+}
+
+.glimpse-modal::backdrop {
+  background-color: black;
+  opacity: 0.75;
+}
+
+.glimpse-modal .modal-content,
+.glimpse-modal .x-app {
+  position: relative;
+  max-height: var(--glimpse-modal-height);
+}
+
+.glimpse-modal .modal-content > .glimpse-loading-container {
+  font-size: 2rem;
+  background: transparent;
+}
+
+.glimpse-modal .modal-nav {
+  position: absolute;
+  left: -8rem;
+  top: -1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 2rem 3rem;
+}
+
+.glimpse-modal .modal-nav .glimpse-loading-container {
+  border-radius: 50%;
+  background: white;
+}
+
+.glimpse-modal .modal-nav button {
+  cursor: pointer;
+  height: 4rem;
+  width: 4rem;
+  background: white;
+  color: black;
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+[data-glimpse-modal-content] {
+  position: relative;
+}
+
+.glimpse-modal[aria-busy] {
+  cursor: wait;
+}
+
+.glimpse-modal[aria-busy] .modal-content * {
+  pointer-events: none;
+  user-select: none;
+}
+
+.glimpse-modal a *,
+.glimpse-modal button *,
+.x-app a *,
+.x-app button * {
+  pointer-events: none;
+}
+
+.glimpse-modal .hide-on-modal,
+.widget-content .hide-on-widget {
+  display: none;
+}

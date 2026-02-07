@@ -8,7 +8,7 @@
 
 - &backube-latest
   type: custom-api
-  title: Youtube Latest Videos
+  title: Latest Videos
   cache: *no-cache
   frameless: true
   url: ${BACKUBE_URL}/api/collections/videos/records

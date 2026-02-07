@@ -2,6 +2,16 @@
   slug: wr
   width: wide
 
+  head-widgets:
+
+    - <<: *backube-latest
+      title: "Videos"
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: kind="video"&&channel.tags?~"yl0tdahhhqzc0ai"
+
   columns:
 
     - size: small
@@ -73,15 +83,6 @@
 
     - size: full
       widgets:
-
-        - <<: *backube-latest
-          title: "Videos"
-          options:
-            collapse-after-rows: 1
-          parameters:
-            <<: *backube-video-parameters
-            filter: kind="video"&&channel.tags?~"yl0tdahhhqzc0ai"
-
 
         - <<: *xeddit-waterfall
           title: r/wildrift

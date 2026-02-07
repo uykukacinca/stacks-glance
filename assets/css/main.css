@@ -1,30 +1,48 @@
+/* ========================================
+   LAYOUT & STRUCTURE
+   ======================================== */
 @import url("app.css");
 @import url("grid.css");
-@import url("gallery.css");
-@import url("dialog.css");
-@import url("media.css");
-@import url("list.css");
-@import url("user.css");
 @import url("modal.css");
-@import url("nav.css");
-@import url("wall.css");
-@import url("refactor.css");
+@import url("dialog.css");
 
+/* ========================================
+   COMPONENTS
+   ======================================== */
+@import url("nav.css");
+@import url("media.css");
+@import url("gallery.css");
+@import url("list.css");
+@import url("wall.css");
+@import url("user.css");
+
+/* ========================================
+   COMPONENT UTILITIES
+   ======================================== */
+@import url("components.css");
+
+/* ========================================
+   WIDGET STYLES
+   ======================================== */
+@import url("widget/core.css");
 @import url("widget/animekarmalist.css");
 @import url("widget/eksisozluk.css");
 @import url("widget/lolesports.css");
 @import url("widget/proxmox.css");
 @import url("widget/seismicportal.css");
 
+/* ========================================
+   THEME & UTILITIES
+   ======================================== */
 @import url("override.css");
 @import url("utils.css");
 
 :root {
-  --x-blur: 8px;
+  --x-blur: 0.8rem;
 
-  --x-gap-small: 5px;
-  --x-gap-medium: 10px;
-  --x-gap-large: 15px;
+  --x-gap-small: 0.5rem;
+  --x-gap-medium: 1rem;
+  --x-gap-large: 1.5rem;
 
   --x-br: 10px;
   --x-br-t: var(--x-br) var(--x-br) 0 0;

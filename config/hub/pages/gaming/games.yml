@@ -116,8 +116,21 @@
             perPage: 70
             filter: kind="video"&&channel.category="5doguxzor0eekxd"&&(channel.tags?~"3jjmo5koop3f60o"||channel.tags?~"r3j74wi07n50mxj"||channel.tags?~"9e0s6gngetnl801"||channel.tags?~"d10itz88jw1gdj4")
 
-        - <<: *xeddit-waterfall
-          title: r/popular
-          options:
-            subreddit: gaming+pcgaming+Games+GamingLeaksAndRumours+truegaming+gamernews+GameDeals+Steam+playstation+xbox
-            limit: 50
+        - type: group
+          vars:
+            - &subreddits gaming+pcgaming+Games+GamingLeaksAndRumours+truegaming+gamernews+GameDeals+Steam+playstation+xbox
+          widgets:
+
+            - <<: *xeddit-waterfall
+              title: r/ popular
+              options:
+                subreddit: *subreddits
+                limit: 50
+
+            - <<: *xeddit-waterfall
+              title: Top This Week
+              options:
+                subreddit: *subreddits
+                top-period: week
+                sort-by: top
+                limit: 50

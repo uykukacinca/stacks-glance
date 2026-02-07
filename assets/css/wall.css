@@ -1,3 +1,7 @@
+/* ========================================
+   WALL/GRID IMAGE LAYOUT
+   ======================================== */
+
 .glimpse-wall .x-image {
   object-fit: cover;
   max-height: 180px;

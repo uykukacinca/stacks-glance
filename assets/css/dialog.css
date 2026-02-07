@@ -1,6 +1,14 @@
+/* ========================================
+   DIALOG COMPONENT
+   ======================================== */
+
 .x-dialog:open {
   opacity: 1;
   transform: scale(1);
+}
+
+.x-dialog:focus-visible {
+  outline: none;
 }
 
 .x-dialog {
@@ -47,6 +55,11 @@
 
 .x-dialog,
 .x-dialog img {
-  max-width: 90vh;
+  max-width: 90vw; /* Use vw for width, vh for height */
   max-height: 90vh;
+  width: auto;
+}
+
+.x-dialog .loading-icon {
+  font-size: 2rem;
 }

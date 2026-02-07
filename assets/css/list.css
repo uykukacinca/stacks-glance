@@ -1,3 +1,7 @@
+/* ========================================
+   LIST COMPONENT
+   ======================================== */
+
 .x-list-item:hover {
   background-color: var(--x-c-foreground-light);
 }

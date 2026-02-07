@@ -1,0 +1,35 @@
+- name: Popular
+  slug: popular
+  width: wide
+  columns:
+
+    - size: full
+      widgets:
+
+        - <<: *backube-latest
+          title: Videos
+          options:
+            collapse-after-rows: 2
+          parameters:
+            <<: *backube-video-parameters
+            perPage: 70
+            filter: kind="video"&&channel.category="d6rzqzfpcfpvh7w"&&channel.tags!~"8eskm8v85t341ty"&&channel.language!="c3u5dojqveecd62"
+
+        - type: group
+          vars:
+            - &subreddits funny+Showerthoughts+explainlikeimfive+mildlyinteresting+tifu+UpliftingNews+OldSchoolCool+bestof+interestingasfuck+confession+OutOfTheLoop+HistoryPorn+MurderedByWords+youseeingthisshit+YouShouldKnow+KidsAreFuckingStupid+entertainment+niceguys+AbandonedPorn+CatastrophicFailure+AmItheAsshole
+          widgets:
+
+            - <<: *xeddit-waterfall
+              title: r/ popular
+              options:
+                subreddit: *subreddits
+                limit: 100
+
+            - <<: *xeddit-waterfall
+              title: Top This Week
+              options:
+                subreddit: *subreddits
+                top-period: week
+                sort-by: top
+                limit: 100

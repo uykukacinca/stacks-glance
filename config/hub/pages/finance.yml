@@ -61,5 +61,4 @@
           title: r/ economy & finance & investing & crypto currency
           options:
             subreddit: economy+finance+investing+wallstreetbets+CryptoCurrency+Bitcoin+CryptoMarkets+Monero
-            min-column-width: 420
             limit: 50

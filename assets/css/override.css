@@ -1,7 +1,8 @@
-:root[data-theme^="N-"] {
-  --box-shadow: 0px 3px 0px 0px
-    hsl(from var(--color-background) h s calc(l - 0.3));
+/* ========================================
+   THEME OVERRIDES & CUSTOMIZATIONS
+   ======================================== */
 
+:root[data-theme^="N-"] {
   --color-text-highlight: hsl(from var(--x-c-foreground) h s calc(l + 70));
   --color-text-paragraph: hsl(from var(--x-c-foreground) h s calc(l + 50));
   --color-text-base: hsl(from var(--x-c-foreground) h s calc(l + 40));
@@ -63,6 +64,14 @@
 
 .list-horizontal-text > .nodot::after {
   content: " ";
+}
+
+.widget-type-split-column.gap-10 > .widget-content > .masonry {
+  gap: var(--x-gap-medium);
+}
+
+.widget-type-split-column.gap-10 .search-input {
+  height: 5.44rem;
 }
 
 /**************************************************************************************************/

@@ -1,4 +1,4 @@
-- name: "Go" # 🟢
+- name: Go
   slug: go
   width: wide
 

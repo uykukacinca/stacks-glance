@@ -21,5 +21,4 @@
           title: reddit communities
           options:
             subreddit: space+nasa+spacex+UFOs+aliens
-            min-column-width: 420
             limit: 50

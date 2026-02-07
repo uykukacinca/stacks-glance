@@ -1,4 +1,4 @@
-- name: "#database" #
+- name: "#database"
   slug: database
   width: wide
   columns:

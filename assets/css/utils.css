@@ -1,3 +1,7 @@
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -229,6 +233,11 @@ video {
 }
 
 .x-wh-auto {
+  width: auto;
+  height: auto;
+}
+
+.x-w-a {
   width: auto;
   height: auto;
 }

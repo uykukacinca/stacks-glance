@@ -10,16 +10,15 @@ branding:
 $include: /shared/index.yml
 
 pages:
-  # - $include: pages/home.yml
-  - $include: pages/news.yml
   - $include: pages/tr.yml
+  - $include: pages/news.yml
   - $include: pages/paradise.yml
   - $include: pages/finance.yml
   - $include: pages/stem-plus.yml
   - $include: pages/science.yml
   - $include: pages/space.yml
   - $include: pages/psychology.yml
-  - $include: pages/entertainment.yml
+  - $include: pages/popular.yml
   - $include: pages/movies.yml
   - $include: pages/shows.yml
   - $include: pages/anime.yml
@@ -33,4 +32,3 @@ pages:
   - $include: pages/gaming/crew.yml
   - $include: pages/gaming/gta.yml
   - $include: pages/gaming/starcitizen.yml
-  # - $include: pages/cars.yml

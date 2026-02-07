@@ -75,29 +75,21 @@
       widgets:
 
         - type: split-column
+          css-class: "gap-10"
           max-columns: 3
           widgets:
 
             - <<: *github-repository
               repository: nuxt/nuxt
 
-            - <<: *reddit-simple
-              subreddit: vuejs
-              collapse-after: 10
-
-            - <<: *reddit-simple
-              subreddit: nuxt
-              collapse-after: 10
-
             - <<: *github-repository
               repository: vuejs/core
 
-            - <<: *reddit-simple-top-week
-              title: r/vuejs Top This Week
-              subreddit: vuejs
-              collapse-after: 10
+            - <<: *github-repository
+              repository: vueuse/vueuse
 
-            - <<: *reddit-simple-top-week
-              title: r/nuxt Top This Week
-              subreddit: nuxt
-              collapse-after: 10
+        - <<: *xeddit-waterfall
+          title: reddit communities
+          options:
+            subreddit: nuxt+vuejs
+            limit: 50

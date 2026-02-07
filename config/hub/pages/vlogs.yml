@@ -1,4 +1,4 @@
-- name: "Vlogs"
+- name: Vlogs
   slug: vlogs
   width: wide
   columns:

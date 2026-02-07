@@ -1,0 +1,51 @@
+- name: "Inbox" # 📢
+  slug: inbox
+  width: wide
+
+  head-widgets:
+
+    - <<: *backube-latest
+      title: Videos
+      options:
+        collapse-after-rows: 1
+      parameters:
+        <<: *backube-video-parameters
+        filter: kind="video"&&channel.category="avd23828y2jcz8j"&&channel.tags?~"3jjmo5koop3f60o"
+
+  columns:
+
+    - size: small
+      widgets:
+
+        - type: hacker-news
+          cache: *default-cache
+          limit: 20
+          collapse-after: 10
+
+        - type: lobsters
+          cache: *default-cache
+          sort-by: hot
+          limit: 20
+          collapse-after: 10
+
+    - size: full
+      widgets:
+
+        - type: group
+          vars:
+            - &subreddits programming+technology+ProgrammerHumor+webdev
+          widgets:
+
+            - <<: *xeddit-waterfall
+              title: reddit communities
+              options:
+                subreddit: *subreddits
+                limit: 50
+
+            - <<: *xeddit-waterfall
+              title: Top This Week
+              options:
+                subreddit: *subreddits
+                top-period: week
+                sort-by: top
+                limit: 50

@@ -1,83 +1,8 @@
-.glimpse-modal {
-  overflow: visible;
-  border: 0;
-  align-self: center;
-  justify-self: center;
-  color: var(--color-text-base);
-  width: calc(100vw - 160px);
-  max-width: 1000px;
-  background-color: transparent;
-  height: var(--glimpse-modal-height);
-}
+/* ========================================
+   COMPONENT & UTILITY STYLES
+   ======================================== */
 
-.glimpse-modal::backdrop {
-  background-color: black;
-  opacity: 0.75;
-}
-
-.glimpse-modal .modal-content,
-.glimpse-modal .x-app {
-  position: relative;
-  max-height: var(--glimpse-modal-height);
-}
-
-.glimpse-modal .modal-content > .glimpse-loading-container {
-  font-size: 2rem;
-  background: transparent;
-}
-
-.glimpse-modal .modal-nav {
-  position: absolute;
-  left: -8rem;
-  top: -1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 2rem 2rem 3rem;
-}
-
-.glimpse-modal .modal-nav .glimpse-loading-container {
-  border-radius: 50%;
-  background: white;
-}
-
-.glimpse-modal .modal-nav button {
-  cursor: pointer;
-  height: 4rem;
-  width: 4rem;
-  background: white;
-  color: black;
-  border-radius: 50%;
-  padding: 1rem;
-}
-
-[data-glimpse-modal-content] {
-  position: relative;
-}
-
-.glimpse-modal[aria-busy] {
-  cursor: wait;
-}
-
-.glimpse-modal[aria-busy] .modal-content * {
-  pointer-events: none;
-  user-select: none;
-}
-
-.glimpse-modal a *,
-.glimpse-modal button *,
-.x-app a *,
-.x-app button * {
-  pointer-events: none;
-}
-
-.glimpse-modal .hide-on-modal,
-.widget-content .hide-on-widget {
-  display: none;
-}
-
-/**************************************************************************************************/
-
+/* Spacing Utilities */
 .padding-0 {
   padding: 0;
 }
@@ -86,23 +11,26 @@
   margin: 0;
 }
 
+/* Filter Utilities */
 .blur-0 {
   filter: none;
 }
 
+/* Opacity Utilities */
 .hover-opacity-full:hover {
   opacity: 100;
 }
 
+/* Details/Spoiler Component */
 details.spoiler > summary {
   border-radius: var(--x-br-half);
   border: 1px solid var(--x-c-border);
   padding: 1rem var(--widget-content-horizontal-padding);
+  cursor: pointer;
 }
 
 details.spoiler {
   background-color: var(--x-c-foreground-light);
-
   border-radius: var(--x-br-half);
 }
 
@@ -121,21 +49,23 @@ details > summary {
   cursor: pointer;
 }
 
-/******/
-
+/* Container Query Utilities */
 @container widget (max-width: 300px) {
   .autohide-300 {
     display: none;
   }
 }
 
+/* Glimpse Component Styles */
 .glimpse-button {
   opacity: 0.75;
+  transition: opacity var(--x-t-speed);
 }
 
 .glimpse-button:hover {
-  opacity: 100;
+  opacity: 1;
 }
+
 .glimpse-icon {
   width: auto;
   height: 1.6rem;
@@ -163,6 +93,7 @@ details > summary {
   border-radius: 5px;
 }
 
+/* Glimpse Navigation */
 .glimpse-nav {
   align-items: baseline;
   display: flex;
@@ -178,6 +109,7 @@ details > summary {
   border: 1px solid var(--color-popover-border);
   border-radius: 5px;
   padding: 0.5rem 1rem;
+  transition: background var(--x-t-speed), color var(--x-t-speed);
 }
 
 .glimpse-nav button:not(.dots, :disabled):hover {

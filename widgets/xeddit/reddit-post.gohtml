@@ -62,26 +62,23 @@
 
   {{/* ! */}}
 
-    {{ $title = $title | trimSpace }}
+    {{ $title = $title | trimSpace | replaceAll "amp;" "" }}
     {{ $selftext = $selftext | trimSpace }}
 
-    {{ $image_url := $image.String "source.url" | replaceAll "amp;" "" }}
+    {{ $image_source := $image.Get `{"source":source.url,"width":source.width,"height":source.height}` }}
+    {{ $video_source := $video.Get `{"source":hls_url,"duration":duration,"width":width,"height":height}` }}
 
-    {{ $thumbnail := or ($preview.Get `resolutions.2`) ($preview.Get `resolutions.@reverse.0`) }}
-    {{ $thumb_url := $thumbnail.String "url" | replaceAll "amp;" "" }}
+    {{/* thumbnail! */}}
+      {{ $thumbnail := or ($preview.Get `resolutions.2`) ($preview.Get `resolutions.@reverse.0`) }}
+      {{/* $thumbnail_source := $preview.Get `{"source":url,"width":width,"height":height}` */}}
+      {{ $thumb_url := $thumbnail.String "url" | replaceAll "amp;" "" }}
+      {{ $thumb_width := or ($thumbnail.Int "width") 0 }}
+      {{ $thumb_height := or ($thumbnail.Int "height") 0 }}
 
-    {{ $has_thumb := ne $thumb_url "" }}
-    {{ $thumb_width := or ($thumbnail.Int "width") 0 }}
-    {{ $thumb_height := or ($thumbnail.Int "height") 0 }}
+      {{ $has_thumb := ne $thumb_url "" }}
 
-    {{ $thumbnail = or ($image.Get `resolutions.2`) ($image.Get `resolutions.@reverse.0`) }}
-    {{ $not_censored := $thumbnail.String "url" | replaceAll "amp;" "" }}
-
-    {{ $hls_url := $video.String "hls_url" | replaceAll "amp;" "" }}
-    {{ $video_width := or ($video.Int "width") 0 }}
-    {{ $video_height := or ($video.Int "height") 0 }}
-    {{ $video_duration := or ($video.Int "duration") 0 }}
-    {{ $is_portrait := lt $video_width $video_height }}
+      {{ $thumbnail = or ($image.Get `resolutions.2`) ($image.Get `resolutions.@reverse.0`) }}
+      {{ $not_censored := $thumbnail.String "url" | replaceAll "amp;" "" }}
 
   {{ $is_reddit := findMatch "redd.it|reddit.com|self." $domain }}
   {{ $embedded := or $is_reddit (findMatch "youtube.com|youtu.be|twitch.tv|imgur.com|redgifs.com" $domain) }}
@@ -116,9 +113,7 @@
             {{- if and (not $embedded ) $has_thumb -}}
             <div class="x-f-left">
               <img class="x-image x-blend x-of-cover x-ar-16x9 x-w-120 x-h-fit zoom-in" src="{{ $thumb_url }}" loading="lazy" onclick="this.nextElementSibling.showModal()" />
-              <dialog id="{{ $id }}" class="x-dialog" closedby="any">
-                <img src="{{ $image_url }}" loading="lazy" />
-              </dialog>
+              {{ template "ImageDialog" $image_source }}
             </div>
             {{- end -}}
             <a href="https://www.reddit.com{{ $permalink }}" class="size-title-dynamic color-primary-if-not-visited" target="_blank" rel="noreferrer">{{ $title }}</a>
@@ -128,27 +123,27 @@
 
             <div class="x-grid" style="--min-width: 10rem;">
             {{- range $i, $val := $media_metadata -}}
+              {{ $gallery_source := $val.Get `{"source":s.u,"width":s.y,"height":s.x}` }}
               <div{{ if $show_nsfw }} class="x-nsfw"{{ end }}>
                 <img class="x-image x-blend x-ar-1x1 x-of-cover zoom-in x" src="{{ or ($val.String "p.1.u") ($val.String "p.0.u") | replaceAll "amp;" "" }}" loading="lazy" onclick="this.nextElementSibling.showModal()" />
-                <dialog id="{{ $val.String "id" }}" class="x-dialog" closedby="any">
-                  <img src="{{ $val.String "s.u" | replaceAll "amp;" "" }}" loading="lazy" />
-                </dialog>
+                {{ template "ImageDialog" $gallery_source }}
               </div>
             {{- end -}}
             </div>
 
           {{- else if eq $type "video" -}}
 
+            {{ $is_portrait := lt ($video_source.Int "width") ($video_source.Int "height") }}
             <div {{ if $is_portrait }}class="-x-cqw-70"{{ end }}>
-              <div role="button" tabindex="0" class="x-stack x-overlay pointer x-fn-hls" data-hls-url="{{ $hls_url }}">
-                <img class="x-image x-blend x-wh-auto x-w-f x-pe-none" src="{{ $thumb_url }}" width="{{ $video_width }}" height="{{ $video_height }}" loading="lazy">
+              <div role="button" tabindex="0" class="x-stack x-overlay pointer x-fn-hls" data-hls-url="{{ $video_source.String "source" | replaceAll "amp;" "" }}">
+                <img class="x-image x-blend x-wh-auto x-w-f x-pe-none" src="{{ $thumb_url }}" width="{{ $video_source.Int "width" }}" height="{{ $video_source.Int "height" }}" loading="lazy">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="x-ps-cc color-highlight x-h-64 x-pe-none"><path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd"></path></svg>
                 <div class="x-ps-ee x-margin-gap x-blur">
-                  {{ (now | startOfDay).Add ($video_duration = print $video_duration "s" | duration) | formatTime "4:05" }}
+                  {{ (now | startOfDay).Add (print ($video_source.Int "duration") "s" | duration) | formatTime "4:05" }}
                 </div>
               </div>
-              <video class="x-wh-f x-br-half x-blend" poster="{{ $image_url }}" width="{{ $video_width }}" height="{{ $video_height }}"  controls hidden>
-                <source src="{{ $hls_url }}" type="video/mp4">
+              <video class="x-wh-f x-br-half x-blend" poster="{{ $image_source.String "source" | replaceAll "amp;" "" }}" width="{{ $video_source.Int "width" }}" height="{{ $video_source.Int "height" }}" controls hidden>
+                <source src="{{ $video_source.String "source" | replaceAll "amp;" "" }}" type="video/mp4">
               </video>
             </div>
 
@@ -166,14 +161,11 @@
 
             <div class="x-cqw-70">
               {{- if $show_nsfw -}}
-                <img class="x-image x-blend x-wh-f grab" src="{{ $thumb_url }}" width="{{ $thumb_width }}" height="{{ $thumb_height }}" loading="lazy" onclick="this.nextElementSibling.removeAttribute('hidden');this.remove()" />
-                <img class="x-image x-blend x-wh-f zoom-in" src="{{ $not_censored }}" width="{{ $thumb_width }}" height="{{ $thumb_height }}" onclick="this.nextElementSibling.showModal()" hidden/>
-              {{- else -}}
-                <img class="x-image x-blend x-wh-f zoom-in" src="{{ $thumb_url }}" width="{{ $thumb_width }}" height="{{ $thumb_height }}" loading="lazy" onclick="this.nextElementSibling.showModal()" />
+              <img class="x-image x-blend x-wh-f grab" src="{{ $thumb_url }}" width="{{ $thumb_width }}" height="{{ $thumb_height }}" loading="lazy" onclick="this.nextElementSibling.removeAttribute('hidden');this.remove()" />
+              {{ $thumb_url = $not_censored }}
               {{- end -}}
-              <dialog id="{{ $id }}" class="x-dialog" closedby="any">
-                <img src="{{ $image_url }}" loading="lazy" />
-              </dialog>
+              <img class="x-image x-blend x-wh-f zoom-in" src="{{ $thumb_url }}" width="{{ $thumb_width }}" height="{{ $thumb_height }}" loading="lazy" onclick="this.nextElementSibling.showModal()" {{ if $show_nsfw }}hidden{{ end }}/>
+              {{ template "ImageDialog" $image_source }}
             </div>
 
           {{- end -}}
